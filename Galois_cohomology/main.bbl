@@ -1,0 +1,138 @@
+\begin{thebibliography}{NSW08}
+
+\bibitem[BB08]{Bley}
+Werner Bley and Manuel Breuning.
+\newblock Exact algorithms for {$p$}-adic fields and epsilon constant
+  conjectures.
+\newblock {\em Illinois J. Math.}, 52(3):773--797, 2008.
+
+\bibitem[Ble03]{Reference13}
+W.~Bley.
+\newblock Numerical evidence for a conjectural generalization of {H}ilbert's
+  {T}heorem 132.
+\newblock {\em LMS J. Comput. Math.}, 6:68--88, 2003.
+\newblock With an appendix by D. Kusnezow.
+
+\bibitem[Ble11]{Bley10}
+Werner Bley.
+\newblock Numerical evidence for the equivariant {B}irch and
+  {S}winnerton-{D}yer conjecture.
+\newblock {\em Exp. Math.}, 20(4):426--456, 2011.
+
+\bibitem[Coh93]{Cohen}
+Henri Cohen.
+\newblock {\em A course in computational algebraic number theory}, volume 138
+  of {\em Graduate Texts in Mathematics}.
+\newblock Springer-Verlag, Berlin, 1993.
+
+\bibitem[CS08]{Cohen1}
+Henri Cohen and Peter Stevenhagen.
+\newblock Computational class field theory.
+\newblock In {\em Algorithmic number theory: lattices, number fields, curves
+  and cryptography}, volume~44 of {\em Math. Sci. Res. Inst. Publ.}, pages
+  497--534. Cambridge Univ. Press, Cambridge, 2008.
+
+\bibitem[Deb11]{Debeerst}
+R.~Debeerst.
+\newblock {\em Algorithms for Tamagawa Number Conjectures}.
+\newblock Ph. D. thesis. URL
+  http://kobra.bibliothek.uni-kassel.de/handle/urn:nbn:de:hebis:
+  34-2011060937825, 2011.
+
+\bibitem[Dok08]{Reference8}
+T.~Dokchitser.
+\newblock Local fields.
+\newblock {\em Lecture notes}, 2008.
+
+\bibitem[FHS19]{Hofmann}
+Claus Fieker, Tommy Hofmann, and Carlo Sircana.
+\newblock On the construction of class fields.
+\newblock In {\em Proceedings of the {T}hirteenth {A}lgorithmic {N}umber
+  {T}heory {S}ymposium}, volume~2 of {\em Open Book Ser.}, pages 239--255.
+  Math. Sci. Publ., Berkeley, CA, 2019.
+
+\bibitem[Fie09]{Fieker1}
+Claus Fieker.
+\newblock Minimizing representations over number fields. {II}. {C}omputations
+  in the {B}rauer group.
+\newblock {\em J. Algebra}, 322(3):752--765, 2009.
+
+\bibitem[FV02]{Fesenko}
+I.~B. Fesenko and S.~V. Vostokov.
+\newblock {\em Local fields and their extensions}, volume 121 of {\em
+  Translations of Mathematical Monographs}.
+\newblock American Mathematical Society, Providence, RI, second edition, 2002.
+\newblock With a foreword by I. R. Shafarevich.
+
+\bibitem[FZ16]{Fieker}
+Claus Fieker and Yinan Zhang.
+\newblock An application of the {$p$}-adic analytic class number formula.
+\newblock {\em LMS J. Comput. Math.}, 19(1):217--228, 2016.
+
+\bibitem[Gir99]{Reference12}
+Kurt Girstmair.
+\newblock An algorithm for the construction of a normal basis.
+\newblock {\em J. Number Theory}, 78(1):36--45, 1999.
+
+\bibitem[Iwa72]{Kenkichi}
+Kenkichi Iwasawa.
+\newblock {\em Lectures on {$p$}-adic {$L$}-functions}.
+\newblock Princeton University Press, Princeton, N.J.; University of Tokyo
+  Press, Tokyo, 1972.
+\newblock Annals of Mathematics Studies, No. 74.
+
+\bibitem[Lam06]{Lam}
+T.~Y. Lam.
+\newblock {\em Serre's problem on projective modules}.
+\newblock Springer Monographs in Mathematics. Springer-Verlag, Berlin, 2006.
+
+\bibitem[Led05]{Reference11}
+Arne Ledet.
+\newblock {\em Brauer type embedding problems}, volume~21 of {\em Fields
+  Institute Monographs}.
+\newblock American Mathematical Society, Providence, RI, 2005.
+
+\bibitem[Lor08]{Lorenz}
+Falko Lorenz.
+\newblock {\em Algebra. {V}ol. {II}}.
+\newblock Universitext. Springer, New York, 2008.
+\newblock Fields with structure, algebras and advanced topics, Translated from
+  the German by Silvio Levy, With the collaboration of Levy.
+
+\bibitem[Neu99]{Neukirch}
+J\"urgen Neukirch.
+\newblock {\em Algebraic number theory}, volume 322 of {\em Grundlehren der
+  Mathematischen Wissenschaften [Fundamental Principles of Mathematical
+  Sciences]}.
+\newblock Springer-Verlag, Berlin, 1999.
+\newblock Translated from the 1992 German original and with a note by Norbert
+  Schappacher, With a foreword by G. Harder.
+
+\bibitem[Neu13]{Neukirch_class}
+J\"{u}rgen Neukirch.
+\newblock {\em Class field theory}.
+\newblock Springer, Heidelberg, 2013.
+\newblock The Bonn lectures, edited and with a foreword by Alexander Schmidt,
+  Translated from the 1967 German original by F. Lemmermeyer and W. Snyder,
+  Language editor: A. Rosenschon.
+
+\bibitem[NSW08]{Neukirch_coho}
+J\"urgen Neukirch, Alexander Schmidt, and Kay Wingberg.
+\newblock {\em Cohomology of number fields}, volume 323 of {\em Grundlehren der
+  Mathematischen Wissenschaften [Fundamental Principles of Mathematical
+  Sciences]}.
+\newblock Springer-Verlag, Berlin, second edition, 2008.
+
+\bibitem[Pau06]{Sebastian}
+Sebastian Pauli.
+\newblock Constructing class fields over local fields.
+\newblock {\em J. Th\'{e}or. Nombres Bordeaux}, 18(3):627--652, 2006.
+
+\bibitem[Sat02]{Satoh}
+Takakazu Satoh.
+\newblock On {$p$}-adic point counting algorithms for elliptic curves over
+  finite fields.
+\newblock In {\em Algorithmic number theory ({S}ydney, 2002)}, volume 2369 of
+  {\em Lecture Notes in Comput. Sci.}, pages 43--66. Springer, Berlin, 2002.
+
+\end{thebibliography}

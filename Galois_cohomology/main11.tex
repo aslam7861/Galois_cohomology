@@ -1,0 +1,285 @@
+%\documentclass[11pt, oneside]{Thesis}
+%\graphicspath{{Pictures/}}
+%\usepackage{afterpage}
+%\usepackage[square, numbers, comma, sort&compress]{natbib}
+%\usepackage{amsmath,amscd}
+%\usepackage[small,nohug,heads=littlevee]{diagrams}
+%\usepackage{tikz-cd}
+%\usepackage{amssymb,latexsym}
+%\usepackage{amsbsy}
+%\usepackage{mathtools}
+%\usepackage{graphicx}
+%\usepackage{enumitem}
+%\usepackage{url}
+%\usepackage{color}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{times}
+%\usepackage{amsthm}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{example}[theorem]{Example}
+%\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{algo}[theorem]{Algorithm}
+%%\diagramstyle[labelstyle=\scriptstyle]
+%\hypersetup{urlcolor=blue, colorlinks=true}
+%
+%
+%\title{\ttitle}
+%
+%\begin{document}
+%
+%\frontmatter
+%\setstretch{1.3}
+%\fancyhead{}
+%\rhead{\thepage}
+%\lhead{}
+%\pagestyle{fancy}
+%\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%
+%\hypersetup{pdftitle={\ttitle}}
+%\hypersetup{pdfsubject=\subjectname}
+%\hypersetup{pdfauthor=\authornames}
+%\hypersetup{pdfkeywords=\keywordnames}
+%
+%\begin{titlepage}
+%\begin{center}
+%\textsc{}\\[4cm]
+%
+%{\huge \bfseries \ttitle}\\[1cm]
+%\textbf{Computing Local Fundamental Classes}
+%\begin{center}{Aslam Ali}\end{center}
+%
+%\begin{minipage}{0.4\textwidth}
+%\begin{flushright} \large
+%
+%\end{flushright}
+%\end{minipage}\\[5cm]
+%
+%\includegraphics[width=15em]{TUKL}
+%
+%\Large \textbf{Master Thesis}\\[0.4cm]
+%\large \text{Supervisor: \textbf{Prof. Dr. Claus Fieker}}\\[0.1cm]
+%\large \text{Technische Universit\"at Kaiserslautern, Germany}\\[2cm]
+%
+%{\large \today}\\[4cm]
+%
+%\end{center}
+%
+%\end{titlepage}
+%
+%\clearpage
+%\afterpage{\blankpage}
+%\newcommand\blankpage{
+%    \null
+%    \thispagestyle{empty}
+%    \addtocounter{page}{-1}
+%    \newpage}
+%\clearpage
+%
+%\addtotoc{Abstract}
+%
+%\abstract{\addtocontents{toc}{\vspace{0.25em}}
+%
+%The Thesis Abstract will be written here \ldots
+%}
+%\clearpage
+%
+%\setstretch{1.3}
+%
+%\acknowledgements{\addtocontents{toc}{\vspace{0.25em}}
+%
+%The acknowledgements and the people to thank go here\ldots
+%}
+%
+%\pagestyle{fancy}
+%
+%\lhead{Contents}
+%\tableofcontents
+%
+%\mainmatter
+%
+%\pagestyle{fancy}
+%\cleardoublepage
+%\chapter*{Introduction}
+%\addcontentsline{toc}{chapter}{Introduction}
+%\lhead{Introduction}
+%
+%
+%\input{Chapters/Chapter1}
+%%\input{Chapters/Chapter2}
+%%\input{Chapters/Chapter3}
+%
+%
+%
+%
+%\label{Bibliography}
+%\lhead{Bibliography}
+%\bibliographystyle{alpha}
+%\bibliography{Bibliography}
+%\backmatter
+%
+%\Declaration{
+%I, \authornames, declare that this thesis titled, '\ttitle' and the work presented in it are done alone. I confirm that where I have quoted from the work of others, the source is always given.
+%\addtocontents{toc}{\vspace{2em}}
+%}
+%
+%
+%
+%\end{document}
+%
+%%\clearpage
+%%\afterpage{\blankpage}
+%%\clearpage
+
+
+
+\documentclass[12pt, oneside]{Thesis}
+\usepackage[margin=1.3in,footskip=0.4in]{geometry}
+\graphicspath{{Pictures/}}
+\usepackage{afterpage}
+\usepackage[square, numbers, comma, sort&compress]{natbib}
+\usepackage{amsmath,amscd}
+\usepackage[small,nohug,heads=littlevee]{diagrams}
+\hypersetup{urlcolor=blue, colorlinks=true}
+\usepackage{tikz-cd}
+\usepackage{pst-node}
+\usepackage[all,cmtip]{xy}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amssymb,latexsym}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\fancyhf{}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\usepackage{url}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{vmargin}
+\usepackage{mathrsfs}
+\usepackage{times}
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\usepackage{amsbsy}
+\title{\ttitle}
+\begin{document}
+
+\frontmatter
+\setstretch{1.3}
+\fancyhead{}
+\rhead{\thepage}
+\lhead{}
+\pagestyle{fancy}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\hypersetup{pdftitle={\ttitle}}
+\hypersetup{pdfsubject=\subjectname}
+\hypersetup{pdfauthor=\authornames}
+\hypersetup{pdfkeywords=\keywordnames}
+
+\begin{titlepage}
+\begin{center}
+
+\textsc{}\\[5cm]
+
+{\huge \bfseries \ttitle}\\[1cm]
+
+\begin{center}{Aslam Ali}\end{center}
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+
+\end{flushright}
+\end{minipage}\\[4cm]
+
+\includegraphics[width=12em]{TUKL}
+
+\Large \textbf{Master Thesis}\\[0.4cm]
+\large \text{Supervisor: \textbf{Prof. Dr. Claus Fieker}}\\[0.1cm]
+\large \text{Technische Universit\"at Kaiserslautern, Germany}\\[2cm]
+
+{\large \today}\\[2cm]
+
+\end{center}
+
+\end{titlepage}
+
+\clearpage
+\afterpage{\blankpage}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+\clearpage
+
+\addtotoc{Abstract}
+
+\abstract{\addtocontents{toc}{\vspace{0.25em}}
+The purpose of this thesis is to study the second cohomology group of finite Galois field extension $L/K$ over $\mathbb{Q}_{p}$ which is cyclic and denoted by $\hat{H}^{2}(\Gal(L/K), L^{\times})$, where the module $L^{\times}$ is the multiplicative group of the extension field $L$. The canonical generator of cohomology group $\hat{H}^{2}(\Gal(L/K), L^{\times})$ is known as fundamental class. We study in details of the fundamental classes in second cohomology group and present the algorithms to compute it.
+}
+
+
+
+
+%The purpose of this thesis is to study the fundamental classes as a cocycle in second cohomology group $\hat{H}^{2}(G(L/K), L^{\times})$ where $L/K$ is local finite Galois field extension over $\mathbb{Q}_{p}$ and $G(L/K)$ the Galois group. Fundamental class plays very important role in computation of Class field theory. The algorithms for computing it by Direct method and Serre's approach have been discussed in this thesis. For simplification to understand the algorithms, some important results have been introduced throughout this.
+%}
+\clearpage
+
+\setstretch{1.1}
+
+\acknowledgements{\addtocontents{toc}{\vspace{0.23em}}
+
+I am deeply indebted to my supervisor \textbf{Prof. Dr. Claus Fieker} for his constructive suggestions, comments and guidance. Without his guidance this research would never come to its complete shape. Also, I would like to express my grateful thanks to Dr. Falk Triebsch, Dr. habil. Klaus Wirthmüller and Dr. Sudarshan Tiwari for taking care and providing me the necessary facilities and excellent environment in this department throughout my studies.\\
+Similarly, I am thankful to  Prof. Dr. Wolfram Decker, Prof. Dr. Gunter Malle  and all the respected teachers for giving such a wonderful course and sharing their knowledge.\\
+I am equally grateful and indebted to my family members for encouraging me and authors of the references especially Dr. Ruben Debeerst, Prof. Dr. Jürgen Neukirch and Prof. Dr. Werner Bley for their papers from which I borrowed many things in my thesis.\\\\
+}
+
+\pagestyle{fancy}
+
+\lhead{Contents}
+\tableofcontents
+
+\mainmatter
+
+\pagestyle{fancy}
+\cleardoublepage
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\lhead{Introduction}
+In this thesis we are going to study the second cohomology group of the $p$-adic field extension with characteristic zero. For a finite Galois field extension $L/K$ over $\mathbb{Q}_{p}$, we derive the Tate cohomogy group $\hat{H}^{q}(\Gal(L/K), A)$, $q\in \mathbb{Z}$ where $A$ is $G:=\Gal(L/K)$-module. In particular, for $q=2$ the cohomology group $\hat{H}^{2}(\Gal(L/K), L^{\times})$ is cyclic where $L^{\times}$ is the multiplicative group of the field $L$, and is known to have a canonical generator which is called the fundamental class.\\
+We are dividing this thesis in three chapters. In the very first chapter, we study over the $G$-module $A$ where $G$ is finite topological group and define the Tate cohomology group using cochains method. The Tate cohomology is an amalgamation of homology and cohomology groups. As our main theme of the thesis is to compute the fundamental class so we restrict ourselves in the cohomology groups $\hat{H}^{q}(\Gal(L/K), A)$ for $q=-1,0,1,2$. In the third section of the first chapter, we study how the mappings are defined on cohomology groups and how does it affect when we change the group and module.\\
+In chapter 2 we define the fundamental class in the normal field extension $L/K$ and study how it varies when we extend or restrict  our extension. In this we also shortly introduce Brauer groups of a field $K$, and study the isomorphism between the relative Brauer group and second cohomology group. For a finite Galois field extension $L/K$, we consider the group $G$ as the Galois group $\Gal(L/K)$ and module as additive group $L$ and the most interesting multiplicative group $L^{\times}$. To compute the cohomology group we need the finitely generated module so we can construct finitely generated module using Theorem 10 from \citep{Reference5} or Lemma 3.2.1 presented in this thesis. We also introduce few results in this chapter which are needed in the following chapter.\\
+In the third chapter we present the main part of the thesis, that is to state the algorithms for computing the fundamental classes. We present two algorithms one by direct method and next by Serre's approach from \citep{Reference4}. In both approaches we construct first the unramified extension of given field extension with same degrees. For an unramified Galois extension of local fields $L/K$, the Galois group $\Gal(L/K)$ is generated by the Frobenius automorphism defined in Chapter 2 and the cohomology group $\hat{H}^{q}(\Gal(L/K), U_{L})$ vanishes where $U_{L}$ is a group of units in $L$. For the use of fundamental class one can find in \citep{Reference4}.
+
+
+
+
+%For background material on basic notions of Algebraic Geometry, Algebraic Number Theory, Analysis, and Representation Theory; the reader is referred to standard works such as %\citep{Reference33}, \citep{Reference30}, \citep{Reference32} and \citep{Reference31}.
+
+\input{Chapters/Chapter1}
+%\lhead{Cohomolog of Groups}
+\input{Chapters/Chapter2}
+\input{Chapters/Chapter3}
+
+
+
+\label{Bibliography}
+\lhead{Bibliography}
+\bibliographystyle{alpha}
+\bibliography{Bibliography}
+
+\backmatter
+
+\Declaration{
+I, \authornames, declare that this thesis titled, '\ttitle' and the work presented in it are done alone. I confirm that no sources other than that listed here have been used in this work.\\\\\\
+
+
+Date: 21.08.2017   \hspace{60mm}    Signature:..................\\
+\addtocontents{toc}{\vspace{2em}}
+}
+\end{document} 

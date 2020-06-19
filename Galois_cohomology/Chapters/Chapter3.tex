@@ -1,0 +1,264 @@
+\chapter{Local Fundamental Class } % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{Chapter 3. \emph{Local Fundamental Class}} % This is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{definition}{Definition}[section]
+\newtheorem{Algorithm}{Algorithm}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{cor}{Corollary}[section]
+%\theoremstyle{break} 
+%\newtheorem{theorem}{Theorem}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem{addition}{Addition}[section]
+%\newtheorem{remark}{Remark}[section]
+
+\def\Log{\mathop{\mathrm{Log}}\nolimits}	
+\def\inva{\mathop{\mathrm{inv}}\nolimits}	
+\def\Gal{\mathop{\mathrm{Gal}}\nolimits}
+\def\id{\mathop{\mathrm{Id}}\nolimits}
+\def\Hom{\mathop{\mathrm{Hom}}\nolimits}
+\def\Cite{\mathop{\mathrm{Cite}}\nolimits}
+\def\im{\mathop{\mathrm{Im}}\nolimits}
+\def\ker{\mathop{\mathrm{ker}}\nolimits}
+\def\rest{\mathop{\mathrm{res}}\nolimits}
+\def\cori{\mathop{\mathrm{cor}}\nolimits}
+\def\tor{\mathop{\mathrm{tor}}\nolimits}
+\def\inf{\mathop{\mathrm{inf}}\nolimits}
+\def\nr{\mathop{\mathrm{nr}}\nolimits}
+\def\inv{\mathop{\mathrm{inv}}\nolimits}
+\def\rad{\mathop{\mathrm{rad}}\nolimits}
+\def\Irr{\mathop{\mathrm{Irr}}\nolimits}
+\def\Aut{\mathop{\mathrm{Aut}}\nolimits}
+\def\Det{\mathop{\mathrm{Det}}\nolimits}
+\def\modulo{\mathop{\mathrm{mod}}\nolimits}
+\def\ind{\mathop{\mathrm{ind}}\nolimits}
+\def\det{\mathop{\mathrm{det}}\nolimits}
+\def\Exp{\mathop{\mathrm{Exp}}\nolimits}
+\def\Frob{\mathop{\mathrm{Frob}}\nolimits}	
+\def\Trace{\mathop{\mathrm{Trace}}\nolimits}	
+\def\Norm{\mathop{\mathrm{Norm}}\nolimits}	
+\def\exp{\mathop{\mathrm{exp}}\nolimits}
+\section{Local Fundamental Class for Local Field}
+
+Let $K$ be a $p$-adic local field then denote $\overline{K}/K$ as a separable closure of $K$ and $L/K$ the sub-extension of $\overline{K}/K$, $v_{K}$ denotes the discrete valuation of $K$, which we always think of normalized so that its smallest positive value is $1$,
+\begin{align*}
+\mathcal{O}_{K} & = \left\{x\in K| v_{K}(x)\geq 0\right\} \mbox{  the valuation ring,}\\
+\mathfrak{p} & = \left\{x\in K| v_{K}(x)> 0\right\} \mbox{  the maximal ideal,}\\
+k_{K} & = \mathcal{O}/\mathfrak{p} \mbox{  the residue field of $K$, $p$ the characteristic of $k$,}\\
+U_{K} & = \mathcal{O}_{K} - \mathfrak{p} \mbox{  the unit group,}\\
+U_{K}^{1} & = 1+\mathfrak{p} \mbox{  the group of principal units and}\\
+U_{K}^{n} & = 1+\mathfrak{p}^{n} \mbox{  the higher unit groups}.
+\end{align*}
+
+Let $L/K$ be local field extension then $L$ is called unramified over $K$ if $[L:K]=[k_L : k_K] =: f_{L/K}$. If $f_{L/K}=1 $ then $L/K$ is totally ramified extension and in this case $e_{L/K}=[L:K]$. Note that $[L:K]=e_{L/K}\cdot f_{L/K}$.\\
+The main part of this thesis is to compute the local fundamental class of finite Galois extension $L/K$. For the computation we always look for the unramified extension $N/K$ of the same degree as the finite Galois extension $L/K$. So, we shortly introduce the unramified extension.
+\begin{theorem}
+\begin{enumerate}
+\item Suppose $L/K$ is a finite, unramified extension then the valuation ring $\mathcal{O}_{L} = \mathcal{O}_{K}[\alpha]$  (and so $L=K(\alpha)$) for any $\alpha\in\mathcal{O}_{L} $ with residue fields $k_{L}=k_{K}(\bar{\alpha})$.
+\item Suppose $l/k$ is finite extension of finite fields then there exists an unramified extension $L/K$ with $k_{L}\cong l $ over $k_{K}$.
+\item Suppose $L/K$ is a finite, unramified extension and let $L'/K$ be any finite extension. Then
+\[\Hom_{K}(L,L')\rightarrow \Hom_{k_{K}}(k_{L},k_{L'})\]
+is bijective
+\end{enumerate}
+\end{theorem}
+The unramified extension $L/K$ is Galois if and only if  $k_{L} / k_{K}$ is Galois, and in this case we have $\Gal(L/K)\cong \Gal(k_{L}, k_{K})${Reference}.
+Let $L/K$ be a finite local Galois field extension. Then there exists a unique maximal unramified extension $M$ of $K$ in $L$, so $L/M$ is totally ramified and every unramified extension of $K$ in $L$ is contained in $M${Reference}.\\
+Before going to details on computing the fundamental classes we have to compute the cohomology groups of the extension $L/K$. In order to work with cohomology groups computationally, we need a finitely presented module $M$. Since the module $L^{\times}$ is not finitely generated, so we first need to find a finitely presented module $M$ for which $\hat{H}^{2}(G,M)\cong \hat{H}^{2}(G,L^{\times})$ holds.
+\begin{lemma}
+Let $L/K$ be a finite Galois extension, then there exists a finitely generated module $M$ such that  $\hat{H}^{2}(G,M)\cong \hat{H}^{2}(G,L^{\times})$. It is given by $M= L^{\times}/ \exp(\mathscr{L})$ for a suitable projective sublattice $\mathscr{L}$ of $\mathcal{O}_{L}$, where $\mathscr{L}$ can be constructed computationally.
+\end{lemma}
+\begin{proof}
+{Reference4}, Lemma 2.1.
+\end{proof}
+Suppose $\theta \in \mathcal{O}_{L}$ is a normal basis element for the extension $L/K$. Then \[\left\{\sigma\theta \mid \sigma\in G \right\}\] is a basis of $L/K$. More details on normal bases can be found in {Reference12}. However, one discovers that almost every element in $\mathcal{O}_{L}$ is a normal basis element and one can assume that $v_{L}(\theta)> e(L/\mathbb{Q}_{p})/(p-1)$, where  $e(L/\mathbb{Q}_{p})$ denotes the ramification index of $L/\mathbb{Q}_{p}$. Proposition 3.1 from \cite{Reference13} sates that $\mathscr{L}= \mathbb{Z}[G]\theta$ is a full projective sublattice of $\mathcal{O}_{L}$ on which the exponential map is well defined and injective. \\
+Let $E/F$ be a global Galois extension with $\Gal(E/F)=\Gamma$ and $\mathfrak{P}$ a prime ideal in $E$ dividing a prime ideal $\mathfrak{p}$  of $F$. Also suppose that $E_{\mathfrak{P}}=L$ and $F_{\mathfrak{p}}= K$. Then $E_{\mathfrak{P}}/F_{\mathfrak{p}}$ is a local Galois extension such that $G:=\Gal(E_{\mathfrak{P}}/F_{\mathfrak{p}} )= \Gamma_{\mathfrak{P}}=\Gal(L/K)$.\\
+If $k$ is chosen such that $\mathfrak{P}^{k}\subset\mathscr{L}$, then the module $L^{f}:= L^{\times}/ \exp(\mathscr{L})$ is the cokernel of $\exp(\mathscr{L})\rightarrow E_{\mathfrak{P}}^{\times}/U_{E_{\mathfrak{P}}}^{(k)}$ and it suffices to compute the values of the exponential function up to a certain precision.\\
+Now onward, $L^{f}$ will always denote a finitely generated module for which we have the isomorphism of cohomology $\hat{H}^{2}(G,L^{f})\simeq \hat{H}^{2}(G,L^{\times})$. Now the cohomology of group with values in module $L^{f}$ can be computed by applying linear algebra methods to the standard resolution of $L^{f}$. To compute the cohomology group $\hat{H}^{2}(G,L^{f})$ we use the maps from and to $Z^{2}(G,L^{f})$, the group of cocycles. Hence, for cocycles $G\times G\rightarrow L^{\times}$ one can then algorithmically decide whether they are coboundaries (mapped to zero in $\hat{H}^{2}(G, L^{f} )$) or whether they differ by a coboundary (mapped to the same element of $\hat{H}^{2}(G, L^{f} )$).\\
+
+To compute the local fundamental class of a finite Galois extension $L/K$ we use the following strategy: we choose first the unramified extension $N/K$ of the same degree as the extension $L/K$, then by lemma above this implies $LN/L$ is an unramified extension. Let us denote the maximal unramified extension in $L/K$ be $M$ so that we get $M= L\cap N$ and
+\begin{equation}
+\begin{tikzcd}[every arrow/.append style={dash}]
+              & LN\arrow{d} \\
+       L\arrow{d}\arrow{ur}  &N \\
+     M\arrow{d}\arrow{ur}            &   \\
+    K
+\end{tikzcd}.
+\end{equation}
+Let us denote $G= \Gal(L/K)$,  $C= \Gal(N/K)$ $C'= \Gal(LN/L)$ and  $\Gamma= \Gal(LN/K)$. Since $N/K$ is finite unramified extension, so it will be easy to compute the fundamental class in it. Then the local fundamental class of $L$ is defined to be the fundamental class of $N$ by identifying their cohomology groups as subgroups of $\hat{H}^{2}(\Gamma,(LN)^{\times})$ using inflation maps:
+\[\begin{tikzcd}
+      \text{} &   \hat{H}^{2}(C, N^{\times})\arrow[hookrightarrow]{d}{\inf} \\
+%      &  &  \\
+ \hat{H}^{2}(G, L^{\times})\arrow[hookrightarrow]{r}{\inf} & \hat{H}^{2}(\Gamma, (LN)^{\times})\\
+\end{tikzcd}\]
+
+Manual and Debeerst tried to solve the local fundamental class in their papers but the solving the norm equation was not much effective so they took lot of time to compute the norm equation.\\
+
+We have already seen the effective algorithms to solve the norm equations of local fields. We also have the fast algorithm in the dissertation of Debeerst, in which he uses the approach of Serre to compute the local fundamental class. We apply our norm equation in their algorithm to compute the local fundamental class. We have written our codes to solve the Frobenius equations which is very fast in the comparison of his functions. \\
+%expensive in the sense of computation time Using our norm equation and  We also have re-written few of his codes so that we compute the local fundamental class in very short time.
+\textbf{Frobenius Equation}
+$x^{\phi-1}=c$\\
+We also have applied the effective way of solving the Frobenius equation. After making the norm equation very fast we found that solving the above equations was expensive. This is the case when $q$ is very large then the factorisation of polynomial over the finite field was taking much memory and the time too. Then instead of factorisation of special polynomials over the finite field we convert this problem to solve through the vector space.
+% and then we easily find one solution . We can solve the Frobenius equation for high $p$-adic field extensions.
+Factorisation of polynomials of high degree over finite fields consumes much time. But once the polynomial is in the form of Artin-Schreier polynomial then we convert into the vectors space and then define an equation which solves for a solution.  After that we can have all the solutions and then we can find all the roots of the polynomial.
+%We will apply the standard way of of solving the Artin-Schreier polynomial to find all the roots of Artin Schreier polynomial. 
+Due to this, we are able to decrease the computation time of local fundamental class.\\
+%To  find the roots of Artin-Schreier Polynomial over the finite field we convert into the vectors space and then define an equation which solves for a solution. After that we can have all the solutions. One can see this in our codes.\\
+We have written our codes to solve the Frobenius equations which is very fast in the comparison of his codes and it consumes less memory while solving even in large $p$-adic field extension as well as for high value of $p$.
+
+\begin{ex}
+229-adic field extension and its ramified extension of degree 6 will require much memory to solve. So we solve using the Artin polynomial and get the local fundamental class through \textbf{Algorithm $2$}.
+\end{ex}
+
+\begin{lstlisting}
+>  K1:=NumberField(CyclotomicPolynomial(18));             
+> K:=Compositum(NumberField(x^2-29),K1);        
+> Kp:=Completion(K,Decomposition(K,29)[1,1]);
+> AbsoluteDegree(Kp);
+12
+> time CLocalFundamentalClassSerre_check(Kp,BaseField(Kp),80);
+
+Runtime error: Precision of automorphisms of L (bounded) not high enough to 
+compute the cocyle!
+> ChangePrecision(~Kp,120);
+> time CLocalFundamentalClassSerre_check(Kp,BaseField(Kp),80);
+Mapping from: Cartesian Product<GrpPerm: $, Degree 2, Order 2, GrpPerm: $, 
+Degree 2, Order 2> to FldPad: Kp given by a rule [no inverse]
+Unramified extension defined by the polynomial x^2 + 28*$.1 + 27
+ over Totally ramified extension defined by a map over Unramified extension 
+defined by a map over 29-adic ring mod 29^60
+
+Time: 704.410
+> time CLocalFundamentalClassSerre(Kp,BaseField(Kp),80); 
+Current total memory usage: 81863.2MB, failed memory request: 32.0MB
+System error: Out of memory.
+All virtual memory has been exhausted so Magma cannot perform this statement.
+
+>  ChangePrecision(~Kp,60); 
+> time CLocalFundamentalClassSerre_check(Kp,BaseField(Kp),45);
+Mapping from: Cartesian Product<GrpPerm: $, Degree 2, Order 2, GrpPerm: $, 
+Degree 2, Order 2> to FldPad: Kp given by a rule [no inverse]
+Unramified extension defined by the polynomial x^2 + 28*$.1 + 27
+ over Totally ramified extension defined by a map over Unramified extension 
+defined by a map over 29-adic ring mod 29^30
+Time: 17.390
+>  time CLocalFundamentalClassSerre(Kp,BaseField(Kp),45);      
+
+Current total memory usage: 81863.2MB, failed memory request: 32.0MB
+System error: Out of memory.
+All virtual memory has been exhausted so Magma cannot perform this statement.
+\end{lstlisting}
+Solving the local fundamental class for unramified Galois extension is an easy task.\\ 
+{\color{blue}In this, For any $L/K$ number field extension. Let $L_{\mathfrak{P}}$ be the completion  any prime ideal of $\mathfrak{P}$ of $L$ and the $e$ be the ramification index of $L_{\mathfrak{P}}$. Suppose the precision $L_{\mathfrak{P}}$ be $n$ then we can compute the local fundamental class of $L_{\mathfrak{P}}$ up to precision $ n-e-1$}.\\
+%While solving the norm equation the computation of unit group is expensive. Once this is optimised the whole algorithm is optimised.
+
+To construct the local fundamental class, we consider the module $L^{f}$ described as earlier. Let $\mathscr{L}$ be as above Lemma $2.1$ such that $L^{f}= L^{\times}/ \exp(\mathscr{L})$ is cohomologically isomorphic to $L^{\times}$ and let $k$ be the smallest integer such that $\mathfrak{P}^{k}\subset \mathscr{L}$. We also have the surjective homomorphism $Z^{2}(G,L^{\times}/U_{L}^{(k)})\twoheadrightarrow \hat{H}^{2}(G, L^{f})$ by Remark [???] and every element of $\hat{H}^{2}(G, L^{f})$ is represented by a cocycle of precision $k$. Therefore, it is sufficient to compute the local fundamental class in $\hat{H}^{2}(G,L^{\times}/U_{L}^{(k)})$.\\
+Considering all notations as above we have the commutative diagram
+\[\begin{tikzcd}
+ \text{}    & \hat{H}^{2}(C,N^{\times})\arrow[hookrightarrow]{d}{\inf}\\
+\hat{H}^{2}(G,L^{\times})\arrow{d}\arrow[hookrightarrow]{r}{\inf} & \hat{H}^{2}(\Gamma,(LN)^{\times})\arrow{d}\\
+\hat{H}^{2}(G,L^{\times}/U_{L}^{(n)})\arrow[hookrightarrow]{r}{\inf} &
+\hat{H}^{2}(\Gamma,(LN)^{\times}/U_{LN}^{(n)})
+\end{tikzcd}\]
+in which the bottom inflation map is injective by Lemma 3.1.5 .\\
+Since the modules $L^{\times}/U_{L}^{(n)}$ and $(LN)^{\times}/U_{LN}^{(n)}$ are finitely generated, we can compute their cohomology groups. The local fundamental class $u_{N/K}$ of the finite unramified extension $N/K$ is represented as the cocycle of the form Remark 2.6.6 and we can compute $\inf(u_{N/K})\in Z^{2}(\Gamma, (LN)^{\times})$ and its image in $\hat{H}^{2}(\Gamma,(LN)^{\times}/U_{LN}^{(n)})$.
+From above diagram, using $[LN:L]=[LN:N]$ and the Proposition 2.2.7, we get the image of the fundamental class $u_{L/K}$ of $L/K$ under the map $\inf:\hat{H}^{2}(G,L^{\times})\rightarrow \hat{H}^{2}(\Gamma, (LN)^{\times})$ and image of the fundamental class $u_{N/K}$ of $N/K$ under the map $ \inf :\hat{H}^{2}(H, N^{\times}) \rightarrow \hat{H}^{2}(\Gamma, (LN)^{\times}) $ coincide i.e. $\inf(u_{L/K})= \inf(u_{N/K})$.\\
+We compute inflation of each generator of the cohomology group $\hat{H}^{2}(G,L^{\times}/U_{L}^{(n)})$ in $\hat{H}^{2}(\Gamma,(LN)^{\times}/U_{LN}^{(n)})$. One of these generators must coincide with the image of $\inf (u_{N/K})$ and it represents the fundamental class in $\hat{H}^{2}(G,L^{\times}/U_{L}^{(n)})$. \\
+We summarize all the above in the following algorithm:
+
+ \begin{algorithm}[H]
+\caption{Local Fundamental Class by Direct Method}
+\label{}
+\begin{algorithmic}[1]
+\REQUIRE A finite Galois extension $L/K$ over $\mathbb{Q}_{p}$ with group $G$ and a precision $n$.
+\ENSURE  The local fundamental class $u_{L/k}\in \hat{H}^{2}(G,L^{\times}/ U_{L}^{(n)})$ up to the finite precision $n$.
+\STATE Choose $N$ as an unramified extension of $K$ of degree $[L:K]$ and $c$ a cocycle representing the local fundamental class $u_{N/K}$.
+\STATE Compute the image under the map\\
+
+\[\begin{tikzcd} \hat{H}^{2}(C,N^{\times})\arrow[hookrightarrow]{r}{\inf} & \hat{H}^{2}(\Gamma, (LN)^{\times})\arrow[rightarrow]{r}  & \hat{H}^{2}(\Gamma, (LN)^{\times}/U_{LN}^{(n)}).
+\end{tikzcd}\]
+\STATE Find the preimage under the map
+\begin{tikzcd}
+\hat{H}^{2}(G, L^{\times}/U_{L}^{(n)})\arrow[hookrightarrow]{r}{\inf} &  \hat{H}^{2}(\Gamma, (LN)^{\times}/U_{LN}^{(n)}).
+\end{tikzcd} %\hat{H}^{2}(G, L^{\times}/U_{L}^{(n)})\hookrightarrow{\inf}  \hat{H}^{2}(\Gamma, (LN)^{\times}/U_{LN}^{(n)}).  \]
+\end{algorithmic}
+\end{algorithm}
+Computation of cohomology group is an expensive task so Debeerst presents an another algorithm using an exercise from "Local Fields of Serre" which computes the local fundamental class effectively.  
+\begin{algorithm}[H]
+\caption{Local Fundamental Class using Serre's Approach:}
+\label{}
+\begin{algorithmic}[1]
+\REQUIRE  A finite Galois extension $L/K$ over $\mathbb{Q}_{p}$ with group $G$ and a precision $k\in \mathbb{N}$.
+\ENSURE  The local fundamental class $u_{L/K}\in Z^{2}(G, L^{\times}/U_{L}^{(k)})$ up to the finite precision $k$.
+\STATE Let $\pi_{K}$ and $\pi_{L}$ be uniformizing elements of $K$ and $L$ respectively, $E$ the maximal unramified subextension of $L/K$, $e=[L:E]$ the ramification index and $d$ the inertia degree. Let $M$ be the unramified extension of $L$ of degree $e$ and $L_{nr}=\prod_{d}M.$
+\STATE Solve the norm equation $N_{M/L}(v)=u$ with $u=\pi_{K}\pi_{L}^{-e}\in U_{L}$ and $v\in U_{M}$ and define $\pi= v\pi_{L}$.
+\STATE For each $\sigma \in G$ compute $u_{\sigma}\in M$ such that $u_{\sigma}^{\varphi^{d}-1}= \frac{\hat{\sigma}(\pi)}{\pi} \mod U_{M}^{(k+2)}$.
+\STATE Define $\beta \in C^{1}(G, L_{nr}^{\times})$ and $\gamma \in C^{2}(G, L^{\times})$ by equations (3.8) and (3.9).
+\STATE \textbf{Return} $\gamma^{-1}$.
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm is fast because we only compute the cocycles $Z^{2}(G, L^{\times}/U_{L}^{(k)})$ instead of computing the cohomology group of $L/K$. We have algorithms in [thissssss] which solves norm equations effectively. In the step $(2)$ of the above algorithm we define $u= \pi_K / \pi_{L}^{e}$. In fact due to loss of precision in while applying division the precision of $u$ will be decreased by $e$. So, we can compute the local fundamental class of $L/K$ up to precision $k-e$.
+
+
+\subsection{Brauer Group:}
+The Brauer group of a local field $K$ is $B(K)= H^2(K_{s}/K)$ where $K_{s}$ is the separable closure of $K$. To compute $B(K)$ we first look at the maximal unramified subextension $K_{nr}$ of $K_{s}$ such that $K\subset K_{nr}\subset K_{s}$. The residue class field of $K_{nr}$ is $\overline{k}$, the algebraic closure of $k$ (where $k $ is the residue class field of $K$). $\Gal(K_{nr}/K)= \Gal(\overline{k}/k)$ is cyclic being finite extension.
+
+\begin{theorem}
+ $H^2(K_{nr}/K)=B(K)$.
+\end{theorem}
+
+\begin{theorem}
+The valuation map $v:K_{nr}^{*}\rightarrow \mathbb{Z}$ induces an isomorphism $H^2(K_{nr}/K) \rightarrow H^2(\widehat{\mathbb{Z}}/\mathbb{Z})$.
+\end{theorem}
+
+Abelian Extension of Local Field:\\
+Let $L/K$ be fin. ext. of local fields with Galois group $G:=G(L/K)$ of order $n$.We know $H^2(L/K)$ is of order $n$ and contains a generator $u_{L/K}$ known as local fundamental class such that $\inv(u_{L/K})= 1/n \in \mathbb{Q}/\mathbb{Z}$. Also we know that $H^1(G,L^{*})=0$.\\
+Let us suppose $H\leq G$ of order $m$. Since $H$ is the Galois group of $L/K'$ for some $K\subset K'$, we have $H^1(H,L^{*})=0$ and $H^{2}(H,L^{*})$ is cyclic of order $m$ and generated by $u_{L/K'} := Res(u_{L/K})$. 
+\begin{definition}
+\textbf{Cup product}
+\end{definition}
+
+\begin{theorem}
+For all $q \in \mathbb{Z}$, the map $\alpha \longmapsto \alpha\cdot u_{L/K} $ given by the cup-product is an isomorphism of $H^{2}(G,\mathbb{Z}) \mbox{  onto } H^{2}(G,L^{*})$.
+\end{theorem}
+
+Application of lfc in local fields:
+\begin{theorem}
+The cup-product by $u_{L/K}$  defines an isomorphism of $G^{ab}(L/K) \mbox{ onto }\\ K^{*}/N_{L/K}(L^{*}).$
+\end{theorem}
+Let $\theta=\theta_{L/K}$ be the isomorphism of $K^{*}/N_{L/K}L^{*}$ on to $G^{ab}$ which is inverse to the cup-product by $u_{L/K}$. This map $\theta $ is called the local reciprocity map or norm residue symbol.\\
+Suppose $\alpha \in K^{*}$ corresponds to $\overline{\alpha} \in K^{*}/N_{L/K}L^{*}$. Then we write $\theta_{L/K}(\overline{\alpha}) =(\alpha , L/K).$ The norm residue symbol tells whether $\alpha \in K^{*}$ is a norm or not in $L^{*}$. If $(\alpha ,L/K)=0$ then we mean $\alpha$ is a norm from $L^{*}$.
+ 
+\begin{definition}
+ A  subgroup $U$ of $K^{*} $ is called a norm subgroup if there exists a finite abelian extension $L/K$  with $U=N_{L/K}L^{*}$.
+ \end{definition}
+Norm groups are closely related to the reciprocity map
+\[\theta_{K}: K^{*} \rightarrow G_{K}^{ab}=G(K^{ab}/K).  \]
+\begin{proposition}
+ The map $L\longmapsto NL^{*}$ is a bijection of the set of finite abelian extension of $K$ onto the set of norm subgroups of $K^{*}$.
+\end{proposition}
+
+\begin{proposition}
+Let $E/K$ be a finite extension and $L/K$ be the largest abelian extension contained in $E$. Then we have
+\[ N_{E/K}E^{*}=N_{L/K}L^{*}. \]
+page: 143 Cassel
+\end{proposition}
+\nocite{Reference11}
+%\nocite{Reference10}
+\nocite{Reference12}
+%\nocite{Reference9}
+\nocite{Reference8}
+%\nocite{Reference7}
+\nocite{Fieker}
+\nocite{Lorenz}
+\nocite{Fieker1}
+\nocite{Neukirch_class}
+\nocite{Neukirch_coho}
+\nocite{Fesenko}
+\nocite{Cohen}
+\nocite{Cohen1}
+

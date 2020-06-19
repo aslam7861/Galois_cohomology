@@ -1,0 +1,508 @@
+\chapter{Applications} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{Chapter 5. \emph{Applications}} % This is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+
+\section{Applications}
+
+
+
+Suppose $E/L/K$ be tower of Galois field extensions then for every field we have exact sequences as:
+\[ 0 \rightarrow K^{*} \rightarrow J_K \rightarrow C_K.\]
+Since $H^{1}(L/K, C_L) =0$ we obtain cohomology long exact sequence from using above exact sequence as:
+\[ 0 \rightarrow H^{2}(L/K, L^{*}) \rightarrow H^{2}(L/K ,J_L) \rightarrow H^{2}(L/K ,J_L) \rightarrow H^{3}(L/K , L^{*})\rightarrow \ldots \]
+We have similar results for the extension $E/K$ and $E/L$ and using these exact sequences we form an exact commutative diagram:
+
+\[\begin{tikzcd}
+{ } & 0\arrow{d} & 0 \arrow{d} & 0\arrow{d} \\
+0\arrow{r}  & H^{2}(L/K, L^{*} )\arrow{r}\arrow{d}{\inf} & H^{2}(L/K, J_{L} )\arrow{r}\arrow{d}{\inf} & H^{2}(L/K, C_{L} )\arrow{d}{\inf}\\
+0\arrow{r}  & H^{2}(E/K, E^{*} )\arrow{r}\arrow{d}{\rest}  & H^{2}(E/K, J_{E} )\arrow{r}\arrow{d}{\rest} & H^{2}(E/K, C_{E} )\arrow{d}{\rest}\\   
+0\arrow{r}  & H^{2}(E/L, E^{*} )\arrow{r} & H^{2}(E/L, J_{E} )\arrow{r}& H^{2}(E/L, C_{E} )\\   
+\end{tikzcd}
+\]
+
+Let us suppose $\overline{K}$ be the algebraic closure of $K$ and $E\rightarrow \overline{K}$ then one can also obtain commutative diagram:
+\[\begin{tikzcd}
+{ } & 0\arrow{d} & 0 \arrow{d} & 0\arrow{d} \\
+0\arrow{r}  & H^{2}(L/K, L^{*} )\arrow{r}{\gamma_1}\arrow{d}{\inf} & H^{2}(L/K, J_{L} )\arrow{r}{\epsilon_1}\arrow{d}{\inf} & H^{2}(L/K, C_{L} )\arrow{d}{\inf}\\
+0\arrow{r}  & H^{2}(\overline{K}/K, \overline{K}^{*} )\arrow{r}{\gamma_2}\arrow{d}{\rest}  & H^{2}(\overline{K}/K, J_{\overline{K}} )\arrow{r}{\epsilon_2}\arrow{d}{\rest} & H^{2}(\overline{K}/K, C_{\overline{K}} )\arrow{d}{\rest}\\   
+0\arrow{r}  & H^{2}(\overline{K}/L, \overline{K}^{*} )\arrow{r}{\gamma_3} & H^{2}(\overline{K}/L, J_{\overline{K}} )\arrow{r}{\epsilon_3}& H^{2}(\overline{K}/L, C_{\overline{K}} )\\   
+\end{tikzcd}
+\]
+Define $\inv_{1} = \sum_{v}^{} \inv_v: H^{2}( L/K , J_L ) \rightarrow \mathbb{Q}/\mathbb{Z}$ then the sequence \[ \begin{tikzcd} 0\arrow{r}  & H^{2}(L/K, L^{*} )\arrow{r}{\gamma_1} & H^{2}(L/K, J_{L} )\arrow{r}{\inv_1} &  \mathbb{Q}/\mathbb{Z} \end{tikzcd} \]
+is a complex form \cite{Cassles} and the following sequence  \[ \begin{tikzcd} 0\arrow{r}  & H^{2}(L/K, L^{*} )\arrow{r}{\gamma_1} & H^{2}(L/K, J_{L} )\arrow{r}{\inv_{L/K}} &  \frac{1}{[L:K]}\mathbb{Z}/\mathbb{Z} .\end{tikzcd} \]
+
+
+%We know $\inv_{v}( \inf(\alpha)) -= \inv_{v}(\alpha) $ for all $\alpha \in H^{2}(L/K , J_L)$, so we obtain another msp $\inv_{2}=\sum_{v}^{} \inv_v: H^{2}( \overline{K}/K , J_{\overline{K}} ) \rightarrow \mathbb{Q}/\mathbb{Z}$ such that the diagram
+%\[
+%\begin{tikzcd}
+%H^{2}( L/K, J_L) \arrow{r}{inv_1} \arrow{d}{\inf} & \mathbb{Q}/\mathbb{Z}\arrow{d}{\id}\\
+%H^{2}( \overline{K}/K , J_{\overline{K}} )\arrow{r}{\inv_2}& \mathbb{Q}/\mathbb{Z}
+%\end{tikzcd}
+%\]
+By the axiom of class formation we have $\inva_{w} (\rest ( \alpha)) [L_w : K_v] \inva_{v} (\alpha)$ where $\alpha \in H^{2}(\overline{K}/K , J_{\overline{K}} )$ and $w$ is a place of $L$ over $v$ of $K$. Let us define map $\inv_{3}=\sum_{v}^{} \inv_v: H^{2}( \overline{K}/L , J_{\overline{K}} ) \rightarrow  \mathbb{Q}/\mathbb{Z}$ so we obtain another commutative diagram
+\[
+\begin{tikzcd}
+H^{2}( \overline{K}/K , J_{\overline{K}} )\arrow{r}{\inva_2}\arrow{d}{\rest}& \mathbb{Q}/\mathbb{Z}\arrow{d}{[L:K]}\\
+H^{2}( \overline{K}/L , J_{\overline{K}} )\arrow{r}{\inva_3}& \mathbb{Q}/\mathbb{Z}
+\end{tikzcd}
+\]
+where for every place $v$ of $K$ we have $\sum_{w/v}^{}[L_w: K_v] = [L:K]$.
+\begin{proposition}
+	Let $L/K$ be a finite Galois field extensions with Galois group $G$, $v$ a place in $K$ and $w_0$ be a place of $L$ over $v$. Then there are mutually inverse isomorphisms
+%	\[\begin{tikzcd}[column sep= large]
+%	H^{r}( G, \prod_{w/v}^{} L_{w}^{\times} ) \arrow[transform canvas={xshift=0.7ex}] & \arrow[l, shift left =0.5 ex, "j_{w_{0}\cdot \rest}"] H^{r}( G_{w_{0}}, L_{w_{0}}^{\times} ).
+%	\end{tikzcd}	
+%	\] 
+
+\[
+\begin{tikzcd}[column sep= large]
+	H^{r}( G, \prod_{w/v}^{} L_{w}^{\times} ) \arrow[shift right =-0.5 ex]{r}{\cori \cdot i_{w_{0}}} & \arrow[shift left = 0.5 ex]{l}{j_{w_{0}\cdot \rest}} H^{r}( G_{w_{0}}, L_{w_{0}}^{\times} ).
+	\end{tikzcd}	
+	\] 
+Also for unit group $U_{w}$ of $L_w$ we have 
+\[\begin{tikzcd}[column sep=large]
+H^{r}( G, \prod_{w/v}^{} U_w ) \arrow[ shift left = 0.5ex]{r} {\cori \cdot i_{w_{0}}} & \arrow[ shift left =0.5 ex]{l} {j_{w_{0}\cdot \rest}} H^{r}( G_{w_{0}}, U_{w_{0}}^{\times} ).
+\end{tikzcd}\]  
+
+\end{proposition}
+\begin{proof}
+\cite{Cassels},Cassels,  Proposition $7.2$.
+\end{proof}
+
+%\arrow{l}{ cores \cdot i_{w_{0}}}
+
+
+\subsection{Ray Class Group}
+\cite{Hofmann}.\\
+As we have seen earlier the id\`ele class group of $K$ is $C_K= I_{K}/K^{\times}$. Let $K$, $\mathcal{O}_{K}$ and $\mathfrak{p}_{K}$ be as earlier. Then a modulus $\mathfrak{m}$ of $K$ is a formal product $\mathfrak{m}=\prod_{\mathfrak{p}}^{} \mathfrak{p}^{m_{p}}=\mathfrak{m}_{f}\cdot \mathfrak{m}_{\infty}$ where $m_\mathfrak{p} =0$ for almost all $\mathfrak{p}$, $\mathfrak{p}= v_{\mathfrak{p}}(\mathfrak{m}) \ge 0$ and $ \mathfrak{m}_{\infty}$ a set of real embeddings of $K$.
+\begin{definition}
+Let $K$ be a global field, $\mathfrak{m}$ be a modulus of $K$ and $I_{\mathfrak{m}}$ be the group of fractional ideals  prime to $\mathfrak{m}_f$ which is isomorphic to the free abelian group \[\bigoplus_{\mathfrak{p} \nmid \mathfrak{m}_f , \mathfrak{p}\hspace{2mm} finite } \mathbb{Z}\cdot \mathfrak{p}.  \]
+Also suppose 
+\[ R_{\mathfrak{m}} = \{(a) \mid a \equiv 1 \hspace{2mm} \modulo  \mathfrak{m} \} \subset I_{\mathfrak{m}},\]
+then the quotient $I_{\mathfrak{m}}/ R_{\mathfrak{m}}$ is known as the ray class group and denoted by $Cl_{\mathfrak{m}}.$ 
+\end{definition}
+In fact when $\mathfrak{m} =1$ then $\mathfrak{m}_{\mathfrak{p}}=0$ for all $\mathfrak{p}$ then we obtain $Cl_{1}=I_{1}/R_{1}=Cl(\mathcal{O}_{K})$.\\
+Let us suppose that $\mathfrak{p}$ be a prime ideal of $K$ which is unramified in the abelian field extension $L/K$. Then $L_{\mathfrak{p}}/K_{\mathfrak{p}} $ is unramified local field extension. So, there exists a unique Frobenius automorphism $\Frob_{\mathfrak{p},L/K} \in \Gal(L/K)$ with $\Frob_{\mathfrak{p}, L/K}(x)\equiv x^{N(\mathfrak{p})} \mod \mathfrak{p}\mathcal{O}_{L}$ for all $x \in \mathcal{O}_{L}$. Let $\mathfrak{m}$ be a modulus  which is only divisible ramified prime ideals of $L/K$ then one can define the Artin map $\psi_{L/K}: I_{\mathfrak{m}} \rightarrow \Gal(L/K)$ such that $\psi_{L/K}(\mathfrak{p})= \Frob_{\mathfrak{p}, L/K}$ for all $\mathfrak{p}$ not dividing $\mathfrak{m}_f$. \\
+%\begin{theorem}
+%Suppose $L/K$ be a finite normal extension of number fields then the set if primes in $K$ whic split completely/totally in $L$ has polar density $1/[L:K]$.
+%\end{theorem}
+
+
+\begin{theorem}
+Let $L/K$ be a finite abelian extension of number fields and suppose $\mathfrak{m}$ be a modulus for $K$ divisible by all ramified primes. Then the Artin map $\psi_{L/K}: I_{\mathfrak{m}} \rightarrow \Gal(L/K)$  is surjective.
+\end{theorem}
+\begin{proof}
+Lecturenotes 21 pdf.
+\end{proof}
+From above theorem we obtain an exact sequence:
+
+\[1\rightarrow \ker(\psi_{L/K}) \rightarrow I_{\mathfrak{m}}\rightarrow \Gal(L/K) \rightarrow 1 .  \]
+Thus we find $R_{\mathfrak{m}} \subset \ker(\psi_{L/K})$ for a modulus $\mathfrak{m}$ of $K$. This shows that Artin map induces an isomorphism from quotient $ Cl_{\mathfrak{m}} = I_{\mathfrak{m}}/ R_{\mathfrak{m}}$ to $\Gal(L/K)$. But when $R_{\mathfrak{m}} = \ker(\psi_{L/K})$ then $Cl_{\mathfrak{m}}\simeq \Gal(L/K)$ and the field $L$ is called the \textbf{ray class field}.\\
+Let $\mathfrak{p}$ be a prime ideal of $K$, $n\in \mathbb{Z}_{\geq 0}$ and define $U_{\mathfrak{p}}^{n}$ as
+  \[
+ U_{\mathfrak{p}}^{n}  = 
+  \begin{cases}
+ \mathcal{O}_{K_\mathfrak{p}}^{\times}, & \mathfrak{p} \text{ finite },  n =0,\\
+ 1+\pi_{\mathcal{O}_{K_\mathfrak{p}}}^{n}\mathcal{O}_{K_\mathfrak{p}} & \mathfrak{p} \text{ finite }, n > 0,\\
+ K_{\mathfrak{p}}^{\times} & \mathfrak{p} \text{ real and } n =0 , \text{ or }  \mathfrak{p} \text{ complex},\\
+  K_{\mathfrak{p}}^{\times,+}  & \mathfrak{p} \text{ real},  n>0.\\
+ \end{cases}
+ \]
+% In fact $U_{\mathfrak{p}}^{n} \subset K_{\mathfrak{p}}^{\times}$ is open for all $\mathfrak{p}$
+Let a modulus $\mathfrak{m} $ of $K$, then $U_{K, \mathfrak{m}} = \prod_{\mathfrak{p}}^{}U_{\mathfrak{p}}^{\mathfrak{m}_\mathfrak{p}}$ forms an open subgroup of $K$ because $U_{\mathfrak{p}}^{\mathfrak{m}_\mathfrak{p}} \subset K_{\mathfrak{p}}^{\times}$ is open for all $\mathfrak{p}$ and equals $\mathcal{O}_{K_\mathfrak{p}}^{\times}$ for almost all $\mathfrak{p}$.
+\begin{proposition}
+Any open subgroup of $J_{K}$ contains some $U_{K,\mathfrak{m}}$, and the quotient $|J_{K}/ K^{\times}U_{K,\mathfrak{m}}| <\infty$. 
+\end{proposition}
+\begin{proof}
+Proposition 9.2, Note of M. Flach Ray Class group.
+\end{proof}
+Note: For a modulus $\mathfrak{m}$ of $K$ we have $Cl_{\mathfrak{m}}=J_{K}/ K^{\times}U_{K,\mathfrak{m}}.$\\
+\begin{proposition}
+Let $K$ be a number field and $\mathfrak{m}$ be a modulus of $K$. Suppose $\overline{U}_{K,\mathfrak{m}}$ be the image of $U_{K,\mathfrak{m}}$ in $C_K$ then we have
+\[  C_K/\overline{U}_{K,\mathfrak{m}}= I_{K}/K^{\times}.U_{K,\mathfrak{m}} \xrightarrow{\sim} I_{\mathfrak{m}}/R_{\mathfrak{m}}=Cl_{\mathfrak{m}}  \]
+and 
+\[C_K/ N_{L/K}(C_L)= J_{K}/K^{\times}\cdot N_{L/K}(J_{L}^{\times}) \cong I_{K,\mathfrak{m}}/R_{\mathfrak{m}}\cdot N_{L/K}I_{L,\mathfrak{m}}  . \]
+\end{proposition}
+\begin{proof}
+See note by M Flach , Prospostion 3.2.
+\end{proof}
+\begin{proposition}
+Let $L/K$ be a normal extension of number fields and $\mathfrak{m}$ be a modulus of $L$ which is invariant under the $G=\Gal(L/K)$. Then for every subgroup $H$ of ray class group $Cl_{\mathfrak{m}}$ which is invariant under the action of $G$ there exists an abelian extension $E/L$ such that $E/K$ is normal. 
+\end{proposition}
+\begin{proof}
+\cite{Hofmann}, Proposition $15$.
+\end{proof}
+Let $L/K$ be a normal extension of the fields. Compute an abelian extension $E/L$ using \cite{Hofmann} so that $E/K$ is normal.
+
+
+\begin{definition}
+Let $L/K$ be a finite abelian field extension. A modulus $\mathfrak{m}$ of $K$ is said to be admissible for an abelian extension $L/K$ if and only if (almost) all primes $ \mathfrak{p} \in \mathfrak{R}_{\mathfrak{m}}$ of $K$ totally split in $L$.      \\
+OR\\
+There exist a modulus $\mathfrak{m}$ such that $\Gal(L/K)\cong Cl_{\mathfrak{m}}$.
+        
+\end{definition}
+Let $L/K$ be a finite Galois field extension, $\Delta_{L/K}$ be the discriminant of the extension $L/K$ and $I_{K}(\Delta_{L/K})$ be the group of fractional $\mathbb{Z}_{K}$-ideals generated by the primes $\mathfrak{p}$ of $\mathcal{O}_{K}$ that do not divide $\Delta_{L/K}\mathcal{O}_{K}$. The Artin map for $L/K$ is defined as the homomorphism 
+\[ \psi_{L/K}: I_{K}(\Delta_{L/K}) \rightarrow \Gal(L/K), \mathfrak{p}\mapsto \Frob_{\mathfrak{p}}.\]
+  
+\begin{theorem}[Kronecker-Weber]
+Let $L/ \mathbb{Q}$ be an abelian extension then there exists an integer $m\in \mathbb{Z}_{\geq 0}$ such that the kernel of the Artin map $\psi_{L/\mathbb{Q}}$ consists of all $\mathbb{Z}-$ ideals $x\mathbb{Z}$ with $x>0$ and $x\equiv 1  \modulo  m$.
+\end{theorem}
+
+\begin{theorem}[Artin's Reciprocity]
+Let $L/K$ be an abelian extension then there a nonzero ideal $\mathfrak{m}_{0} \mathbb{Z}_{K}$ such that the kernel of the Artin map defined as 
+\[  \psi_{L/K}: I_{\mathfrak{m}_{0}} \rightarrow \Gal(L/K), \mathfrak{p}\mapsto \Frob_{\mathfrak{p}}\]
+consists of all principal $\mathbb{Z}_{K}-$ ideals $x\mathbb{Z}_{K}$ with $x$ totally positive and $x\equiv 1$ mod $\mathfrak{m}_{0}$.
+\end{theorem}
+
+%\begin{remark}
+%Let $L/K$ be a finite abelian extension, $\mathfrak{m}=\mathfrak{m_0}\cdot \mathfrak{m_\infty}$ an admissible modulus for $K$ and $J^{\mathfrak{m}}$ be the group of fractional ideals coprime to $\mathfrak{m_f}$ then one can define Artin map as:
+%\[ \psi_{L/K}:H^{\mathfrak{m}} \rightarrow \Gal(L/K),\hspace{3mm}  [\mathfrak{p}]\mapsto \Frob_{\mathfrak{\mathfrak{p}}}.\]
+%\end{remark}
+Let $P_{\mathfrak{m}}$ be the principal ideals in $I_{\mathfrak{m}}$ of $K$ then the ray group $R_{\mathfrak{m}}$ is contained in $P_{\mathfrak{m}}$ and from \cite{Cohen1} $I_{\mathfrak{m}}/P_{\mathfrak{m}}\cong Cl(K)$ for all modulus $\mathfrak{m}$. Because of the relations $R_{\mathfrak{m}}\subset P_{\mathfrak{m}} \subset I_{\mathfrak{m}}$ it is clear that $Cl_{\mathfrak{m}}$ is an extension of $Cl_{K}$ by a finite abelian group $P_{\mathfrak{m}}/R_{\mathfrak{m}}$. We have an exact sequence
+\[\mathcal{O}^{\times}_{K} \rightarrow (\mathcal{O}_{K}/{\mathfrak{m}})^{\times} \rightarrow Cl_{\mathfrak{m}} \rightarrow Cl_{K} \rightarrow 0 . \]
+where $ (\mathcal{O}_{K}/{\mathfrak{m}})^{\times} = (\mathcal{O}_{K}/{\mathfrak{m}_{0}})^{\times} \times \prod_{\mathfrak{p}\mid \mathfrak{m}_{\infty}}^{}\left\langle -1 \right\rangle$ and $x\in \mathcal{O}_{K}$ coprime to $\mathfrak{m}_{0}$ is mapped in the finite group $ (\mathcal{O}_{K}/{\mathfrak{m}_{0}})^{\times}$ as of its residue class modulo and the signs of its images under the real primes $\mathfrak{p}\mid \mathfrak{m}_{\infty}$. Then the quotient $(\mathcal{O}_{K}/{\mathfrak{m}_{0}})^{\times}/ \im[\mathcal{O}^{\times}_{K}]$  is isomorphic to $\Gal(H_{\mathfrak{m}}/H_{1}) $ given by Artin map where $H_{\mathfrak{m}}$ denotes the ray class field associated to modulus $\mathfrak{m}$.\\
+\begin{lstlisting}
+> x := PolynomialRing(Integers()).1;
+> K := NumberField(x^2+5);
+> O := MaximalOrder(K);
+> m := 5*O;
+> r,mr := RayClassGroup(m);    
+> R,mR := RayResidueRing(m);
+> U,mU := UnitGroup(o);
+> f := hom<U->R|x:-> x@mU@@mR>;
+> q,mq := quo<R|Image(f)>;
+> Hm :=AbsoluteField(NumberField(RayClassField(m)));
+> H1 :=AbsoluteField(HilbertClassField(K));
+> IsSubfield(H1,Hm);
+true Mapping from: FldNum: H1 to FldNum: Hm
+
+\end{lstlisting}
+
+
+Let $\mathfrak{m}$ be an admissible modulus for an abelian extension $L/K$ then the Artin map induces an isomorphism 
+\[ \psi_{L/K}: Cl_{\mathfrak{m}} \rightarrow \Gal(L/K), \hspace{1cm} [\mathfrak{p}]\mapsto \Frob_{\mathfrak{p}}. \]
+In fact  this map is surjective because of the triviality of extensions in which all primes totally split\cite{Cohen1}.\\
+Let $\mathfrak{q}$ be the prime  of $L$ over the prime $\mathfrak{p}$ of $K$ then the order of $\Frob_{\mathfrak{p}}$  equal $[F_{L_{\mathfrak{q}}}:F_{K_{\mathfrak{p}}}]=f_\mathfrak{p}$ where $F_{K_{\mathfrak{p}}}$ and  $F_{L_{\mathfrak{q}}}$ are the residue class fields of $K_{\mathfrak{p}}$  and $L_{\mathfrak{q}}$ respectively. For every prime ideal $\mathfrak{q}\in \mathcal{O}_{L}$ coprime to $\mathfrak{m}$ 1, the norm $N_{L/K}(\mathfrak{q})=\mathfrak{p}^{f_{\mathfrak{p}}} $ is contained in the kernel of the Artin map.\\
+Let the ideal group $A_{\mathfrak{m}} \subset I_{\mathfrak{m}}$ which corresponds to $L$ so that $\ker(\psi_{L/K})= A_{\mathfrak{m}}/ P_{\mathfrak{m}}$ then $A_{\mathfrak{m}}= N_{L/K}(I_{\mathfrak{m}\mathbb{Z}_{L}})\cdot P_{\mathfrak{m}}$.
+% because  $N_{L/K}(\mathfrak{q})= \mathfrak{p}^{|F_{K_{\mathfrak{p}}}|}$.
+% fro every prime ideal $\mathfrak{q} \in \mathcal{O}_{L}$ coprime to $\mathfrak{m}$ i.
+
+%\begin{theorem}
+%Let $L/K$ be a finite Glaois field extension and $\mathfrak{m}$ be the $K$-modulus divisible by all the places of $K$ which ramify in $L$. Then the Artin map $\phi_{L/K,\mathfrak{m}} : J^{\mathfrak{m}} \rightarrow \Gal(L/K)$ is surjective and $N_{\mathfrak{m}}(L/K)$. When $\mathfrak{m}$ is admissible for $L/K$, $\ker(\phi_{L/K,\mathfrak{m}}) = P^{\mathfrak{m}}N_{\mathfrak{m}}(L/K)$ 
+%\end{theorem}
+
+Let us suppose $E/L/K$ be tower of global field extensions such that $E/L$ is abelian and $L/K$ is normal. Suppose $\Gal(L/K)=G, \Gal(E/K)=\Sigma$ and $\Gal(E/L)=A$. So we have an exact sequence of Galois groups: 
+\[ 1\rightarrow A \rightarrow \Sigma \rightarrow G \rightarrow 1. \]
+In fact by $A\simeq C_{L}/N_{E/L}(C_E)$ by Artin isomorphism.\\
+
+\begin{lstlisting}
+K:=NumberField(x^2-5);
+> o :=MaximalOrder(K);
+> m :=8*o;                
+> r,mr :=RayClassGroup(m,[1..2]);
+> A :=AbelianExtension(mr);
+> L :=NumberField(A);
+> G,_,psi :=AutomorphismGroup(A);
+> ar :=ArtinMap(A);
+> f :=hom<r->G|x:-> x@mr@ar@Inverse(psi)>;
+> Kernel(f);
+Abelian Group of order 1
+> IsSurjective(f);
+> R,mR :=RayResidueRing(m,[1..2]);              
+> f :=hom<R->G|x:-> x@mR@ar@Inverse(psi)>;
+> q,mq :=quo<R|Kernel(f)>;   
+> quo< r|[q.i @@mq@mR@@mr : i in [1..Ngens(q)]]> ;
+Abelian Group of order 1
+Mapping from: GrpAb: r to Abelian Group of order 1
+\end{lstlisting}
+
+
+
+The following theorem is of main interest to find information of $\Sigma$:
+\begin{theorem}
+Let $E/L/K$ be as above and so as Galois groups $A,\Sigma,G$ then
+\begin{enumerate}
+\item Let $\gamma \in \Sigma$ have image $\overline{\gamma} \in G$. suppose $x \in C_{L}$ and $\psi: C_{L}\rightarrow A$ be the Artin map then $\psi(\overline{\gamma}x)= \gamma \psi(x) \gamma^{-1}$.
+\item Let $v \in H^{2}(G,A)$ be the class of the group extension $\Sigma$, $u_{L/K} \in H^2(G,C_L)$ be the fundamental class for $L/K$ and $\psi_{*}: H^2(G,C_L) \rightarrow H^2(G,A) $ is induced by the Artin map $\psi$ then $v= \psi_{*}(u_{L/K})$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\cite{Cassels}.
+\end{proof}
+
+
+\subsection{Shafarevich-Weil theorem }
+Let $L/K$ be local or global fields extension, then Shafarevich–Weil theorem relates the fundamental class $u_{L/K}$ to an extension of Galois groups $\Gal(L,K)$.
+%Shafarevich–Weil theorem relates the fundamental class $u_{L/K}$ of a Galois extension of local or global fields $L/K$ to an extension of Galois groups.
+
+Let us suppose $E/L/K$ be tower of global field extensions such that $E/L$ is abelian and $L/K$ is normal. $\Gal(E/K)$ is an extension of $\Gal(L/K)$ by the abelian group $\Gal(E/L)$ and this extension corresponds to an element of cohomology group $H^{2}(\Gal(L/K),\Gal(E/L) )$. Let $\psi : I_{L} \rightarrow \Gal(E/L)$ be the reciprocity map and $u_{E/L}\in H^{2}(\Gal(L/K), I_L)$ be the fundamental class. Shafarevich–Weil theorem states that class of the $\Gal(E/K)$ is the image of fundamental class under the homomorphism of cohomology groups induced by the reciprocity law map (Artin- Tate 2009). 
+\textbf{Note:} 
+\begin{enumerate}
+\item $S$ contains all archimedean primes,
+\item $S$ contains all prime divisors of $n$,
+\item $J_K = K^{\times} J_{K,S}$
+\item $S$ contains all factors of the numerator  and denominator of $a_i$.
+\end{enumerate}
+Condition $4$ states  that all $a_i$ are $S$-units that is $a_i \in K_S =K\cap J_{K,S}$.
+
+
+For a number field $K$ suppose $C_K$ be the id\`ele class group of $K$. Suppose $H$ be the subgroup of $C_K$ such that $[C_K : H]< \infty $ then there exists a finite abelian extension $L$ of $K$ such that norm group of $C_L$ is $H$. In this case $H$ is called normic subgroup of $C_K$. Let  $\psi : C_K \rightarrow \Gal(K^{ab} / K)$ be the Artin map then each normic subgroup of $C_K$ is the inverse image of open subgroup of $\Gal(K^{ab} / K).$\\
+Let $H$ be a normic subgroup of $C_K$ and it corresponds to an abelian extension $L$ over $K$. Suppose that $H\leq H_1$ then $H_1$is also normic so we have another abelian extension $L_1/K$ such that $L1\leq L$. In this case \\
+\[N_{L/K}(C_L) = N_{L_{1}/K}( N_{L/L_{1}}(C_L) )  \leq N_{L_{1}/K}(C_{L_{1}} ) .\]
+
+
+
+
+
+
+
+
+
+\textbf{Hasse Norm Theorem:}
+Let  $L/K$ is a cyclic extension of number fields, then Hasse norm theorem states that if $a\in K^{\times}$ is a local norm everywhere, then it is a global norm. Here to be a global norm means to be an element $a$ of $K$ such that there is an element $b \in L$ with $\Norm_{L/K} ( b ) = a$ \\
+The theorem is no longer true in general if the extension is abelian but not cyclic. Hasse gave the counterexample that $3$ is a local norm everywhere for the extension $\mathbb{Q}( \sqrt {-3},\sqrt {13} ) / \mathbb{Q}$ but is not a global norm. Serre and Tate showed that another counterexample is given by the field $\mathbb{Q}({\sqrt{13},\sqrt{17}})/ \mathbb{Q}$  where every rational square is a local norm everywhere but $5^2$ is not a global norm.\\ 
+\textbf{Cassel Fr\"ohllich page-186 for norm  and page-199 for group extension:}
+
+\section{epsilon function}
+
+\textbf{reduced norm}\\
+
+
+Let $G$ be a finite group as earlier and $E/\mathbb{Q}$ be the splitting filed of  every subgroup of $G$. Suppose that $E$ contains the $m$th roots of unity where $m$ is the exponent of $G$. Let us write  $R(G$ as group of all (virtual) characters  and $Irr(G$ for a set of irreducible characters of $G$.  Using Brauers's induction  theorem every $\chi $ of $ R(G)$ can be expressed as
+\[   \chi  = \sum_{(H,\phi)}^{} c_{(H,\phi)} \ind_{H}^{G}(\phi)\] 
+where $(H,\phi)$ runs through all pairs of consisting of a subgroup $H$ of $G$ and one dimensional characters $\phi$ of $H$,  $\ind_{H}^{G}(\phi)$ is the induction of the character and $c_{H,\phi} \in \mathbb{Z}$. One can find the ways to compute $c_(H,\phi)$ in \cite{Bley} \\\
+For every character $\chi$ of $G$ , define  $\Det_{\chi}(a) \in E^{\times} $ as $\Det(a)= \det(T_{\chi}(a))$ where $T_{\chi}: G \rightarrow GL_{\chi(1)}(E)$ is a representation with character $\chi$.
+
+Let  $E[G]= \prod_{\chi \in \Irr(G)}^{} A_{\chi}$ be the Weddeburn decomposition of $E[G]$ and $a= {(a_{\chi})}_{\chi \in \Irr(G)}\in E[G]^{\times}$ then  the reduced norm denoted by $nr(a)$  is defines as 
+\[  nr(a)= ( nr_{A_{\chi}/ E}(a_{\chi}) )_{\chi \in \Irr(G)}\]
+where $nr_{A_{\chi}/E}(a_{\chi}) \in E^{\times}$ is the reduced is the reduced norm of $(a_{\chi})$ in the central simple $E$-algebra $A_{\chi}$.
+In fact from \cite{Bley} we have
+\[nr_{A_{\chi}/E}(a_{\chi})= \Det_{\chi}(a) = \prod_{(H,\phi)}^{} \Det_{\ind_{H}^{G}}(a)^{c_(H,\phi)}  .\]
+One can find more details of reduced norm in \cite{Bley}.\\
+By Wedderburn's theorem one can decompose center of the group ring$\mathbb{C}[G]$ as:
+\[ Z(\mathbb{C}[G]) \simeq \bigoplus_{\chi \in \Irr_{\mathbb{C}(G)}} \mathbb{C} .\]
+Let $L\leq \mathbb{C}$ be a subfield then the image of $Z(L[G])$ in $Z(\mathbb{C}[G]) $ has following types of tuples $(a_\chi)_\chi$ for which we have $a_{\sigma \circ \chi}= \sigma(a_\chi) \mbox{  } \forall \sigma \in \Aut(\mathbb{C}/L)$. 
+\begin{lemma}
+Let $G$ be a finite group, $ \mathbb{Q} \leq L \leq \mathbb{C}$ and $(a_\chi)_{\chi \in \Irr(G)} \in \prod_{\chi \in \Irr_{\mathbb{C}}(G)}^{} \mathbb{C} $.
+Then one obtains  \[(a_\chi)_{\chi \in \Irr_{\mathbb{C}}(G)}  \in Z(L[G]) \Leftrightarrow (a_{\sigma \circ \chi})_{\chi \in \Irr_{\mathbb{C}}(G)} = (\sigma(a_\chi))_{\chi \in \Irr_{\mathbb{C}}(G)}      \]
+for all $\sigma \in \Aut(\mathbb{C}/L)$.
+\end{lemma}
+\begin{proof}
+	\cite[Lemma 2.9]{Bley10}
+\end{proof}
+
+%Let  $E/K$ be a field extension and  consider $\Phi(\mathfrak{P}(A), \otimes_{\mathcal{O}_K}E)$ which cocsists of elements of the form $(P,\phi, Q)$ where $P,Q \in \mathfrak{P}(A)$ and $\phi : P  \otimes_{\mathcal{O}_K} E \rightarrow Q \otimes_{\mathcal{O}_K} E$ is an isomorphisms of $A\otimes_{\mathcal{O}_K}E$-modules.
+
+
+
+
+\textbf{Projective Modules}\\
+For any Ring $A$, we denote $\mathfrak{m}(A)$ as the class of all finitely generated $A$-modules and $\mathfrak{P}(R)$ as the class of all finitely generated projective $A$-modules.\\
+Let $J=\rad(A)$ be the Jacobson radical of $A$ and for $Q\in \mathfrak{m}(A)$ we denote $\overline{Q} = Q/J\cdot Q$ as the reduction modulo $J$.  Suppose $P \in \mathfrak{P}(R)$ and $f \in \Hom_{A}(Q,P)$ then from \cite{Lam} $f$ is an isomorphism if $\overline{f}: \overline{Q}\rightarrow \overline{P}$ is an isomorphism. From \cite [Corollary 1.7]{Lam}, we also have for $x_1,\ldots, x_r \in P$, $ \left\langle x_1,\ldots, x_r\right\rangle_{A} = P \Leftrightarrow  \left\langle \overline{x_1},\ldots, \overline{x_r}\right\rangle_{\overline{A}} = \overline{P}$.
+
+\begin{definition}
+A right $A$-module $M$ is said to be $A$-flat if $M\otimes-$ is an exact functor from left $A$-modules to abelian groups. That is, if $M_1 \rightarrow M_2\rightarrow M_3$ is exact then
+\[ M\otimes M_1 \rightarrow M\otimes M_2 \rightarrow M\otimes M_3  \text{  is exact.}\]  
+We say $M$ is $A-$ faithfully flat if the above is true for converse also.
+\end{definition}
+\begin{definition}
+	A left $A-$module $M$ is said to be finitely presented if there exists an exact sequence $A^m \rightarrow A_n \rightarrow M \rightarrow 0$ for suitable $m,n \in \mathbb{N}$.
+\end{definition}
+In fact every $P\in \mathfrak{P}(A)$ is finitely presented.\\
+\begin{proposition}
+Let $A'$ be a faithfully flat extension of a subring $A$ in the center of $A'$. Then for any left $A$-module $M$ we have 
+\[M \in \mathfrak{P}(A)\Longleftrightarrow A' \otimes_{A} M \in \mathfrak{P}(A').  \]
+\end{proposition}
+
+\begin{proof}
+	\cite[Proposition 2.15]{Lam}.
+\end{proof}
+Let us denote $(P)$ as the isomorphism class of $P\in \mathfrak{P}(A)$ then 
+%Let $A$ be a ring then
+ the Grothendieck group $K_{0}(A)$ is an additive abelian group generated by $(P)$ with certain following relations:\\
+ G = free abelian group generated by $(P): P \in \mathfrak{P}(A),\\
+ $ $H=\{ (P\oplus Q)-(P)-(Q) : P,Q \in \mathfrak{P}(A)\}\leq G,$ \\
+ $K_{0}(A)= G/H$ and\\
+ $[P]=$ image of $(P)$ in $K_{0}(A)$.  
+%of finitely genenrated projective $A$-modules. This is the free abelian group generated by isomorphism classes $(P)$ for every finitely generated projective $A$-module $P$ with relations $(P) - (P')- (P'')$ for every short exact sequence $0\rightarrow P'  \rightarrow P \rightarrow P'' \rightarrow 0$.\\
+In fact $[P\oplus Q]=[P]+[Q] \in K_{0}(A)$ whenever $P.Q \in \mathfrak{P}(A)$. In general element of $K_{0}(A)$ is of the following type:
+\[x= [P_1]+\cdots +[P_m]-[Q_1]- \cdots -[Q_n]=[P]-[Q],\]
+where $P= P_1\oplus \cdots \oplus P_m$ and $Q= Q_1\oplus \cdots \oplus Q_n$.\\
+
+
+\begin{proposition}
+For $P,Q \in \mathfrak{P}(A)$, the following are equivalent:
+\begin{enumerate}
+   \item  $[P]=[Q] \in K_{0}(A)$;
+   \item  $\exists M\in \mathfrak{P}(A)$ such that $P\oplus M \cong Q\oplus M$ ( in this case $P$ and $Q$ are said to be stably isomorphic);
+   \item  $\exists m \in \mathbb{N}$ such that $P\oplus A^m \cong Q \oplus A^m$. 
+\end{enumerate}	
+\end{proposition}
+\begin{proof}
+	\cite[Proposition 6.1]{Lam}.
+\end{proof}
+
+%The Whitehead group $K_{1}(A)$ is an abelianization of the infinite general linear group $Gl(A)$. That is \[ K_{1}(A) = Gl(A)/ [Gl(A),Gl(A)]. \]
+Let $E_{n}(A)$ be the group $n \times n$ elementary matrices over $A$. 
+%One can embed the group $GL_{n}(A)$ into $GL_{n+1}(A)$ by identifying 
+For every matrix $M\in GL_{n}(A)$, one can embed this into $GL_{n+1}(A)$ by 
+\[
+M=
+\left[ {\begin{array}{cc}
+	A & 0 \\
+	0 & 1 \\
+	\end{array} } \right]
+\].
+Under such an identification clearly we have $E_{n}(A)\subset E_{n+1}(A)$. In such cases one can form an ascending unions
+\[GL(A):= \bigcup_{n\geq 1}^{}GL_{n}(A),   \mbox{  and   }  E(A):= \bigcup_{n\geq 1}E_{n}(A) .\]
+
+In fact we have $E(A)= [GL(A), GL(A)]$ from \cite[Theorem 7.4]{Lam} .
+
+\begin{definition}
+	The Whitehead group $K_1(A)$ is defined as an abelianization of the infinite general linear group $GL(A)$. That is
+	\[  K_1(A)= GL(A)^{ab}= GL(A)/[ GL(A), GL(A) ].  \]
+\end{definition}
+One can write the element of $K_1(A)$ by isomorphism classes of pairs $(P,f)$ where $f$ is an isomorphism of a projective $A$-module $P$.\\
+Let $\phi: A \rightarrow B$ be a ring homomorphism then the relative $K$-group denoted by $K_0(A,\phi)$ consists of elements of type $[P,f,Q]$ where $P,Q \in \mathfrak{P}(A)$ and an isomorphism $f: B\otimes_{A}P \rightarrow B \otimes_{A} Q$ of $B$-modules.\\
+Suppose $R$ be a ring and $E/Quot(R)$ be a finite extension and $G$ a group. The group 
+
+Let $\phi: R[G]\rightarrow E[G]$  be a ring homomorphism induced by $R \subset E$ then the relative group $K_0(R[G],\phi)$ corresponding to $\phi$ also denoted by $K_0(R[G], E)$ satisfies the exact sequences:
+\[  \begin{tikzcd}[column sep = 4.5ex]
+K_{1}(R[G]) \arrow{r} &  K_{1}(E[G])\arrow{r} {\partial_{G,E}^{1}} &K_{0}(R[G],E)\arrow{r}{\partial_{G,E}^{0}}& K_{0}(R[G])\arrow{r}  & K_{0}(E[G]). 
+\end{tikzcd}   \]
+For $j=0,1$, the maps $K_{j}(R[G]) \rightarrow K_{j}(E[G])$ are induced by the operator/functor(check) $E[G]\otimes_{R[G]}-$ and $\partial_{G,E}^{1}( (E[G]^n,f ) ) = [ R[G]^n,f, R[G]^n]$ and $\partial_{G,E}^{0}( [P, f, Q] ) = [P] - [Q]$.
+
+For semi-simple $K$-algebras $A$ one obtains $A\simeq \bigoplus_{i=1}^{r}A_{i}$ by Wedderburn's decomposition which induces $Z(A) \simeq \bigoplus_{i=1}^{r}Z(A_{i})$ and $K_{1}(A)\simeq \bigoplus_{i=1}^{r}K_{1}(A_i)$ from \cite{Debeerst}. One can define the reduced norm map  as:
+\[nr : K_{1}(A) \rightarrow Z(A)^{\times} \simeq \bigoplus_{i=1}^{r}Z(A_i)^{\times}.\]
+Let $E/\mathbb{Q}$ be a finite extension such that $\zeta_m \in E$ where $m$ is exponent of $G$. Then fro a group ring $E[G]$ we have $\Irr_{E}(G) = \Irr_{\mathbb{C}}(G)$. Since $E(G)$ is a semi-simple algebra  we obtain the reduced norm map 
+\[\nr  : K_{1}(E[G])  \rightarrow Z(E[G])^{\times} \simeq \bigoplus_{\chi \in \Irr_{E}(G)} E^{\times} .\]
+In fact this map $\nr$ is injective and map $\widehat{\partial}^{1}_{R[G],E} = \partial^{1}_{R[G],E} \circ \nr^{-1}:  \im(nr) \rightarrow K_{0}(R[G], E)$ is called boundary homomorphism.\\
+\textbf{In this we are interested in the case of $R=\mathbb{Z}_p$ and $E/\mathbb{Q}_p$ where the reduce norm map is an isomorphism\cite{Curtis}.}
+\[ \begin{tikzcd}[row sep = 7ex, column sep = 8ex]
+      Z(E[G])^{\times} \arrow[dashed]{rd}{\widehat{\partial}^{1}_{ G,E }}\\
+      K_{1}( E[G])\arrow{u} [near start]{\nr} [near end]{\simeq}\arrow{r}{\partial^{1}_{\mathbb{Z}_p[G],E} } & K_{0}(  \mathbb{Z}_{p}[G],E) 
+\end{tikzcd}
+\]
+So, we obtain the boundary homomorphism  $\widehat{\partial}^{1}_{G,E}:= \widehat{\partial}^{1}_{\mathbb{Z}_{p}[G],E} = \partial^{1}_{\mathbb{Z}_p[G], E} \circ \nr^{-1} $  from  $Z(E[G])^{\times} $ to $K_{0}(  \mathbb{Z}_{p}[G], E)$. \\
+Let $P$ be a complex of $R[G]$-modules and for simplicity we write $P_E:= E[G]\otimes_{R[G]} P$ which is the complex of $E[G]$-modules obtained from $P$ applying the functor $E[G]\otimes_{R[G]}-$.  Let $ H^{+}(P_E) $ and $ H^{-}(P_E)$ denote the sum of cohomology groups of even and odd  degree respectively. Then the isomorphism $ \begin{tikzcd}[column sep=3ex]
+t: H^{+}(P_E) \arrow{r}{\simeq} & H^{-}(P_E)
+\end{tikzcd} $
+is called a trivialization.\\
+Suppose $P$ be a bounded complex of finitely generated projective $R [G]$-modules then applying the functor $E[G]\otimes_{R[G]}$ to the  short exact sequences
+\[
+0\rightarrow B^{i}(P) \rightarrow Z^{i}(P)\rightarrow H^{i}(P) \rightarrow 0\\
+\mbox{ and   }  0\rightarrow Z^{i}(P)\rightarrow P^{i} \rightarrow B^{i+1}(P) \rightarrow 0,
+\]
+we obtain the exact sequences as 
+\[ \hspace{10 mm}0\rightarrow B^{i}(E[G]\otimes_{R[G]}P) \rightarrow Z^{i}(E[G]\otimes_{R[G]}P)\rightarrow H^{i}(E[G]\otimes_{R[G]}P) \rightarrow 0  \]
+\[  \mbox{and  }  \hspace{3mm}0\rightarrow Z^{i}(E[G]\otimes_{R[G]}P)\rightarrow E[G]\otimes_{R[G]}P^{i} \rightarrow B^{i+1}(E[G]\otimes_{R[G]}P) \rightarrow 0.  \]
+From above exact sequences one gets isomorphisms $Z^{i}(P_E)= Z^{i}(E[G]\otimes_{R[G]}P) \simeq B^{i}(E[G]\otimes_{R[G]}P) \oplus  H^{i}(E[G]\otimes_{R[G]}P)$ and  $P_{E}^{i} = E[G]\otimes_{R[G]}P^{i} \simeq   Z^{i}(E[G]\otimes_{R[G]}P) \oplus B^{i+1}(E[G]\otimes_{R[G]}P)$. Using these decompositions we have 
+\begin{eqnarray*}
+	P_{E}^{+}  & := & \bigoplus_{i \mbox{ even}} P_{E}^{i} \simeq \bigoplus_{i \mbox{ even}} ( Z^{i}(p_E)  \oplus B^{i+1}(P_E)  )\\
+	    & \simeq & \bigoplus_{i \mbox{ even}} (B^{i}(P_E) \oplus H^{i}(P_E)  \oplus B^{i+1}(P_E)  )\\
+	    &  = & \bigoplus_{i \mbox{ even}} H^{i}(P_E) \oplus \bigoplus_{i} B^{i}(P_E)\\
+	    & \xrightarrow{t} &   \bigoplus_{i \mbox{ odd}} H^{i}(P_E) \oplus \bigoplus_{i} B^{i}(P_E)\\
+	    & = & \bigoplus_{i \mbox{ odd}} ( B^{i}(P_E) \oplus H^{i}(P_E) ) \oplus  \bigoplus_{i \mbox{ odd}} B^{i+1}(P_E)\\
+		 & = & \bigoplus_{i \mbox{ odd}} ( Z^{i}(p_E)  \oplus B^{i+1}(P_E)  ) := P_{E}^{-}.\\   
+\end{eqnarray*}
+Thus, we obatin an isomorphism $t_{*}: P_{E}^{+} \rightarrow P_{E}^{-}$  induced from trivialization map $t$.
+
+Let $L/K$ be a finite Galois extension of number fields with Group $\Gal(L/K)=G$ and suppose $w$ be a place of $L$ over the place $v$ of $K$.
+\begin{definition}
+Let the $\chi$ be a character of $G_{w}$ which corresponds to the Galois representation $\rho : G_w \rightarrow GL(V_{\chi})$. Then the Local Artin $L$- function is defined as 
+\[  L_{L_w}(\chi ,s )  =  \det (  1-\phi_{w} \Norm_{K_v/\mathbb{Q}_p} \mathfrak{p}_{K_v}^{-s} \mid V_{\chi}^{I_{\mathfrak{P}}}  )^{-1}  \]
+where $\mathfrak{p}_{K_v}$ is the prime ideal of $K_{v}$, $\phi_{w}$ is a lift of Frobenius automorphism in $G_{w} / I_{w}$ and the characteristic polynomial of $\rho(\phi_w)  \in GL(V_{\chi}^{I_{\mathfrak{P}}})$ is evaluated at $\Norm_{K_v/\mathbb{Q}_p}  \mathfrak{p}_{K_v}^{-s}$.
+\end{definition}
+For infinite place $w$ let us suppose $n=\dim_{\mathbb{C}}( V )$, $n^{+}= \dim_{\mathbb{C}} ( V_{G_w})$ and $n^{-} = n-n^{+}$ and define the Artin $L$- function 
+\[ L_{L_w}(\chi ,s )  = 
+ \begin{cases}
+(\pi^{-s/2}\Gamma(s/2))^{n^{+} } ( \pi^{-(s+1)/2}\Gamma((s+1)/2))^{n^{-} } ), & \text{for }  K_v =\mathbb{R},\\
+(2(2\pi)^{-s} \Gamma(s) )^{n} & \text{for } K_v =\mathbb{C}.\\
+\end{cases}
+\]
+Let us suppose that $\overline{\chi}$ denotes the complex conjugate of $\chi$, $W(\chi)$ the Artin root number and $\mathfrak{f}(\chi)$ the conductor of $\chi$ as defined in Fr\"ohlich \textbf{which we define later on}. Now we define the $\epsilon$-function and the Galois Gauss sum as follows:
+\begin{definition}
+	Let $\chi$ be any character of decomposition group $G_w$ then we define the $\epsilon$-function as:	
+\[\epsilon_{L_w/K_v}(\chi ,s )  = 
+\begin{cases}
+W_{\mathbb{Q}_p}( i_{K_v}^{\mathbb{Q}_p} \overline{\chi} )   ( \Norm_{K_v/\mathbb{Q}_p}(d_{K_v})^{\chi(1)} \Norm_{K_v/\mathbb{Q}_p}( \mathfrak{f}(\chi)) )^{\frac{1}{2}-s} & \text{for }  K_v/\mathbb{Q}_p,\\
+W_{\mathbb{R}} ( i_{K_v}^{\mathbb{R}} \overline{\chi})& \text{for } K_v =\mathbb{R}.\\
+\end{cases}	\]
+where $d_{K_v}$ denotes the absolute discriminant of $K_v$. The local Galois Gauss sum is defined as
+\[   \tau_{L_w/K_v}( \chi) = W_{K_v}( \overline{\chi}) \sqrt{\Norm_{K_v/ \mathbb{Q}_p} \mathfrak{f}( \chi)} \in \mathbb{C} .\]
+
+\end{definition}
+
+For every place $w$ of $L$ we have the decomposition group $G_w$ and for any character $\chi$ of $G$ we can restrict it to $G_w$ and obtain a local character $\chi_w$ to $G_w$.
+
+\begin{definition}
+	Let $L/K$ be a finite Galois field extension of global fields, $S$ be a set of all places $K$ and $S_f$ be the set of all finite places of $K$. Then the completed Artin $L$-function, the global $\varepsilon$-function and the global Galois Gauss sum are defined as follows:
+	\begin{eqnarray*}
+	\Lambda_{L/K}(\chi, s ) & = & \prod_{v \in S} L_{L_w/K_v}( \chi_w, s),\\
+	\varepsilon_{L/K}(\chi, s ) & = & \prod_{v \in S} \varepsilon_{L_w/K_v}( \chi_w, s) \hspace{2mm}\mbox{   and}\\
+	\tau_{L/K}(\chi) & = & \prod_{v \in S_f} \varepsilon_{L_w/K_v}( \chi).
+	\end{eqnarray*}
+	
+\end{definition}
+In case if $S$ is a finite set of places of $K$ then we define the $S$-truncated Artin $L$-function of a character as 
+\[  L_{L/K, S} ( \chi, s) = \prod_{v \notin S} L_{L_w/K_v} ( \chi, s).\] 
+We denote the leading term of $ L_{L/K, S} ( \chi, s)$ at $s=s_0$ by $ L^{*}_{L/K, S} ( \chi, s_0).$
+
+\section{Creating Normal Extension}
+
+\begin{lstlisting}
+> K:=NumberField(PolynomialWithGaloisGroup(6,2));
+> r,mr:=RayClassGroup(9*MaximalOrder(K),[1..6]);
+>  A:=AbelianExtension(mr);                      
+> L:=NumberField(A);
+> q,mq:=quo<r|SylowSubgroup(r,3)>;                 
+> A1:=AbelianExtension(Inverse(mq)*mr);
+> A1;
+FldAb, defined by (<[9, 0, 0, 0, 0, 0]>, [1     2       3       4       5       
+6])
+of structure: Z/2 + Z/2
+
+> l:=NumberField(A1);
+> AbsoluteField(l);
+Number Field with defining polynomial $.1^24 - 90*$.1^22 + 2357*$.1^20 - 
+    11830*$.1^18 - 41070*$.1^16 - 581010*$.1^14 + 47630645*$.1^12 - 
+    509985570*$.1^10 + 5533389010*$.1^8 - 43273483590*$.1^6 + 387605577333*$.1^4
+    - 1533431619050*$.1^2 + 11681842172641 over the Rational Field
+> IsNormal($1);
+true
+> q,mq:=quo<r|SylowSubgroup(r,2)>;
+> A1:=AbelianExtension(Inverse(mq)*mr);
+> A1;                                            
+FldAb, defined by (<[9, 0, 0, 0, 0, 0]>, [1     2       3       4       5       
+6])
+of structure: Z/3
+
+> l:=NumberField(A1);
+> AbsoluteField(l);
+Number Field with defining polynomial $.1^18 - 9*$.1^17 + 3*$.1^16 + 174*$.1^15 
+    - 357*$.1^14 - 1083*$.1^13 + 3463*$.1^12 + 2001*$.1^11 - 13218*$.1^10 + 
+    3150*$.1^9 + 22479*$.1^8 - 14883*$.1^7 - 15063*$.1^6 + 16155*$.1^5 + 
+    741*$.1^4 - 5073*$.1^3 + 1557*$.1^2 - 37 over the Rational Field
+> IsNormal($1);
+true
+> r,mr:=RayClassGroup(9*MaximalOrder(K),[1..5]);// not invariant subgroup in
+   infinite place
+> r;
+Abelian Group isomorphic to Z/6
+Defined on 2 generators
+Relations:
+    3*r.1 = 0
+    2*r.2 = 0
+> time IsNormal(AbsoluteField(NumberField(AbelianExtension(mr))));             
+false
+Time: 0.840
+
+
+
+
+
+\end{lstlisting}

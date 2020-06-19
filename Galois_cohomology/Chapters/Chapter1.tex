@@ -1,0 +1,192 @@
+\chapter{Introduction} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{Chapter 1. \emph{Introduction}} % This is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem{Algorithm}{Algorithm}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{cor}{Corollary}[section]
+%\theoremstyle{break} 
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{ex}{Example}[section]
+%\newtheorem{addition}{Addition}[section]
+%\newtheorem{remark}{Remark}[section]
+
+\def\Log{\mathop{\mathrm{Log}}\nolimits}	
+\def\inva{\mathop{\mathrm{inv}}\nolimits}	
+\def\Gal{\mathop{\mathrm{Gal}}\nolimits}
+\def\id{\mathop{\mathrm{Id}}\nolimits}
+\def\Hom{\mathop{\mathrm{Hom}}\nolimits}
+\def\Cite{\mathop{\mathrm{Cite}}\nolimits}
+\def\im{\mathop{\mathrm{Im}}\nolimits}
+\def\ker{\mathop{\mathrm{ker}}\nolimits}
+\def\rest{\mathop{\mathrm{res}}\nolimits}
+\def\cori{\mathop{\mathrm{cor}}\nolimits}
+\def\tor{\mathop{\mathrm{tor}}\nolimits}
+\def\inf{\mathop{\mathrm{inf}}\nolimits}
+\def\nr{\mathop{\mathrm{nr}}\nolimits}
+\def\inv{\mathop{\mathrm{inv}}\nolimits}
+\def\rad{\mathop{\mathrm{rad}}\nolimits}
+\def\Irr{\mathop{\mathrm{Irr}}\nolimits}
+\def\Aut{\mathop{\mathrm{Aut}}\nolimits}
+\def\Det{\mathop{\mathrm{Det}}\nolimits}
+\def\modulo{\mathop{\mathrm{mod}}\nolimits}
+\def\ind{\mathop{\mathrm{ind}}\nolimits}
+\def\det{\mathop{\mathrm{det}}\nolimits}
+\def\Exp{\mathop{\mathrm{Exp}}\nolimits}
+\def\Frob{\mathop{\mathrm{Frob}}\nolimits}	
+\def\Trace{\mathop{\mathrm{Trace}}\nolimits}	
+\def\Norm{\mathop{\mathrm{Norm}}\nolimits}	
+\section{Introduction}
+Let $L/K$ be any global field extension  of characteristic $0$ and  $p$ be any prime in $K$ and $\mathfrak{P}$ be the prime in $L$ over $Kp$. Then $L_{\mathfrak{P}}/K_p$ be the corresponding local $p$-adic field extension. We want to compute the  particular element $u_{L_{\mathfrak{P}}/K_p}$ of $H^{2}(\Gal(L_{\mathfrak{P}}/K_p), L_{\mathfrak{P}}^{\times})$ such that $\inv(u_{L_{\mathfrak{P}}/K_p}) = 1/[u_{L_{\mathfrak{P}}:K_p}]$. The element $u_{L_{\mathfrak{P}}/K_p}$ is called the local fundamental class which maps 
+\[u_{L_{\mathfrak{P}}/K_p}: \Gal(L_{\mathfrak{P}}/K_p) \times \Gal(L_{\mathfrak{P}}/K_p) \rightarrow L_{\mathfrak{P}}^{\times}.\]
+Before going to the details of the algorithm we will present the details of the cohomology group and the maps and other necessary definitions and some results.
+
+
+\begin{definition}
+	The group ring $\mathbb{Z}[G]$ of a group $G$ consists of the finite formal sums of group elements with coefficients in $\mathbb{Z}$ i.e.
+\[\mathbb{Z}[G] = \left\{ \sum a_{g} g\mid a_{g} \in \mathbb{Z}\hspace{2mm}\forall g \in G , \mbox{ all but finitely many }a_{g}= 0\right\} \]
+The operations are defined as\\
+\[\sum_{g \in G} a_{g} g + \sum_{g \in G} b_{g} g = \sum_{g \in G} (a_{g} + b_{g}) g\] and
+\[\left\{ \sum_{g \in G} a_{g} g\right\}  \left\{\sum_{g \in G} b_{g} g\right\}= \sum_{g \in G, k \in G}\left( a_{k}b_{k^{-1}g}\right)g .\]
+\end{definition}
+Let $G$ be a finite group and the complete free resolution of the group $G$
+be \\
+\begin{tikzcd}
+	\cdots & X_{-2}\arrow{l}{d_{-2}} & X_{-1}\arrow{l}{d_{-1}} & X_{0}\arrow{l}{d_{0}} & X_{1}\arrow{l}{d_{1}} & X_{2}\arrow{l}{d_{2}} &\cdots \arrow{l}{d_{3}}
+\end{tikzcd}   \\
+where, $X_{q}=X_{-q-1}=\bigoplus \mathbb{Z}[G](\sigma_{1}, \dots , \sigma_{q})$ and for $q=0$ we assume \[X_{0}=X_{-1}=\mathbb{Z}[G],\]
+where we choose the identity element $1\in \mathbb{Z}[G]$ as the generating $0$-tuple.  $X_{q}$'s are free $G$-modules and $ d_{q}$ are $G$-homomorphisms.\\
+For $A$ a $G$-module, define the group of $q$ cochains
+\[ A_{q} = C^{q}(G, A)= \Hom_{G}\left( X_{q}, A\right)=:A_{-q-1},\] 
+which consists of all $G$-homomorphisms $x: X_{q}\rightarrow A$. Then, we obtain the sequence \\
+\begin{tikzcd}
+	\cdots \arrow{r}{\delta_{-2}}& A_{-2}\arrow{r}{\delta_{-1}} & A_{-1}\arrow{r}{\delta_{0}} & A_{0}\arrow{r}{\delta_{1}} & A_{1}\arrow{r}{\delta_{2}} & A_{2}\arrow{r}{\delta_{3}}&\cdots  .
+\end{tikzcd}\\
+where,  $\delta_{q+1}\circ \delta_{q}=0$ due to $ d_{q}\circ d_{q+1}=0$ . Therefore, $\im\delta_{q}\subset \ker\delta_{q+1}$.\\
+One can find the details of the maps $d_{q}$ and   $\delta_{q}: A_{q-1} \longrightarrow A_{q} $ in {\color{blue}book Sharifi, Neukirch} :
+%\begin{align*}
+%(\delta_{q}x)(\sigma_{1},\dots,\sigma_{q}) & = \sigma_{1}x(\sigma_{2},\dots, \sigma_{q})+\Sigma^{q-1}_{i=1} (-1)^{i}x(\sigma_{1},\dots,\sigma_{i-1}\sigma_{i+1}, \dots ,\sigma_{q})\\
+%& +(-1)^{q}x(\sigma_{1},\dots ,\sigma_{q-1})
+%\end{align*}
+The cohomology groups measure how far the $q$-cochain complex $ C(G,A)$ is from being exact. $Z^{q}= \ker \delta_{q+1}, \hspace{2mm} R^{q}= \im \delta_{q}$ and call the elements in $Z^{q}$ the $q$- cocycles and the elements in $R^{q}$ as $q$-coboundaries.\\
+%For $q\in \mathbb{Z}$ we also write $q^{th}$ Tate cohomology group as\\
+%	\[\hat{H}^{q}\left(G,A\right) = \begin{cases}
+%	H_{-q-1}\left(G,A\right) \mbox{ if } q\leq -2\\
+%	H_{0}\left(G,A\right) \mbox{ if } q=-1\\
+%	H^{0}\left(G,A\right) \mbox{ if } q=0\\
+%	H^{q}\left(G,A\right) \mbox{ if } q\geq 1\\
+%	\end{cases}
+%	\]
+%	where, $H^{q}\left(G,A\right)$ are the usual cohomology groups and $H_{q}\left(G,A\right)$ are the usual homology groups.
+
+
+%Now we suppose, $Z^{q}= \ker \delta_{q+1}, \hspace{2mm} R^{q}= \im \delta_{q}$ and call the elements in $Z^{q}$ the $q$- cocycles and the elements in $R^{q}$ as $q$-coboundaries.
+%Now, we define the cohomology of a group.
+\begin{definition}
+	Let $G$ be a finite group and $A$ be a $G$-module. Then the $q^{th}$ cohomology group of $G$ with coefficients in $A$ is defined as $\hat{H}^{q}\left(G,A\right)= Z^{q}/R^{q}$, which is also said to be the Tate cohomology group of dimension (degree) $q$ of the $G$-module $A$.
+\end{definition}
+%		\item The cohomology groups measure how far the $q$-cochain complex $ C(G,A)$ is from being exact.\\
+For $q\in \mathbb{Z}$ we also write $q^{th}$ Tate cohomology group as
+\[\hat{H}^{q}\left(G,A\right) = \begin{cases}
+	H_{-q-1}\left(G,A\right) \mbox{ if } q\leq -2\\
+	H_{0}\left(G,A\right) \mbox{ if } q=-1\\
+	H^{0}\left(G,A\right) \mbox{ if } q=0\\
+	H^{q}\left(G,A\right) \mbox{ if } q\geq 1\\
+	\end{cases}
+	\]
+	where, $H^{q}\left(G,A\right)$ are the usual cohomology groups and $H_{q}\left(G,A\right)$ are the usual homology groups.
+\\
+From now on $H^{q}\left(G,A\right)$ denotes the Tate cohomology groups.
+Our main target is to compute the the local fundamental class in $H^{2}\left(G,A\right)$.
+
+
+\subsection{Mappings on Cohomology}
+In this section we study how these groups behave in case either the module $A$ or the group $G$ changes.\\
+If $A$ and $B$ are two $G$-modules and $f:A \rightarrow B$ be a $G$-homomorphism, then $f$ canonically induces a homomorphism
+\begin{eqnarray}
+\bar{f_{q}}:H^{q}(G,A)\rightarrow H^{q}(G,B)
+\end{eqnarray}
+which arises in the following way:\\
+Let $A_{q}$ and $B_{q}$ be the cochains of $A$ and $B$ respectively.  From the map
+\[x(\sigma_{1},\dots,\sigma_{q}) \mapsto fx(\sigma_{1},\dots,\sigma_{q})\]
+we get a homomorphism $f_{q}:A_{q}\rightarrow B_{q}$ with the property that $\delta_{q+1}\circ f_{q}=f_{q+1}\circ \delta_{q+1}$. Therefore these maps fit into the infinite commutative diagram:\\
+\[\begin{tikzcd}
+\cdots\arrow{r} & A_{q}\arrow{d}{f_{q}}\arrow{r}{\delta_{q+1}} & A_{q+1}\arrow{d}{f_{q+1}}\arrow{r} & \cdots\\
+\cdots\arrow{r} & B_{q}\arrow{r}{\delta-{q+1}} & B_{q+1}\arrow{r} & \cdots\\
+\end{tikzcd}\]
+which means precisely that $x(\sigma_{1},\dots,\sigma_{q})\mapsto fx(\sigma_{1}, \dots ,\sigma_{q})$ takes cocycles to cocycles and coboundaries to coboundaries and hence we obtain $(1)$. If $c\in H^{q}(G,A)$, the image $\bar{f_{q}}c$ is obtained by choosing a cocycle $x$ from the class c, and taking the cohomology class of the cocycle $fx$ of the module $B$.
+\begin{proposition}
+	If $ 0\rightarrow A \xrightarrow{i} B \xrightarrow{j} C \rightarrow  0 $ is an exact sequence of $G$-modules and $G$-homomorphisms, then there exists a canonical homomorphism \[\delta_{q}:H^{q}(G,C)\rightarrow H^{q+1}(G,A).\]
+	The map $\delta_{q}$ is called the connecting homomorphism or also the $\delta$-homomorphism.
+\end{proposition}
+\begin{theorem}
+Let $ 0\rightarrow A \xrightarrow{i} B \xrightarrow{j} C \rightarrow  0 $ be an exact sequence of $G$-modules and $G$-homomorphisms. Then the induced infinite sequence\\
+\[\cdots\xrightarrow{} H^{q}\left(G,A\right)\xrightarrow{\bar{i_{q}}} H^{q}\left(G,B\right) \xrightarrow{\bar{j_{q}}} H^{q}\left(G,C\right)\xrightarrow{\delta_{q}} H^{q+1}\left(G,A\right)\rightarrow \cdots\]
+%\begin{tikzcd}[row sep=small]
+%	\cdots\arrow{r} & H^{q}\left(G,A\right)\arrow{r}{\bar{i_{q}}} & H^{q}\left(G,B\right) \arrow{r}{\bar{j_{q}}}& H^{q}\left(G,C\right)\arrow{r}{\delta_{q}} & H^{q+1}\left(G,A\right)\arrow{r}&\cdots\\
+	%\end{tikzcd}
+	is also exact. It is called the \bf{long exact cohomology sequence}.
+\end{theorem}
+
+\begin{definition}
+	Let $U$ be a subgroup of $G$
+	\begin{enumerate}
+		\item Let $e: U\rightarrow G$ be the inclusion map. Then the maps $\rest:H^{i}(G,A)\rightarrow H^{i}(U,A)$ induced by the compatible pair $(e,\id_{A})$ on cohomology where $\id_{A}$ is the identity map on $A$, are known as restriction maps.
+		\item Suppose that $U$ is normal in $G$. Let $q:G\rightarrow G/U$ be the quotient map and let $i:A^{U}\rightarrow A$ be the inclusion map. Then the maps
+		\[ \inf :H^{i}(G/U,A^{U})\rightarrow H^{i}(G,A)\]
+		induced by the pair $(q,i)$ are known as inflation maps.
+	\end{enumerate}
+\end{definition}
+\begin{theorem}
+	Let $G$ be a cyclic group and let $A$ be a $G$-module. Then
+	\[H^{q}(G,A)\cong H^{q+2}(G,A) \mbox{ for all } q\in \mathbb{Z}.\]
+\end{theorem}
+
+\begin{theorem}
+	Let $G$ be a finite group and $V\leq G$ and for each $n\in\mathbb{Z}$, the homomorphism 
+	\[ \delta^{2} : H^{2}(V, \mathbb{Z}) \rightarrow H^{n+2}(V, C) \]
+	is given by the cup-product $\alpha \mapsto \rest_{V}^{G}(u)\cup \alpha$. Then the following statements are equivalent:
+	\begin{enumerate}
+		\item $C(u)$ is a cohomologically trivial $G-$module,
+		\item $C$ is a class module with fundamental class,
+		\item $\delta^{2}$ is an isomorphism for all $n \in \mathbb{Z}$. 
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{remark}
+	If $C$ is a class module for group $G$ then from above theorem we obtain an isomorphism map 
+	\[ (\delta^{2})^{-1} : H^{2}(V, C) \rightarrow H^{0}(V, \mathbb{Z}) , \hspace{3mm} u_{V}\mapsto \frac{1}{\#  V} \hspace{3mm}\text{  mod}\hspace{2mm} \mathbb{Z}, \]
+	where $u \in H^{2}(G,C)$. This map is called an invariant map and we denote it by $\inv$.
+\end{remark}
+
+\begin{definition}
+Let $L/K$ be a normal extension. The uniquely determined element $u_{L/K}\in H^{2}(L/K)$ such that
+\[ \inv_{L/K}(u_{L/K})=\frac{1}{[L:K]}+\mathbb{Z}\] is called the fundamental class of $L/K$.
+\end{definition}
+
+
+\begin{proposition}
+	Let $N\supset L\supset K$ be extensions with $N/K$ normal. then
+	\begin{enumerate} %[label=(\alph*)]
+		\item $u_{L/K}= (u_{N/K})^{[N:L]}$,  $L/K$ is normal,
+		\item $\rest_{L}(u_{N/K})=u_{N/L}$
+		\item $\cori_{K}(u_{N/L})=(u_{N/K})^{[L:K]}$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+	A formation $(G,A)$ (or $(G,\left\{G_{K}\right\}_{K\in X},A)$ ) is called a class formation if it satisfies the following  two axioms:\\
+	\textbf{Axiom I: } $H^{1}(L/K)=1$ for every normal extension $L/K$.\\
+	\textbf{Axiom II: } For every normal extension $L/K$ there is an isomorphism \[ \inva_{L/K}: H^{2}(L/K)\rightarrow \frac{1}{[L:K]}\mathbb{Z}/\mathbb{Z},\] the invariant map, with following properties:\\
+	(a) If $N\supset L\supset K$ is a tower of normal extensions, then\[ \inva_{L/K}= {\inva_{N/K}}|_{H^{2}(L/K)}.\]
+	(b) If $N\supset L\supset K$ is a tower of normal extensions with $N/K$ normal, then\[  \inva_{N/L} \circ \rest_{L}= [L:K]\cdot \inva_{N/K}.\]
+\end{definition}
+
+
+
