@@ -85,8 +85,8 @@ Also suppose
 \[ R_{\mathfrak{m}} = \{(a) \mid a \equiv 1 \hspace{2mm} \modulo  \mathfrak{m} \} \subset I_{\mathfrak{m}},\]
 then the quotient $I_{\mathfrak{m}}/ R_{\mathfrak{m}}$ is known as the ray class group and denoted by $Cl_{\mathfrak{m}}.$ 
 \end{definition}
-In fact when $\mathfrak{m} =1$ then $\mathfrak{m}_{\mathfrak{p}}=0$ for all $\mathfrak{p}$ then we obtain $Cl_{1}=I_{1}/R_{1}=Cl(\mathcal{O}_{K})$.\\
-Let us suppose that $\mathfrak{p}$ be a prime ideal of $K$ which is unramified in the abelian field extension $L/K$. Then $L_{\mathfrak{p}}/K_{\mathfrak{p}} $ is unramified local field extension. So, there exists a unique Frobenius automorphism $\Frob_{\mathfrak{p},L/K} \in \Gal(L/K)$ with $\Frob_{\mathfrak{p}, L/K}(x)\equiv x^{N(\mathfrak{p})} \mod \mathfrak{p}\mathcal{O}_{L}$ for all $x \in \mathcal{O}_{L}$. Let $\mathfrak{m}$ be a modulus  which is only divisible ramified prime ideals of $L/K$ then one can define the Artin map $\psi_{L/K}: I_{\mathfrak{m}} \rightarrow \Gal(L/K)$ such that $\psi_{L/K}(\mathfrak{p})= \Frob_{\mathfrak{p}, L/K}$ for all $\mathfrak{p}$ not dividing $\mathfrak{m}_f$. \\
+In fact when $\mathfrak{m} =1$ then $\mathfrak{m}_{\mathfrak{p}}=0$ for all $\mathfrak{p}$ then we obtain $Cl_{1}=I_{1}/R_{1}=Cl(\mathcal{O}_{K})$. An abelian field extension $K^{\mathfrak{m}}/ K$ associated to the ray class group $Cl_{\mathfrak{m}}(K)$ by class field theory is called the ray class field. In this case $\Gal(K^{\mathfrak{p}}/ K) \cong Cl_{\mathfrak{m}}(K)$. \\
+Let us suppose that $\mathfrak{p}$ be a prime ideal of $K$ which is unramified in the abelian field extension $L/K$ and $\mathfrak{P}$ be the pime ideal of $L$ lying above $\mathfrak{p}$. Then $L_{\mathfrak{P}}/K_{\mathfrak{p}} $ is unramified local field extension. So, there exists a unique Frobenius automorphism $\Frob_{\mathfrak{p},L/K} \in \Gal(L/K)$ with $\Frob_{\mathfrak{p}, L/K}(x)\equiv x^q \mod \mathfrak{P}$ for all $x \in \mathcal{O}_{L}$ where $q$ is the number of elements in the residue class field of $K_{\mathfrak{p}}$. The decompositoin group $G_{\mathfrak{p}}= G(L_{\mathfrak{P}} / K_{\mathfrak{p}})= \langle \Frob_{\mathfrak{p}, L/K} \rangle\subset G(L/K)$. Let $\mathfrak{m}$ be a modulus  which is only divisible by ramified prime ideals of $L/K$ then one can define the Artin map $\psi_{L/K}: I_{\mathfrak{m}} \rightarrow \Gal(L/K)$ such that $\psi_{L/K}(\mathfrak{p})= \Frob_{\mathfrak{p}, L/K}$ for all $\mathfrak{p}$ not dividing $\mathfrak{m}_f$. \\
 %\begin{theorem}
 %Suppose $L/K$ be a finite normal extension of number fields then the set if primes in $K$ whic split completely/totally in $L$ has polar density $1/[L:K]$.
 %\end{theorem}
@@ -101,7 +101,7 @@ Lecturenotes 21 pdf.
 From above theorem we obtain an exact sequence:
 
 \[1\rightarrow \ker(\psi_{L/K}) \rightarrow I_{\mathfrak{m}}\rightarrow \Gal(L/K) \rightarrow 1 .  \]
-Thus we find $R_{\mathfrak{m}} \subset \ker(\psi_{L/K})$ for a modulus $\mathfrak{m}$ of $K$. This shows that Artin map induces an isomorphism from quotient $ Cl_{\mathfrak{m}} = I_{\mathfrak{m}}/ R_{\mathfrak{m}}$ to $\Gal(L/K)$. But when $R_{\mathfrak{m}} = \ker(\psi_{L/K})$ then $Cl_{\mathfrak{m}}\simeq \Gal(L/K)$ and the field $L$ is called the \textbf{ray class field}.\\
+Thus we find $R_{\mathfrak{m}} \subset \ker(\psi_{L/K})$ for a modulus $\mathfrak{m}$ of $K$. This shows that Artin map induces an isomorphism from quotient $ Cl_{\mathfrak{m}} = I_{\mathfrak{m}}/ R_{\mathfrak{m}}$ to $\Gal(L/K)$. But when $R_{\mathfrak{m}} = \ker(\psi_{L/K})$ then $Cl_{\mathfrak{m}}\simeq \Gal(L/K)$ and the field $L$ is the \textbf{ray class field} corresponding to modulus $\mathfrak{m}$.\\
 Let $\mathfrak{p}$ be a prime ideal of $K$, $n\in \mathbb{Z}_{\geq 0}$ and define $U_{\mathfrak{p}}^{n}$ as
   \[
  U_{\mathfrak{p}}^{n}  = 
@@ -113,7 +113,7 @@ Let $\mathfrak{p}$ be a prime ideal of $K$, $n\in \mathbb{Z}_{\geq 0}$ and defin
  \end{cases}
  \]
 % In fact $U_{\mathfrak{p}}^{n} \subset K_{\mathfrak{p}}^{\times}$ is open for all $\mathfrak{p}$
-Let a modulus $\mathfrak{m} $ of $K$, then $U_{K, \mathfrak{m}} = \prod_{\mathfrak{p}}^{}U_{\mathfrak{p}}^{\mathfrak{m}_\mathfrak{p}}$ forms an open subgroup of $K$ because $U_{\mathfrak{p}}^{\mathfrak{m}_\mathfrak{p}} \subset K_{\mathfrak{p}}^{\times}$ is open for all $\mathfrak{p}$ and equals $\mathcal{O}_{K_\mathfrak{p}}^{\times}$ for almost all $\mathfrak{p}$.
+Let a modulus $\mathfrak{m} $ of $K$, then $U_{K, \mathfrak{m}} = \prod_{\mathfrak{p}}^{}U_{\mathfrak{p}}^{m_\mathfrak{p}}$ where $m_{\mathfrak{p}} = \v_{\mathfrak{p}}(m)$, forms an open subgroup of $K$ because $U_{\mathfrak{p}}^{m_\mathfrak{p}} \subset K_{\mathfrak{p}}^{\times}$ is open for all $\mathfrak{p}$ and equals $\mathcal{O}_{K_\mathfrak{p}}^{\times}$ for almost all $\mathfrak{p}$.
 \begin{proposition}
 Any open subgroup of $J_{K}$ contains some $U_{K,\mathfrak{m}}$, and the quotient $|J_{K}/ K^{\times}U_{K,\mathfrak{m}}| <\infty$. 
 \end{proposition}
@@ -140,9 +140,9 @@ Let $L/K$ be a normal extension of the fields. Compute an abelian extension $E/L
 
 
 \begin{definition}
-Let $L/K$ be a finite abelian field extension. A modulus $\mathfrak{m}$ of $K$ is said to be admissible for an abelian extension $L/K$ if and only if (almost) all primes $ \mathfrak{p} \in \mathfrak{R}_{\mathfrak{m}}$ of $K$ totally split in $L$.      \\
+Let $L/K$ be a finite abelian field extension. A modulus $\mathfrak{m}$ of $K$ is said to be admissible for an abelian extension $L/K$ if and only if (almost) all primes $ \mathfrak{p} \in R_{\mathfrak{m}}$ of $K$ totally split in $L$.      \\
 OR\\
-There exist a modulus $\mathfrak{m}$ such that $\Gal(L/K)\cong Cl_{\mathfrak{m}}$.
+There exist a modulus $\mathfrak{m}$ such that $\Gal(L/K)\cong Cl_{\mathfrak{m}}(K)$.
         
 \end{definition}
 Let $L/K$ be a finite Galois field extension, $\Delta_{L/K}$ be the discriminant of the extension $L/K$ and $I_{K}(\Delta_{L/K})$ be the group of fractional $\mathbb{Z}_{K}$-ideals generated by the primes $\mathfrak{p}$ of $\mathcal{O}_{K}$ that do not divide $\Delta_{L/K}\mathcal{O}_{K}$. The Artin map for $L/K$ is defined as the homomorphism 

@@ -473,5 +473,20 @@ MRREVIEWER = {Da Qing Wan},
   MRNUMBER = {0360526},
 MRREVIEWER = {Yasumasa Akagawa},
 }
-			
+
+
+@book {Curtis,
+    AUTHOR = {Curtis, Charles W. and Reiner, Irving},
+     TITLE = {Representation theory of finite groups and associative
+              algebras},
+    SERIES = {Pure and Applied Mathematics, Vol. XI},
+ PUBLISHER = {Interscience Publishers, a division of John Wiley \& Sons, New
+              York-London},
+      YEAR = {1962},
+     PAGES = {xiv+685},
+   MRCLASS = {20.80},
+  MRNUMBER = {0144979},
+MRREVIEWER = {W. E. Jenner},
+}
+				
 		

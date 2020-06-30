@@ -1,0 +1,19 @@
+\chapter{Preleminaries} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{Chapter 1. \emph{Introduction}} % This is for the header on each page - perhaps a shortened title
+
+%------------------------------------------------------------------------------------
+\def\Gal{\mathop{\mathrm{Gal}}\nolimits}
+\def\Aut{\mathop{\mathrm{Aut}}\nolimits}
+\section{Basic Definitons}
+In my research I will be working mostly on number fields. A field extension $L/K$ is said to be algebraic if every element $\alpha \in L$ is algebraic over $K$, that is, for every $\alpha \in L$  there exists some nonzero polynomial in $ f \in K[x]$ such that $\alpha$ is a zero of $f$. In my work I will always assume the algebraic field extension. The algebraic field extension $L/K$ is called an algebraic number field when $K =\mathbb{Q}$. 
+\begin{definition}
+A Galois field extension is an algebraic field extension $L/K$ which is normal and separable.
+\end{definition}
+In the Galois field extension $L/K$, the Galois group $\Gal(L/K)$ is the set of all automorphisms of $L$, denoted by $\Aut(L/K)$, which fixes the elements of $K$, that is, the base field satifies $K= L^{\Aut(L/K)}$. In fact the fundamental theorem of Galois theory asserts that for any finite Galois field extension $L/K$, there is a one to one correspondence between its intermediate fields and subgroups of its Galois group which we will apply in many places in our computations. For any subgroup $H \subset \Gal(L/K)$, $L^{H}$ denotes the fixed field corresponding to the group $H$.
+An element $\alpha \in L$ is said to be integrable over $\mathbb{Z}$ if there exists some monic polynomial $f \in \mathbb{Z}[x]$ such that $f(\alpha) =0$ 
+\begin{definition}
+The maximal order for an extension $L/\mathbb{Q}$ is denoted by $\mathcal{O}_{L}$ or $\mathbb{Z}_{L}$ is the set of all integrable elements of $L$ over $\mathbb{Z}$.
+\end{definition}

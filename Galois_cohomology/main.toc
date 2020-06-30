@@ -5,35 +5,23 @@
 \contentsline {chapter}{Acknowledgements}{iv}{dummy.2}
 \vspace {1em}
 \vspace {2em}
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.6}
-\contentsline {section}{\numberline {1.1}Introduction}{1}{section.7}
-\contentsline {subsection}{\numberline {1.1.1}Mappings on Cohomology}{2}{subsection.10}
-\contentsline {chapter}{\numberline {2}Norm Equation}{6}{chapter.29}
-\contentsline {section}{\numberline {2.1}Norm Equation}{6}{section.30}
-\contentsline {section}{\numberline {2.2}ClNormEquation and TameNormEQuation}{17}{section.522}
-\contentsline {section}{\numberline {2.3}Abstract}{17}{section.523}
-\contentsline {section}{\numberline {2.4}Introduction}{17}{section.525}
-\contentsline {section}{\numberline {2.5}Unit group}{19}{section.536}
-\contentsline {section}{\numberline {2.6}Norm Group}{21}{section.543}
-\contentsline {section}{\numberline {2.7}Solving Norm Equations}{22}{section.545}
-\contentsline {subsection}{\numberline {2.7.1}Algorithm:}{26}{subsection.571}
-\contentsline {subsection}{\numberline {2.7.2}Algorithm:}{26}{subsection.577}
-\contentsline {chapter}{\numberline {3}Local Fundamental Class }{29}{chapter.582}
-\contentsline {section}{\numberline {3.1}Local Fundamental Class for Local Field}{29}{section.583}
-\contentsline {subsection}{\numberline {3.1.1}Brauer Group:}{35}{subsection.630}
-\contentsline {chapter}{\numberline {4}Global Fundamental Class}{37}{chapter.639}
-\contentsline {section}{\numberline {4.1}Global fundamental class}{37}{section.640}
-\contentsline {subsection}{\numberline {4.1.1}Finitely generated module for complex infinite place $v$}{41}{subsection.653}
-\contentsline {subsection}{\numberline {4.1.2}gfc in relative number fields extension}{49}{subsection.696}
-\contentsline {subsection}{\numberline {4.1.3}gfc for complex field written above few}{52}{subsection.755}
-\contentsline {chapter}{\numberline {5}Applications}{53}{chapter.756}
-\contentsline {section}{\numberline {5.1}Applications}{53}{section.757}
-\contentsline {subsection}{\numberline {5.1.1}Ray Class Group}{55}{subsection.759}
-\contentsline {subsection}{\numberline {5.1.2}Shafarevich-Weil theorem }{59}{subsection.805}
-\contentsline {section}{\numberline {5.2}epsilon function}{60}{section.810}
-\contentsline {section}{\numberline {5.3}Creating Normal Extension}{66}{section.823}
+\contentsline {chapter}{\numberline {1}Preleminaries}{1}{chapter.6}
+\contentsline {section}{\numberline {1.1}Basic Definitons}{1}{section.7}
+\contentsline {chapter}{\numberline {2}Introduction}{2}{chapter.10}
+\contentsline {section}{\numberline {2.1}Introduction}{2}{section.11}
+\contentsline {subsection}{\numberline {2.1.1}Mappings on Cohomology}{3}{subsection.14}
+\contentsline {chapter}{\numberline {3}Norm Equation}{7}{chapter.34}
+\contentsline {section}{\numberline {3.1}Norm Equation}{7}{section.35}
+\contentsline {section}{\numberline {3.2}ClNormEquation and TameNormEQuation}{11}{section.159}
+\contentsline {section}{\numberline {3.3}Abstract}{11}{section.160}
+\contentsline {section}{\numberline {3.4}Introduction}{11}{section.162}
+\contentsline {section}{\numberline {3.5}Unit group}{13}{section.173}
+\contentsline {section}{\numberline {3.6}Norm Group}{15}{section.180}
+\contentsline {section}{\numberline {3.7}Solving Norm Equations}{17}{section.182}
+\contentsline {subsection}{\numberline {3.7.1}Algorithm:}{20}{subsection.208}
+\contentsline {subsection}{\numberline {3.7.2}Algorithm:}{21}{subsection.214}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{67}{appendix.875}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{67}{section.876}
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{24}{appendix.231}
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{24}{section.232}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{68}{dummy.877}
+\contentsline {chapter}{Bibliography}{25}{dummy.233}

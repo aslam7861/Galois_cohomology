@@ -159,6 +159,38 @@ true -36165362142105101311401191477500000*ll.1^6 +
 > Valuation(Norm(alpha)/a-1);
 20
 \end{lstlisting}
+In ramified local field extension $L/K$, norm equation fails for few unit elements of $K$. To find such elements we can find through computing the norm group of $L$ which is the subgroup of $U_{K}$. In fact the norm equation fails for any unit elements of $K$ which are multiples of such elements.
+\begin{lstlisting}
+> K := pAdicRing(2,10);          
+> K := UnramifiedExtension(K,2);
+> L := ext<K|x^12+12*x+26>;
+> U,mU := UnitGroup(K);
+> N,mN := NormGroup(L,mU);      
+> #quo<U|N>;
+3
+> T := TeichmuellerSystem(K);
+> AttachSpec("spec");
+> q,mq:=quo<U|N>;             
+> A:=[x@@mq@mU : x in q];
+> #A;
+3
+> ClNormEquation(L,A[2]); 
+Norm fails
+> ClNormEquation(L,A[3]);
+Norm fails
+> T:=TeichmuellerSystem(K);
+> #T;
+4
+> ClNormEquation(L,T[3]);
+Norm fails
+> ClNormEquation(L,T[4]);
+Norm fails
+\end{lstlisting}
+In fact for uniformizing elements $\pi_{L}$ and $\pi_{K}$ of $L$ and $K$ respectively, the element $\pi_{K}^{f}$ is also the normed element of $L$ where $f$ is inertia degree of $L/K$.
+
+
+
+
 
 After computing the Norm Equation of the Totally Ramified Extension we want to combine it with of Unramified extension. Now  we would like to combine the norm equation of unramified with norm equation  of Totally ramified so that we compute of the ramified extensions. Since $N(U_L) \subset U_K $ we can assume that not every element of $U_K$ is a normed element but once it is the norm element then it is not unique. It may have more than one solution. This we can look  by converting our field extensions to finite residue field extensions as described below.
 
@@ -170,421 +202,421 @@ After computing the Norm Equation of the Totally Ramified Extension we want to c
 \end{tikzcd}.\\
 We take $a=\omega\left(1+p*Random(K)\right) \in U_K$. Then $\omega \in \mathbb{F}_{p}$. Clearly we can find many solutions in $\mathbb{F}_{q}$ such that their norms equal $\omega$. But not all the solutions of $\mathbb{F}_{q}$ will be power of $e$. In this way we try to find an element in $\mathbb{F}_{q}$ such that it is $e^{th}$-power. Finally we correspod the solution to our ring extension by finding the preimages of our residue field map. We present this idea in the following alogorithm.\\
 \begin{algorithm}[H]
-\caption{Local Fundamental Class using Serre's Approach:}
+\caption{Norm equation of residual part}
 \label{}
 \begin{algorithmic}[1]
 
-\REQUIRE   $L/K $ be ramified $p$-adic field extension and $a=\omega\left(1+p*Random(k)\right)$.
-\ENSURE  $\beta \in L $ scuh that $Norm(\beta) =a$.
+\REQUIRE   $L/K $ be ramified $p$-adic field extension and $a=\omega\cdot u$ where $u$ is unit in principal unit group of $K$.
+\ENSURE  $\beta \in L $ scuh that $Norm(\beta) = \omega$.
 
 \STATE  	Compute the residue field extension  $\mathbb{F}_q$ and $\mathbb{F}_p$ of $L$ and $K$ resp.
- \STATE Try to find $\epsilon$ in $\mathbb{F}_q$ such that $\epsilon^e := \gamma$, where $e$ is the ramification idex of $L/K$.
+ \STATE Try to find $\epsilon$ in $\mathbb{F}_q$ such that $\epsilon=\epsilon^e =: \gamma$, where $e$ is the ramification idex of $L/K$.
 \STATE If $gcd(e,q-1)=1$, then done.
 \STATE If $gcd(e,q-1)=r$ then $gcd(e,p-1)=s|r$.
 \STATE  Compute $\gamma =g^x \sim g^x \cdot g^{(p-1)y}= g^{x+(p-1)y}\equiv g^{ze} $ , then $Norm(g^{ze}=\omega)$.
-\STATE Compute the preimage of $g^{ze}$ in the ring of integers of $L$ and let us denote it by $\tilde{\beta}$.
+\STATE Compute the preimage of $g^{ze}$ in the ring of integers of $L$ and let us denote it by $\beta$.
 \end{algorithmic}
 \end{algorithm} 	
  	
 
  
-
-\begin{lstlisting}
-> R<x>:=PolynomialRing(Integers()); 
-> K:=pAdicField(5,20);
-> L:=ext<UnramifiedExtension(K,6)|x^9+20>;
-> kk:=RingOfIntegers(K);
-> l:=RingOfIntegers(L); 
-> f,mf:=ResidueClassField(kk);
-> F,mF:=ResidueClassField(l); 
-> pi:=UniformizingElement(kk);
-> Pi:=UniformizingElement(l);
-> mu:=(1+Pi*l.1^2);
-> Norm(mu,kk);
--32441541670284
-> a:=$1;
-> fa:=mf(a);
-> q:=#F;
-> e:=RamificationIndex(L,K);
-> r:=Gcd(e,q-1);
-> r;
-9
-> e;
-9
-> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
-> #J;
-434
-> J[120];
-F.1^4284
-> y:=4284;
-> k:=-y*Modinv(4,9) mod ((q-1));
-> k;
-1260
-> y+4*k mod ((q-1));
-9324
-> $1 div 9;
-1036
-> z:=$1;
-> Norm(F.1^(z*e)) eq Norm(F.1^y);
-true
-> zz := BaseRing(l)!(F.1^z);
-> Parent(zz);
-Unramified extension defined by the polynomial x^6 + x^4 + 4*x^3 + x^2 + 2
- over 5-adic ring mod 5^20
-> quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
-Unramified extension of Quotient of the 5-adic ring modulo the ideal generated 
-by 5^20 modulo x^6 + x^4 + 4*x^3 + x^2 + 2
-> TeichmuellerLift(F.1^z, $1);
-1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
-    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
-> t:=$1;
-> Norm(t)/a-1;
-3575157952127*5 + O(5^20)
-> l!BaseRing(l)!F.1^z;
-43719153629260*$.1^5 + 21726433361167*$.1^4 - 30972319764843*$.1^3 - 
-    3424888499040*$.1^2 + 8506756284243*$.1 - 13239816221281
-> $1^((5^6)^20);
-1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
-    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
-> s:=$1;
-> Norm(Norm(s))/a-1;
-3575157952127*5 + O(5^20)
-> l!BaseRing(l)!F.1^z;
-43719153629260*$.1^5 + 21726433361167*$.1^4 - 30972319764843*$.1^3 - 
-    3424888499040*$.1^2 + 8506756284243*$.1 - 13239816221281
-> $1^((5^6)^100);
-1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
-    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
-> s:=$1;
-> Norm(Norm(s))/a-1;
-3575157952127*5 + O(5^20)
-> l!BaseRing(l)!F.1^z;
-43719153629260*$.1^5 + 21726433361167*$.1^4 - 30972319764843*$.1^3 - 
-    3424888499040*$.1^2 + 8506756284243*$.1 - 13239816221281
-> $1^((5^6)^10); 
-1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
-    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
-> s:=$1;
-> Norm(Norm(s))/a-1;
-3575157952127*5 + O(5^20)
-
-R<x>:=PolynomialRing(Integers()); 
-K:=pAdicField(5,20);
-L:=ext<UnramifiedExtension(K,6)|x^9+20>;
-kk:=RingOfIntegers(K);
-l:=RingOfIntegers(L); 
-f,mf:=ResidueClassField(kk);
-F,mF:=ResidueClassField(l); 
-pi:=UniformizingElement(kk);
-Pi:=UniformizingElement(l);
-mu:=(1+Pi*l.1^2);
-Norm(mu,kk);
-a:=$1;
-fa:=mf(a);
-q:=#F;
-e:=RamificationIndex(L,K);
-r:=Gcd(e,q-1);
-r;
-e;
-J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
-#J;
-J[120];
-y:=4284;
-k:=-y*Modinv(4,9) mod ((q-1));
-k;
-y+4*k mod ((q-1));
-$1 div 9;
-z:=$1;
-Norm(F.1^(z*e)) eq Norm(F.1^y);
-zz := BaseRing(l)!(F.1^z);
-Parent(zz);
-quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
-TeichmuellerLift(F.1^z, $1);
-t:=$1;
-Norm(t)/a-1;
-l!BaseRing(l)!F.1^z;
-$1^((5^6)^20);
-s:=$1;
-Norm(Norm(s))/a-1;
-l!BaseRing(l)!F.1^z;
-$1^((5^6)^100);
-s:=$1;
-Norm(Norm(s))/a-1;
-l!BaseRing(l)!F.1^z;
-$1^((5^6)^10);
-s:=$1;
-Norm(Norm(s))/a-1;
-
-
-\end{lstlisting}
-\begin{lstlisting}
-> R<x>:=PolynomialRing(Integers()); 
-> K:=pAdicField(5,20);
-> L:=ext<UnramifiedExtension(K,6)|x^9+20>;
-> kk:=RingOfIntegers(K);
-> l:=RingOfIntegers(L); 
-> f,mf:=ResidueClassField(kk);
-> F,mF:=ResidueClassField(l); 
-> pi:=UniformizingElement(kk);
-> a:=2*(1+pi*kk.1^2);    
-> fa:=mf(a); 
-> q:=#F;
-> e:=RamificationIndex(L,K);
-> r:=Gcd(e,q-1);
-> r;
-9
-> e;
-9
-> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
-> #J;
-434
-> J[120];
-F.1^4293
-> y:=4293;
-> k:=-y*Modinv(4,9) mod ((q-1));
-> k;
-1197
-> y+4*k mod ((q-1));
-9081
-> $1 div 9;
-1009
-> z:=$1;
-> Norm(F.1^(z*e)) eq Norm(F.1^y);
-true
-> zz := BaseRing(l)!(F.1^z);
-> Parent(zz);
-Unramified extension defined by the polynomial x^6 + x^4 + 4*x^3 + x^2 + 2
- over 5-adic ring mod 5^20
-> quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
-Unramified extension of Quotient of the 5-adic ring modulo the ideal generated 
-by 5^20 modulo x^6 + x^4 + 4*x^3 + x^2 + 2
-> TeichmuellerLift(F.1^z, $1);
-1862586676453*$.1^5 - 5785193003422*$.1^4 + 36744167270945*$.1^3 - 
-    42560942525731*$.1^2 + 29658407580449*$.1 - 33210603142769
-> t:=$1;
-> Norm(t)/a-1;
--3439145893768*5 + O(5^20)
-> l!BaseRing(l)!F.1^z;
--6706161466012*$.1^5 + 10767251860883*$.1^4 + 39839038481700*$.1^3 + 
-    185612827344*$.1^2 + 19557304418014*$.1 + 17589748453091
-> $1((5^6)^20);
-
->> $1((5^6)^20);
-     ^
-Runtime error in '@': Bad argument types
-Argument types given: RngIntElt, RngPadElt
-
-> l!BaseRing(l)!F.1^z;
--6706161466012*$.1^5 + 10767251860883*$.1^4 + 39839038481700*$.1^3 + 
-    185612827344*$.1^2 + 19557304418014*$.1 + 17589748453091
-> $1^((5^6)^20);      
-1862586676453*$.1^5 - 5785193003422*$.1^4 + 36744167270945*$.1^3 - 
-    42560942525731*$.1^2 + 29658407580449*$.1 - 33210603142769
-> s:=$1;
-> Norm(s);
-17264873516952*$.1^5 - 15130151538711*$.1^4 - 25159490456175*$.1^3 + 
-    21296605561881*$.1^2 + 22060257953098*$.1 + 32404607106365
-> Norm(Norm(s))/a-1;
--3439145893768*5 + O(5^20)
-> s-zz;
-1862586676450*$.1^5 - 5785193003425*$.1^4 + 36744167270945*$.1^3 - 
-    42560942525735*$.1^2 + 29658407580445*$.1 - 33210603142770
-> "s is the solution of a ";
-s is the solution of a 
-> %P
-R<x>:=PolynomialRing(Integers()); 
-K:=pAdicField(5,20);
-L:=ext<UnramifiedExtension(K,6)|x^9+20>;
-kk:=RingOfIntegers(K);
-l:=RingOfIntegers(L); 
-f,mf:=ResidueClassField(kk);
-F,mF:=ResidueClassField(l); 
-pi:=UniformizingElement(kk);
-a:=2*(1+pi*kk.1^2);
-fa:=mf(a); 
-q:=#F;
-e:=RamificationIndex(L,K);
-r:=Gcd(e,q-1);
-r;
-e;
-J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
-#J;
-J[120];
-y:=4293;
-k:=-y*Modinv(4,9) mod ((q-1));
-k;
-y+4*k mod ((q-1));
-$1 div 9;
-z:=$1;
-Norm(F.1^(z*e)) eq Norm(F.1^y);
-zz := BaseRing(l)!(F.1^z);
-Parent(zz);
-quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
-TeichmuellerLift(F.1^z, $1);
-t:=$1;
-Norm(t)/a-1;
-l!BaseRing(l)!F.1^z;
-$1((5^6)^20);
-l!BaseRing(l)!F.1^z;
-$1^((5^6)^20);
-s:=$1;
-Norm(s);
-Norm(Norm(s))/a-1;
-s-zz;
-"s is the solution of a ";
-
-Next Example
-
- R<x>:=PolynomialRing(Integers()); 
-> K:=pAdicField(7,20); 
-> L:=ext<UnramifiedExtension(K,6)|x^16+28>; 
-> kr:=RingOfIntegers(K);
-> l:=RingOfIntegers(L); 
-> f,mf:=ResidueClassField(k); 
-
->> f,mf:=ResidueClassField(k); 
-                           ^
-User error: Identifier 'k' has not been declared or assigned
-> F,mF:=ResidueClassField(l); 
-> pi:=UniformizingElement(kr);
-> Pi:=UniformizingElement(l);
-> mu:=1+Pi*l.1^2;
-> Norm(Norm(mu));
--8137045170898335
-> a:=$1;
-> fa:=mf(a); 
-
->> fa:=mf(a); 
-       ^
-User error: Identifier 'mf' has not been declared or assigned
-> q:=#F;
-> e:=RamificationIndex(L,K);
-> r:=Gcd(e,q-1);
-> r;
-16
-> e;
-16
-> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
-
->> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
-                              ^
-User error: Identifier 'mf' has not been declared or assigned
-> f,mf:=ResidueClassField(kr); 
-> fa:=mf(a); 
-> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
-> #J;
-2451
-> mu;
-l.1^3 + 1
-> J[120];
-F.1^5712
-> y:=5712;
-> k:=-2*(y div 2) *Modinv(3,8) mod ((q-1) div 2);
-> k;
-41688
-> (y)+6*k mod ((q-1));
-20544
-> $1 div 16;
-1284
-> 20544/16;
-1284
-> z:=1284;
-> Norm(F.1^(z*e)) eq Norm(F.1^y);
-true
-> zz := BaseRing(l)!(F.1^z);
-> Parent(zz);
-Unramified extension defined by the polynomial x^6 + x^4 + 5*x^3 + 4*x^2 + 6*x +
-    3
- over 7-adic ring mod 7^20
-> quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
-Unramified extension of Quotient of the 7-adic ring modulo the ideal generated 
-by 7^20 modulo x^6 + x^4 + 5*x^3 + 4*x^2 + 6*x + 3
-> TeichmuellerLift(F.1^z, $1);
-11301190541390189*$.1^5 - 577716996561021*$.1^4 - 30541615808233612*$.1^3 + 
-    32367321442551517*$.1^2 + 12283907573511177*$.1 + 22458058605923541
-> t:=$1;
-> Norm(t)/a-1;
--35251510373001*7^3 + O(7^20)
-> l!BaseRing(l)!F.1^z;
-15369376248580696*$.1^5 - 28514960393147377*$.1^4 + 28246516465639782*$.1^3 + 
-    17307311610437550*$.1^2 + 33918027913667333*$.1 + 7103303804806215
-> $1^((7^6)^20);
-11301190541390189*$.1^5 - 577716996561021*$.1^4 - 30541615808233612*$.1^3 + 
-    32367321442551517*$.1^2 + 12283907573511177*$.1 + 22458058605923541
-> Norm(Norm(s))/a-1;
-
->> Norm(Norm(s))/a-1;
-             ^
-User error: Identifier 's' has not been declared or assigned
-> l!BaseRing(l)!F.1^z;
-15369376248580696*$.1^5 - 28514960393147377*$.1^4 + 28246516465639782*$.1^3 + 
-    17307311610437550*$.1^2 + 33918027913667333*$.1 + 7103303804806215
-> $1^((7^6)^20);
-11301190541390189*$.1^5 - 577716996561021*$.1^4 - 30541615808233612*$.1^3 + 
-    32367321442551517*$.1^2 + 12283907573511177*$.1 + 22458058605923541
-> s:=$1;
-> Norm(Norm(s))/a-1;
--35251510373001*7^3 + O(7^20)
-> l!BaseRing(l)!F.1^z;
-15369376248580696*$.1^5 - 28514960393147377*$.1^4 + 28246516465639782*$.1^3 + 
-    17307311610437550*$.1^2 + 33918027913667333*$.1 + 7103303804806215
-> Norm($1);
--7648411713830891*$.1^5 + 12508381009243881*$.1^4 - 12720765566185340*$.1^3 + 
-    34139762455834157*$.1^2 + 5350546583518233*$.1 - 24130712356577562
-> Norm($1)/a-1;
--4741381599441516*7 + O(7^20)
-> %P
-R<x>:=PolynomialRing(Integers()); 
-K:=pAdicField(7,20); 
-L:=ext<UnramifiedExtension(K,6)|x^16+28>; 
-kr:=RingOfIntegers(K);
-l:=RingOfIntegers(L); 
-f,mf:=ResidueClassField(k); 
-F,mF:=ResidueClassField(l); 
-pi:=UniformizingElement(kr);
-Pi:=UniformizingElement(l);
-mu:=1+Pi*l.1^2;
-Norm(Norm(mu));
-a:=$1;
-fa:=mf(a); 
-q:=#F;
-e:=RamificationIndex(L,K);
-r:=Gcd(e,q-1);
-r;
-e;
-J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
-f,mf:=ResidueClassField(kr); 
-fa:=mf(a); 
-J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
-#J;
-mu;
-J[120];
-y:=5712;
-k:=-2*(y div 2) *Modinv(3,8) mod ((q-1) div 2);
-k;
-(y)+6*k mod ((q-1));
-$1 div 16;
-20544/16;
-z:=1284;
-Norm(F.1^(z*e)) eq Norm(F.1^y);
-zz := BaseRing(l)!(F.1^z);
-Parent(zz);
-quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
-TeichmuellerLift(F.1^z, $1);
-t:=$1;
-Norm(t)/a-1;
-l!BaseRing(l)!F.1^z;
-$1^((7^6)^20);
-Norm(Norm(s))/a-1;
-l!BaseRing(l)!F.1^z;
-$1^((7^6)^20);
-s:=$1;
-Norm(Norm(s))/a-1;
-l!BaseRing(l)!F.1^z;
-Norm($1);
-Norm($1)/a-1;
-\end{lstlisting}
-\vspace{90mm}
+%
+%\begin{lstlisting}
+%> R<x>:=PolynomialRing(Integers()); 
+%> K:=pAdicField(5,20);
+%> L:=ext<UnramifiedExtension(K,6)|x^9+20>;
+%> kk:=RingOfIntegers(K);
+%> l:=RingOfIntegers(L); 
+%> f,mf:=ResidueClassField(kk);
+%> F,mF:=ResidueClassField(l); 
+%> pi:=UniformizingElement(kk);
+%> Pi:=UniformizingElement(l);
+%> mu:=(1+Pi*l.1^2);
+%> Norm(mu,kk);
+%-32441541670284
+%> a:=$1;
+%> fa:=mf(a);
+%> q:=#F;
+%> e:=RamificationIndex(L,K);
+%> r:=Gcd(e,q-1);
+%> r;
+%9
+%> e;
+%9
+%> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
+%> #J;
+%434
+%> J[120];
+%F.1^4284
+%> y:=4284;
+%> k:=-y*Modinv(4,9) mod ((q-1));
+%> k;
+%1260
+%> y+4*k mod ((q-1));
+%9324
+%> $1 div 9;
+%1036
+%> z:=$1;
+%> Norm(F.1^(z*e)) eq Norm(F.1^y);
+%true
+%> zz := BaseRing(l)!(F.1^z);
+%> Parent(zz);
+%Unramified extension defined by the polynomial x^6 + x^4 + 4*x^3 + x^2 + 2
+% over 5-adic ring mod 5^20
+%> quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
+%Unramified extension of Quotient of the 5-adic ring modulo the ideal generated 
+%by 5^20 modulo x^6 + x^4 + 4*x^3 + x^2 + 2
+%> TeichmuellerLift(F.1^z, $1);
+%1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
+%    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
+%> t:=$1;
+%> Norm(t)/a-1;
+%3575157952127*5 + O(5^20)
+%> l!BaseRing(l)!F.1^z;
+%43719153629260*$.1^5 + 21726433361167*$.1^4 - 30972319764843*$.1^3 - 
+%    3424888499040*$.1^2 + 8506756284243*$.1 - 13239816221281
+%> $1^((5^6)^20);
+%1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
+%    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
+%> s:=$1;
+%> Norm(Norm(s))/a-1;
+%3575157952127*5 + O(5^20)
+%> l!BaseRing(l)!F.1^z;
+%43719153629260*$.1^5 + 21726433361167*$.1^4 - 30972319764843*$.1^3 - 
+%    3424888499040*$.1^2 + 8506756284243*$.1 - 13239816221281
+%> $1^((5^6)^100);
+%1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
+%    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
+%> s:=$1;
+%> Norm(Norm(s))/a-1;
+%3575157952127*5 + O(5^20)
+%> l!BaseRing(l)!F.1^z;
+%43719153629260*$.1^5 + 21726433361167*$.1^4 - 30972319764843*$.1^3 - 
+%    3424888499040*$.1^2 + 8506756284243*$.1 - 13239816221281
+%> $1^((5^6)^10); 
+%1460431311730*$.1^5 - 22847830757203*$.1^4 + 22594378813347*$.1^3 + 
+%    26080130363300*$.1^2 + 32456939542293*$.1 - 38115834103681
+%> s:=$1;
+%> Norm(Norm(s))/a-1;
+%3575157952127*5 + O(5^20)
+%
+%R<x>:=PolynomialRing(Integers()); 
+%K:=pAdicField(5,20);
+%L:=ext<UnramifiedExtension(K,6)|x^9+20>;
+%kk:=RingOfIntegers(K);
+%l:=RingOfIntegers(L); 
+%f,mf:=ResidueClassField(kk);
+%F,mF:=ResidueClassField(l); 
+%pi:=UniformizingElement(kk);
+%Pi:=UniformizingElement(l);
+%mu:=(1+Pi*l.1^2);
+%Norm(mu,kk);
+%a:=$1;
+%fa:=mf(a);
+%q:=#F;
+%e:=RamificationIndex(L,K);
+%r:=Gcd(e,q-1);
+%r;
+%e;
+%J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
+%#J;
+%J[120];
+%y:=4284;
+%k:=-y*Modinv(4,9) mod ((q-1));
+%k;
+%y+4*k mod ((q-1));
+%$1 div 9;
+%z:=$1;
+%Norm(F.1^(z*e)) eq Norm(F.1^y);
+%zz := BaseRing(l)!(F.1^z);
+%Parent(zz);
+%quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
+%TeichmuellerLift(F.1^z, $1);
+%t:=$1;
+%Norm(t)/a-1;
+%l!BaseRing(l)!F.1^z;
+%$1^((5^6)^20);
+%s:=$1;
+%Norm(Norm(s))/a-1;
+%l!BaseRing(l)!F.1^z;
+%$1^((5^6)^100);
+%s:=$1;
+%Norm(Norm(s))/a-1;
+%l!BaseRing(l)!F.1^z;
+%$1^((5^6)^10);
+%s:=$1;
+%Norm(Norm(s))/a-1;
+%
+%
+%\end{lstlisting}
+%\begin{lstlisting}
+%> R<x>:=PolynomialRing(Integers()); 
+%> K:=pAdicField(5,20);
+%> L:=ext<UnramifiedExtension(K,6)|x^9+20>;
+%> kk:=RingOfIntegers(K);
+%> l:=RingOfIntegers(L); 
+%> f,mf:=ResidueClassField(kk);
+%> F,mF:=ResidueClassField(l); 
+%> pi:=UniformizingElement(kk);
+%> a:=2*(1+pi*kk.1^2);    
+%> fa:=mf(a); 
+%> q:=#F;
+%> e:=RamificationIndex(L,K);
+%> r:=Gcd(e,q-1);
+%> r;
+%9
+%> e;
+%9
+%> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
+%> #J;
+%434
+%> J[120];
+%F.1^4293
+%> y:=4293;
+%> k:=-y*Modinv(4,9) mod ((q-1));
+%> k;
+%1197
+%> y+4*k mod ((q-1));
+%9081
+%> $1 div 9;
+%1009
+%> z:=$1;
+%> Norm(F.1^(z*e)) eq Norm(F.1^y);
+%true
+%> zz := BaseRing(l)!(F.1^z);
+%> Parent(zz);
+%Unramified extension defined by the polynomial x^6 + x^4 + 4*x^3 + x^2 + 2
+% over 5-adic ring mod 5^20
+%> quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
+%Unramified extension of Quotient of the 5-adic ring modulo the ideal generated 
+%by 5^20 modulo x^6 + x^4 + 4*x^3 + x^2 + 2
+%> TeichmuellerLift(F.1^z, $1);
+%1862586676453*$.1^5 - 5785193003422*$.1^4 + 36744167270945*$.1^3 - 
+%    42560942525731*$.1^2 + 29658407580449*$.1 - 33210603142769
+%> t:=$1;
+%> Norm(t)/a-1;
+%-3439145893768*5 + O(5^20)
+%> l!BaseRing(l)!F.1^z;
+%-6706161466012*$.1^5 + 10767251860883*$.1^4 + 39839038481700*$.1^3 + 
+%    185612827344*$.1^2 + 19557304418014*$.1 + 17589748453091
+%> $1((5^6)^20);
+%
+%>> $1((5^6)^20);
+%     ^
+%Runtime error in '@': Bad argument types
+%Argument types given: RngIntElt, RngPadElt
+%
+%> l!BaseRing(l)!F.1^z;
+%-6706161466012*$.1^5 + 10767251860883*$.1^4 + 39839038481700*$.1^3 + 
+%    185612827344*$.1^2 + 19557304418014*$.1 + 17589748453091
+%> $1^((5^6)^20);      
+%1862586676453*$.1^5 - 5785193003422*$.1^4 + 36744167270945*$.1^3 - 
+%    42560942525731*$.1^2 + 29658407580449*$.1 - 33210603142769
+%> s:=$1;
+%> Norm(s);
+%17264873516952*$.1^5 - 15130151538711*$.1^4 - 25159490456175*$.1^3 + 
+%    21296605561881*$.1^2 + 22060257953098*$.1 + 32404607106365
+%> Norm(Norm(s))/a-1;
+%-3439145893768*5 + O(5^20)
+%> s-zz;
+%1862586676450*$.1^5 - 5785193003425*$.1^4 + 36744167270945*$.1^3 - 
+%    42560942525735*$.1^2 + 29658407580445*$.1 - 33210603142770
+%> "s is the solution of a ";
+%s is the solution of a 
+%> %P
+%R<x>:=PolynomialRing(Integers()); 
+%K:=pAdicField(5,20);
+%L:=ext<UnramifiedExtension(K,6)|x^9+20>;
+%kk:=RingOfIntegers(K);
+%l:=RingOfIntegers(L); 
+%f,mf:=ResidueClassField(kk);
+%F,mF:=ResidueClassField(l); 
+%pi:=UniformizingElement(kk);
+%a:=2*(1+pi*kk.1^2);
+%fa:=mf(a); 
+%q:=#F;
+%e:=RamificationIndex(L,K);
+%r:=Gcd(e,q-1);
+%r;
+%e;
+%J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 9)];
+%#J;
+%J[120];
+%y:=4293;
+%k:=-y*Modinv(4,9) mod ((q-1));
+%k;
+%y+4*k mod ((q-1));
+%$1 div 9;
+%z:=$1;
+%Norm(F.1^(z*e)) eq Norm(F.1^y);
+%zz := BaseRing(l)!(F.1^z);
+%Parent(zz);
+%quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
+%TeichmuellerLift(F.1^z, $1);
+%t:=$1;
+%Norm(t)/a-1;
+%l!BaseRing(l)!F.1^z;
+%$1((5^6)^20);
+%l!BaseRing(l)!F.1^z;
+%$1^((5^6)^20);
+%s:=$1;
+%Norm(s);
+%Norm(Norm(s))/a-1;
+%s-zz;
+%"s is the solution of a ";
+%
+%Next Example
+%
+% R<x>:=PolynomialRing(Integers()); 
+%> K:=pAdicField(7,20); 
+%> L:=ext<UnramifiedExtension(K,6)|x^16+28>; 
+%> kr:=RingOfIntegers(K);
+%> l:=RingOfIntegers(L); 
+%> f,mf:=ResidueClassField(k); 
+%
+%>> f,mf:=ResidueClassField(k); 
+%                           ^
+%User error: Identifier 'k' has not been declared or assigned
+%> F,mF:=ResidueClassField(l); 
+%> pi:=UniformizingElement(kr);
+%> Pi:=UniformizingElement(l);
+%> mu:=1+Pi*l.1^2;
+%> Norm(Norm(mu));
+%-8137045170898335
+%> a:=$1;
+%> fa:=mf(a); 
+%
+%>> fa:=mf(a); 
+%       ^
+%User error: Identifier 'mf' has not been declared or assigned
+%> q:=#F;
+%> e:=RamificationIndex(L,K);
+%> r:=Gcd(e,q-1);
+%> r;
+%16
+%> e;
+%16
+%> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
+%
+%>> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
+%                              ^
+%User error: Identifier 'mf' has not been declared or assigned
+%> f,mf:=ResidueClassField(kr); 
+%> fa:=mf(a); 
+%> J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
+%> #J;
+%2451
+%> mu;
+%l.1^3 + 1
+%> J[120];
+%F.1^5712
+%> y:=5712;
+%> k:=-2*(y div 2) *Modinv(3,8) mod ((q-1) div 2);
+%> k;
+%41688
+%> (y)+6*k mod ((q-1));
+%20544
+%> $1 div 16;
+%1284
+%> 20544/16;
+%1284
+%> z:=1284;
+%> Norm(F.1^(z*e)) eq Norm(F.1^y);
+%true
+%> zz := BaseRing(l)!(F.1^z);
+%> Parent(zz);
+%Unramified extension defined by the polynomial x^6 + x^4 + 5*x^3 + 4*x^2 + 6*x +
+%    3
+% over 7-adic ring mod 7^20
+%> quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
+%Unramified extension of Quotient of the 7-adic ring modulo the ideal generated 
+%by 7^20 modulo x^6 + x^4 + 5*x^3 + 4*x^2 + 6*x + 3
+%> TeichmuellerLift(F.1^z, $1);
+%11301190541390189*$.1^5 - 577716996561021*$.1^4 - 30541615808233612*$.1^3 + 
+%    32367321442551517*$.1^2 + 12283907573511177*$.1 + 22458058605923541
+%> t:=$1;
+%> Norm(t)/a-1;
+%-35251510373001*7^3 + O(7^20)
+%> l!BaseRing(l)!F.1^z;
+%15369376248580696*$.1^5 - 28514960393147377*$.1^4 + 28246516465639782*$.1^3 + 
+%    17307311610437550*$.1^2 + 33918027913667333*$.1 + 7103303804806215
+%> $1^((7^6)^20);
+%11301190541390189*$.1^5 - 577716996561021*$.1^4 - 30541615808233612*$.1^3 + 
+%    32367321442551517*$.1^2 + 12283907573511177*$.1 + 22458058605923541
+%> Norm(Norm(s))/a-1;
+%
+%>> Norm(Norm(s))/a-1;
+%             ^
+%User error: Identifier 's' has not been declared or assigned
+%> l!BaseRing(l)!F.1^z;
+%15369376248580696*$.1^5 - 28514960393147377*$.1^4 + 28246516465639782*$.1^3 + 
+%    17307311610437550*$.1^2 + 33918027913667333*$.1 + 7103303804806215
+%> $1^((7^6)^20);
+%11301190541390189*$.1^5 - 577716996561021*$.1^4 - 30541615808233612*$.1^3 + 
+%    32367321442551517*$.1^2 + 12283907573511177*$.1 + 22458058605923541
+%> s:=$1;
+%> Norm(Norm(s))/a-1;
+%-35251510373001*7^3 + O(7^20)
+%> l!BaseRing(l)!F.1^z;
+%15369376248580696*$.1^5 - 28514960393147377*$.1^4 + 28246516465639782*$.1^3 + 
+%    17307311610437550*$.1^2 + 33918027913667333*$.1 + 7103303804806215
+%> Norm($1);
+%-7648411713830891*$.1^5 + 12508381009243881*$.1^4 - 12720765566185340*$.1^3 + 
+%    34139762455834157*$.1^2 + 5350546583518233*$.1 - 24130712356577562
+%> Norm($1)/a-1;
+%-4741381599441516*7 + O(7^20)
+%> %P
+%R<x>:=PolynomialRing(Integers()); 
+%K:=pAdicField(7,20); 
+%L:=ext<UnramifiedExtension(K,6)|x^16+28>; 
+%kr:=RingOfIntegers(K);
+%l:=RingOfIntegers(L); 
+%f,mf:=ResidueClassField(k); 
+%F,mF:=ResidueClassField(l); 
+%pi:=UniformizingElement(kr);
+%Pi:=UniformizingElement(l);
+%mu:=1+Pi*l.1^2;
+%Norm(Norm(mu));
+%a:=$1;
+%fa:=mf(a); 
+%q:=#F;
+%e:=RamificationIndex(L,K);
+%r:=Gcd(e,q-1);
+%r;
+%e;
+%J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
+%f,mf:=ResidueClassField(kr); 
+%fa:=mf(a); 
+%J :=[b: b in F| Norm(b) eq mf(a) and IsPower(b, 16)];
+%#J;
+%mu;
+%J[120];
+%y:=5712;
+%k:=-2*(y div 2) *Modinv(3,8) mod ((q-1) div 2);
+%k;
+%(y)+6*k mod ((q-1));
+%$1 div 16;
+%20544/16;
+%z:=1284;
+%Norm(F.1^(z*e)) eq Norm(F.1^y);
+%zz := BaseRing(l)!(F.1^z);
+%Parent(zz);
+%quo<BaseRing(l)| UniformizingElement(BaseRing(l))^20 >;
+%TeichmuellerLift(F.1^z, $1);
+%t:=$1;
+%Norm(t)/a-1;
+%l!BaseRing(l)!F.1^z;
+%$1^((7^6)^20);
+%Norm(Norm(s))/a-1;
+%l!BaseRing(l)!F.1^z;
+%$1^((7^6)^20);
+%s:=$1;
+%Norm(Norm(s))/a-1;
+%l!BaseRing(l)!F.1^z;
+%Norm($1);
+%Norm($1)/a-1;
+%\end{lstlisting}
+%\vspace{90mm}
 
 \section{ClNormEquation and TameNormEQuation}
 \section{Abstract}
@@ -1086,7 +1118,27 @@ The following examples and table show the effectiveness of our algorithms.
  12) $Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
     $a:=1+2*K.1^8;$  \\
  13) $Q_3:= pAdicRing(3,10); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-     $a:=1+2*K.1^8;$  \   
+     $a:=1+2*K.1^8;$  \\
+     
+\begin{remark}
+We computed the norm equation for any unit element of ring of integer $\mathcal{O}_{K}$ of $K$ in the finite extension $L/K$. Due to the fact $N(U_{L})\subset U_{K}$ we can compute the elements of which do not have solution once we have the map from $O_{K}$ to unit group $U_{K}$. We see below how to find such elements:
+\end{remark}
+
+\begin{lstlisting}
+> x := PolynomialRing(Integers()).1;
+> K := pAdicRing(3,10);
+> M := UnramifiedExtension(K,2);  
+> L:= ext<M| x^4+3*x+3>;
+> U,mU := UnitGroup(M);
+> N,mN := NormGroup(L, mU);
+> q,mq := quo<U|N>; 
+> F := [x@@mq@mU: x in q];
+> [NormEquation(L,mU,F[i]): i in [2..#F]]; 
+[ false, false, false ]
+\end{lstlisting}
+From above example we can see that there are three elements in $U_{M}$ whic has no solution for norm equation. 
+% Therefore, any element $x$ of $U_{M}$ which has a factor $x_f$ having no solution of norm equation then we mean $x$ has no solution for norm equation because of the multiplicative properties of Norm operator from $N: L \rightarrow K$. %Not true"";
+
 %$\&  L:=ext<K|12>;$ 
 %\clearpage
 
