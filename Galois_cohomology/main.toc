@@ -7,21 +7,23 @@
 \vspace {2em}
 \contentsline {chapter}{\numberline {1}Preleminaries}{1}{chapter.6}
 \contentsline {section}{\numberline {1.1}Basic Definitons}{1}{section.7}
-\contentsline {chapter}{\numberline {2}Introduction}{2}{chapter.10}
-\contentsline {section}{\numberline {2.1}Introduction}{2}{section.11}
-\contentsline {subsection}{\numberline {2.1.1}Mappings on Cohomology}{3}{subsection.14}
-\contentsline {chapter}{\numberline {3}Norm Equation}{7}{chapter.34}
-\contentsline {section}{\numberline {3.1}Norm Equation}{7}{section.35}
-\contentsline {section}{\numberline {3.2}ClNormEquation and TameNormEQuation}{11}{section.159}
-\contentsline {section}{\numberline {3.3}Abstract}{11}{section.160}
-\contentsline {section}{\numberline {3.4}Introduction}{11}{section.162}
-\contentsline {section}{\numberline {3.5}Unit group}{13}{section.173}
-\contentsline {section}{\numberline {3.6}Norm Group}{15}{section.180}
-\contentsline {section}{\numberline {3.7}Solving Norm Equations}{17}{section.182}
-\contentsline {subsection}{\numberline {3.7.1}Algorithm:}{20}{subsection.208}
-\contentsline {subsection}{\numberline {3.7.2}Algorithm:}{21}{subsection.214}
+\contentsline {section}{\numberline {1.2}Local Field}{3}{section.21}
+\contentsline {section}{\numberline {1.3}Global Field}{5}{section.27}
+\contentsline {chapter}{\numberline {2}Introduction}{7}{chapter.30}
+\contentsline {section}{\numberline {2.1}Introduction}{7}{section.31}
+\contentsline {subsection}{\numberline {2.1.1}Mappings on Cohomology}{8}{subsection.34}
+\contentsline {chapter}{\numberline {3}Norm Equation}{12}{chapter.54}
+\contentsline {section}{\numberline {3.1}Norm Equation}{12}{section.55}
+\contentsline {section}{\numberline {3.2}ClNormEquation and TameNormEQuation}{16}{section.179}
+\contentsline {section}{\numberline {3.3}Abstract}{16}{section.180}
+\contentsline {section}{\numberline {3.4}Introduction}{16}{section.182}
+\contentsline {section}{\numberline {3.5}Unit group}{18}{section.189}
+\contentsline {section}{\numberline {3.6}Norm Group}{20}{section.196}
+\contentsline {section}{\numberline {3.7}Solving Norm Equations}{21}{section.198}
+\contentsline {subsection}{\numberline {3.7.1}Algorithm:}{25}{subsection.224}
+\contentsline {subsection}{\numberline {3.7.2}Algorithm:}{26}{subsection.230}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{24}{appendix.231}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{24}{section.232}
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{29}{appendix.247}
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{29}{section.248}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{25}{dummy.233}
+\contentsline {chapter}{Bibliography}{30}{dummy.249}

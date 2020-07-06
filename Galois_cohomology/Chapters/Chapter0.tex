@@ -6,6 +6,11 @@
 
 %------------------------------------------------------------------------------------
 \def\Gal{\mathop{\mathrm{Gal}}\nolimits}
+\def\T{\mathop{\mathrm{T}}\nolimits}
+\def\GCD{\mathop{\mathrm{GCD}}\nolimits}
+\def\modulo{\mathop{\mathrm{mod}}\nolimits}
+\def\valuation{\mathop{\mathrm{valuation}}\nolimits}
+\def\v{\mathop{\mathrm{v}}\nolimits}
 \def\Aut{\mathop{\mathrm{Aut}}\nolimits}
 \section{Basic Definitons}
 In my research I will be working mostly on number fields. A field extension $L/K$ is said to be algebraic if every element $\alpha \in L$ is algebraic over $K$, that is, for every $\alpha \in L$  there exists some nonzero polynomial in $ f \in K[x]$ such that $\alpha$ is a zero of $f$. In my work I will always assume the algebraic field extension. The algebraic field extension $L/K$ is called an algebraic number field when $K =\mathbb{Q}$. 
@@ -17,3 +22,149 @@ An element $\alpha \in L$ is said to be integrable over $\mathbb{Z}$ if there ex
 \begin{definition}
 The maximal order for an extension $L/\mathbb{Q}$ is denoted by $\mathcal{O}_{L}$ or $\mathbb{Z}_{L}$ is the set of all integrable elements of $L$ over $\mathbb{Z}$.
 \end{definition}
+An order of $R$ of any number field $L$ is a unitary subring $R\subset L$ which is finitely generated as $\mathbb{Z}$-module and field of fractions $Q(R) =L$. One can find the details of computation of maximal order in the lecture note of Fieker. \\
+\begin{definition}
+Let $R$ be a commutative and unitary integral domain and $Q(R)$ its field of fractions. An $R$-submodule $B\leq Q(R)$ is called a fractional ideal if there exists $0 \neq \alpha \in R$ such that $\alpha\cdot B\subset R$. A fractional ideal $A$ is said to be invertible if there is some fractional ideal $B$ such that $AB=R$.
+\end{definition}
+Fractional ideals are not ideals in the usual sense.\\
+\begin{theorem}
+Let $L$ be an algebraic number field with maximal order $\mathcal{O}_{L}$, then the fractional ideals of $\mathcal{O}_{L}$ form an abelian and it is denoted by $I_{L}$. The identity element is $1=\mathcal{O}_{L}$ and the inverse of a fractional ideal $A$ is 
+\[ A^{-1} = \{ x \in \mathcal{O}_{L} \mid xA\subset \mathcal{O}_{L}\}= [O_{L}:A].\] 
+\end{theorem}
+\begin{proof}
+\cite{Neukirch_Alg}, Proposition $3.8$.
+\end{proof}
+The fractional principal ideal $(\alpha) = \alpha \mathcal{O}_{L}, \alpha \in L^{\times}$ , form a subgroup of the group of ideals $I_{L}$, which we denote by $P_{L}$. The quotient group $I_{L}/P_{L}=Cl_{L}$ is finite and called the ideal class group of $L$. The cardinality of this group $Cl_{L}$ is called the class number for $L$ and it is denoted by $h_{L}$. One can see \cite{Fieker_ideal} for details on the computation of ideal class group.
+
+\begin{theorem}
+Let $\mathcal{O}$ be any order of a number filed, then there are unit $\zeta, \epsilon_{1}, \ldots, \epsilon_{r} \in \mathcal{O}^{*}$ such that 
+\begin{enumerate}
+\item torsion unit group $TU(\mathcal{O})= \langle \zeta \rangle$,
+\item $(\epsilon_{i})_{i}$ are free,
+\item $\mathcal{O}^{*} = \langle \zeta, \epsilon_{1}, \ldots, \epsilon_{r} \rangle$.
+\end{enumerate} 
+\end{theorem}
+If $\mathcal{O}$ is the maximal order of number field $L$ then $r= r_1+r_2-1$ is the rank of unit group of $\mathcal{O}$, where $r_1$ is the number of real embeddings and $r_2$ is the number of conjugates pairs of complex embeddings of $L$. For any Galois field extension $L/\mathbb{Q}$ of degree $n$, either $r_1 =0$ or $r_2=0$ and $n= r_1 + 2\cdot r_2$.\\
+\begin{definition}
+ Let $K$ be a field. A discrete valuation on $K$ is a function $\v: K \rightarrow \mathbb{Z} \cup \{\infty \}$, such that for every  $x,y \in K$,
+    \begin{description}[align=left]
+    \item [V1.] $\v(x) = \infty \mbox{ if and only if } x=0$,
+    \item [V2.] $\v(xy)= \v(x)+ \v(y)$ and
+    \item [V3.] $\v(x+y) \geq \min(\v(x),\v(y))$.\\
+Each discrete valuation  on $K$ induces a non-archimedian absolute value via $|x|= c^{\v(x)}$, where c is any constant with $0<c<1$.  
+  \end{description}
+\end{definition}
+An absolute $|\cdot|$ value on $K$ defines a metric via 
+$d(a,b)=|a-b|$ and hence form a topology on $K$. For any element $a \in K$, one can define the open neighbourhood of $a$ as
+\[ U(a, \delta)= \{ x\in K\mid |x-a| < \delta \}, \delta > 0.\]
+%A set $B$ is said to be open if $B=\Cup_{} U(a,\delta)$.
+Let $|\cdot|_1 $ and $|\cdot|_2$ be two absolute values on $K$. From \cite{Neukirch_Alg}, they are equivalent iff $\exists$ $r>0$ such that we have $|x|_1 = |x|_{2}^{r}$ for all $x \in K$.
+Let $K$ be an algebraic number field, then an equivalence class of valuations on $K$ is called a prime or place of $K$. 
+%\begin{proposition}
+%A discrete valuation $\v$ on a field $L$ can be uniquley extensded to a discrete valuation on the completion $\hat{L}$ of $L$ with respect to the valuation topology.
+%\end{proposition}
+%\begin{proof}
+%\cite{Neukirch_Alg}, Proposition $1$.
+%\end{proof}
+\begin{theorem}
+Let $K$ be a number field, then there is exactly one prime of $K$
+\begin{enumerate}
+\item for each prime ideal $\mathfrak{p}$ of $K$,
+\item for each real embedding of $K$,
+\item for each conjugate pair of complex embeddings of $K$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Milne's note
+\end{proof}
+
+\section{Local Field}
+\begin{example}
+On the field of rational $\mathbb{Q}$, for every prime $p$, the $p$-adic valuation $\v_{p}:\mathbb{Q} \rightarrow \mathbb{Z}\cup \{ \infty \}$ can be defined as  
+\[ \v_{p}(p^{a}\cdot \frac{r}{s})= a \] where $p$ does not divide $r$ and $s$.  
+\end{example}
+In fact one can induce a non archimedian $p$-adic absolute value $| \cdot |_{p}$ on $\mathbb{Q}$  as \[   |\alpha|_{p} = p^{-\v_{p}(\alpha)}. \]
+\begin{theorem}
+ The non-trivial absolute values on $\mathbb{Q}$ are equivalent to $|\cdot|_{p}$ or the ordinary absolute value $|\cdot|_{\infty}$.
+\end{theorem}
+\begin{proof}
+\cite{Neukirch_Alg}
+\end{proof}
+A field $L$ together with an absolute value $|\cdot|$ is said to be complete if every Cauch sequnce in $L$ converges in $L$, that is for evry sequence $(a_{n})$ of $L$, and $m, n \rightarrow \infty $ with $|a_n- a_m| \rightarrow 0$, there exists $a \in L$ such that $|a_n-a|\rightarrow 0.$ 
+\begin{theorem}
+Let $(K,|\cdot|_K)$ be a pair of complete field with respect to a discrete absolute value $|\cdot|_{K}$ and suppose $L/K$ be a finite separable extension of degree $n$. Then $|\cdot|_{K} $ can be extneded uniquely to a discrete absolute value $|\cdot|_{L}$ and  $(L, |\cdot|_{L})$ is complete with respect to $|\cdot|_{L}$ and for all $\alpha \in L$,
+\[  |\alpha|_{L}= |N_{L/K}(\alpha)|_{K}^{1/n}. \]
+%Every field $L$ with absolute value $||$ can be embedded in a complete field $\hat{L}$ with an absolute value extending the original absolute value in such a way that $\hat{L}$ is the closure of $L$ with respect to $|\cdot |$. Furthermore $\hat{L}$ is unique(up to isomorphism). 
+\end{theorem}
+\begin{proof}
+Cassels
+\end{proof}
+$\mathbb{Q}_{p}$ is the completion of the $\mathbb{Q}$ with non-archimedian absolute value $|\cdot|_{p}$, that is, every Causchy sequence in $\mathbb{Q}_{p}$ converges with respect to $|\cdot |_{p}$. The $p$-adic absolute value satisfies $|a+b|_{p}\leq \max\{|a|_{p}, |b|_{p} \leq |a|_{p}+|b|_{p}\}$.
+
+In this we are mainly interested in the local fields of characteristic zero which are finite extension of $\mathbb{Q}_{p}$ for any prime number $p$. 
+\begin{proposition}
+Let $L$ together with non archimedian absolute value $|\cdot|$ is a finite extension of $\mathbb{Q}_{p}$, then $\mathcal{O}_{L} = \{ x\in L \mid |x| \leq 1 \}$ is a ring with unit group $\mathcal{O}_{L}^{*}= \{x\in L \mid |x| =1 \}$ and the unique maximal ideal $\mathfrak{p}_{L} = \{x\in L \mid |x| <1  \}$. 
+\end{proposition}
+\begin{proof}
+\cite{Neukirch_Alg}, Proposition $3.8$.
+\end{proof}
+The ring $\mathcal{O}_{L}$ of $L$ is said to be the ring of integers of $L$ and the quotient $\mathcal{O}_{L}/ \mathfrak{p}_{L}$ is called residue class field of $L$. An element  $\pi_{L} \in \mathcal{O}_{L}$ is said to be a uniformizing element or prime element if $\v_{L}(\pi_{L})=1$. Every element $a$ of $L^{*}$ can be uniquely represented as $a= \pi_{L}^{m}\cdot u$ where $m \in \mathbb{Z}$ and $u$ is a unit in $\mathcal{O}_{L}^{*}$. In particular for $p$-adic field $\mathbb{Q}_{p}$ we have the ring of integers is $ \mathbb{Z}_{p}= \mathcal{O}_{\mathbb{Q}_{p}}= \{ a\in \mathbb{Q}_{p} \mid |a|_{p}\leq 1 $ and the unique maximal ideal is $\mathfrak{P} =\{a \in \mathbb{Z}_{p} \mid |a|_p > 1 \}$. The residue class field of $\mathbb{Q}_{p}$ is $\mathbb{Z}_{p}/\mathfrak{P} \cong \mathbb{Z}/p\mathbb{Z}.$ 
+%\begin{proposition}
+%The set
+%\[ \mathbb{Z}_{p}= \mathcal{O}_{\mathbb{Q}_{p}}= \{ a\in \mathbb{Q}_{p} \mid |a|_{p} \leq 1\}\] is a subring of $\mathbb{Q}_{p}$. It is the closure with respect to  $p$-adic absolute value $|\cdot|_p$ of the ring $\mathbb{Z}$ in the field $\mathbb{Q}_p$. 
+%\end{proposition}
+%\begin{proof}
+%\cite{Neukirch_Alg}, Proposition $2.3$.
+%\end{proof}
+%Infact the above ring $\mathbb{Z}_{p}$ is local ring with unique maximal ideal $\mathfrak{P} =\{a \in \mathbb{Z}_{p} \mid |a|_p > 1 \}$ and the the unit group of $\mathbb{Z}_{p}$ is 
+%\[ \mathbb{Z}_{p}^{*} = \{a \in \mathbb{Z}_{p} \mid |a|_p =1 \}.\]
+%The quotient $\mathbb{Z}_{p}/\mathfrak{P} $ is the residue class field of $\mathbb{Q}_{p}$.
+Every element $a$ of $ \mathbb{Q}_{p}^{*}$ can be expressed uniquely as 
+\[ a = p^{m}\cdot u \mbox{ where } m \in \mathbb{Z} \mbox{  and } u \in \mathbb{Z}_{p}^{*} \] 
+%For any $n\geq 0$, we obtain non zero ideals 
+%\[\mathfrak{p}_{L}^{n}= \pi_{L}\mathcal{O}_{L}= \{ x\in L \mid |x| \leq n \}\]
+% of $\mathcal{O}_{L}$
+For $L$ together with non-archimedian absolute value, we obtain the descending chain 
+\[\mathcal{O}_{L} \supseteq \mathfrak{p}_{L} \subseteq \mathfrak{p}_{L}^{2} \subseteq \mathfrak{p}_{L}^{3} \subseteq \cdots \]
+of the ideals of $\mathcal{O}_{L}$ which forms a basis of neighbourhoods of the zero element where $ \pi_{L}^{n} = \{ x\in L \mid |x| < q^{-(n-1)} \}$ where $q=|\mathcal{O}_{L}/\mathfrak{p}_{L}| >1$. Similary a basis of the element $1$ of $ K^{*}$, we have the chain $\mathcal{O}_{L}^{*}= U_{0} \supseteq U_{1}\supseteq U_{2}\supseteq U_{3} \cdots$ of the subgroups of $O_{L}^{*}$ where $U_{n}$ is defined as
+\[ U_{n} = 1+\mathfrak{p}_{L}^{n}= \left\{ x \in L^{*} \mid |x-1| < \frac{1}{q^{n-1}} \right\} \] 
+for $n>0$. The subgroup $U_{n}$ of $\mathcal{O}_{L^{*}}$ is called $n$-th higher unit group and the $U_{1}$ the principal unit group. Let us define the surjective homomorphism
+\[ \mathcal{O}_{L}^{*} \rightarrow (\mathcal{O}_{L}/ \mathfrak{p}_{L}^{n}), \mbox{  } x\mapsto x \modulo \mathfrak{p}_{L}^{n}.\]
+Which has kernel $U_{n}$ thus one obtains $\mathcal{O}_{L}^{*}/U_{n}\cong (\mathcal{O}_{L}/\mathfrak{p}_{L}^{n})^{*}$. Similary if we define the surjective homomorphism $U_{n} \rightarrow \mathcal{O}_{L}/ \mathfrak{p}_{L}$ by $x=1+\pi_{L}a\mapsto a \modulo \mathfrak{p}_{L},$ which has kernel clearly $U_{n+1}$. Therefore, we obtain $U_{n}/U_{n+1}= \mathcal{O}_{L}/\mathfrak{p}_{L}$.\\
+In the thirs chapter we define the exponential function and logarithmic function the finite extension $L/\mathbb{Q}_{p}$ which link between $U_{n}$ and $\mathfrak{p}_{L}$.\\
+\begin{definition}
+Let $L/K$ be a finite extension of local fields over $\mathbb{Q}_{p}$ then $L$ is called unramified over $K$ if the residue class field $\mathcal{O}_{L}/\mathfrak{p}_{L}$ of $L$ is a separable extnension of the residue class field of  $\mathcal{O}_{K}/\mathfrak{p}_{K}$ of $K$ and \[ [L:K]= [ \mathcal{O}_{L}/\mathfrak{p}_{L} : \mathcal{O}_{K}/\mathfrak{p}_{K}]. \]
+\end{definition}
+The field $L$ is called tamely ramified over $K$ if the residue class field $\mathcal{O}_{L}/\mathfrak{p}_{L}$ of $L$ is a separable extnension of the residue class field of  $\mathcal{O}_{K}/\mathfrak{p}_{K}$ of $K$ and $\GCD([L:K], p)=1$ else it is wildly ramified.\\
+
+
+In the capter "Norm Equation" we go through details of local fied extension over $\mathbb{Q}_{p}$.
+%= [ \mathcal{O}_{L}/\mathfrak{p}_{L} : \mathcal{O}_{K}/\mathfrak{p}_{K}]. \]
+
+\cite{Neukirch_Alg, Lorenz}:
+Theorem5.7\\
+\section{Global Field}
+A global field is an algebraic number field or a fuction field in one variable over a finite field. We only work over the case of finite extension of $\mathbb{Q}$. Let $L/K$ be a finite Galois extension of the number fields with Galois grouop $G=\Gal(L/K)$. If $K\neq \mathbb{Q}$ then it $L$ is said to be  a relative field extension and in this case we have $\mathbb{Q}\leq K\leq L$. Let $\v$ be the valuation on $K$. If $\v$ is an archimedian valuation the the localization of $K$ at $v$ denoted by $K_v$ is either $\mathbb{R}$ or $\mathbb{C}$ otherwise $K_v$ is a finite extension $p$-adic field for some prime number $p$. Let $w$ be a valutation of $L$ then for every $\sigma \in G$, $w\circ \sigma$ also extends $v$, so the group $G$ acts on the set of of extensions $w\mid v$.
+\begin{proposition}
+Let $L/K$ be a Galois field extension, then the Galois group $G=\Gal(L/K)$ acts transtively on the set of extensions $w\mid v$.
+\end{proposition}
+\begin{proof}
+\cite{Neukirch_Alg}, Proposition 9.1.
+\end{proof}
+\begin{definition}
+For any finite Galois field extension $L/K$ with valuation $v$ of $K$, the decomposition group of an extension $w$ of $v$ to $L$ is definies as 
+\[ G_w= \{ \sigma \in \Gal(L/K) \mid w\circ \sigma =w  . \} \]
+\end{definition}
+For non-archimedian valuation $v$ let $w$ be an extension to $v$. Let $\mathcal{O}_{K}$ and $\mathfrak{p}_{K}$ are the ring of integers and the maximal ideal respectively with respect to valuation $v$ and similarly $\mathcal{O}_{L}$ and $\mathfrak{p}_{L}$ are the ring of integers and the maximal ideal respectively with respect tor valuation $w$. Then we obtain Inertia group denoted by $I_w$ and the ramification group denoted by $R_w$ which are defined below:
+\[I_w:= \{ \sigma \in \Gal(L/K)\mid\sigma x \equiv x \modulo \mathfrak{p}_{L}  \mbox{ for all } x \in \mathcal{O}_{L}  \}\]
+and
+ \[  R_w= \{ \sigma \in \Gal(L/K)\mid \frac{\sigma x }{x} \equiv 1 \modulo \mathfrak{p}_{L}  \mbox{ for all } x \in L^{*}  \}. \]
+ In fact they satisfy  $G_w\supseteq I_w \supseteq R_{w}$.
+From  Proposition $9.9$ of \cite{Neukirch_Alg},  the residue class field extension $\mathcal{O}_{L}/\mathfrak{p}_{L}/ \mathcal{O}_{K}/\mathfrak{p}_{K}$ is normal and satisfies the following an exact sequence:
+\[1 \rightarrow I_w \rightarrow G_w \rightarrow \Gal(\mathcal{O}_{L}/\mathfrak{p}_{L}/ \mathcal{O}_{K}/\mathfrak{p}_{K} ) \rightarrow 1.  \]
+Suppose $L_w$ be the completion of $L$ with respect to $w$ and $K_v$ be the completion of $K$ with respect to $v$ then one obtains $G_w= \Gal(L_w / K_v)$. 
+%Let $L/K$ be a separable extension of number fields and $w|v$ be extension of valuation $v$ of $K$ to $L$, then from 
+From \cite{Neukirch_Alg}, one also gets 
+\[ [L:K]= \prod_{w|v}^{}  [L_w: K_v]\]
+and $N_{L/K}(a)= \prod\limits_{w|v}^{}N_{L_w/K_v}(a)$ and $\T_{L/K}(a)= \sum\limits_{w|v}^{}\T_{L_w / K_{}v}(a)$ where $N$ and $T$ are the norm and trace functions respectively. 
+

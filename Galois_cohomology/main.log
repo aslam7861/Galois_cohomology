@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  30 JUN 2020 15:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  3 JUL 2020 11:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -960,6 +960,35 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count152
 \LT@p@ftn=\toks41
 )
+(/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+\c@blindtext=\count153
+\c@Blindtext=\count154
+\c@blind@countparstart=\count155
+\blind@countxx=\count156
+\blindtext@numBlindtext=\count157
+\blind@countyy=\count158
+\c@blindlist=\count159
+\c@blindlistlevel=\count160
+\c@blindlist@level=\count161
+\blind@listitem=\count162
+\c@blind@listcount=\count163
+\c@blind@levelcount=\count164
+\blind@mathformula=\count165
+\blind@Mathformula=\count166
+\c@blind@randomcount=\count167
+\c@blind@randommax=\count168
+\c@blind@pangramcount=\count169
+\c@blind@pangrammax=\count170
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip69
+\enit@outerparindent=\dimen197
+\enit@toks=\toks42
+\enit@inbox=\box45
+\enitdp@description=\count171
+)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xy.sty
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing:
 catcodes, docmode, (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrecat.tex
@@ -970,51 +999,51 @@ catcodes, docmode, (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrecat.tex
  Xy-pic is free software: see the User's Guide for details.
 
 Loading kernel: messages; fonts; allocations: state,
-\X@c=\dimen197
-\Y@c=\dimen198
-\U@c=\dimen199
-\D@c=\dimen200
-\L@c=\dimen201
-\R@c=\dimen202
-\Edge@c=\toks42
-\X@p=\dimen203
-\Y@p=\dimen204
-\U@p=\dimen205
-\D@p=\dimen206
-\L@p=\dimen207
-\R@p=\dimen208
-\Edge@p=\toks43
-\X@origin=\dimen209
-\Y@origin=\dimen210
-\X@xbase=\dimen211
-\Y@xbase=\dimen212
-\X@ybase=\dimen213
-\Y@ybase=\dimen214
-\X@min=\dimen215
-\Y@min=\dimen216
-\X@max=\dimen217
-\Y@max=\dimen218
-\lastobjectbox@=\box45
-\zerodotbox@=\box46
-\almostz@=\dimen219
+\X@c=\dimen198
+\Y@c=\dimen199
+\U@c=\dimen200
+\D@c=\dimen201
+\L@c=\dimen202
+\R@c=\dimen203
+\Edge@c=\toks43
+\X@p=\dimen204
+\Y@p=\dimen205
+\U@p=\dimen206
+\D@p=\dimen207
+\L@p=\dimen208
+\R@p=\dimen209
+\Edge@p=\toks44
+\X@origin=\dimen210
+\Y@origin=\dimen211
+\X@xbase=\dimen212
+\Y@xbase=\dimen213
+\X@ybase=\dimen214
+\Y@ybase=\dimen215
+\X@min=\dimen216
+\Y@min=\dimen217
+\X@max=\dimen218
+\Y@max=\dimen219
+\lastobjectbox@=\box46
+\zerodotbox@=\box47
+\almostz@=\dimen220
  direction,
-\d@X=\dimen220
-\d@Y=\dimen221
-\K@=\count153
-\KK@=\count154
-\Direction=\count155
-\K@dXdY=\dimen222
-\K@dYdX=\dimen223
+\d@X=\dimen221
+\d@Y=\dimen222
+\K@=\count172
+\KK@=\count173
+\Direction=\count174
+\K@dXdY=\dimen223
+\K@dYdX=\dimen224
 \xyread@=\read2
 \xywrite@=\write4
-\csp@=\count156
-\quotPTK@=\dimen224
+\csp@=\count175
+\quotPTK@=\dimen225
 
 utility macros; pictures: \xy, positions,
-\swaptoks@@=\toks44
-\connectobjectbox@@=\box47
+\swaptoks@@=\toks45
+\connectobjectbox@@=\box48
  objects,
-\styletoks@=\toks45
+\styletoks@=\toks46
  decorations;
 kernel objects: directionals, circles, text; options; algorithms: directions,
 edges, connections;  Xy-pic loaded)
@@ -1024,15 +1053,15 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: All features v.3.8
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xycurve.tex
  Xy-pic option: Curve and Spline extension v.3.12 curve,
-\crv@cnt@=\count157
-\crvpts@=\toks46
-\splinebox@=\box48
-\splineval@=\dimen225
-\splinedepth@=\dimen226
-\splinetol@=\dimen227
-\splinelength@=\dimen228
+\crv@cnt@=\count176
+\crvpts@=\toks47
+\splinebox@=\box49
+\splineval@=\dimen226
+\splinedepth@=\dimen227
+\splinetol@=\dimen228
+\splinelength@=\dimen229
  circles,
-\L@=\dimen229
+\L@=\dimen230
  loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyframe.tex
  Xy-pic option: Frame and Bracket extension v.3.14 loaded)
@@ -1042,7 +1071,7 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: More Tips extension v.3.11 loaded) loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyline.tex
  Xy-pic option: Line styles extension v.3.10
-\xylinethick@=\dimen230
+\xylinethick@=\dimen231
  loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrotate.tex
  Xy-pic option: Rotate and Scale extension v.3.8 loaded)
@@ -1050,13 +1079,13 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: Colour extension v.3.11 loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xymatrix.tex
  Xy-pic option: Matrix feature v.3.14
-\Row=\count158
-\Col=\count159
-\queue@=\toks47
-\queue@@=\toks48
-\qcount@=\count160
-\qcount@@=\count161
-\matrixsize@=\count162
+\Row=\count177
+\Col=\count178
+\queue@=\toks48
+\queue@@=\toks49
+\qcount@=\count179
+\qcount@@=\count180
+\matrixsize@=\count181
  loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyarrow.tex
  Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
@@ -1315,14 +1344,14 @@ nment
 
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count163
-\float@exts=\toks49
-\float@box=\box49
-\@float@everytoks=\toks50
-\@floatcapt=\box50
+\c@float@type=\count182
+\float@exts=\toks50
+\float@box=\box50
+\@float@everytoks=\toks51
+\@floatcapt=\box51
 )
-\@float@every@algorithm=\toks51
-\c@algorithm=\count164
+\@float@every@algorithm=\toks52
+\c@algorithm=\count183
 )
 (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algcompatible.sty
 Package: algcompatible 
@@ -1331,16 +1360,16 @@ Package: algcompatible
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count165
-\c@ALG@rem=\count166
-\c@ALG@nested=\count167
-\ALG@tlm=\skip69
-\ALG@thistlm=\skip70
-\c@ALG@Lnr=\count168
-\c@ALG@blocknr=\count169
-\c@ALG@storecount=\count170
-\c@ALG@tmpcounter=\count171
-\ALG@tmplength=\skip71
+\c@ALG@line=\count184
+\c@ALG@rem=\count185
+\c@ALG@nested=\count186
+\ALG@tlm=\skip70
+\ALG@thistlm=\skip71
+\c@ALG@Lnr=\count187
+\c@ALG@blocknr=\count188
+\c@ALG@storecount=\count189
+\c@ALG@tmpcounter=\count190
+\ALG@tmplength=\skip72
 )
 Document Style - algorithmic compatible environments for the `algorithmicx' sty
 le
@@ -1366,29 +1395,29 @@ LaTeX Warning: Label `ClNormEquation' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 57.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 55.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1407,59 +1436,59 @@ Package caption Info: End \AtBeginDocument code.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count172
-\scratchdimen=\dimen231
-\scratchbox=\box51
-\nofMPsegments=\count173
-\nofMParguments=\count174
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count175
-\MPscratchDim=\dimen232
-\MPnumerator=\count176
-\makeMPintoPDFobject=\count177
-\everyMPtoPDFconversion=\toks53
+\scratchcounter=\count191
+\scratchdimen=\dimen232
+\scratchbox=\box52
+\nofMPsegments=\count192
+\nofMParguments=\count193
+\everyMPshowfont=\toks53
+\MPscratchCnt=\count194
+\MPscratchDim=\dimen233
+\MPnumerator=\count195
+\makeMPintoPDFobject=\count196
+\everyMPtoPDFconversion=\toks54
 )
-\c@lstlisting=\count178
-\AtBeginShipoutBox=\box52
-Package hyperref Info: Link coloring ON on input line 55.
+\c@lstlisting=\count197
+\AtBeginShipoutBox=\box53
+Package hyperref Info: Link coloring ON on input line 57.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count179
+\c@section@level=\count198
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 
 (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+LaTeX Font Info:    Try loading font information for U+msa on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
+LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 55.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 55.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-Package xypdf Info: Line width: 0.49248pt on input line 55.
+Package xypdf Info: Line width: 0.49248pt on input line 57.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
  [1
 
 
@@ -1493,7 +1522,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  Table of Contents
 ------------------------------------------------------------------------------
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 184.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 186.
 (./main.toc
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
@@ -1531,25 +1560,56 @@ Chapter 1.
  1 Preleminaries
 ------------------------------------------------------------------------------
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 10.
-) (./Chapters/Chapter1.tex [1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+[1
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+[2]
+LaTeX Font Info:    Try loading font information for U+euf on input line 72.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
+
+ []
+
+[5]) (./Chapters/Chapter1.tex [6]
 Chapter 2.
 ------------------------------------------------------------------------------
  2 Introduction
 ------------------------------------------------------------------------------
-LaTeX Font Info:    Try loading font information for U+euf on input line 45.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
+
 Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-[2
+[7
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 65--86
@@ -1565,7 +1625,7 @@ he usual co-ho-mol-ogy groups and $\OML/cmm/m/it/10.95 H[] []$ \OT1/ptm/m/n/10.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
-[3]
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 116--118
 
  []
@@ -1584,7 +1644,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
 
-[4] [5]) (./Chapters/Chapter2.tex [6]
+[9] [10]) (./Chapters/Chapter2.tex [11]
 Chapter 3.
 ------------------------------------------------------------------------------
  3 Norm Equation
@@ -1594,7 +1654,7 @@ put line 33.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 49.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [7
+) [12
 
 ]
 Overfull \hbox (532.57823pt too wide) in paragraph at lines 62--63
@@ -1611,12 +1671,12 @@ Overfull \hbox (522.97813pt too wide) in paragraph at lines 77--78
 ][][][][] 
  []
 
-[8] [9]
+[13] [14]
 Underfull \hbox (badness 10000) in paragraph at lines 202--219
 
  []
 
-[10] [11] [12] [13] [14] [15]
+[15] [16] [17] [18] [19]
 Overfull \hbox (31.43802pt too wide) in paragraph at lines 781--790
 \OT1/ptm/m/n/10.95 the mul-ti-plica-tive group ho-mo-mor-phism $\OML/cmm/m/it/1
 0.95 N[] \U/MnSymbolC/m/n/10.95 ^^B \OML/cmm/m/it/10.95 L[] \U/MnSymbolA/m/n/10
@@ -1626,7 +1686,7 @@ lE/m/n/10.95 à\OML/cmm/m/it/10.95 ab\OMX/MnSymbolE/m/n/10.95 ç \U/MnSymbolD/m/n
 n/10.95 ç [][]à\OML/cmm/m/it/10.95 b\OMX/MnSymbolE/m/n/10.95 ç[]$ 
  []
 
-
+[20]
 Overfull \hbox (22.09935pt too wide) in paragraph at lines 793--802
 \OT1/ptm/m/n/10.95 For $\OML/cmm/m/it/10.95 L\OMX/MnSymbolE/m/n/10.95 ~\OML/cmm
 /m/it/10.95 M\OMX/MnSymbolE/m/n/10.95 ~\OML/cmm/m/it/10.95 K$ \OT1/ptm/m/n/10.9
@@ -1635,12 +1695,12 @@ Overfull \hbox (22.09935pt too wide) in paragraph at lines 793--802
 .95 ^^@ [][] \U/MnSymbolC/m/n/10.95 X [][] \OML/cmm/m/it/10.95 :$
  []
 
-[16]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 848--850
 
  []
 
-[17] [18]
+[22] [23]
 LaTeX Font Info:    Try loading font information for TS1+ptm on input line 887.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
@@ -1650,15 +1710,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 906--927
 
  []
 
-[19]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 949.
- [20]
+[24] [25]
 
-Package natbib Warning: Citation `Magma Handbook' on page 21 undefined on input
+Package natbib Warning: Citation `Magma Handbook' on page 26 undefined on input
  line 1032.
 
-[21]
+[26]
 Overfull \hbox (69.29037pt too wide) in paragraph at lines 1105--1122
 \OT1/ptm/m/n/10.95 9) $\OML/cmm/m/it/10.95 K \U/MnSymbolC/m/n/10.95 ^^B\U/MnSym
 bolD/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ext \U/MnSymbolD/m/n/10.95 @ \OML/cmm/m/
@@ -1681,52 +1743,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 1105--1122
 
  []
 
-[22]) (./Appendices/AppendixA.tex [23]
+[27]) (./Appendices/AppendixA.tex [28]
 Appendix A.
 ------------------------------------------------------------------------------
  A Frequently Asked Questions
 ------------------------------------------------------------------------------
-) [24
+) [29
 
 ]
 ------------------------------------------------------------------------------
  Bibliography
 ------------------------------------------------------------------------------
-(./main.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 43--48
-\OT1/ptm/m/n/10.95 http://kobra.bibliothek.uni-kassel.de/handle/urn:nbn:de:hebi
-s: 34-2011060937825,
- []
-
-[25
+(./main.bbl [30
 
 
 ])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 304.
-[26]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 304.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 306.
+[31]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 306.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 304.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 304.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 306.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 306.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 93ABB693E22A4A8C3C5CFF716B82A8A3;3056.
+(rerunfilecheck)             Checksum: 6832AB61CA0B63C022D39C18B246CAAA;3331.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 304.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 306.
  ) 
 Here is how much of TeX's memory you used:
- 28267 strings out of 493304
- 446394 string characters out of 6139870
- 552701 words of memory out of 5000000
- 30844 multiletter control sequences out of 15000+600000
+ 28682 strings out of 493304
+ 453233 string characters out of 6139870
+ 570148 words of memory out of 5000000
+ 31243 multiletter control sequences out of 15000+600000
  50859 words of font info for 123 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 62i,15n,73p,3233b,1821s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,73p,3233b,1909s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolA.enc}{/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}{/usr/share/texlive/texmf-dist/fonts
@@ -1750,10 +1806,10 @@ hare/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on main.pdf (35 pages, 337811 bytes).
+Output written on main.pdf (40 pages, 354624 bytes).
 PDF statistics:
- 672 PDF objects out of 1000 (max. 8388607)
- 610 compressed objects within 7 object streams
- 290 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 717 PDF objects out of 1000 (max. 8388607)
+ 650 compressed objects within 7 object streams
+ 298 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 

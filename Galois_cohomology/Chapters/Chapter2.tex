@@ -633,17 +633,17 @@ So in this, we mainly present algorithms to compute the norm equation of p-adic 
 
 %For that we need to know few things about $\mathbb{Q}_p$. 
 The norm equation which we are going to discuss here has the key role in algebraic number theory. It has many applications in class field theory. Although the norm equation is available in MAGMA, but it is not an effective  way of computation. We first  read some theory regarding the norm groups so that we will have the idea of the elements having the solution of type $(1)$ since not every element is a normed element. Finally we present algorithms to find the solutions of norm equation.\\ 
-In the field of real numbers $\mathbb{R}$, we can find the sequence of rational numbers which converges to a number which may not be rational. But $\mathbb{Q}_p$ is an extension of rational number field in which every convergent sequence converges in itself. The case of $\mathbb{R}$ is  well understood. We briefly discuss on the extensions of $\mathbb{Q}_p$ and functions defined on them.
+In the field of real numbers $\mathbb{R}$, we can find the sequence of rational numbers which converges to a number which may not be rational. But $\mathbb{Q}_p$ is an extension of rational number field in which every convergent sequence converges in itself. The case of $\mathbb{R}$ is  well understood. %We briefly discuss on the extensions of $\mathbb{Q}_p$.\\ % and functions defined on them.
 
-\begin{definition}
- Let $K$ be a field. A discrete valuation on $K$ is a function $\v: K \rightarrow \mathbb{Z} \cup \{\infty \}$, such that for every  $x,y \in K$,
- \begin{enumerate}
- \item $\v(x) = \infty \mbox{ if and only if } x=0$,
- \item $\v(xy)= \v(x)+ \v(y)$ and
- \item $\v(x+y) \geq \min(\v(x),\v(y))$.\\
-  A discrete valuation induces a non-archimedian absolute value via $|x|= c^{\v(x)}$, where c is any constant with $0<c<1$.  
-  \end{enumerate}
- \end{definition}
+%\begin{definition}
+% Let $K$ be a field. A discrete valuation on $K$ is a function $\v: K \rightarrow \mathbb{Z} \cup \{\infty \}$, such that for every  $x,y \in K$,
+% \begin{enumerate}
+% \item $\v(x) = \infty \mbox{ if and only if } x=0$,
+% \item $\v(xy)= \v(x)+ \v(y)$ and
+% \item $\v(x+y) \geq \min(\v(x),\v(y))$.\\
+%  A discrete valuation induces a non-archimedian absolute value via $|x|= c^{\v(x)}$, where c is any constant with $0<c<1$.  
+%  \end{enumerate}
+% \end{definition}
   Every field $K$ with non-trivial discrete valuation $v$ associates the subring of 
   \[\mathcal{O}_{K}= \{ x\in K \mid \v(x)\geq 0 \} \text{  of $K$} .\]  
   From \cite{Fesenko}, we know $\mathcal{O}_{K} $ forms a local ring with unique maximal ideal $\mathfrak{p}_{K}= \{x \in K \mid \v(x) > 0 \} $ which coincides with the set of non-invertible elements of $\mathcal{O}_{K}$. An element $\pi \in\mathcal{O}_{K}$ is said to be a uniformizing element if $\v(K^{\times})= \langle \v(\pi) \rangle $.\\

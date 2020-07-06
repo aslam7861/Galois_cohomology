@@ -488,5 +488,41 @@ MRREVIEWER = {Yasumasa Akagawa},
   MRNUMBER = {0144979},
 MRREVIEWER = {W. E. Jenner},
 }
+
+@book {Neukirch_Alg,
+    AUTHOR = {Neukirch, J\"{u}rgen},
+     TITLE = {Algebraic number theory},
+    SERIES = {Grundlehren der Mathematischen Wissenschaften [Fundamental
+              Principles of Mathematical Sciences]},
+    VOLUME = {322},
+      NOTE = {Translated from the 1992 German original and with a note by
+              Norbert Schappacher,
+              With a foreword by G. Harder},
+ PUBLISHER = {Springer-Verlag, Berlin},
+      YEAR = {1999},
+     PAGES = {xviii+571},
+      ISBN = {3-540-65399-6},
+   MRCLASS = {11Rxx (11-02 11S15 11S31 14C40)},
+  MRNUMBER = {1697859},
+MRREVIEWER = {Cornelius Greither},
+       DOI = {10.1007/978-3-662-03983-0},
+       URL = {https://doi.org/10.1007/978-3-662-03983-0},
+}
+
+@incollection {Fieker_ideal,
+    AUTHOR = {Fieker, Claus},
+     TITLE = {Applications of the class field theory of global fields},
+ BOOKTITLE = {Discovering mathematics with {M}agma},
+    SERIES = {Algorithms Comput. Math.},
+    VOLUME = {19},
+     PAGES = {31--62},
+ PUBLISHER = {Springer, Berlin},
+      YEAR = {2006},
+   MRCLASS = {11Y40 (11R29 11R32 11R37)},
+  MRNUMBER = {2278922},
+MRREVIEWER = {J\"{u}rgen Kl\"{u}ners},
+       DOI = {10.1007/978-3-540-37634-7_2},
+       URL = {https://doi.org/10.1007/978-3-540-37634-7_2},
+}
 				
 		
