@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  3 JUL 2020 11:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  9 JUL 2020 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1378,6 +1378,21 @@ le
 LaTeX Warning: Label `Chapter1' multiply defined.
 
 
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `ClNormEquation' multiply defined.
+
+
+LaTeX Warning: Label `Chapter1' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
 LaTeX Warning: Label `Chapter1' multiply defined.
 
 
@@ -1390,7 +1405,7 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `' multiply defined.
 
 
-LaTeX Warning: Label `ClNormEquation' multiply defined.
+LaTeX Warning: Label `Chapter1' multiply defined.
 
 )
 \openout1 = `main.aux'.
@@ -1515,6 +1530,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ------------------------------------------------------------------------------
  Acknowledgements
 ------------------------------------------------------------------------------
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 180.
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+
+ []
+
 [4
 
 ]
@@ -1522,47 +1549,44 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  Table of Contents
 ------------------------------------------------------------------------------
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 186.
-(./main.toc
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
-)
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 190.
+(./main.toc [5
+
+
+])
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- [5
-
-
-] (./main.lof)
+ [6] (./main.lof)
 \tf@lof=\write7
 \openout7 = `main.lof'.
 
- [6
+ [7
 
 
 ] (./main.lot)
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
- [7
+ [8
 
 ]
 ------------------------------------------------------------------------------
  Dedicatory
 ------------------------------------------------------------------------------
-[8
+[9
 
 
 
-] (./Chapters/Chapter0.tex
+] (./Chapters/Chapter1.tex
 Chapter 1.
 ------------------------------------------------------------------------------
  1 Preleminaries
 ------------------------------------------------------------------------------
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
@@ -1571,67 +1595,85 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 [2]
-LaTeX Font Info:    Try loading font information for U+euf on input line 72.
+LaTeX Font Info:    Try loading font information for U+euf on input line 99.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 132--135
+Underfull \hbox (badness 10000) in paragraph at lines 159--162
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 171--173
 
  []
 
-[5]) (./Chapters/Chapter1.tex [6]
-Chapter 2.
-------------------------------------------------------------------------------
- 2 Introduction
-------------------------------------------------------------------------------
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 209--211
 
  []
 
-[7
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 65--86
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 241--262
 
  []
 
+[7]
 
-Overfull \hbox (0.2233pt too wide) in paragraph at lines 101--106
+Package natbib Warning: Citation `Reference2' on page 8 undefined on input line
+ 278.
+
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 279.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Overfull \hbox (0.2233pt too wide) in paragraph at lines 277--280
 \OT1/ptm/m/n/10.95 where, $\OML/cmm/m/it/10.95 H[] []$ \OT1/ptm/m/n/10.95 are t
 he usual co-ho-mol-ogy groups and $\OML/cmm/m/it/10.95 H[] []$ \OT1/ptm/m/n/10.
-95 are the usual ho-mol-ogy groups. 
+95 are the usual ho-mol-ogy groups.
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--290
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
+
+ []
+
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 116--118
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 312.
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--322
 
  []
 
-
-Overfull \hbox (10.5925pt too wide) in paragraph at lines 121--123
+[9]
+Overfull \hbox (10.5925pt too wide) in paragraph at lines 325--327
 \OT1/ptm/m/n/10.95 which means pre-cisely that $\OML/cmm/m/it/10.95 x\OMX/MnSym
 bolE/m/n/10.95 à\OML/cmm/m/it/10.95 ^^[[]; [] ; ^^[[]\OMX/MnSymbolE/m/n/10.95 ç
  \U/MnSymbolA/m/n/10.95 ( \OML/cmm/m/it/10.95 fx\OMX/MnSymbolE/m/n/10.95 à\OML/
@@ -1640,44 +1682,59 @@ takes co-cy-cles to co-cy-cles and cobound-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-[9] [10]) (./Chapters/Chapter2.tex [11]
-Chapter 3.
+
+Package natbib Warning: Citation `Reference1' on page 10 undefined on input lin
+e 340.
+
+[10]
+
+Package natbib Warning: Citation `Reference6' on page 11 undefined on input lin
+e 359.
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--397
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 404--406
+
+ []
+
+[12] [13] [14]) (./Chapters/Chapter2.tex [15]
+Chapter 2.
 ------------------------------------------------------------------------------
- 3 Norm Equation
+ 2 Norm Equation
 ------------------------------------------------------------------------------
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 33.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 49.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [12
+) [16
 
 ]
-Overfull \hbox (532.57823pt too wide) in paragraph at lines 62--63
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][] 
- []
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 91.
 
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 64.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)
-Overfull \hbox (522.97813pt too wide) in paragraph at lines 77--78
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][] 
- []
-
-[13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 202--219
+Underfull \hbox (badness 10000) in paragraph at lines 88--105
 
  []
 
-[15] [16] [17] [18] [19]
-Overfull \hbox (31.43802pt too wide) in paragraph at lines 781--790
+[17] [18] [19] [20] [21]
+Overfull \hbox (31.43802pt too wide) in paragraph at lines 243--252
 \OT1/ptm/m/n/10.95 the mul-ti-plica-tive group ho-mo-mor-phism $\OML/cmm/m/it/1
 0.95 N[] \U/MnSymbolC/m/n/10.95 ^^B \OML/cmm/m/it/10.95 L[] \U/MnSymbolA/m/n/10
 .95 ^^@ \OML/cmm/m/it/10.95 K[]$ \OT1/ptm/m/n/10.95 such that $[][]\OMX/MnSymbo
@@ -1686,8 +1743,8 @@ lE/m/n/10.95 à\OML/cmm/m/it/10.95 ab\OMX/MnSymbolE/m/n/10.95 ç \U/MnSymbolD/m/n
 n/10.95 ç [][]à\OML/cmm/m/it/10.95 b\OMX/MnSymbolE/m/n/10.95 ç[]$ 
  []
 
-[20]
-Overfull \hbox (22.09935pt too wide) in paragraph at lines 793--802
+
+Overfull \hbox (22.09935pt too wide) in paragraph at lines 255--264
 \OT1/ptm/m/n/10.95 For $\OML/cmm/m/it/10.95 L\OMX/MnSymbolE/m/n/10.95 ~\OML/cmm
 /m/it/10.95 M\OMX/MnSymbolE/m/n/10.95 ~\OML/cmm/m/it/10.95 K$ \OT1/ptm/m/n/10.9
 5 a tower of field ex-ten-sions, we have $[][] \U/MnSymbolD/m/n/10.95 ^^@ [][] 
@@ -1695,33 +1752,34 @@ Overfull \hbox (22.09935pt too wide) in paragraph at lines 793--802
 .95 ^^@ [][] \U/MnSymbolC/m/n/10.95 X [][] \OML/cmm/m/it/10.95 :$
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 848--850
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 310--312
 
  []
 
-[22] [23]
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 887.
-
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 906--927
+[23] [24]
+Underfull \hbox (badness 10000) in paragraph at lines 368--389
 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[25]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 949.
-[24] [25]
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 411.
+ [26]
 
-Package natbib Warning: Citation `Magma Handbook' on page 26 undefined on input
- line 1032.
+Package natbib Warning: Citation `Magma Handbook' on page 27 undefined on input
+ line 494.
 
-[26]
-Overfull \hbox (69.29037pt too wide) in paragraph at lines 1105--1122
+[27] [28]
+Overfull \hbox (3.9418pt too wide) in paragraph at lines 514--571
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[29]
+Overfull \hbox (69.29037pt too wide) in paragraph at lines 575--592
 \OT1/ptm/m/n/10.95 9) $\OML/cmm/m/it/10.95 K \U/MnSymbolC/m/n/10.95 ^^B\U/MnSym
 bolD/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ext \U/MnSymbolD/m/n/10.95 @ \OML/cmm/m/
 it/10.95 Q[]\OMX/MnSymbolE/m/n/10.95 S\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95
@@ -1739,77 +1797,292 @@ bolE/m/n/10.95 à\OML/cmm/m/it/10.95 Q[]; \OT1/cmr/m/n/10.95 2\OMX/MnSymbolE/m/n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1105--1122
+Underfull \hbox (badness 10000) in paragraph at lines 575--592
 
  []
 
-[27]) (./Appendices/AppendixA.tex [28]
-Appendix A.
-------------------------------------------------------------------------------
- A Frequently Asked Questions
-------------------------------------------------------------------------------
-) [29
+) (./Chapters/Chapter3.tex [30
+
 
 ]
+Chapter 3.
+------------------------------------------------------------------------------
+ 3 Local Fundamental Class 
+------------------------------------------------------------------------------
+\c@Algorithm=\count199
+\c@ex=\count200
+\c@addition=\count201
+[31
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 77--81
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+[33]
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 129.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+) [34]
+Underfull \hbox (badness 10000) in paragraph at lines 155--158
+
+ []
+
+
+Overfull \hbox (43.03448pt too wide) in paragraph at lines 166--172
+\OT1/ptm/m/n/10.95 We com-pute in-fla-tion of each gen-er-a-tor of the co-ho-mo
+l-ogy group $[]\OMX/MnSymbolE/m/n/10.95 à\OML/cmm/m/it/10.95 G; L[]\OMX/MnSymbo
+lE/m/n/10.95 ~\OML/cmm/m/it/10.95 U[]\OMX/MnSymbolE/m/n/10.95 ç$ \OT1/ptm/m/n/1
+0.95 in $[]\OMX/MnSymbolE/m/n/10.95 à\OT1/cmr/m/n/10.95 ^^@\OML/cmm/m/it/10.95 
+; \OMX/MnSymbolE/m/n/10.95 à\OML/cmm/m/it/10.95 LN\OMX/MnSymbolE/m/n/10.95 ç[]~
+\OML/cmm/m/it/10.95 U[]\OMX/MnSymbolE/m/n/10.95 ç$\OT1/ptm/m/n/10.95 .
+ []
+
+[35] [36] [37] [38]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./Chapters/Chapter4.tex [39]
+Chapter 4.
+------------------------------------------------------------------------------
+ 4 Global Fundamental Class
+------------------------------------------------------------------------------
+[40
+
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 34.
+ [41] [42]
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
+
+ []
+
+[43]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 116.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 116.
+
+[44] [45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 232--251
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
+
+ []
+
+[47] [48]
+Underfull \hbox (badness 10000) in paragraph at lines 281--283
+
+ []
+
+[49] [50]
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
+
+ []
+
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
+
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 463--465
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--472
+
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 505--508
+
+ []
+
+) (./Chapters/Chapter5.tex [55]
+Chapter 5.
+------------------------------------------------------------------------------
+ 5 Applications
+------------------------------------------------------------------------------
+[56
+
+]
+
+Package natbib Warning: Citation `Cassles' on page 57 undefined on input line 3
+6.
+
+
+Overfull \hbox (9.50075pt too wide) in paragraph at lines 46--47
+[]\OT1/ptm/m/n/10.95 By the ax-iom of class for-ma-tion we have $[][]\OMX/MnSym
+bolE/m/n/10.95 à[]à\OML/cmm/m/it/10.95 \OMX/MnSymbolE/m/n/10.95 çç^^@\OML/cmm/
+m/it/10.95 L[] \U/MnSymbolC/m/n/10.95 ^^B \OML/cmm/m/it/10.95 K[]\OMX/MnSymbolE
+/m/n/10.95 ^^E [][]à\OML/cmm/m/it/10.95 \OMX/MnSymbolE/m/n/10.95 ç$ \OT1/ptm/m
+/n/10.95 where $\OML/cmm/m/it/10.95  \U/MnSymbolD/m/n/10.95 > \OML/cmm/m/it/10
+.95 H[]\OMX/MnSymbolE/m/n/10.95 à[]~\OML/cmm/m/it/10.95 K; J[]\OMX/MnSymbolE/m/
+n/10.95 ç$
+ []
+
+[57]
+
+Package natbib Warning: Citation `Cassels' on page 58 undefined on input line 7
+3.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--93
+
+ []
+
+[58]
+Overfull \hbox (5.83472pt too wide) in paragraph at lines 118--119
+[][]\OT1/ptm/b/n/10.95 Proposition 5.1.3. []\OT1/ptm/m/it/10.95 Any open sub-gr
+oup of $\OML/cmm/m/it/10.95 J[]$ \OT1/ptm/m/it/10.95 con-tains some $\OML/cmm/m
+/it/10.95 U[]$\OT1/ptm/m/it/10.95 , and the quo-tient $\OMX/MnSymbolE/m/n/10.95
+ S\OML/cmm/m/it/10.95 J[]\OMX/MnSymbolE/m/n/10.95 ~\OML/cmm/m/it/10.95 K[]U[]\O
+MX/MnSymbolE/m/n/10.95 S \U/MnSymbolD/m/n/10.95 @
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+[59]
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
+
+ []
+
+[60]
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
+
+ []
+
+[61]
+
+Package natbib Warning: Citation `Cassels' on page 62 undefined on input line 2
+34.
+
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 310--312
+
+ []
+
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+
+ []
+
+[64] [65]
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--393
+
+ []
+
+[66] [67]
+Overfull \hbox (11.669pt too wide) in paragraph at lines 460--462
+\OT1/ptm/m/n/10.95 From above ex-act se-quences one gets iso-mor-phisms $\OML/c
+mm/m/it/10.95 Z[]\OMX/MnSymbolE/m/n/10.95 à\OML/cmm/m/it/10.95 P[]\OMX/MnSymbol
+E/m/n/10.95 ç \U/MnSymbolD/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 Z[]\OMX/MnSymbolE/
+m/n/10.95 à\OML/cmm/m/it/10.95 E\OMX/MnSymbolE/m/n/10.95 ^^@\OML/cmm/m/it/10.95
+ G\OMX/MnSymbolE/m/n/10.95 ^^E \U/MnSymbolC/m/n/10.95 a[] \OML/cmm/m/it/10.95 P
+\OMX/MnSymbolE/m/n/10.95 ç \U/MnSymbolD/m/n/10.95 ^^H \OML/cmm/m/it/10.95 B[]\O
+MX/MnSymbolE/m/n/10.95 à\OML/cmm/m/it/10.95 E\OMX/MnSymbolE/m/n/10.95 ^^@\OML/c
+mm/m/it/10.95 G\OMX/MnSymbolE/m/n/10.95 ^^E \U/MnSymbolC/m/n/10.95 a[]
+ []
+
+[68] [69]) [70]
 ------------------------------------------------------------------------------
  Bibliography
 ------------------------------------------------------------------------------
-(./main.bbl [30
+(./main.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 43--48
+\OT1/ptm/m/n/10.95 http://kobra.bibliothek.uni-kassel.de/handle/urn:nbn:de:hebi
+s: 34-2011060937825,
+ []
+
+[71
 
 
-])
+] [72])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 306.
-[31]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 306.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 310.
+[73]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 310.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 306.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 306.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 310.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 310.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6832AB61CA0B63C022D39C18B246CAAA;3331.
+(rerunfilecheck)             Checksum: 18434B1C64817291555457FBD741EDF9;5273.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 306.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 310.
  ) 
 Here is how much of TeX's memory you used:
- 28682 strings out of 493304
- 453233 string characters out of 6139870
- 570148 words of memory out of 5000000
- 31243 multiletter control sequences out of 15000+600000
- 50859 words of font info for 123 fonts, out of 8000000 for 9000
+ 30467 strings out of 493304
+ 493553 string characters out of 6139870
+ 596803 words of memory out of 5000000
+ 32747 multiletter control sequences out of 15000+600000
+ 56698 words of font info for 141 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 62i,15n,73p,3233b,1909s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
-e/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolA.enc}{/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}{/usr/share/texlive/texmf-dist/fonts
-/enc/dvips/mnsymbol/MnSymbolD.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/mnsymbol/MnSymbolF.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/mnsymbo
-l/MnSymbolC.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbo
-lS.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/euler/eufm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on main.pdf (40 pages, 354624 bytes).
+ 62i,17n,73p,3233b,1823s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolS.enc}{/usr/s
+hare/texlive/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolB.enc}{/usr/share/texl
+ive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/mnsymbol/MnSymbolE.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/mnsymbol/MnSymbolA.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/mnsymbo
+l/MnSymbolD.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbo
+lF.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}</
+usr/share/texlive/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (83 pages, 564917 bytes).
 PDF statistics:
- 717 PDF objects out of 1000 (max. 8388607)
- 650 compressed objects within 7 object streams
- 298 named destinations out of 1000 (max. 500000)
- 189 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1255 PDF objects out of 1440 (max. 8388607)
+ 1135 compressed objects within 12 object streams
+ 565 named destinations out of 1000 (max. 500000)
+ 253 words of extra memory for PDF output out of 10000 (max. 10000000)
 

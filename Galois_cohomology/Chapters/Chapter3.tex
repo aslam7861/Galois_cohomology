@@ -97,7 +97,8 @@ Let us denote $G= \Gal(L/K)$,  $C= \Gal(N/K)$ $C'= \Gal(LN/L)$ and  $\Gamma= \Ga
 
 Manual and Debeerst tried to solve the local fundamental class in their papers but the solving the norm equation was not much effective so they took lot of time to compute the norm equation.\\
 
-We have already seen the effective algorithms to solve the norm equations of local fields. We also have the fast algorithm in the dissertation of Debeerst, in which he uses the approach of Serre to compute the local fundamental class. We apply our norm equation in their algorithm to compute the local fundamental class. We have written our codes to solve the Frobenius equations which is very fast in the comparison of his functions. \\
+We have already seen the effective algorithms to solve the norm equations of local fields. We also have the fast algorithm in the dissertation of Debeerst, in which he uses the approach of Serre to compute the local fundamental class. We apply our norm equation in their algorithm to compute the local fundamental class. The second factor for the computation time of local fundamental class being expensive is solving the frobenius equation which we discuss below. We apply vector space method to compute the roots of polynomial of Artin-Schreier polynomial. Using this way we can accelerate the Frobenius equation and we are able to compute the local fundamental calss in very short time for even a large degree field extension. Later on we will present in a table to show the effectiveness of our Frobenius equation in compared to Debeerst one.
+%   We have written our codes to solve the Frobenius equations which is very fast in the comparison of his functions. \\
 %expensive in the sense of computation time Using our norm equation and  We also have re-written few of his codes so that we compute the local fundamental class in very short time.
 \textbf{Frobenius Equation}
 $x^{\phi-1}=c$\\
@@ -247,6 +248,32 @@ Let $E/K$ be a finite extension and $L/K$ be the largest abelian extension conta
 \[ N_{E/K}E^{*}=N_{L/K}L^{*}. \]
 page: 143 Cassel
 \end{proposition}
+
+\clearpage
+
+\begin{sidewaystable}[h!]
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+Items & Extensions & Degree & e &   Precision & Precision computed & LFC our  & LFC Debeerst's version\\
+      &  & &           &  of $L$  & computed            &  Version    & version\\
+\hline
+1. & $L/\mathbb{Q}_{229}$ & 6 & 6 & 60 & 20 & 2.18  & -- \\ 
+\hline
+ 2. & $L/\mathbb{Q}_{5}$ & 12 & 12 & 360 & 100 & 3.400 & 663.520 \\  
+ \hline
+  3. & $L/\mathbb{Q}_{5}$ & 12 & 12 & 360 & 100 & 3.400 & 663.520 \\  
+ \hline
+ 4. & $L/\mathbb{Q}_{5}$ & 12 & 4 & 40 & 30 & 6.050  & 690.140 \\ 
+ \hline 
+
+\end{tabular}
+\end{center}
+\end{sidewaystable}
+
+
+
+
 \nocite{Reference11}
 %\nocite{Reference10}
 \nocite{Reference12}

@@ -26,139 +26,25 @@
 \def\G{\mathop{\mathrm{G}}\nolimits}
 \def\log{\mathop{\mathrm{log}}\nolimits}
 \def\v{\mathop{\mathrm{v}}\nolimits}
-\section{Norm Equation}
-For an unramified extension to compute the Norm Equation we follow the Satoh's paper. Since we know $N(U_{L})= N(U_{K})$, where $U_L $ and $U_K$ are the unit groups of the Field $L$ and $K$ resp, we can say that every unit element in $K$ is a normed element in $L$.\\
-We present the algorithm to compute the Norm Equation in the Totally ramified $p$-adic field extension.
-\begin{algorithm}[H]
-\caption{}
-\label{}
-\begin{algorithmic}[1]
-\REQUIRE  $L/K$ be totally ramified $p$-adic ring extension, $\pi \in L$ be uniformizer and $a \in K $.
-\ENSURE Find $x\in L$ such that $Norm(x)=a$.
-\STATE Define $b:= \frac{a}{N(\pi)^{V(a)}}$.
-\STATE Solve $N(\tilde{x})=b$.
-\STATE Define $F,f$ the residue field extensions of $L$ and $K$ resp.
-\STATE Solve $N_{F/f}(\mu)= b $ \hspace{1mm} ($p$).
-\STATE Define $c:= b/N(\mu)$.
-\STATE Solve $N_{L/K}(\tilde{\tilde{x}}) = c.$
-\STATE Return $x:= \mu\cdot \pi^{(V(a))} \cdot \tilde{\tilde{x}} $.
+\section{Introduction}
+%For an unramified extension to compute the Norm Equation we follow the Satoh's paper. Since we know $N(U_{L})= N(U_{K})$, where $U_L $ and $U_K$ are the unit groups of the Field $L$ and $K$ resp, we can say that every unit element in $K$ is a normed element in $L$.\\
 
-\end{algorithmic}
-\end{algorithm}
-\textbf{Example:}
-\begin{lstlisting}
-> R<x>:=PolynomialRing(Rationals());                                                                                                                                                                    
->  K:=pAdicField(5,30); 
-> L:=ext<K| x^7+25*x^2+5>; 
->  k:=RingOfIntegers(K); 
->  l:=RingOfIntegers(L); 
->  a:=5*2/3*Random(k);  
-> IsUnit(a); 
-true
-> pi:=UniformizingElement(l); 
-> b:=a/Norm(pi)^Valuation(a); 
-> U,mU:=UnitGroup(k); 
-> NormEquation(l,mU,b); 
-true -78731087376881886250*l.1^6 + 74585038994062594375*l.1^5 - 56157835394500297625*l.1^4 - 52776966890988350200*l.1^3 - 23081710867424288325*l.1^2 + 63881457671757879785*l.1 - 10581183060211095113 + 
-O(l.1^203)
-> _,w:=$1; 
-> f,mf:=ResidueClassField(k); 
-> F,mF:=ResidueClassField(l); 
-> mf(b); 
-3
-> mF(w); 
-2
-> mu:=b/mF(w)@@ mF; 
-> mu in k; 
-true
-> y:=mF(w)@@ mF; 
-> c:=b/Norm(y); 
-> NormEquation(l,mU,c); 
-true 42590842877721166250*l.1^6 + 26116648601645555000*l.1^5 - 73527459338485500375*l.1^4 + 4605931837708949900*l.1^3 + 11853967640628676150*l.1^2 + 76435596160708041455*l.1 + 87841665931442304006 + 
-O(l.1^203)
-> _,w1:=$1; 
-> w11:=w1*y*pi^Valuation(a); 
-> Norm(w11)/a-1; 
-O(5^28)
+Let $L/K$ be a finite Galois extension of $p$-adic fields of characteristic $0$ and $U_{L}$ and $U_{K}$ be the unit groups of $L$ and $K$ respectively. 
+%In unramified extension we have the theorem which states that every unit $a$ in $U_{K}$ associates to an element $b$ of $U_{L}$ such that the norm of $b$ is $a$. That is, 
+Let $\N: L\rightarrow K$ be the norm map. In unramified extension  $N(U_{L})= N(U_{K})$. That is for every $a \in U_{K}$ we can find $b \in U_{L}$ such that
+\begin{equation}
+   \N(b)= a.
+\end{equation}
+%That is, $\N(b)= a.
+Similarly, if $L/K$ is totally ramified extension then the norm group  of $L$ contains the group of the forms $U_{K}^{n}\times (\pi)$ where $U_{K}^{n}$ and $\pi$ are the higher unit groups of $k$ and prime element of $K$ respectively.\\
+So in this, we mainly present algorithms to compute the norm equation of p-adic field extensions in an effective way. 
+%\section{Introduction}
 
-\end{lstlisting}	
-Now we give the next algorithm by changing the precxision.
+%For that we need to know few things about $\mathbb{Q}_p$. 
+The norm equation which we are going to discuss here has the key role in algebraic number theory. It has many applications in class field theory. Although the norm equation is available in MAGMA, but it is not an effective  way of computation. We first  read some theory regarding the norm groups so that we will have the idea of the elements having the solution of type $(1)$ since not every element is a normed element. Finally we present algorithms to find the solutions of norm equation.\\ 
+In the field of real numbers $\mathbb{R}$, we can find the sequence of rational numbers which converges to a number which may not be rational. But $\mathbb{Q}_p$ is an extension of rational number field in which every convergent sequence converges in itself. The case of $\mathbb{R}$ is  well understood.
 
-\begin{algorithm}[H]
-\caption{}
-\label{}
-\begin{algorithmic}[1]
-\REQUIRE   $L/K $ be a finite totally ramified $p$-adic ring extension, $\pi \in L$ be uniformizer and $a \in K$ up to precision $"n"$.
-\ENSURE Find $\alpha \in L$ such that $V(N(\alpha)/a -1)\geq n$.
 
-\STATE  Figure out the precision  of $K$ and $L$.
-\STATE Define $L'/K'$ such that $L'/K' "=" L/K$ and precision $(L')\geq n$.
-\STATE Findin  $\alpha \in L'$ using the previous algorithm such that $V'(N(\alpha)/a -1) \geq n$.
-\STATE Return $L!\alpha$
-\end{algorithmic}
-\end{algorithm}
-
-\begin{lstlisting}
-> R<x>:=PolynomialRing(Rationals());
->  K:=pAdicField(5,20);
-> L:=ext<K|x^7+15>;
-> k:=RingOfIntegers(K);
-> l:=RingOfIntegers(L);
-> pi:=UniformizingElement(l);
-> a:=3*(1+k.1*Random(k));
-> KK:=pAdicField(5,50);
-> LL:=ext<KK|x^7+15>;
-> kk:=RingOfIntegers(KK);
-> ll:=RingOfIntegers(LL);
-> UU,mUU:=UnitGroup(kk);
-> KKa:=KK!a;
-> ChangePrecision(~KKa,50);
-> Parent(KKa);
-5-adic field mod 5^50
-> PI:=UniformizingElement(kk);
-> bb:=KKa/Norm(PI)^Valuation(KKa);
-> NormEquation(ll,mUU,bb);
-true -6105615095200869000735533732265625*ll.1^6 + 
-    39519312090040221641210367427021875*ll.1^5 - 
-    44117491210717703484480794577856250*ll.1^4 + 
-    3223306201812962448695696242191250*ll.1^3 + 
-    14367323616830108457959875907344750*ll.1^2 - 
-    38913080750009108811263908469198450*ll.1 + 
-    39504377608946897770758593522892959
-> _,z:=$1;
-> ff,mff:=ResidueClassField(kk);
-> FF,mFF:=ResidueClassField(ll);
->  y:=mFF(z)@@ mFF;
->  Parent(y);
-Totally ramified extension defined by the polynomial x^7 + 15
- over 5-adic ring mod 5^50
-> FieldOfFractions($1);
-Totally ramified extension defined by the polynomial x^7 + 15
- over 5-adic field mod 5^50
-> $1!y;
-4 + O(LL.1^350)
-> y1:=$1;
-> cc:=bb/Norm(y1);
-> NormEquation(ll,mUU,cc); 
-true -36165362142105101311401191477500000*ll.1^6 + 
-    8778486782081900122202349242009375*ll.1^5 - 
-    43643284374068024402604802526300000*ll.1^4 + 
-    9346550234289644846344837756836875*ll.1^3 - 
-    26185594066026751474997106828827875*ll.1^2 - 
-    14936832657718115605325666448354300*ll.1 + 
-    32080554894739855251162281742539646
-> _,z2:=$1;
-> zz:=z2*y1*(PI)^Valuation(KKa);
-> Valuation(Norm(zz)/KKa-1);
-50
-> l!Eltseq(zz);
--14555949062500*l.1^6 - 44057621806250*l.1^5 - 40944724340625*l.1^4 + 
-    3374464847500*l.1^3 + 13098563594750*l.1^2 + 19203103067175*l.1 - 
-    27691877497666
->  alpha:=$1;
-> Valuation(Norm(alpha)/a-1);
-20
-\end{lstlisting}
 In ramified local field extension $L/K$, norm equation fails for few unit elements of $K$. To find such elements we can find through computing the norm group of $L$ which is the subgroup of $U_{K}$. In fact the norm equation fails for any unit elements of $K$ which are multiples of such elements.
 \begin{lstlisting}
 > K := pAdicRing(2,10);          
@@ -219,6 +105,728 @@ We take $a=\omega\left(1+p*Random(K)\right) \in U_K$. Then $\omega \in \mathbb{F
 \end{algorithm} 	
  	
 
+
+  Every field $K$ with non-trivial discrete valuation $v$ associates the subring 
+  \[\mathcal{O}_{K}= \{ x\in K \mid \v(x)\geq 0 \} \text{  of $K$} .\]  
+  From \cite{Fesenko}, we know $\mathcal{O}_{K} $ forms a local ring with unique maximal ideal $\mathfrak{p}_{K}= \{x \in K \mid \v(x) > 0 \} $ which coincides with the set of non-invertible elements of $\mathcal{O}_{K}$. An element $\pi \in\mathcal{O}_{K}$ is said to be a uniformizing element if $\v(K^{\times})= \langle \v(\pi) \rangle $.\\
+ Let $p$ be a prime integer. Then $p$-adic valuation on $\mathbb{Q}$ is the function $\v_p: \mathbb{Q} \rightarrow \mathbb{Z} \cup \{ \infty \}$ defined by $  \v_p(x)= \max \left\{ r: p^{r} \text{ divides }  x  \right\} $. Note that $\v_p(0)= \infty$.
+ With this valuation we can define the non-archimedian absolute value denoted by $|.|_{p}$ as 
+ $|.|_{p}: \mathbb{Q} \rightarrow \mathbb{R}$ such that $|x|_{p}= p^{-v_p(x)}$.\\
+ Note that,  $ | \mathbb{Q}_{p}^{\times}|_p = \{  p^{-\v_{p}(x)} \mid x \in \mathbb{Q}_{p}^{\times} \} = \{1/p^{n} \mid n \in \mathbb{Z}\}$ is an infinite cyclic group.
+  
+
+ 
+\begin{definition}
+Let $p$ be a prime in $\mathbb{Z}$. $\mathbb{Q}_{p}$ is the completion of $\mathbb{Q}$ with respect to $|.|_{p}$ where $|.|_{p}$ is defined as above. 
+%The ring of $p$-adic integers of $\mathbb{Q}_{p}$ is defined by
+%In particular, $\mathbb{R}$ is a completion of $\mathbb{Q}$ w.r.t. $|.|=|.|_{\infty}$.
+%$\mathbb{Z}_{p}=\{x \in \mathbb{Q}_{p}\mid |x|_{p}\leq 1 \}$.
+%The units in $\mathbb{Z}_{p}$ is $\mathbb{Z}_{p}^{\times} = \{ a \in \mathbb{Q}_{p}\mid |x|_{p} = 1 \} $.
+\end{definition}
+ %The unit group $ \mathbb{Z}_{p}^{\times}$ is of main inteerest. 
+Equilvalently, from \cite{Satoh} we can express $\mathbb{Q}_{p}$ as
+\[  \mathbb{Q}_{p} = \{ \sum_{n=m}^{\infty} a_{n}p^{n}\mid m \in \mathbb{Z}, a_{n} \in \{0,1,\ldots, p-1\}.\]
+%This means any element of $\mathbb{Q}_{p}$ can be written in the infinite series in $p$.
+In the field of real number we have the isomorphism between $ \mathbb{R}^{+}  \cong  \mathbb{R}_{>0}^{\times}$ given by the maps $x \mapsto e^x$ and $\log(t) \leftmapsto t$ where $ \mathbb{R}^{+}  \text{ and }  \mathbb{R}_{>0}^{\times}$ are the additive and multiplicative group of real numbers and $e$ is the base of natural logarithm $\log$. But in contrast of this the exponential and logarithmic function does not converge always in $p$-adic field.
+
+\begin{proposition}
+ Let $a \in \mathbb{Q}_{p}$ then 
+ \begin{enumerate}
+\item  the series $\exp_{p}(a)= \exp(a)= \sum_{n=1}^{\infty} a^{n}/n!$ converges iff $a \in p\mathbb{Z}_{p}$ for $p \neq 2$, and it converges iff $a \in 4\mathbb{Z}_{p}$ for $p = 2$,
+\item $\log_{p}(a)= \log(a) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}(a-1)   $ converges iff $a-1 \in p\mathbb{Z}_{p}$ and
+\item if $a_{1}$ and $a_2$ are in the domain of convergence exponential function and $b_1$
+ and $b_2$ are in the domain of convergence of logarithmic function then
+\[ \exp(a_{1} + a_{2}) = \exp(a_1)\cdot \exp(a_2) \text{ , } \log(b_{1}b_{2})= \log(b_1) + \log(b_2)\].  
+ \end{enumerate}
+
+\end{proposition}
+\begin{proof}
+Satoh 70.
+\end{proof}
+
+\begin{lemma}
+ For every $x\in U_{L}^{1}$,
+ \[ \v(x-1)> \frac{e}{p-1} \Rightarrow \v(x^{p}-1) = \v(x-1)+e ,\]
+ where $e=\v(p)$ is the ramification index of $L$ and $\v$ is the surjective valuation function on $L$. 
+\end{lemma}
+\begin{proof}
+Lorenz page-88.
+\end{proof}
+For $a \in \mathbb{R}_{>0}$, we know 
+\[  \log(a) = \lim\limits_{h\rightarrow 0} \frac{a^h-1}{h}.\]
+In the same pattern, for any local field $L$ of characteristic $0$ and for every $a\in U_{L}$, we define 
+\[ \log_{p}(a)= \log(a)= \lim\limits_{n\rightarrow \infty} \frac{a^{p^n}-1}{p^{n}}.\]
+The $\log_{p}$ function satisfies the usual power series $\log_{p}(1-a) = -\sum_{n=1}^{\infty} \frac{a^n}{n}$ and this series converges for $\v(a)>0$. The $\exp_{p}$ function has also the similar structure defined as $\exp_{p}(a)= \sum_{n=0}^{\infty}\frac{a^n}{n!}$, and this series converges for $\v(a)> e/(p-1)$.
+\[  \]
+
+\section{Unit group}
+Let $(K,|.|)$ be a non-archimedian local field. Then $\mathcal{O}_{K}:=\{ a \in K:|a|\leq 1 \}$ is the ring of integers and  $\mathfrak{p}_{K}:=\{a \in K: |a|<1\}$  is the unique non-zero prime ideal in $\mathcal{O}_{K}$. $\mathcal{O}_{K}$ is also said to be the valuation ring of $K$ and the ideal $\mathfrak{p}_{K}$ as a valuation ideal of $K$.
+The residue class field of $K$ is defined by $\overline{K}= \mathcal{O}_{K}/\mathfrak{p}_{K}$ which is a finite filed of characteristic $p$. The unit group of $\mathcal{O}_{K}$ is $U_{K}  = \mathcal{O}_{K} \setminus \mathfrak{p}_{K}$ the unit group. The group of higher principal unit $ U_{K}^{n}$ is defined as 
+\[ U_{K}^{n} = U^{n} = 1 + \mathfrak{p}_{K}^{n} = \{ x \in \mathcal{O}_{K} \mid x \equiv 1 \mbox{ mod } \mathfrak{p}_{K}^{n} \}.\] 
+In particular, $U_{K}^{1}  = 1+\mathfrak{p}_{K} = \{ x \in \mathcal{O}_{K} \mid x \equiv 1 \text{ mod }\mathfrak{p}_{K}\}$ is said to be the principal unit group.\\
+Consider the non-archimedian field extension $L/K$ and the absolute value $\mid \cdot\mid$ on $L$. Let $\mathcal{O}_{L} \text{ and } \mathfrak{p}_{L}$ are valuation ring and the valuation ideal of $L$, and  that of $K $ are $\mathcal{O}_{K} \text{ and }\mathfrak{p}_{K}$.
+% are the Valuation ring and the valuation ideal of $L$ \& $K$.
+  Let $\overline{L}= \mathcal{O}_{L}/\mathfrak{p}_{L}$ and $\overline{K}= \mathcal{O}_{K}/\mathfrak{p}_{K} $. Since $ \mathfrak{p}_{K} = \mathcal{O}_{K} \cap \mathfrak{p}_{L} $ we obtain the injective natural homomorphism $\overline{K} \rightarrow \overline{L}$ and we call $\overline{K}$ is a subfield of $\overline{L}$.
+
+ The degree $f= f(L/K)= [\overline{L}:\overline{K}]$ is called the residue class degree or inertia degree of $L/K$  and the ramification index of $L/K $ is defined as $e= e(L/K) = \frac{[L:K]}{f(L/K)}$.
+ % |L^{\times}|_{L/K} : |K^{\times}|_{K}$.\\
+ The extension $L/K$ is called \textbf{unramified} extension if  $[L:K]=f(L/K)$ and \textbf{totally ramified} extension if $f(L/K) = 1$. If $[L:K] $ is neither $f(L/K)$ nor $e(L/K)$, then it is called \textbf{ramified} extension.
+ % and in this case we have\[ [L:K] = e(L/K)\cdot f(L/K) .\]
+ For an intermediate field $M$ of $L/K$ we obtain
+ \[  f(L/K)= f(L/M)\cdot f(M/K)  \text{ and } e(L/K) =e(L/M) \cdot e(M/K) . \]
+ 
+% % Let $L/K$ be a finite Galois extension of non-archimedean local fields with finite residue fields $\overline{L}/\overline{K}$ and Galois group $\G$. $L/K$ is called unramified if $[L:K]=f(L/K)$ else ramified. 
+% \end{definition}
+ 
+\begin{proposition}
+Let L be a non-archimedian local field then the group $L^{\times}$ has direct product decomposition $L^{\times} = U_{L} \times (\pi)$ where  $\pi$ is a prime element of $\mathfrak{P}_L$ and 
+$(\pi) = \{\pi^{n}\}_{n \in \mathbb{Z}} $ is the infinite cyclic subgroup of $L^{\times}$ generated by $\pi$.   
+\end{proposition}
+\begin{proof}
+\cite{Neukirch}, Proposition 3.1.
+
+\end{proof}
+
+For each $m \in \mathbb{N}$, let $W_m$ be the group of $m^{th}$ roots of unity in algebraic closure of $L$. Then 
+\[ L^{\times} = \langle \pi  \rangle  \times U_{L}  = (\pi)\times \mathbb{F}_{q}^{\times} \times U_{L}^{1}. \] where $\mathbb{F}_{q}$ is the residue class field of $L$. Let $W_{q-1} = \langle \zeta_{L}\rangle$ be the $(q-1)^{th}$ roots of unity in $L$ then $\mathbb{F}_{q}^{\times}\cong W_{q-1} $. 
+Other than $(q-1)^{th}$ roots of unity, we also have $W_{p^{\infty}}$ which is the group of roots of unity in $U_{L}^{1}$ of $p$-power order. We call $W_{p^{\infty}}$ as the $p$-power torsion unit group of $L$.
+%So we can write
+%\[ U_{L}^{1}= W_{p^{\infty}} \times \mathbb{Z}_{p}^{n}\] where $n$ is the degree of $L/\mathbb{Q}_{p}$.
+
+
+
+\begin{theorem}
+Let $L$ be a non-archimedian local field. The map $\log : U_{L}^{1} \rightarrow L$  defined as above is continuous and satisfies $\log(ab) = \log(a) \log(b)$. Its kernel is the group $W_{p^{\infty}}$. Let $e = v_{L}(p) >0$ be the ramification index of $L/\mathbb{Q}_{p}$. For each $r\in \mathbb{N}$ such that $r > \frac{e}{p-1}$, the log function $\log : U_{L}^{r} \rightarrow \mathfrak{p}_{L}^{r}$ is an isomorphism. 
+This isomorphism 
+\[U_{L}^{r} \cong   \mathfrak{p}_{L}^{r} , \text{  for  } r>  \frac{e}{p-1} \]
+is also an isomorphism of $\mathbb{Z}_{p}$-modules.
+
+
+\end{theorem}
+
+\begin{proof}
+\cite{Lorenz}, Theorem 8, page-87.
+
+\end{proof}
+
+Let $x \in U_{L}^{1}$ such that $x^n = 1$ for some $n \in \mathbb{N}$. Then $n\log(x)= \log(x^n)= \log(1)=0$. So, $\log(x)=0$. For $r> \frac{e}{p-1}$, if $\log(x)=0$ then from above theorem $x^{p^r} \in U_{L}^{r}$. Applying $\log$ we get 
+\[ \log(x^{p^r}) = p^{r}\log(x)=0 \Rightarrow x^{p^r}=1. \]
+
+
+
+\begin{remark} 
+\begin{enumerate}
+\item
+The $p$-power torsion units of $U^{1}$ are the elements of the group $W(U_{L}^{1})= W_{p^\infty}= W_{p^r}(L)$, where $r> \frac{e}{p-1}$.
+\item The exponential function defined as $\exp: \mathfrak{p}^{r} \rightarrow U^{r}$ such that $\exp(x+y) = \exp(x)\cdot \exp(y)$ is the inverse of logarithm function $\log: U^{r}\rightarrow \mathfrak{p}^{r}$ where $r> \frac{e}{p-1}$. So, for every $x \in U^{r} $ such that $\v(x-1) > \frac{e}{p-1}$ and $a \in \mathbb{Z}_{p}$ we get \[ x^{a} = \exp^{a\log(x)}.\]
+\end{enumerate} 
+\end{remark}
+
+
+\begin{theorem}
+Let $L$ be a non-archimedian local field of characteristic $0$. The principal unit group $U_{L}^{1} $ has the following structure 
+\[ U_{L}^{1}= W_{p^{\infty}} \times \mathbb{Z}_{p}^{n}\]
+as a $\mathbb{Z}_{p}$-module where $n:=[L:\mathbb{Q}_{p}].$
+\end{theorem}
+\begin{proof}
+\cite{Lorenz}, page-90, Theorem $9$.
+\end{proof}
+One can find the precise generators of principal unit group from \cite{Sebastian}. The author of \cite{Sebastian} presents theorems through which one can easily compute the generators of the local field extensions. We use thsese generators while solving the norm equations. We have written the function "CUnitGroupGenerators" using those results and this is much faster than the function "UnitGroupGenerators" of MAGMA. 
+
+\section{Norm Group}
+
+Let $L/K$ be a finite Galois extension of degree $n$ then $L$ is a $K$-vector space. Suppose $B=\{\alpha_{1}, \ldots , \alpha_{n}\}$ be the basis of $L/K$ and $ a \in L$. Then $\phi_{a}: L \rightarrow L$ defined by $x\mapsto ax$ is clearly $K$-linear map. Thus we obtain the representaion matrix of $a$ as a matrix  $M_{a} \in K^{n\times n}$ such that 
+\[a(\alpha_{1}, \ldots , \alpha_{n} ) = (\alpha_{1}, \ldots , \alpha_{n} )M_{a} .\]  
+The characteristic polynomial of $a$ is defined as  $f_{a} = \det(aI_{n}-M_{a}) \in K[x]$.
+ So, we obtain  $f_{a}= x^{n}+ b_{n-1}x^{n-1}+ \ldots +b_{1}x^{1}+b_{0}$ where all $b_{i} \in K$. We define the norm of $a$ over $L/K$ as \[  \N_{L/K}(a)= (-1)^{n}b_{0}= \det(M_{a})\]
+ and the trace of $a$ over $L/K$ is as
+ \[ \Tr_{L/K}= -b_{n-1}= \Tr(M_{a}).\]
+ Due to the fact of the map $L\rightarrow K^{n\times n}$ defined by $x\mapsto M_{x}$ is $K$-algebra homomorphism, we obtain the multiplicative group homomorphism $N_{L/K}: L^{\times}\rightarrow K^{\times}$ such that
+   $\N_{L/K}(ab) = \N_{L/K}(a)\N_{L/K}(b)  \text{ and } $\\
+   $ \N_{L/K}(\mu a) \mu^{n} =\N_{L/K}(a) \text{  for all  } a,b \in L \text{ and } \mu \in K$.\\
+ The $K$- linear map $ \Tr_{L/K}: L \rightarrow K$ such that\\
+ $ \Tr_{L/K}(a+b) = \Tr_{L/K}(a)+\Tr_{L/K}(b)  \text{ and } $\\
+$ \Tr_{L/K}(\mu a) = \mu \Tr_{L/K}(a) \text{  for all  } a,b \in L \text{ and } \mu \in K .$
+ % Then the norm of a is defined as the product 
+We can also compute the norm of $a$ using the Galois group as 
+\[\N_{L/K}(a)= \prod_{\sigma \in \G(L/K)}^{} \sigma(a)\] where $\G(L/K)$ is the Galois group of $L/K$. The Group $G$ contains the automorphisms of $L$ fixing the elements of field $K$. So for any $a \in K$ we get $\N_{L/K}(a)= a^{[L:K]}$. 
+%For the multiplicative groups $L^{\times}, K^{\times}$ of $L$ and $K$ respectively, we have the group homomorphism $N_{L/K}: L^{\times} \rightarrow K^{\times}$, that is
+%\[  \N_{L/K}(ab) = \N_{L/K}(a)\N_{L/K}(b) \text{  for all  } a,b \in L^{\times}.\]
+Also, for $ a \in L$, the trace of $ a $ is defined as the sum of all of it's Galois conjugates  \[i.e. \mbox{  } \Tr(a)= \sum_{\sigma \in \G(L/K)}^{}\sigma(a).\]
+%The trace map $\Tr_{L/K}: L \rightarrow K$ is a $K$-linear map, that is
+ %\[  \Tr_{L/K}(ax+by) = a\Tr_{L/K}(x)+ b\Tr_{L/K}(y) \text{  } \forall a,b \in K. \]
+Note, if $a \in K$, then $\Tr_{L/K}(a)= [L:K]\cdot a$. \\
+For $L/M/K$ a tower of field extensions, we have 
+$\Tr_{L/K} = \Tr_{M/K} \circ \Tr_{L/M}$ and $\N_{L/K} = \N_{M/K} \circ \N_{L/M}.$
+%In the field of real number we have the isomophism between $ \mathbb{R}^{+}  \cong  \mathbb{R}^{\times}$ given by the maps $x \mapsto e^x$ and $\log(t) \leftmapsto t$ where $ \mathbb{R}^{+}  \text{ and }  \mathbb{R}^{\times}$ are the additive and multiplicative group of real numbers and $e$ is the base of natural logarithm $\log$. But in contrast of this the exponential and logarithmic function does not converge always in $p$-adic field.
+%Similarly we can define the logarithm and exponential in local field. 
+In an unramified extension, from \cite{Neukirch} we have the fact that $\N(U_{L})= U_{K}$. This means every unit of base field $K$ is a norm of an element of $L$.
+\[ i.e. \hspace{5mm} \forall a \in U_{K} \hspace{2mm} \exists b \in U_{L} \mbox{ : } \N(b) = a.  \] 
+But the situation is different in the ramified field extensions. 
+\begin{theorem}
+  Let $L/K$ be a totally ramified extension. Then the norm groups of $L$ are precisely the groups which contain the groups of the form $U_{K}^{n}\times (\pi)$ for some appropriate $n \in \mathbb{N}$.
+\end{theorem}
+\begin{proof}
+ \cite{Neukirch} Theorem 7.17.
+\end{proof}
+From the above theorem we can observe that there may be many units in $K$ which are not normed element. It is difficult to find those elements of $K$ which are not normed element.
+% However, we present below some theorems from \cite{Sebastian} which give the precise informations of the normed subgroup of $K$ in it's totally ramified extension. If $x\in K$ is normed element then we present algorithms in the next section to find the element of $L$ having $\N(\alpha)=x$.
+However if $L/K$ is tamely ramified extension then from \cite{Sebastian} we know that the norm group $\N(L)$ contains the principal unit group $U_{K}^{1}$.  If $x\in K$ is normed element then we present algorithms in the next section to find the element of $L$ having $\N(\alpha)=x$.
+
+\section{Solving Norm Equations}
+Although there are many ways of solving the norm equations, we present two ways in this section.
+\subsection*{Using unit group generators:}
+
+For finite local field extension $L/K$ and $a\in K^{\times}$, we are looking for an element in $b \in L$ such that $\N(b)=a$. Let $\{\eta_1, \eta_2 \ldots, \eta_r \} $ be the set of generators of principal unit group of $L$ then the direct decomposition of multiplicative group of $L$ becomes
+\begin{eqnarray*}
+L^{\times} & = &  \langle \pi \rangle \times \langle \zeta_{L} \rangle \times \langle \eta_1, \eta_2 \ldots, \eta_r \rangle
+\end{eqnarray*}
+If $a$ is a normed element then $a \in \N(L^{\times})$.
+\[ i.e. \hspace{5mm} a \in  \langle \N(\pi) \rangle \times \langle \N(\zeta_{L}) \rangle \times \langle \N(\eta_1), \N(\eta_2) \ldots, \N(\eta_r) \rangle. \]
+So, we determine $b$ using the representation of $a$ in $\langle \N(\pi) , \N(\zeta_{L}) , \N(\eta_1), \N(\eta_2) \ldots, \N(\eta_r) \rangle $. The set $\{ b \cdot \epsilon \mid \N(\epsilon) =1 \}$ consists of all solutions of norm equation of $a$. If we include $\zeta_L$ in the principal unit group generators then we can write $U_{L}=\langle\zeta_L,\eta_1, \eta_2 \ldots, \eta_r  \rangle$.
+
+
+ \begin{algorithm}[h]
+\caption{Norm equation using unit group generators}
+\label{ClNormEquation}
+\begin{algorithmic}[1]
+\REQUIRE $L/K$ be a finite Galois field extensions $a \in U_{K}$.
+\ENSURE  Find $b \in L$ such that $\N_{L/K}(b)=a$.
+\STATE Compute the unit group generators of $L$ and let it be $\{\eta_1, \eta_2 \ldots, \eta_r\}$.
+\State Compute the free abelian group $F$ of rank $r$ with basis $\{F_1, F_2, \ldots, F_r\}$.
+\State Define a homomorphism map $\psi : F \rightarrow U_{K}$ such that $\sum_{1}^{r} x_{i}\cdot F_{i}\mapsto \sum_{i}^{r} x_{i}\cdot \N(\eta_{i})$.
+\State If $a \notin \psi(F)$ then \textbf{return} no solution,
+\State else\begin{enumerate}
+\item Compute the pre-image $\psi^{-1}(a):= \sum_{1}^{r}b_{i}\cdot F_{i}$.
+\item \textbf{return} $b:=\sum_{1}^{r}b_{i}\cdot \eta_{i}$.
+\end{enumerate}
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+
+In fact this algorithm is already applied in MAGMA and available. We compute the unit group grnerators of the local field which is much faster than of MAGMA. Using our generators we solve the norm equations much faster than the function NormEquation of MAGMA. We have written the codes of unit group generators in the file "NormEquation.m" and call the function "ClNormEquation" which solves the norm equations.\\\\
+We  have made the above algorithm much faster than before but if we have the local field extensions of high degree then computation of unit group consumes more time while solving norm equations. To get rid of the computation of unit group while solving the norm equations of particular type of elements of the field we present effective algorithms in the following sub-section.
+\subsection*{Using trace and logarithms:}
+Let us suppose $x\in U_{L}^{1}$ so that $\log(x)$ converges. Then from \cite{Kenkichi} we have  \[\log(\sigma(x)) = \sigma(\log(x))  \]for every $\sigma \in \G(L/K)$
+
+% \begin{align*}
+%   \sigma(\log(x)) &  = \sigma ( \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} (x-1)^{n})\\
+%                  &  =  \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} \sigma\{(x-1)^{n}\})\\
+%                   &  = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} (\sigma(x)-1)^{n})\\
+%                  &  = \log(\sigma(x))\\
+% \end{align*}
+ 
+ Let us suppose all the notation as above then for  $a \in U_{L}^{r}$ where $r> \frac{e}{p-1}$ we have 
+ \[\N_{L/K}(a) = \prod_{\sigma \in \G(L/K)}^{} \sigma(a).\]
+ Applying the logarithm, we get 
+\begin{align}
+  \log(\N_{L/K}(a) ) &  =  \sum_{\sigma \in \G(L/K)}^{} \log(\sigma(a))\\
+                     & =  \Tr_{L/K}(\log(a))
+\end{align}
+Thus, one can compute the norm using formula $\N_{L/K}(a) = \exp(\Tr(\log(a)))$ if the element is in the domain of convergence of $\exp $ and $\log$.
+Since we are interested in solving the norm equation that is for an element $a \in K$  we check whether there exists an element $b \in L$ such that $\N_{L/K}(b) =a$. In order to find $b \in L$ we will solve the trace equation from $(3)$. As solving the trace equation is much simpler task than solving the norm equation since the process is linear, we solve the norm equation much faster.\\
+Note that $a \in K$ is in the domain of convergence of $\log $ and $\exp$. In order to find the $b\in L$ such that $\N_{L/K}(b)=a$,  we use the following strategy:\\
+Applying $\log$ we get
+\[\log(\N_{L/K}(b))  = \log(a)\]
+Using the Satoh's formula for computing norm, we get 
+\[  \log(\exp(\Tr(\log(b))))  =  \log(a) . \]
+Since $\exp$ and $\log$ are isomorphism to each other we obtain
+\[ \Tr(\log(b)) = \log(a).\]
+Since $\log(b) \in L$, we look for the element of $x \in L$ such that $\Tr(x) = \log(a)$ and then finally we compute $\exp(x)$ which will be our required element in $L$ if $a$ does not contain any torsion unit.\\
+Clearly, in this method we solve the trace equation instead of norm equation.\\
+ We have $\N(U_L)= U_{K}$ in any unramified extension and suppose that the residue class fields of $L$ and $K$ are $\mathbb{F}_{L}$ and $ \mathbb{F}_{K}$ respectively. Since the norm map is surjective on finite fields, so $\N:\mathbb{F}_{L}^{\times} \rightarrow \mathbb{F}_{K}^{\times} $ is surjective.
+ 
+ % \mathbb{F}_{q}^{\times}\times U_{K}^{1}$. 
+% every unit of $\mathbb{F}_{q}^{\times}$ is a normed element in the residue Class Field of $L$. 
+ %The following algorithm compute the such elements:
+
+In fact, $L^{\times}= (\pi) \times \mathbb{F}_{q}^{\times} \times U_{L}^{1}$. Since the norm is multiplicative that is, $\N(ab)= \N(a) \cdot \N(b)$, we will solve the norm equation factorising the element as in the above form.\\
+In brief, for an unramified extension $L$ and its residue class field $\mathbb{F}_{q}$ we have the map known as Teichm\"uller lift $i.e$ $T: \mathbb{F}_{q} \rightarrow \mathcal{O}_{L}$ defined as follows:
+\begin{itemize}
+\item $T(0) =0$.
+\item For $\overline{a} \in \mathbb{F}_{q}$, $T(\overline{a})$ is the unique $(q-1)^{th}$ root of unity with residual part equals to $\overline{a}$.
+\end{itemize}
+For the computation of the Teichm\"uller lift one can find algorithm in (\cite{Cohen},\cite{Satoh}). 
+
+%Teichmueller Lift\\
+%$Input$: Let $L$ be an unramified field extension with  ring of integers $R:= O_{L}$ and $\mathbb{F}_{q}$ be the residue Class filed of $L$. Suppose $a\in \mathbb{F}_{q}$.\\
+%$Output$: $T(a)$ mod $\mathfrak{p}^{m}$.
+
+
+%We state an algorithm to compute the norm equation of residue class field.
+
+%\begin{rem}
+%In MAGMA computing the norm equations for higher degree local field extensions are much expensive. MAGMA has the function known as "NormEquation", which solves the norm equations. But this is very slow for higher field extensions. We have found the new way of computing the unit group generators of the field which is faster than MAGMA's version for high degree field extensions. We apply our unit group generators to solve the norm equations which is much faster than the function "NormEquations". We have written the codes in the function "MyNormEquation" and it is in the file "NormEquation.m".
+%\end{rem}
+%\begin{rem}
+%In MAGMA computing the norm equation for higher degree local field extensions is much expensive. We found that the codes for computing the unit group generators for such field was not written in an effective way and because of this tt was much time consuming. After re-writing some codes of unit group generators of MAGMA, we made it much advanced so that this computes effectively. And then using the new way of computing the unit group generators, the norm equation works effectively even for a large degree local field extensions. The codes are in the file "NormEquation.m" and the command "MyNormEquation" solves the norm equation.
+%\end{rem}\\
+%Although, we solved the norm equation through "MyNormEquation" and it is much faster than the previous command "NormEquation" in MAGMA, 
+we present in this the algorithms which will solve the norm equations for particular types of element of the field without using the unit group generators of the field. Instead of computing unit group generators, here we apply the functions such as division, logarithm, trace and exponential which are not expensive in the sense of computation time and because of this we can solve the norm equation in very short time for large degree of local field extensions.\\
+%Since we work in the finite precision of a field, we lose some precision in division and exponential. The exponential function of MAGMA in local field extension has some flaws so I have written my own codes for exponential function which loses the precision. We are still trying to manage the precision loss during division and other functions.\\
+The following algorithm solves the norm equation of part of $W_{q-1}$ that is the residual part of the field.
+\begin{algorithm}[h]
+\caption{}
+\label{}
+\begin{algorithmic}[1]
+\REQUIRE $L/K$ be finite unramified extension of p-adic fields. Let $a \in U_{K}$ such that $a \in W_{q-1}$ in the residue class field of $K$ i.e a is $(q-1)^{th}$ root of unity.
+\ENSURE $\alpha \in L$ such that $\N(\alpha)=a$.
+
+\STATE Compute the $\mathbb{F}_{q^f}$  residue class field of $L$ where $f:=f(L/K)$, and let $\overline{a} \in \mathbb{F}_{q}^{\times} $.
+\STATE Compute  $\overline{b} \in \mathbb{F}_{q^f}^{\times} $ such that $\N(\overline{b}) = \overline{a}$ using NormEqution of MAGMA over finite fields.
+\STATE Compute a lift by powering ($i.e.$ Teichm\"uller lift from Satoh) $\alpha\in L$ of $\overline{b} $ such that $\N(\alpha) =a $.
+\end{algorithmic}
+\end{algorithm}
+%In the version of norm equation of MAGMA we have applied some changes so that the norm equation is much faster than the earlier version of norm equation. That is included in the "NormEquation" library. But even this is not the most suitable way of computing the norm equation of each element of the field. 
+From decomposition of the multiplicative group of the local field we can factorise each part of any field element and then solve the norm equations separately.
+%since the norm is multiplicative we can multiply all together.
+We know that $\log $ and $\exp$ are inverse to each other if the field element is in the domain of convergence of them.
+ %In the version of norm equation of MAGMA we need to compute the unit group generators of a $p$-adic field and unit group generators which are expensive for large degree field extensions.
+Thus in this situation $\log$ , $\trace$ and $\exp$  work well and these functions are much faster even in the large degree of local field extensions. So, using this we present below a secure algorithm. \\
+
+\begin{algorithm}[h]
+\caption{norm equation of torsion free unit}
+\label{ClNormEquation}
+\begin{algorithmic}[1]
+\REQUIRE $L/K$ be finite extension of $p$-adic fields , $a \in U_{K}$ is a torsion free unit.
+\ENSURE $\alpha \in L$ such that $\N(\alpha)=a$.
+\STATE If $\v(a-1) \leq e/(p-1)$ then solve using Algorithm $1$.
+\State If $\v(a-1) > e/(p-1)$ then solve as below:
+%\begin{itemize}
+ \STATE Compute $ x \in L$ such that $\Tr(x) = \log(a)$ and $\v(x) > 0$.
+ \STATE Return $\exp(\Tr(x))$.
+%\end{itemize}
+\end{algorithmic}
+\end{algorithm}
+
+
+Clearly, the function $\trace$ is not identically zero, so we can find many elements $\alpha \in L$ such that $\trace(\alpha) \neq 0$. In particular, we search such an element and then it will be easy to compute $x\in L$ satisfying $2(b)$. 
+%The best idea of choosing the element satisfying $2(ii)$ will be the element from the generators of the principal unit group of $L$.
+%The best idea of choosing the element satisfying $2(b)$ will be the sum of all the basis elements of $L$.
+We present an example which shows the computation time of two versions of norm equation.
+\begin{example}
+\begin{lstlisting}
+ 
+ >K:=pAdicRing(5,30); 
+ >L:=ext<UnramifiedExtension(K,2)|x^12+5>; 
+ > Precision(L);
+ 360  
+ >a:=1+2*L.1^5;
+ >Attach("NormEquation.m");
+ >time b:=ClNormEquation(UnramifiedExtension(L,12),a);
+ Time: 3.080
+ > Valuation(Norm(b)/a-1);
+ 360
+ > L_ur:= UnramifiedExtension(L,12);
+ > time U,mU:=UnitGroup(L);
+ Time: 69.760
+ > time _,b:=NormEquation(L_ur,mU,a);
+ ......much expensive.more than a week.
+\end{lstlisting}
+\end{example}
+
+\subsection{Algorithm:}
+$\Input$ :  $E/L $ be a finite unramified $p$-adic field extension, $\Pi \hspace{2mm} \text{ and } \hspace{2mm} \pi$ be uniformizer of $\mathcal{O}_{E}$ and $\mathcal{O}_L$ respectively and $a \in U_{L}$  up to finite precision $n \in \mathbb{N}$.\\
+$\Output$: Find $\alpha \in E$ such that $\N(\alpha)=a $.
+\begin{enumerate}
+%\item Factorize $a$ as $a = a_{f}\cdot u$ where $u$ lies in principal unit group and $a_{f} \in \mathbb{F}_{q}^{*}$.
+%\item Factorize $a$ as a =$\pi^{\v(a)}\cdot f\cdot u$ where $u$ lies in principal unit group and $f \in \mathbb{F}_{q}^{*}$.
+%\item If valuation $\v(a) > 0$ then $a =a/ \N(\Pi)^{\v(a)}$ if the extension $N/L$ is ramified.
+%\item If $\Valuation(a) > 0$ then compute the unit part of $a$ ($a/Norm(\Pi^{?}) \mapsto a$).
+\item Factorize $a$ as $a = a_f \cdot a_u \cdot a_t$ where $a_{u}$ is torsion free unit element and $a_t$ is p-power torsion unit element and $a_f $ is in residue field of $L$.
+%\item Compute the torsion part of the unit and write $u=tu \cdot u^{'}$, where $ tu$ is torsion part of $u$  and $u^{'}$ in higher unit group .
+\item Compute $a^{'}_{f} \in E$ using the Algorithm $5.2$ for $a_f$.
+\item  Compute $a^{'}_{u} \in E$ using the Algorithm $5.3$ whose norm is $a_{u}$.
+\item  Solve the norm equation of torsion unit $a_t$  as $a^{'}_{t}$ using Algorithm $5.1$.
+\item Return the product: $a^{'}_{u} \cdot a^{'}_{t}\cdot a^{'}_{f}$.
+\end{enumerate}
+ 
+In the unramified extension not only we can solve the norm equation of unit but also for the elements including valuation parts. Since $\N(\Pi) = \pi^f$ where f is the Inertia degree of $L$. So we can compute the solution of norm equation of $(\pi^f)\times U_{L}$.  
+%\textbf{Write something for element having the valuation part too $a:=\pi^{\v(a)}\cdot f\cdot u$}
+
+
+
+\subsection{Algorithm:}
+$\Input$ :  $E/L $ be a finite totally ramified $p$-adic field extension, $a \in U_{L}^{n}$ be an element in the norm group of $E$, up to  finite precision $n$.\\
+%$\Pi  \hspace{2mm} \text{ and } \hspace{2mm} \pi$ be uniformizer of $\mathcal{O}_{N}$ and $\mathcal{O}_{L}$ respectively and
+$\Output$: Find $\alpha \in E$ such that $\N(\alpha)=a $.
+%\begin{enumerate}
+%\item Factorize $a$ as $a:= f\cdot u$ where $u$ lies in principal unit group and $f \in \mathbb{F}_{q}^{*}$.
+%\item Factorize $a$ as a:=$\pi^{\v(a)}\cdot f\cdot u$ where $u$ lies in principal unit group and $f \in \mathbb{F}_{q}^{*}$.
+%\item If valuation $\v(a) > 0$ then $a:=a/ \N(\Pi)^{\v(a)}$ if the extension $N/L$ is ramified.
+%\item If $\Valuation(a) > 0$ then compute the unit part of $a$ ($a/Norm(\Pi^{?}) \mapsto a$).
+%\item Factorize $a$ as $a= a_{u} \cdot a_{t}$ where $a_{u}$ is torsion free unit element and $a_{t}$ is torsion unit ($p$-power torsion ) part of $a$.
+%\item Compute the torsion part of the unit and write $u=tu \cdot u^{'}$, where $ tu$ is torsion part of $u$  and $u^{'}$ in higher unit group .
+%\item Compute $f_N \in N$ using the algorithm $1.1$ for $f$.
+%\item Compute $ a^{'}_{u} \in E $ using the Algorithm $3.2$ whose norm is $ a_{u}$.
+%\item Solve the norm equation of torsion unit $ a_{t} $  as $ a^{'}_{t} $ using new command "MyNormEquation" in MAGMA.
+%\item Return the product: $a^{'}_{u} \cdot a^{'}_{t}$.
+%\end{enumerate}
+\begin{enumerate}
+\item $a = a_{u} \cdot a_t$ where $a_t$ is $p$-power torsion unit part of $a$ and $a_{u}$ is free of torsion unit.
+\item To solve for $a_{t}$ do
+      \begin{itemize}
+\item if $ a_t \neq 1$ then using algorithm $5.1$, compute $a^{'}_{t}$ such that $\N(a^{'}_{t}) = a^{'}_{t}$.
+\item else $a^{'}_{t} = 1$.
+      \end{itemize}
+\item To solve for  $a_{u} $ do
+      \begin{itemize}
+      \item choose suitable $r \in \mathcal{O}_{N}$ such that $r/\trace(r) =:r_{1}$ is defined.
+      \item $s \leftarrow \trace(r_{1}\cdot \log(a_{u}))$.
+      \item  $a^{'}_{u} \leftarrow \exp(s)$.
+      \end{itemize}
+\item Return $a^{'}_{t} \cdot a^{'}_{u}$.
+\end{enumerate}
+To verify it we apply the norm:
+\begin{eqnarray*}
+   \N(a^{'}_{t} \cdot a^{'}_{u} ) & = & \N(a^{'}_{t}) \cdot \N(a^{'}_{u})\\
+             & = & a_t \cdot \exp(\trace(\log(\exp(r_{1} \cdot \log(a_{u})))))\\
+             & = & a_t\cdot \cdot \exp(\trace (r_{1} \cdot \log(a_{u})))\\
+             & =& a_t \cdot \exp (\log(a_{u})) \hspace{3mm} \mbox{ since, } \trace \mbox{ is linear}\\
+             & = & a_t \cdot a_{u} = a.
+\end{eqnarray*}
+
+For the computation in $p$-adic field extension, the problem is to present the elements in an exact form. We want in this to solve the norm equation of unit element of the ring of integers of the field. For a local field $L$, assume $\mathcal{O}_L$ be the ring of integers and $\pi$ be the uniformizing element of $\mathcal{O}_L$. The element $x\in \mathcal{O}_L$ can be written in the infinite series of $\pi$. But for the computation purpose we would like to truncate the infinite expansion of $x$ to a finite sum. That means we work in the quotient ring $\mathcal{O}_L/\pi^{n}\mathcal{O}_L$ for $n \in \mathbb{N}$. The integer $n$ is said to be the precision of the ring $\mathcal{O}_L$. All we presented the algorithms above have been applied only in the field of finite precision. 
+Since the quotient ring is of finite structure so its elements can be presented exactly and hence we can apply our algorithms to solve the norm equation. The exponential function of MAGMA in local field extension has some flaws, so I have written my own codes for exponential function which loses the precision. Also while applying the above algorithms we use division which also loses the precision. %with finite precision, we lose some precision in few computations such as exponential or division. 
+One can find more details of precision loss in \cite{Magma Handbook}.
+%Since we work in the finite precision of a field, we lose some precision in division and exponential. The exponential function of MAGMA in local field extension has some flaws so I have written my own codes for exponential function which loses the precision. 
+We are still trying to manage the precision loss during division and exponential function. \\
+The above algorithms we presented can solve the norm equation in either unramified extension or totally ramified extensions effectively. But when the local field $L$ has both the ramification index and the inertia degree over $K$ greater than $1$, then we solve the norm equation with command  "MyNormEquation" in MAGMA. Suppose $L/M/K$ be a tower of local field extensions then we can solve the norm equation of $L/K$ by iterating over intermediate fields. In our algorithms we apply the functions such as $\log$ and $ \exp$, so we have to check in each intermediate field  whether the solution is in the convergence of them. In this case, to get rid of solving the norm equation in each intermediate fields one can solve with command "MyNormEquation" which also works effectively with our new way of computation of unit group generators.\\
+The following examples and table show the effectiveness of our algorithms.
+%\begin{sidewaystable}[h!]
+%\begin{center}
+%\begin{tabular}{ |c|c|c| }
+% cell1 & cell2 & cell3 \\ 
+% cell4 & cell5 & cell6 \\  
+% cell7 & cell8 & cell9    
+%\end{tabular}
+%\end{center}
+%\end{sidewaystable}
+\clearpage
+\begin{sidewaystable}[h!] % <--
+  \begin{center}
+  %\caption{Norm Equation Table .}
+  %\hline
+  \label{tab:table1}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|} %{|a|b|c|d|e|f|g|h|i|}  %{ |l|s|r|t|d|e|f|g|h| } %{|c|c|c|c|c|c|c|c|c|}   %{l|s|r|t|d|e|f|g|h} 	
+  	%\toprule
+  	\hline
+  	\textbf{Items} & \textbf{Extensions} & \textbf{Degree} & \textbf{Absolute Degree} &  \textbf{Prime Field} &  \textbf{Precision} & \textbf{Element} & \textbf{Time} & \textbf{Time}\\
+  &  &  $L:K$ & $L:\mathbb{Q}_{p}$  & of $L$ &  &  $\in$ \hspace{2mm} $U_{K}^{r} $& ClNormEquation & NormEquation\\
+    %\midrule
+     \hline
+    1. & L/K & 5 & 50 & $(\mathbb{Q}_{5},30)$ & 150 & $ a:= 3*(1+2*K.1^3)$ &  0.340 & 4.180\\
+     \hline
+     %$K:=ext<UnramifiedExtension(Q_5,2)|x^5+10*x+5>; $
+     2. &     L/K & 7 & 98  & ($\mathbb{Q}_{5},20)$ & 140 & $a:=1+2*K.1^3$ & 0.790 & 10.480\\
+     \hline 
+     %   $K:=ext<UnramifiedExtension(Q_5,2)|x^7+10*x+5>; $ 
+     3. &     L/K & 10 & 200  & ($\mathbb{Q}_{5},20)$ & 200 & $a:=1+2*K.1^4$&  1.480 & 55.370\\
+    \hline
+    %$ K:=ext<UnramifiedExtension(Q_5,2)|x^10+15*x^2+5*x+5>;  $
+    4. &     L/K & 11 & 242  & $(\mathbb{Q}_{5},20)$ & 220 & $a:=3*(1+2*K.1^4)$&  1.750 & 90.000 \\
+    \hline
+    %$ K:=ext<UnramifiedExtension(Q_5,2)|x^11+15*x^2+5*x+5>; $
+     5. &     L/K & 11 & 242  & $(\mathbb{Q}_{5},10)$ & 110   & $a:=3*(1+2*K.1^4)$ &  0.700 & 22.700 \\  
+     \hline 
+     %K:=ext<UnramifiedExtension(Q_5,2)|x^11+10*x+5>;
+      6. &     L/K & 12 & 264  & $(\mathbb{Q}_{5},10)$ & 240   & $a:=3*(1+2*K.1^4)$ &   0.820 & 16.070 \\  
+          \hline
+    %  K:=ext<UnramifiedExtension(Q_5,2)|x^11+15*x^2+5*x+5>;
+     % 6ii.  &    L/K & 11 & 264  & $(\mathbb{Q}_{5},10)$ & 120   & $a:=3*(1+2*K.1^5)$ &   0.810 & ... \\ 
+   %   \hline
+ %     K:=ext<UnramifiedExtension(Q_5,2)|x^12+15*x^2+5*x+5>; 
+     
+      7. &     L/K & 16 & 296  & $(\mathbb{Q}_{3},10)$ & 160   & $ a:=2*(1+2*K.1^11)$&  0.240  & 309.840/ 5 min \\ 
+      \hline
+      %$ K:=ext<Q_3| x^16+3*x^5+3>;$
+      8. &     L/K & 18 & 324  &$(\mathbb{Q}_{3},10)$ & 180   & $ a:=2*(1+2*K.1^11)$&  0.380  & 3219.450 \\
+      \hline
+      %$K:=ext<Q_3| x^18+3*x^5+3>;$
+      9. &     L/K & 20 & 400  & $(\mathbb{Q}_{3},10)$ & 200   & $ a:=2*(1+2*K.1^11)$&  0.620  & ... \\ 
+      \hline
+      %$K:=ext<Q_3| x^20+3*x^5+3>;$
+      10. &   L/K &  6 &  144 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.120 & 4.890\\
+      \hline
+      %$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+      11. &   L/K &  8 &  192 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.220 & 329.420 \\
+      \hline
+      %$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+      12(i). &   L/K &  10 &  240 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.290 & 31618.360/8.78 hrs \\
+      \hline
+      12(ii).  &   L/K &  11 &  264 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.340 & 300451.900/ 83.46 hrs \\
+      \hline
+      %$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+      13.&   L/K &  20 &  400 & $(\mathbb{Q}_{3},10)$ & 200 & $a:=2*(1+2*K.1^11);$ & 11.920 with TU &  32670.770 \\
+     \hline
+      %K:=ext<Q_3| x^20+3*x^5+3>;
+     14.&   L/K &  20 &  400 & $(\mathbb{Q}_{3},10)$ & 200 & $a:=1+2*K.1^15;$ & 0.580 with NTU & 33149.630  \\
+     \hline
+     %K:=ext<Q_3| x^20+3*x^5+3>; 
+   % \bottomrule
+  \end{tabular}
+  \end{center}
+\end{sidewaystable}
+\clearpage
+
+\textbf{Fields above in the table are defined as below: }\\
+1)  $K:=ext<UnramifiedExtension(Q_5,2)|x^5+10*x+5>; $\\
+2)  $K:=ext<UnramifiedExtension(Q_5,2)|x^7+10*x+5>; $\\
+3)  $ K:=ext<UnramifiedExtension(Q_5,2)|x^10+15*x^2+5*x+5>;  $\\
+4)  $ K:=ext<UnramifiedExtension(Q_5,2)|x^11+15*x^2+5*x+5>; $\\
+6) $Q_3:=pAdicRing(3,10);$ \& $K:=ext<Q_3| x^15+3*x^5+3>; $\\
+7)  $ K:=ext<Q_3| x^16+3*x^5+3>;$\\
+8)  $K:=ext<Q_3| x^18+3*x^5+3>;$ \\
+9) $K:=ext<Q_3| x^20+3*x^5+3>;$
+10) $Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+   $a:=1+2*K.1^8;$\\
+ 11)$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+    $a:=1+2*K.1^8;$\\
+ 12) $Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+    $a:=1+2*K.1^8;$  \\
+ 13) $Q_3:= pAdicRing(3,10); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
+     $a:=1+2*K.1^8;$  \\
+     
+\begin{remark}
+We computed the norm equation for any unit element of ring of integer $\mathcal{O}_{K}$ of $K$ in the finite extension $L/K$. Due to the fact $N(U_{L})\subset U_{K}$ we can compute the elements of which do not have solution once we have the map from $O_{K}$ to unit group $U_{K}$. We see below how to find such elements:
+\end{remark}
+
+\begin{lstlisting}
+> x := PolynomialRing(Integers()).1;
+> K := pAdicRing(3,10);
+> M := UnramifiedExtension(K,2);  
+> L:= ext<M| x^4+3*x+3>;
+> U,mU := UnitGroup(M);
+> N,mN := NormGroup(L, mU);
+> q,mq := quo<U|N>; 
+> F := [x@@mq@mU: x in q];
+> [NormEquation(L,mU,F[i]): i in [2..#F]]; 
+[ false, false, false ]
+\end{lstlisting}
+From above example we can see that there are three elements in $U_{M}$ whic has no solution for norm equation. 
+% Therefore, any element $x$ of $U_{M}$ which has a factor $x_f$ having no solution of norm equation then we mean $x$ has no solution for norm equation because of the multiplicative properties of Norm operator from $N: L \rightarrow K$. %Not true"";
+
+%$\&  L:=ext<K|12>;$ 
+%\clearpage
+
+
+%\begin{thebibliography}{9}
+%\bibitem{Fieker} 
+%C. Fieker, Y. Zhang. 
+%\textit{An application of the p-adic analytic class number formula}. 
+% LMS J. Comput. Math. 19 (2016), no. 1, 217–228.
+%
+%\bibitem{Fieker} 
+%C. Fieker, A. Jurk and Alexander and M. Pohst. 
+%\textit{On solving relative norm equations in algebraic number fields}. 
+% Math. Comp. 66 (1997), no. 217, 399–410. 
+% 
+%\bibitem{Lorenz} 
+% F. Lorenz.
+% \textit{Algebra. Vol. II. Fields with structure, algebras and advanced topics.} Springer, New York, 2008.
+%
+%\bibitem{Cohen}
+%
+%  H. Cohen.
+% \textit{A course in computational algebraic number theory.} Graduate Texts in Mathematics, 138. Springer-Verlag, Berlin, 1993. 
+%
+%
+%
+%\bibitem{Cohen}
+%H. Cohen, G. Frey, R. Avanzi, C. Doche, T. Lange, K. Nguyen and F. Vercauteren.
+%\textit{Handbook of elliptic and hyperelliptic curve cryptography.}
+%Chapman \& Hall/CRC, Boca Raton, FL, 2006. xxxiv+808 pp.
+%
+%\bibitem{Fesenko}
+%I. B. Fesenko and S.V. Vostokov.
+%\textit{Local Fields and Their Extensions.}
+% With a foreword by I. R. Shafarevich. Second edition. Translations of Mathematical Monographs, 121. American Mathematical Society, Providence, RI, 2002
+%
+%
+%
+%\bibitem{Neukirch}
+% J. Neukirch.
+% \textit{Class field theory.}
+%Springer, Heidelberg, 2013. The
+%Bonn lectures, edited and with a foreword by Alexander Schmidt, Trans-
+%lated from the 1967 German original by F. Lemmermeyer and W. Snyder,
+%Language editor: A. Rosenschon. 
+%
+%\bibitem{Kenkichi}
+%K. Iwasawa.
+%\textit{Lectures on {$p$}-adic {$L$}-functions.}
+%Annals of Mathematics Studies, No. 74. Princeton University Press, Princeton, N.J.; University of Tokyo Press, Tokyo, 1972.
+%
+% \bibitem{Kato}
+%  K. Kato ,  N. Kurokawa,  T. Saito.
+%  \textit{ Number theory. 1. Fermat's dream.}
+%  American Mathematical Society, Providence, RI, 2000.
+%  
+%\bibitem{Sebastian}
+% S. Pauli.
+%\textit{ Constructing class fields over local fields.}
+% 2006. ////////////////////////////////
+% 
+%\bibitem{Satoh}
+% T. Satoh.
+%\textit{ On p-adic point counting algorithms for elliptic curves over finite fields.}
+%Algorithmic number theory Symposium (Sydney, 2002), 43–66, Lecture Notes in Comput. Sci., 2369, Springer, Berlin, 2002. 
+%
+%
+%
+%
+%\bibitem{Magma Handbook}
+%W. Bosma, J. Cannon, C. Fieker and A. Steel, eds.
+%\textit{ Handbook of Magma Functions.}
+%Version 2.23, Sydney, 2017.
+%
+%\end{thebibliography}
+%
+%
+%
+%
+%
+
+
+
+%We present the algorithm to compute the norm equation in the totally ramified $p$-adic field extension.
+%\begin{algorithm}[H]
+%\caption{}
+%\label{}
+%\begin{algorithmic}[1]
+%\REQUIRE  $L/K$ be totally ramified $p$-adic ring extension, $\pi \in L$ be uniformizer and $a \in K $.
+%\ENSURE Find $x\in L$ such that $Norm(x)=a$.
+%\STATE Define $b:= \frac{a}{N(\pi)^{V(a)}}$.
+%\STATE Solve $N(\tilde{x})=b$.
+%\STATE Define $F,f$ the residue field extensions of $L$ and $K$ resp.
+%\STATE Solve $N_{F/f}(\mu)= b $ \hspace{1mm} ($p$).
+%\STATE Define $c:= b/N(\mu)$.
+%\STATE Solve $N_{L/K}(\tilde{\tilde{x}}) = c.$
+%\STATE Return $x:= \mu\cdot \pi^{(V(a))} \cdot \tilde{\tilde{x}} $.
+%
+%\end{algorithmic}
+%\end{algorithm}
+
+
+
+
+%\textbf{Example:}
+%\begin{lstlisting}
+%> R<x>:=PolynomialRing(Rationals());                                                                                                                                                                    
+%>  K:=pAdicField(5,30); 
+%> L:=ext<K| x^7+25*x^2+5>; 
+%>  k:=RingOfIntegers(K); 
+%>  l:=RingOfIntegers(L); 
+%>  a:=5*2/3*Random(k);  
+%> IsUnit(a); 
+%true
+%> pi:=UniformizingElement(l); 
+%> b:=a/Norm(pi)^Valuation(a); 
+%> U,mU:=UnitGroup(k); 
+%> NormEquation(l,mU,b); 
+%true -78731087376881886250*l.1^6 + 74585038994062594375*l.1^5 - 56157835394500297625*l.1^4 - 52776966890988350200*l.1^3 - 23081710867424288325*l.1^2 + 63881457671757879785*l.1 - 10581183060211095113 + 
+%O(l.1^203)
+%> _,w:=$1; 
+%> f,mf:=ResidueClassField(k); 
+%> F,mF:=ResidueClassField(l); 
+%> mf(b); 
+%3
+%> mF(w); 
+%2
+%> mu:=b/mF(w)@@ mF; 
+%> mu in k; 
+%true
+%> y:=mF(w)@@ mF; 
+%> c:=b/Norm(y); 
+%> NormEquation(l,mU,c); 
+%true 42590842877721166250*l.1^6 + 26116648601645555000*l.1^5 - 73527459338485500375*l.1^4 + 4605931837708949900*l.1^3 + 11853967640628676150*l.1^2 + 76435596160708041455*l.1 + 87841665931442304006 + 
+%O(l.1^203)
+%> _,w1:=$1; 
+%> w11:=w1*y*pi^Valuation(a); 
+%> Norm(w11)/a-1; 
+%O(5^28)
+%
+%\end{lstlisting}	
+%Now we give the next algorithm by changing the precxision.
+%
+%\begin{algorithm}[H]
+%\caption{}
+%\label{}
+%\begin{algorithmic}[1]
+%\REQUIRE   $L/K $ be a finite totally ramified $p$-adic ring extension, $\pi \in L$ be uniformizer and $a \in K$ up to precision $"n"$.
+%\ENSURE Find $\alpha \in L$ such that $V(N(\alpha)/a -1)\geq n$.
+%
+%\STATE  Figure out the precision  of $K$ and $L$.
+%\STATE Define $L'/K'$ such that $L'/K' "=" L/K$ and precision $(L')\geq n$.
+%\STATE Findin  $\alpha \in L'$ using the previous algorithm such that $V'(N(\alpha)/a -1) \geq n$.
+%\STATE Return $L!\alpha$
+%\end{algorithmic}
+%\end{algorithm}
+%
+%\begin{lstlisting}
+%> R<x>:=PolynomialRing(Rationals());
+%>  K:=pAdicField(5,20);
+%> L:=ext<K|x^7+15>;
+%> k:=RingOfIntegers(K);
+%> l:=RingOfIntegers(L);
+%> pi:=UniformizingElement(l);
+%> a:=3*(1+k.1*Random(k));
+%> KK:=pAdicField(5,50);
+%> LL:=ext<KK|x^7+15>;
+%> kk:=RingOfIntegers(KK);
+%> ll:=RingOfIntegers(LL);
+%> UU,mUU:=UnitGroup(kk);
+%> KKa:=KK!a;
+%> ChangePrecision(~KKa,50);
+%> Parent(KKa);
+%5-adic field mod 5^50
+%> PI:=UniformizingElement(kk);
+%> bb:=KKa/Norm(PI)^Valuation(KKa);
+%> NormEquation(ll,mUU,bb);
+%true -6105615095200869000735533732265625*ll.1^6 + 
+%    39519312090040221641210367427021875*ll.1^5 - 
+%    44117491210717703484480794577856250*ll.1^4 + 
+%    3223306201812962448695696242191250*ll.1^3 + 
+%    14367323616830108457959875907344750*ll.1^2 - 
+%    38913080750009108811263908469198450*ll.1 + 
+%    39504377608946897770758593522892959
+%> _,z:=$1;
+%> ff,mff:=ResidueClassField(kk);
+%> FF,mFF:=ResidueClassField(ll);
+%>  y:=mFF(z)@@ mFF;
+%>  Parent(y);
+%Totally ramified extension defined by the polynomial x^7 + 15
+% over 5-adic ring mod 5^50
+%> FieldOfFractions($1);
+%Totally ramified extension defined by the polynomial x^7 + 15
+% over 5-adic field mod 5^50
+%> $1!y;
+%4 + O(LL.1^350)
+%> y1:=$1;
+%> cc:=bb/Norm(y1);
+%> NormEquation(ll,mUU,cc); 
+%true -36165362142105101311401191477500000*ll.1^6 + 
+%    8778486782081900122202349242009375*ll.1^5 - 
+%    43643284374068024402604802526300000*ll.1^4 + 
+%    9346550234289644846344837756836875*ll.1^3 - 
+%    26185594066026751474997106828827875*ll.1^2 - 
+%    14936832657718115605325666448354300*ll.1 + 
+%    32080554894739855251162281742539646
+%> _,z2:=$1;
+%> zz:=z2*y1*(PI)^Valuation(KKa);
+%> Valuation(Norm(zz)/KKa-1);
+%50
+%> l!Eltseq(zz);
+%-14555949062500*l.1^6 - 44057621806250*l.1^5 - 40944724340625*l.1^4 + 
+%    3374464847500*l.1^3 + 13098563594750*l.1^2 + 19203103067175*l.1 - 
+%    27691877497666
+%>  alpha:=$1;
+%> Valuation(Norm(alpha)/a-1);
+%20
+%\end{lstlisting}
  
 %
 %\begin{lstlisting}
@@ -618,22 +1226,9 @@ We take $a=\omega\left(1+p*Random(K)\right) \in U_K$. Then $\omega \in \mathbb{F
 %\end{lstlisting}
 %\vspace{90mm}
 
-\section{ClNormEquation and TameNormEQuation}
-\section{Abstract}
-Let $L/K$ be a finite Galois extension of $p$-adic fields of characteristic $0$ and $U_{L}$ and $U_{K}$ be the unit groups of $L$ and $K$ respectively. 
-%In unramified extension we have the theorem which states that every unit $a$ in $U_{K}$ associates to an element $b$ of $U_{L}$ such that the norm of $b$ is $a$. That is, 
-Let $\N: L\rightarrow K$ be the norm map. In unramified extension $\N_{\mkern 2mu \vrule height 2ex\mkern2mu U_{L}}$ is surjective to $U_{K}$. That is for every $a \in U_{K}$ we find $b \in U_{L}$ such that
-\begin{equation}
-   \N(b)= a.
-\end{equation}
-%That is, $\N(b)= a.
-Similarly, if $L/K$ is totally ramified extension then the norm group  of $L$ contains the group of the forms $U_{K}^{n}\times (\pi)$ where $U_{K}^{n}$ and $\pi$ are the higher unit groups of $k$ and prime element of $K$ respectively.\\
-So in this, we mainly present algorithms to compute the norm equation of p-adic field extensions in an effective way. 
-\section{Introduction}
-
-%For that we need to know few things about $\mathbb{Q}_p$. 
-The norm equation which we are going to discuss here has the key role in algebraic number theory. It has many applications in class field theory. Although the norm equation is available in MAGMA, but it is not an effective  way of computation. We first  read some theory regarding the norm groups so that we will have the idea of the elements having the solution of type $(1)$ since not every element is a normed element. Finally we present algorithms to find the solutions of norm equation.\\ 
-In the field of real numbers $\mathbb{R}$, we can find the sequence of rational numbers which converges to a number which may not be rational. But $\mathbb{Q}_p$ is an extension of rational number field in which every convergent sequence converges in itself. The case of $\mathbb{R}$ is  well understood. %We briefly discuss on the extensions of $\mathbb{Q}_p$.\\ % and functions defined on them.
+%\section{ClNormEquation and TameNormEQuation}
+%\section{Abstract}
+ %We briefly discuss on the extensions of $\mathbb{Q}_p$.\\ % and functions defined on them.
 
 %\begin{definition}
 % Let $K$ be a field. A discrete valuation on $K$ is a function $\v: K \rightarrow \mathbb{Z} \cup \{\infty \}$, such that for every  $x,y \in K$,
@@ -644,578 +1239,3 @@ In the field of real numbers $\mathbb{R}$, we can find the sequence of rational 
 %  A discrete valuation induces a non-archimedian absolute value via $|x|= c^{\v(x)}$, where c is any constant with $0<c<1$.  
 %  \end{enumerate}
 % \end{definition}
-  Every field $K$ with non-trivial discrete valuation $v$ associates the subring of 
-  \[\mathcal{O}_{K}= \{ x\in K \mid \v(x)\geq 0 \} \text{  of $K$} .\]  
-  From \cite{Fesenko}, we know $\mathcal{O}_{K} $ forms a local ring with unique maximal ideal $\mathfrak{p}_{K}= \{x \in K \mid \v(x) > 0 \} $ which coincides with the set of non-invertible elements of $\mathcal{O}_{K}$. An element $\pi \in\mathcal{O}_{K}$ is said to be a uniformizing element if $\v(K^{\times})= \langle \v(\pi) \rangle $.\\
- Let $p$ be a prime integer. Then $p$-adic valuation on $\mathbb{Q}$ is the function $\v_p: \mathbb{Q} \rightarrow \mathbb{Z} \cup \{ \infty \}$ defined by $  \v_p(x)= \max \left\{ r: p^{r} \text{ divides }  x  \right\} $. Note that $\v_p(0)= \infty$.
- With this valuation we can define the non-archimedian absolute value denoted by $|.|_{p}$ as 
- $|.|_{p}: \mathbb{Q} \rightarrow \mathbb{R}$ such that $|x|_{p}= p^{-v_p(x)}$.\\
- Note that,  $ | \mathbb{Q}_{p}^{\times}|_p = \{  p^{-\v_{p}(x)} \mid x \in \mathbb{Q}_{p}^{\times} \} = \{1/p^{n} \mid n \in \mathbb{Z}\}$ is an infinite cyclic group.
-  
-
- 
-\begin{definition}
-Let $p$ be a prime in $\mathbb{Z}$. $\mathbb{Q}_{p}$ is the completion of $\mathbb{Q}$ with respect to $|.|_{p}$ where $|.|_{p}$ is defined as above. 
-%The ring of $p$-adic integers of $\mathbb{Q}_{p}$ is defined by
-%In particular, $\mathbb{R}$ is a completion of $\mathbb{Q}$ w.r.t. $|.|=|.|_{\infty}$.
-%$\mathbb{Z}_{p}=\{x \in \mathbb{Q}_{p}\mid |x|_{p}\leq 1 \}$.
-%The units in $\mathbb{Z}_{p}$ is $\mathbb{Z}_{p}^{\times} = \{ a \in \mathbb{Q}_{p}\mid |x|_{p} = 1 \} $.
-\end{definition}
- %The unit group $ \mathbb{Z}_{p}^{\times}$ is of main inteerest. 
-Equilvalently, from \cite{Satoh} we can express $\mathbb{Q}_{p}$ as
-\[  \mathbb{Q}_{p} = \{ \sum_{n=m}^{\infty} a_{n}p^{n}\mid m \in \mathbb{Z}, a_{n} \in \{0,1,\ldots, p-1\}.\]
-%This means any element of $\mathbb{Q}_{p}$ can be written in the infinite series in $p$.
-In the field of real number we have the isomorphism between $ \mathbb{R}^{+}  \cong  \mathbb{R}_{>0}^{\times}$ given by the maps $x \mapsto e^x$ and $\log(t) \leftmapsto t$ where $ \mathbb{R}^{+}  \text{ and }  \mathbb{R}_{>0}^{\times}$ are the additive and multiplicative group of real numbers and $e$ is the base of natural logarithm $\log$. But in contrast of this the exponential and logarithmic function does not converge always in $p$-adic field.
-
-\begin{proposition}
- Let $a \in \mathbb{Q}_{p}$ then 
- \begin{enumerate}
-\item  the series $\exp_{p}(a)= \exp(a)= \sum_{n=1}^{\infty} a^{n}/n!$ converges iff $a \in p\mathbb{Z}_{p}$ for $p \neq 2$, and it converges iff $a \in 4\mathbb{Z}_{p}$ for $p = 2$,
-\item $\log_{p}(a)= \log(a) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}(a-1)   $ converges iff $a-1 \in p\mathbb{Z}_{p}$ and
-\item if $a_{1}$ and $a_2$ are in the domain of convergence exponential function and $b_1$
- and $b_2$ are in the domain of convergence of logarithmic function then
-\[ \exp(a_{1} + a_{2}) = \exp(a_1)\cdot \exp(a_2) \text{ , } \log(b_{1}b_{2})= \log(b_1) + \log(b_2)\].  
- \end{enumerate}
-
-\end{proposition}
-\begin{proof}
-Satoh 70.
-\end{proof}
-
-\begin{lemma}
- For every $x\in U_{L}^{1}$,
- \[ \v(x-1)> \frac{e}{p-1} \Rightarrow \v(x^{p}-1) = \v(x-1)+e ,\]
- where $e=\v(p)$ is the ramification index of $L$ and $\v$ is the surjective valuation function on $L$. 
-\end{lemma}
-\begin{proof}
-Lorenz page-88.
-\end{proof}
-For $a \in \mathbb{R}_{>0}$, we know 
-\[  \log(a) = \lim\limits_{h\rightarrow 0} \frac{a^h-1}{h}.\]
-In the same pattern, for any local field $L$ of characteristic $0$ and for every $a\in U_{L}$, we define 
-\[ \log_{p}(a)= \log(a)= \lim\limits_{n\rightarrow \infty} \frac{a^{p^n}-1}{p^{n}}.\]
-The $\log_{p}$ function satisfies the usual power series $\log_{p}(1-a) = -\sum_{n=1}^{\infty} \frac{a^n}{n}$ and this series converges for $\v(a)>0$. The $\exp_{p}$ function has also the similar structure defined as $\exp_{p}(a)= \sum_{n=0}^{\infty}\frac{a^n}{n!}$, and this series converges for $\v(a)> e/(p-1)$.
-\[  \]
-
-\section{Unit group}
-Let $(K,|.|)$ be a non-archimedian local field. Then $\mathcal{O}_{K}:=\{ a \in K:|a|\leq 1 \}$ is the ring of integers and  $\mathfrak{p}_{K}:=\{a \in K: |a|<1\}$  is the unique non-zero prime ideal in $\mathcal{O}_{K}$. $\mathcal{O}_{K}$ is also said to be the valuation ring of $K$ and the ideal $\mathfrak{p}_{K}$ as a valuation ideal of $K$.
-The residue class field of $K$ is defined by $\overline{K}= \mathcal{O}_{K}/\mathfrak{p}_{K}$ which is a finite filed of characteristic $p$. The unit group of $\mathcal{O}_{K}$ is $U_{K}  = \mathcal{O}_{K} \setminus \mathfrak{p}_{K}$ the unit group. The group of higher principal unit $ U_{K}^{n}$ is defined as 
-\[ U_{K}^{n} = U^{n} = 1 + \mathfrak{p}_{K}^{n} = \{ x \in \mathcal{O}_{K} \mid x \equiv 1 \mbox{ mod } \mathfrak{p}_{K}^{n} \}.\] 
-In particular, $U_{K}^{1}  = 1+\mathfrak{p}_{K} = \{ x \in \mathcal{O}_{K} \mid x \equiv 1 \text{ mod }\mathfrak{p}_{K}\}$ is said to be the principal unit group.\\
-Consider the non-archimedian field extension $L/K$ and the absolute value $\mid \cdot\mid$ on $L$. Let $\mathcal{O}_{L} \text{ and } \mathfrak{p}_{L}$ are valuation ring and the valuation ideal of $L$, and  that of $K $ are $\mathcal{O}_{K} \text{ and }\mathfrak{p}_{K}$.
-% are the Valuation ring and the valuation ideal of $L$ \& $K$.
-  Let $\overline{L}= \mathcal{O}_{L}/\mathfrak{p}_{L}$ and $\overline{K}= \mathcal{O}_{K}/\mathfrak{p}_{K} $. Since $ \mathfrak{p}_{K} = \mathcal{O}_{K} \cap \mathfrak{p}_{L} $ we obtain the injective natural homomorphism $\overline{K} \rightarrow \overline{L}$ and we call $\overline{K}$ is a subfield of $\overline{L}$.
-
- The degree $f= f(L/K)= [\overline{L}:\overline{K}]$ is called the residue class degree or inertia degree of $L/K$  and the ramification index of $L/K $ is defined as $e= e(L/K) = \frac{[L:K]}{f(L/K)}$.
- % |L^{\times}|_{L/K} : |K^{\times}|_{K}$.\\
- The extension $L/K$ is called \textbf{unramified} extension if  $[L:K]=f(L/K)$ and \textbf{totally ramified} extension if $f(L/K) = 1$. If $[L:K] $ is neither $f(L/K)$ nor $e(L/K)$, then it is called \textbf{ramified} extension.
- % and in this case we have\[ [L:K] = e(L/K)\cdot f(L/K) .\]
- For an intermediate field $M$ of $L/K$ we obtain
- \[  f(L/K)= f(L/M)\cdot f(M/K)  \text{ and } e(L/K) =e(L/M) \cdot e(M/K) . \]
- 
-% % Let $L/K$ be a finite Galois extension of non-archimedean local fields with finite residue fields $\overline{L}/\overline{K}$ and Galois group $\G$. $L/K$ is called unramified if $[L:K]=f(L/K)$ else ramified. 
-% \end{definition}
- 
-\begin{proposition}
-Let L be a non-archimedian local field then the group $L^{\times}$ has direct product decomposition $L^{\times} = U_{L} \times (\pi)$ where  $\pi$ is a prime element of $\mathfrak{P}_L$ and 
-$(\pi) = \{\pi^{n}\}_{n \in \mathbb{Z}} $ is the infinite cyclic subgroup of $L^{\times}$ generated by $\pi$.   
-\end{proposition}
-\begin{proof}
-\cite{Neukirch}, Proposition 3.1.
-
-\end{proof}
-
-For each $m \in \mathbb{N}$, let $W_m$ be the group of $m^{th}$ roots of unity in algebraic closure of $L$. Then 
-\[ L^{\times} = \langle \pi  \rangle  \times U_{L}  = (\pi)\times \mathbb{F}_{q}^{\times} \times U_{L}^{1}. \] where $\mathbb{F}_{q}$ is the residue class field of $L$. Let $W_{q-1} = \langle \zeta_{L}\rangle$ be the $(q-1)^{th}$ roots of unity in $L$ then $\mathbb{F}_{q}^{\times}\cong W_{q-1} $. 
-Other than $(q-1)^{th}$ roots of unity, we also have $W_{p^{\infty}}$ which is the group of roots of unity in $U_{L}^{1}$ of $p$-power order. We call $W_{p^{\infty}}$ as the $p$-power torsion unit group of $L$.
-%So we can write
-%\[ U_{L}^{1}= W_{p^{\infty}} \times \mathbb{Z}_{p}^{n}\] where $n$ is the degree of $L/\mathbb{Q}_{p}$.
-
-
-
-\begin{theorem}
-Let $L$ be a non-archimedian local field. The map $\log : U_{L}^{1} \rightarrow L$  defined as above is continuous and satisfies $\log(ab) = \log(a) \log(b)$. Its kernel is the group $W_{p^{\infty}}$. Let $e = v_{L}(p) >0$ be the ramification index of $L/\mathbb{Q}_{p}$. For each $r\in \mathbb{N}$ such that $r > \frac{e}{p-1}$, the log function $\log : U_{L}^{r} \rightarrow \mathfrak{p}_{L}^{r}$ is an isomorphism. 
-This isomorphism 
-\[U_{L}^{r} \cong   \mathfrak{p}_{L}^{r} , \text{  for  } r>  \frac{e}{p-1} \]
-is also an isomorphism of $\mathbb{Z}_{p}$-modules.
-
-
-\end{theorem}
-
-\begin{proof}
-\cite{Lorenz}, Theorem 8, page-87.
-
-\end{proof}
-
-Let $x \in U_{L}^{1}$ such that $x^n = 1$ for some $n \in \mathbb{N}$. Then $n\log(x)= \log(x^n)= \log(1)=0$. So, $\log(x)=0$. For $r> \frac{e}{p-1}$, if $\log(x)=0$ then from above theorem $x^{p^r} \in U_{L}^{r}$. Applying $\log$ we get 
-\[ \log(x^{p^r}) = p^{r}\log(x)=0 \Rightarrow x^{p^r}=1. \]
-
-
-
-\begin{remark} 
-\begin{enumerate}
-\item
-The $p$-power torsion units of $U^{1}$ are the elements of the group $W(U_{L}^{1})= W_{p^\infty}= W_{p^r}(L)$, where $r> \frac{e}{p-1}$.
-\item The exponential function defined as $\exp: \mathfrak{p}^{r} \rightarrow U^{r}$ such that $\exp(x+y) = \exp(x)\cdot \exp(y)$ is the inverse of logarithm function $\log: U^{r}\rightarrow \mathfrak{p}^{r}$ where $r> \frac{e}{p-1}$. So, for every $x \in U^{r} $ such that $\v(x-1) > \frac{e}{p-1}$ and $a \in \mathbb{Z}_{p}$ we get \[ x^{a} = \exp^{a\log(x)}.\]
-\end{enumerate} 
-\end{remark}
-
-
-\begin{theorem}
-Let $L$ be a non-archimedian local field of characteristic $0$. The principal unit group $U_{L}^{1} $ has the following structure 
-\[ U_{L}^{1}= W_{p^{\infty}} \times \mathbb{Z}_{p}^{n}\]
-as a $\mathbb{Z}_{p}$-module where $n:=[L:\mathbb{Q}_{p}].$
-\end{theorem}
-\begin{proof}
-\cite{Lorenz}, page-90, Theorem $9$.
-\end{proof}
-One can find the precise generators of principal unit group from \cite{Sebastian}. The author of \cite{Sebastian} presents theorems through which one can easily compute the generators of the local field extensions. We use thsese generators while solving the norm equations. We have written the function "CUnitGroupGenerators" using those results and this is much faster than the function "UnitGroupGenerators" of MAGMA. 
-
-\section{Norm Group}
-
-Let $L/K$ be a finite Galois extension of degree $n$ then $L$ is a $K$-vector space. Suppose $B=\{\alpha_{1}, \ldots , \alpha_{n}\}$ be the basis of $L/K$ and $ a \in L$. Then $\phi_{a}: L \rightarrow L$ defined by $x\mapsto ax$ is clearly $K$-linear map. Thus we obtain the representaion matrix of $a$ as a matrix  $M_{a} \in K^{n\times n}$ such that 
-\[a(\alpha_{1}, \ldots , \alpha_{n} ) = (\alpha_{1}, \ldots , \alpha_{n} )M_{a} .\]  
-The characteristic polynomial of $a$ is defined as  $f_{a} = \det(aI_{n}-M_{a}) \in K[x]$.
- So, we obtain  $f_{a}= x^{n}+ b_{n-1}x^{n-1}+ \ldots +b_{1}x^{1}+b_{0}$ where all $b_{i} \in K$. We define the norm of $a$ over $L/K$ as \[  \N_{L/K}(a)= (-1)^{n}b_{0}= \det(M_{a})\]
- and the trace of $a$ over $L/K$ is as
- \[ \Tr_{L/K}= -b_{n-1}= \Tr(M_{a}).\]
- Due to the fact of the map $L\rightarrow K^{n\times n}$ defined by $x\mapsto M_{x}$ is $K$-algebra homomorphism, we obtain the multiplicative group homomorphism $N_{L/K}: L^{\times}\rightarrow K^{\times}$ such that
-   $\N_{L/K}(ab) = \N_{L/K}(a)\N_{L/K}(b)  \text{ and } $\\
-   $ \N_{L/K}(\mu a) \mu^{n} =\N_{L/K}(a) \text{  for all  } a,b \in L \text{ and } \mu \in K$.\\
- The $K$- linear map $ \Tr_{L/K}: L \rightarrow K$ such that\\
- $ \Tr_{L/K}(a+b) = \Tr_{L/K}(a)+\Tr_{L/K}(b)  \text{ and } $\\
-$ \Tr_{L/K}(\mu a) = \mu \Tr_{L/K}(a) \text{  for all  } a,b \in L \text{ and } \mu \in K .$
- % Then the norm of a is defined as the product 
-We can also compute the norm of $a$ using the Galois group as 
-\[\N_{L/K}(a)= \prod_{\sigma \in \G(L/K)}^{} \sigma(a)\] where $\G(L/K)$ is the Galois group of $L/K$. The Group $G$ contains the automorphisms of $L$ fixing the elements of field $K$. So for any $a \in K$ we get $\N_{L/K}(a)= a^{[L:K]}$. 
-%For the multiplicative groups $L^{\times}, K^{\times}$ of $L$ and $K$ respectively, we have the group homomorphism $N_{L/K}: L^{\times} \rightarrow K^{\times}$, that is
-%\[  \N_{L/K}(ab) = \N_{L/K}(a)\N_{L/K}(b) \text{  for all  } a,b \in L^{\times}.\]
-Also, for $ a \in L$, the trace of $ a $ is defined as the sum of all of it's Galois conjugates  \[i.e. \mbox{  } \Tr(a)= \sum_{\sigma \in \G(L/K)}^{}\sigma(a).\]
-%The trace map $\Tr_{L/K}: L \rightarrow K$ is a $K$-linear map, that is
- %\[  \Tr_{L/K}(ax+by) = a\Tr_{L/K}(x)+ b\Tr_{L/K}(y) \text{  } \forall a,b \in K. \]
-Note, if $a \in K$, then $\Tr_{L/K}(a)= [L:K]\cdot a$. \\
-For $L/M/K$ a tower of field extensions, we have 
-$\Tr_{L/K} = \Tr_{M/K} \circ \Tr_{L/M}$ and $\N_{L/K} = \N_{M/K} \circ \N_{L/M}.$
-%In the field of real number we have the isomophism between $ \mathbb{R}^{+}  \cong  \mathbb{R}^{\times}$ given by the maps $x \mapsto e^x$ and $\log(t) \leftmapsto t$ where $ \mathbb{R}^{+}  \text{ and }  \mathbb{R}^{\times}$ are the additive and multiplicative group of real numbers and $e$ is the base of natural logarithm $\log$. But in contrast of this the exponential and logarithmic function does not converge always in $p$-adic field.
-%Similarly we can define the logarithm and exponential in local field. 
-In an unramified extension, from \cite{Neukirch} we have the fact that $\N(U_{L})= U_{K}$. This means every unit of base field $K$ is a norm of an element of $L$.
-\[ i.e. \hspace{5mm} \forall a \in U_{K} \hspace{2mm} \exists b \in U_{L} \mbox{ : } \N(b) = a.  \] 
-But the situation is different in the ramified field extensions. 
-\begin{theorem}
-  Let $L/K$ be a totally ramified extension. Then the norm groups of $L$ are precisely the groups which contain the groups of the form $U_{K}^{n}\times (\pi)$ for some appropriate $n \in \mathbb{N}$.
-\end{theorem}
-\begin{proof}
- \cite{Neukirch} Theorem 7.17.
-\end{proof}
-From the above theorem we can observe that there may be many units in $K$ which are not normed element. It is difficult to find those elements of $K$ which are not normed element.
-% However, we present below some theorems from \cite{Sebastian} which give the precise informations of the normed subgroup of $K$ in it's totally ramified extension. If $x\in K$ is normed element then we present algorithms in the next section to find the element of $L$ having $\N(\alpha)=x$.
-However if $L/K$ is tamely ramified extension then from \cite{Sebastian} we know that the norm group $\N(L)$ contains the principal unit group $U_{K}^{1}$.  If $x\in K$ is normed element then we present algorithms in the next section to find the element of $L$ having $\N(\alpha)=x$.
-
-\section{Solving Norm Equations}
-Although there are many ways of solving the norm equations, we present two ways in this section.
-\subsection*{Using unit group generators:}
-
-For finite local field extension $L/K$ and $a\in K^{\times}$, we are looking for an element in $b \in L$ such that $\N(b)=a$. Let $\{\eta_1, \eta_2 \ldots, \eta_r \} $ be the set of generators of principal unit group of $L$ then the direct decomposition of multiplicative group of $L$ becomes
-\begin{eqnarray*}
-L^{\times} & = &  \langle \pi \rangle \times \langle \zeta_{L} \rangle \times \langle \eta_1, \eta_2 \ldots, \eta_r \rangle
-\end{eqnarray*}
-If $a$ is a normed element then $a \in \N(L^{\times})$.
-\[ i.e. \hspace{5mm} a \in  \langle \N(\pi) \rangle \times \langle \N(\zeta_{L}) \rangle \times \langle \N(\eta_1), \N(\eta_2) \ldots, \N(\eta_r) \rangle. \]
-So, we determine $b$ using the representation of $a$ in $\langle \N(\pi) , \N(\zeta_{L}) , \N(\eta_1), \N(\eta_2) \ldots, \N(\eta_r) \rangle $. The set $\{ b \cdot \epsilon \mid \N(\epsilon) =1 \}$ consists of all solutions of norm equation of $a$. If we include $\zeta_L$ in the principal unit group generators then we can write $U_{L}=\langle\zeta_L,\eta_1, \eta_2 \ldots, \eta_r  \rangle$.
-
-
- \begin{algorithm}[h]
-\caption{Norm equation using unit group generators}
-\label{ClNormEquation}
-\begin{algorithmic}[1]
-\REQUIRE $L/K$ be a finite Galois field extensions $a \in U_{K}$.
-\ENSURE  Find $b \in L$ such that $\N_{L/K}(b)=a$.
-\STATE Compute the unit group generators of $L$ and let it be $\{\eta_1, \eta_2 \ldots, \eta_r\}$.
-\State Compute the free abelian group $F$ of rank $r$ with basis $\{F_1, F_2, \ldots, F_r\}$.
-\State Define a homomorphism map $\psi : F \rightarrow U_{K}$ such that $\sum_{1}^{r} x_{i}\cdot F_{i}\mapsto \sum_{i}^{r} x_{i}\cdot \N(\eta_{i})$.
-\State If $a \notin \psi(F)$ then \textbf{return} no solution,
-\State else\begin{enumerate}
-\item Compute the pre-image $\psi^{-1}(a):= \sum_{1}^{r}b_{i}\cdot F_{i}$.
-\item \textbf{return} $b:=\sum_{1}^{r}b_{i}\cdot \eta_{i}$.
-\end{enumerate}
-\end{algorithmic}
-\end{algorithm}
-
-
-
-
-
-In fact this algorithm is already applied in MAGMA and available. We compute the unit group grnerators of the local field which is much faster than of MAGMA. Using our generators we solve the norm equations much faster than the function NormEquation of MAGMA. We have written the codes of unit group generators in the file "NormEquation.m" and call the function "ClNormEquation" which solves the norm equations.\\\\
-We  have made the above algorithm much faster than before but if we have the local field extensions of high degree then computation of unit group consumes more time while solving norm equations. To get rid of the computation of unit group while solving the norm equations of particular type of elements of the field we present effective algorithms in the following sub-section.
-\subsection*{Using trace and logarithms:}
-Let us suppose $x\in U_{L}^{1}$ so that $\log(x)$ converges. Then from \cite{Kenkichi} we have  \[\log(\sigma(x)) = \sigma(\log(x))  \]for every $\sigma \in \G(L/K)$
-
-% \begin{align*}
-%   \sigma(\log(x)) &  = \sigma ( \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} (x-1)^{n})\\
-%                  &  =  \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} \sigma\{(x-1)^{n}\})\\
-%                   &  = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} (\sigma(x)-1)^{n})\\
-%                  &  = \log(\sigma(x))\\
-% \end{align*}
- 
- Let us suppose all the notation as above then for  $a \in U_{L}^{r}$ where $r> \frac{e}{p-1}$ we have 
- \[\N_{L/K}(a) = \prod_{\sigma \in \G(L/K)}^{} \sigma(a).\]
- Applying the logarithm, we get 
-\begin{align}
-  \log(\N_{L/K}(a) ) &  =  \sum_{\sigma \in \G(L/K)}^{} \log(\sigma(a))\\
-                     & =  \Tr_{L/K}(\log(a))
-\end{align}
-Thus, one can compute the norm using formula $\N_{L/K}(a) = \exp(\Tr(\log(a)))$ if the element is in the domain of convergence of $\exp $ and $\log$.
-Since we are interested in solving the norm equation that is for an element $a \in K$  we check whether there exists an element $b \in L$ such that $\N_{L/K}(b) =a$. In order to find $b \in L$ we will solve the trace equation from $(3)$. As solving the trace equation is much simpler task than solving the norm equation since the process is linear, we solve the norm equation much faster.\\
-Note that $a \in K$ is in the domain of convergence of $\log $ and $\exp$. In order to find the $b\in L$ such that $\N_{L/K}(b)=a$,  we use the following strategy:\\
-Applying $\log$ we get
-\[\log(\N_{L/K}(b))  = \log(a)\]
-Using the Satoh's formula for computing norm, we get 
-\[  \log(\exp(\Tr(\log(b))))  =  \log(a) . \]
-Since $\exp$ and $\log$ are isomorphism to each other we obtain
-\[ \Tr(\log(b)) = \log(a).\]
-Since $\log(b) \in L$, we look for the element of $x \in L$ such that $\Tr(x) = \log(a)$ and then finally we compute $\exp(x)$ which will be our required element in $L$ if $a$ does not contain any torsion unit.\\
-Clearly, in this method we solve the trace equation instead of norm equation.\\
- We have $\N(U_L)= U_{K}$ in any unramified extension and suppose that the residue class fields of $L$ and $K$ are $\mathbb{F}_{L}$ and $ \mathbb{F}_{K}$ respectively. Since the norm map is surjective on finite fields, so $\N:\mathbb{F}_{L}^{\times} \rightarrow \mathbb{F}_{K}^{\times} $ is surjective.
- 
- % \mathbb{F}_{q}^{\times}\times U_{K}^{1}$. 
-% every unit of $\mathbb{F}_{q}^{\times}$ is a normed element in the residue Class Field of $L$. 
- %The following algorithm compute the such elements:
-
-In fact, $L^{\times}= (\pi) \times \mathbb{F}_{q}^{\times} \times U_{L}^{1}$. Since the norm is multiplicative that is, $\N(ab)= \N(a) \cdot \N(b)$, we will solve the norm equation factorising the element as in the above form.\\
-In brief, for an unramified extension $L$ and its residue class field $\mathbb{F}_{q}$ we have the map known as Teichm\"uller lift $i.e$ $T: \mathbb{F}_{q} \rightarrow \mathcal{O}_{L}$ defined as follows:
-\begin{itemize}
-\item $T(0) =0$.
-\item For $\overline{a} \in \mathbb{F}_{q}$, $T(\overline{a})$ is the unique $(q-1)^{th}$ root of unity with residual part equals to $\overline{a}$.
-\end{itemize}
-For the computation of the Teichm\"uller lift one can find algorithm in (\cite{Cohen},\cite{Satoh}). 
-
-%Teichmueller Lift\\
-%$Input$: Let $L$ be an unramified field extension with  ring of integers $R:= O_{L}$ and $\mathbb{F}_{q}$ be the residue Class filed of $L$. Suppose $a\in \mathbb{F}_{q}$.\\
-%$Output$: $T(a)$ mod $\mathfrak{p}^{m}$.
-
-
-%We state an algorithm to compute the norm equation of residue class field.
-
-%\begin{rem}
-%In MAGMA computing the norm equations for higher degree local field extensions are much expensive. MAGMA has the function known as "NormEquation", which solves the norm equations. But this is very slow for higher field extensions. We have found the new way of computing the unit group generators of the field which is faster than MAGMA's version for high degree field extensions. We apply our unit group generators to solve the norm equations which is much faster than the function "NormEquations". We have written the codes in the function "MyNormEquation" and it is in the file "NormEquation.m".
-%\end{rem}
-%\begin{rem}
-%In MAGMA computing the norm equation for higher degree local field extensions is much expensive. We found that the codes for computing the unit group generators for such field was not written in an effective way and because of this tt was much time consuming. After re-writing some codes of unit group generators of MAGMA, we made it much advanced so that this computes effectively. And then using the new way of computing the unit group generators, the norm equation works effectively even for a large degree local field extensions. The codes are in the file "NormEquation.m" and the command "MyNormEquation" solves the norm equation.
-%\end{rem}\\
-%Although, we solved the norm equation through "MyNormEquation" and it is much faster than the previous command "NormEquation" in MAGMA, 
-we present in this the algorithms which will solve the norm equations for particular types of element of the field without using the unit group generators of the field. Instead of computing unit group generators, here we apply the functions such as division, logarithm, trace and exponential which are not expensive in the sense of computation time and because of this we can solve the norm equation in very short time for large degree of local field extensions.\\
-%Since we work in the finite precision of a field, we lose some precision in division and exponential. The exponential function of MAGMA in local field extension has some flaws so I have written my own codes for exponential function which loses the precision. We are still trying to manage the precision loss during division and other functions.\\
-The following algorithm solves the norm equation of part of $W_{q-1}$ that is the residual part of the field.
-\begin{algorithm}[h]
-\caption{}
-\label{}
-\begin{algorithmic}[1]
-\REQUIRE $L/K$ be finite unramified extension of p-adic fields. Let $a \in U_{K}$ such that $a \in W_{q-1}$ in the residue class field of $K$ i.e a is $(q-1)^{th}$ root of unity.
-\ENSURE $\alpha \in L$ such that $\N(\alpha)=a$.
-
-\STATE Compute the $\mathbb{F}_{q^f}$  residue class field of $L$ where $f:=f(L/K)$, and let $\overline{a} \in \mathbb{F}_{q}^{\times} $.
-\STATE Compute  $\overline{b} \in \mathbb{F}_{q^f}^{\times} $ such that $\N(\overline{b}) = \overline{a}$ using NormEqution of MAGMA over finite fields.
-\STATE Compute a lift by powering ($i.e.$ Teichm\"uller lift from Satoh) $\alpha\in L$ of $\overline{b} $ such that $\N(\alpha) =a $.
-\end{algorithmic}
-\end{algorithm}
-%In the version of norm equation of MAGMA we have applied some changes so that the norm equation is much faster than the earlier version of norm equation. That is included in the "NormEquation" library. But even this is not the most suitable way of computing the norm equation of each element of the field. 
-From decomposition of the multiplicative group of the local field we can factorise each part of any field element and then solve the norm equations separately.
-%since the norm is multiplicative we can multiply all together.
-We know that $\log $ and $\exp$ are inverse to each other if the field element is in the domain of convergence of them.
- %In the version of norm equation of MAGMA we need to compute the unit group generators of a $p$-adic field and unit group generators which are expensive for large degree field extensions.
-Thus in this situation $\log$ , $\trace$ and $\exp$  work well and these functions are much faster even in the large degree of local field extensions. So, using this we present below a secure algorithm. \\
-
-\begin{algorithm}[h]
-\caption{norm equation of torsion free unit}
-\label{ClNormEquation}
-\begin{algorithmic}[1]
-\REQUIRE $L/K$ be finite extension of $p$-adic fields , $a \in U_{K}$ is a torsion free unit.
-\ENSURE $\alpha \in L$ such that $\N(\alpha)=a$.
-\STATE If $\v(a-1) \leq e/(p-1)$ then solve using Algorithm $1$.
-\State If $\v(a-1) > e/(p-1)$ then solve as below:
-%\begin{itemize}
- \STATE Compute $ x \in L$ such that $\Tr(x) = \log(a)$ and $\v(x) > 0$.
- \STATE Return $\exp(\Tr(x))$.
-%\end{itemize}
-\end{algorithmic}
-\end{algorithm}
-
-
-Clearly, the function $\trace$ is not identically zero, so we can find many elements $\alpha \in L$ such that $\trace(\alpha) \neq 0$. In particular, we search such an element and then it will be easy to compute $x\in L$ satisfying $2(b)$. 
-%The best idea of choosing the element satisfying $2(ii)$ will be the element from the generators of the principal unit group of $L$.
-%The best idea of choosing the element satisfying $2(b)$ will be the sum of all the basis elements of $L$.
-We present an example which shows the computation time of two versions of norm equation.
-\begin{example}
-\begin{lstlisting}
- 
- >K:=pAdicRing(5,30); 
- >L:=ext<UnramifiedExtension(K,2)|x^12+5>; 
- > Precision(L);
- 360  
- >a:=1+2*L.1^5;
- >Attach("NormEquation.m");
- >time b:=ClNormEquation(UnramifiedExtension(L,12),a);
- Time: 3.080
- > Valuation(Norm(b)/a-1);
- 360
- > L_ur:= UnramifiedExtension(L,12);
- > time U,mU:=UnitGroup(L);
- Time: 69.760
- > time _,b:=NormEquation(L_ur,mU,a);
- ......much expensive.more than a week.
-\end{lstlisting}
-\end{example}
-
-\subsection{Algorithm:}
-$\Input$ :  $E/L $ be a finite unramified $p$-adic field extension, $\Pi \hspace{2mm} \text{ and } \hspace{2mm} \pi$ be uniformizer of $\mathcal{O}_{E}$ and $\mathcal{O}_L$ respectively and $a \in U_{L}$  up to finite precision $n \in \mathbb{N}$.\\
-$\Output$: Find $\alpha \in E$ such that $\N(\alpha)=a $.
-\begin{enumerate}
-%\item Factorize $a$ as $a = a_{f}\cdot u$ where $u$ lies in principal unit group and $a_{f} \in \mathbb{F}_{q}^{*}$.
-%\item Factorize $a$ as a =$\pi^{\v(a)}\cdot f\cdot u$ where $u$ lies in principal unit group and $f \in \mathbb{F}_{q}^{*}$.
-%\item If valuation $\v(a) > 0$ then $a =a/ \N(\Pi)^{\v(a)}$ if the extension $N/L$ is ramified.
-%\item If $\Valuation(a) > 0$ then compute the unit part of $a$ ($a/Norm(\Pi^{?}) \mapsto a$).
-\item Factorize $a$ as $a = a_f \cdot a_u \cdot a_t$ where $a_{u}$ is torsion free unit element and $a_t$ is p-power torsion unit element and $a_f $ is in residue field of $L$.
-%\item Compute the torsion part of the unit and write $u=tu \cdot u^{'}$, where $ tu$ is torsion part of $u$  and $u^{'}$ in higher unit group .
-\item Compute $a^{'}_{f} \in E$ using the Algorithm $5.2$ for $a_f$.
-\item  Compute $a^{'}_{u} \in E$ using the Algorithm $5.3$ whose norm is $a_{u}$.
-\item  Solve the norm equation of torsion unit $a_t$  as $a^{'}_{t}$ using Algorithm $5.1$.
-\item Return the product: $a^{'}_{u} \cdot a^{'}_{t}\cdot a^{'}_{f}$.
-\end{enumerate}
- 
-In the unramified extension not only we can solve the norm equation of unit but also for the elements including valuation parts. Since $\N(\Pi) = \pi^f$ where f is the Inertia degree of $L$. So we can compute the solution of norm equation of $(\pi^f)\times U_{L}$.  
-%\textbf{Write something for element having the valuation part too $a:=\pi^{\v(a)}\cdot f\cdot u$}
-
-
-
-\subsection{Algorithm:}
-$\Input$ :  $E/L $ be a finite totally ramified $p$-adic field extension, $a \in U_{L}^{n}$ be an element in the norm group of $E$, up to  finite precision $n$.\\
-%$\Pi  \hspace{2mm} \text{ and } \hspace{2mm} \pi$ be uniformizer of $\mathcal{O}_{N}$ and $\mathcal{O}_{L}$ respectively and
-$\Output$: Find $\alpha \in E$ such that $\N(\alpha)=a $.
-%\begin{enumerate}
-%\item Factorize $a$ as $a:= f\cdot u$ where $u$ lies in principal unit group and $f \in \mathbb{F}_{q}^{*}$.
-%\item Factorize $a$ as a:=$\pi^{\v(a)}\cdot f\cdot u$ where $u$ lies in principal unit group and $f \in \mathbb{F}_{q}^{*}$.
-%\item If valuation $\v(a) > 0$ then $a:=a/ \N(\Pi)^{\v(a)}$ if the extension $N/L$ is ramified.
-%\item If $\Valuation(a) > 0$ then compute the unit part of $a$ ($a/Norm(\Pi^{?}) \mapsto a$).
-%\item Factorize $a$ as $a= a_{u} \cdot a_{t}$ where $a_{u}$ is torsion free unit element and $a_{t}$ is torsion unit ($p$-power torsion ) part of $a$.
-%\item Compute the torsion part of the unit and write $u=tu \cdot u^{'}$, where $ tu$ is torsion part of $u$  and $u^{'}$ in higher unit group .
-%\item Compute $f_N \in N$ using the algorithm $1.1$ for $f$.
-%\item Compute $ a^{'}_{u} \in E $ using the Algorithm $3.2$ whose norm is $ a_{u}$.
-%\item Solve the norm equation of torsion unit $ a_{t} $  as $ a^{'}_{t} $ using new command "MyNormEquation" in MAGMA.
-%\item Return the product: $a^{'}_{u} \cdot a^{'}_{t}$.
-%\end{enumerate}
-\begin{enumerate}
-\item $a = a_{u} \cdot a_t$ where $a_t$ is $p$-power torsion unit part of $a$ and $a_{u}$ is free of torsion unit.
-\item To solve for $a_{t}$ do
-      \begin{itemize}
-\item if $ a_t \neq 1$ then using algorithm $5.1$, compute $a^{'}_{t}$ such that $\N(a^{'}_{t}) = a^{'}_{t}$.
-\item else $a^{'}_{t} = 1$.
-      \end{itemize}
-\item To solve for  $a_{u} $ do
-      \begin{itemize}
-      \item choose suitable $r \in \mathcal{O}_{N}$ such that $r/\trace(r) =:r_{1}$ is defined.
-      \item $s \leftarrow \trace(r_{1}\cdot \log(a_{u}))$.
-      \item  $a^{'}_{u} \leftarrow \exp(s)$.
-      \end{itemize}
-\item Return $a^{'}_{t} \cdot a^{'}_{u}$.
-\end{enumerate}
-To verify it we apply the norm:
-\begin{eqnarray*}
-   \N(a^{'}_{t} \cdot a^{'}_{u} ) & = & \N(a^{'}_{t}) \cdot \N(a^{'}_{u})\\
-             & = & a_t \cdot \exp(\trace(\log(\exp(r_{1} \cdot \log(a_{u})))))\\
-             & = & a_t\cdot \cdot \exp(\trace (r_{1} \cdot \log(a_{u})))\\
-             & =& a_t \cdot \exp (\log(a_{u})) \hspace{3mm} \mbox{ since, } \trace \mbox{ is linear}\\
-             & = & a_t \cdot a_{u} = a.
-\end{eqnarray*}
-
-For the computation in $p$-adic field extension, the problem is to present the elements in an exact form. We want in this to solve the norm equation of unit element of the ring of integers of the field. For a local field $L$, assume $\mathcal{O}_L$ be the ring of integers and $\pi$ be the uniformizing element of $\mathcal{O}_L$. The element $x\in \mathcal{O}_L$ can be written in the infinite series of $\pi$. But for the computation purpose we would like to truncate the infinite expansion of $x$ to a finite sum. That means we work in the quotient ring $\mathcal{O}_L/\pi^{n}\mathcal{O}_L$ for $n \in \mathbb{N}$. The integer $n$ is said to be the precision of the ring $\mathcal{O}_L$. All we presented the algorithms above have been applied only in the field of finite precision. 
-Since the quotient ring is of finite structure so its elements can be presented exactly and hence we can apply our algorithms to solve the norm equation. The exponential function of MAGMA in local field extension has some flaws, so I have written my own codes for exponential function which loses the precision. Also while applying the above algorithms we use division which also loses the precision. %with finite precision, we lose some precision in few computations such as exponential or division. 
-One can find more details of precision loss in \cite{Magma Handbook}.
-%Since we work in the finite precision of a field, we lose some precision in division and exponential. The exponential function of MAGMA in local field extension has some flaws so I have written my own codes for exponential function which loses the precision. 
-We are still trying to manage the precision loss during division and exponential function. \\
-The above algorithms we presented can solve the norm equation in either unramified extension or totally ramified extensions effectively. But when the local field $L$ has both the ramification index and the inertia degree over $K$ greater than $1$, then we solve the norm equation with command  "MyNormEquation" in MAGMA. Suppose $L/M/K$ be a tower of local field extensions then we can solve the norm equation of $L/K$ by iterating over intermediate fields. In our algorithms we apply the functions such as $\log$ and $ \exp$, so we have to check in each intermediate field  whether the solution is in the convergence of them. In this case, to get rid of solving the norm equation in each intermediate fields one can solve with command "MyNormEquation" which also works effectively with our new way of computation of unit group generators.\\
-The following examples and table show the effectiveness of our algorithms.
-
-%\clearpage
-%\begin{sidewaystable}[h!] % <--
-%  \begin{center}
-%  %\caption{Norm Equation Table .}
-%  %\hline
-%  \label{tab:table1}
-%  \begin{tabular}{|a|b|c|d|e|f|g|h|i|}  %{ |l|s|r|t|d|e|f|g|h| } %{|a|b|c|d|e|f|g|h|i|}   %{l|s|r|t|d|e|f|g|h} 	
-%  	%\toprule
-%  	\hline
-%  	\textbf{Items} & \textbf{Extensions} & \textbf{Degree} & \textbf{Absolute Degree} &  \textbf{Prime Field} &  \textbf{Precision} & \textbf{Element} & \textbf{Time} & \textbf{Time}\\
-%  &  &  $L:K$ & $L:\mathbb{Q}_{p}$  & of $L$ &  &  $\in$ \hspace{2mm} $U_{K}^{r} $& ClNormEquation & NormEquation\\
-%    %\midrule
-%     \hline
-%    1. & L/K & 5 & 50 & $(\mathbb{Q}_{5},30)$ & 150 & $ a:= 3*(1+2*K.1^3)$ &  0.340 & 4.180\\
-%     \hline
-%     %$K:=ext<UnramifiedExtension(Q_5,2)|x^5+10*x+5>; $
-%     2. &     L/K & 7 & 98  & ($\mathbb{Q}_{5},20)$ & 140 & $a:=1+2*K.1^3$ & 0.790 & 10.480\\
-%     \hline 
-%     %   $K:=ext<UnramifiedExtension(Q_5,2)|x^7+10*x+5>; $ 
-%     3. &     L/K & 10 & 200  & ($\mathbb{Q}_{5},20)$ & 200 & $a:=1+2*K.1^4$&  1.480 & 55.370\\
-%    \hline
-%    %$ K:=ext<UnramifiedExtension(Q_5,2)|x^10+15*x^2+5*x+5>;  $
-%    4. &     L/K & 11 & 242  & $(\mathbb{Q}_{5},20)$ & 220 & $a:=3*(1+2*K.1^4)$&  1.750 & 90.000 \\
-%    \hline
-%    %$ K:=ext<UnramifiedExtension(Q_5,2)|x^11+15*x^2+5*x+5>; $
-%     5. &     L/K & 11 & 242  & $(\mathbb{Q}_{5},10)$ & 110   & $a:=3*(1+2*K.1^4)$ &  0.700 & 22.700 \\  
-%     \hline 
-%     %K:=ext<UnramifiedExtension(Q_5,2)|x^11+10*x+5>;
-%      6. &     L/K & 12 & 264  & $(\mathbb{Q}_{5},10)$ & 240   & $a:=3*(1+2*K.1^4)$ &   0.820 & 16.070 \\  
-%          \hline
-%    %  K:=ext<UnramifiedExtension(Q_5,2)|x^11+15*x^2+5*x+5>;
-%     % 6ii.  &    L/K & 11 & 264  & $(\mathbb{Q}_{5},10)$ & 120   & $a:=3*(1+2*K.1^5)$ &   0.810 & ... \\ 
-%   %   \hline
-% %     K:=ext<UnramifiedExtension(Q_5,2)|x^12+15*x^2+5*x+5>; 
-%     
-%      7. &     L/K & 16 & 296  & $(\mathbb{Q}_{3},10)$ & 160   & $ a:=2*(1+2*K.1^11)$&  0.240  & 309.840/ 5 min \\ 
-%      \hline
-%      %$ K:=ext<Q_3| x^16+3*x^5+3>;$
-%      8. &     L/K & 18 & 324  &$(\mathbb{Q}_{3},10)$ & 180   & $ a:=2*(1+2*K.1^11)$&  0.380  & 3219.450 \\
-%      \hline
-%      %$K:=ext<Q_3| x^18+3*x^5+3>;$
-%      9. &     L/K & 20 & 400  & $(\mathbb{Q}_{3},10)$ & 200   & $ a:=2*(1+2*K.1^11)$&  0.620  & ... \\ 
-%      \hline
-%      %$K:=ext<Q_3| x^20+3*x^5+3>;$
-%      10. &   L/K &  6 &  144 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.120 & 4.890\\
-%      \hline
-%      %$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-%      11. &   L/K &  8 &  192 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.220 & 329.420 \\
-%      \hline
-%      %$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-%      12(i). &   L/K &  10 &  240 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.290 & 31618.360/8.78 hrs \\
-%      \hline
-%      12(ii).  &   L/K &  11 &  264 & $(\mathbb{Q}_{3},5)$ & 60 & $a:=1+2*K.1^8;$ & 0.340 & 300451.900/ 83.46 hrs \\
-%      \hline
-%      %$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-%      13.&   L/K &  20 &  400 & $(\mathbb{Q}_{3},10)$ & 200 & $a:=2*(1+2*K.1^11);$ & 11.920 with TU &  32670.770 \\
-%     \hline
-%      %K:=ext<Q_3| x^20+3*x^5+3>;
-%     14.&   L/K &  20 &  400 & $(\mathbb{Q}_{3},10)$ & 200 & $a:=1+2*K.1^15;$ & 0.580 with NTU & 33149.630  \\
-%     \hline
-%     %K:=ext<Q_3| x^20+3*x^5+3>; 
-%   % \bottomrule
-%  \end{tabular}
-%  \end{center}
-%\end{sidewaystable}
-%\clearpage
-
-\textbf{Fields above in the table are defined as below: }\\
-1)  $K:=ext<UnramifiedExtension(Q_5,2)|x^5+10*x+5>; $\\
-2)  $K:=ext<UnramifiedExtension(Q_5,2)|x^7+10*x+5>; $\\
-3)  $ K:=ext<UnramifiedExtension(Q_5,2)|x^10+15*x^2+5*x+5>;  $\\
-4)  $ K:=ext<UnramifiedExtension(Q_5,2)|x^11+15*x^2+5*x+5>; $\\
-6) $Q_3:=pAdicRing(3,10);$ \& $K:=ext<Q_3| x^15+3*x^5+3>; $\\
-7)  $ K:=ext<Q_3| x^16+3*x^5+3>;$\\
-8)  $K:=ext<Q_3| x^18+3*x^5+3>;$ \\
-9) $K:=ext<Q_3| x^20+3*x^5+3>;$
-10) $Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-   $a:=1+2*K.1^8;$\\
- 11)$Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-    $a:=1+2*K.1^8;$\\
- 12) $Q_3:= pAdicRing(3,5); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-    $a:=1+2*K.1^8;$  \\
- 13) $Q_3:= pAdicRing(3,10); K:=ext<UnramifiedExtension(Q_3,2)|x^12+15*x^2+3*x+3>; $
-     $a:=1+2*K.1^8;$  \\
-     
-\begin{remark}
-We computed the norm equation for any unit element of ring of integer $\mathcal{O}_{K}$ of $K$ in the finite extension $L/K$. Due to the fact $N(U_{L})\subset U_{K}$ we can compute the elements of which do not have solution once we have the map from $O_{K}$ to unit group $U_{K}$. We see below how to find such elements:
-\end{remark}
-
-\begin{lstlisting}
-> x := PolynomialRing(Integers()).1;
-> K := pAdicRing(3,10);
-> M := UnramifiedExtension(K,2);  
-> L:= ext<M| x^4+3*x+3>;
-> U,mU := UnitGroup(M);
-> N,mN := NormGroup(L, mU);
-> q,mq := quo<U|N>; 
-> F := [x@@mq@mU: x in q];
-> [NormEquation(L,mU,F[i]): i in [2..#F]]; 
-[ false, false, false ]
-\end{lstlisting}
-From above example we can see that there are three elements in $U_{M}$ whic has no solution for norm equation. 
-% Therefore, any element $x$ of $U_{M}$ which has a factor $x_f$ having no solution of norm equation then we mean $x$ has no solution for norm equation because of the multiplicative properties of Norm operator from $N: L \rightarrow K$. %Not true"";
-
-%$\&  L:=ext<K|12>;$ 
-%\clearpage
-
-
-%\begin{thebibliography}{9}
-%\bibitem{Fieker} 
-%C. Fieker, Y. Zhang. 
-%\textit{An application of the p-adic analytic class number formula}. 
-% LMS J. Comput. Math. 19 (2016), no. 1, 217–228.
-%
-%\bibitem{Fieker} 
-%C. Fieker, A. Jurk and Alexander and M. Pohst. 
-%\textit{On solving relative norm equations in algebraic number fields}. 
-% Math. Comp. 66 (1997), no. 217, 399–410. 
-% 
-%\bibitem{Lorenz} 
-% F. Lorenz.
-% \textit{Algebra. Vol. II. Fields with structure, algebras and advanced topics.} Springer, New York, 2008.
-%
-%\bibitem{Cohen}
-%
-%  H. Cohen.
-% \textit{A course in computational algebraic number theory.} Graduate Texts in Mathematics, 138. Springer-Verlag, Berlin, 1993. 
-%
-%
-%
-%\bibitem{Cohen}
-%H. Cohen, G. Frey, R. Avanzi, C. Doche, T. Lange, K. Nguyen and F. Vercauteren.
-%\textit{Handbook of elliptic and hyperelliptic curve cryptography.}
-%Chapman \& Hall/CRC, Boca Raton, FL, 2006. xxxiv+808 pp.
-%
-%\bibitem{Fesenko}
-%I. B. Fesenko and S.V. Vostokov.
-%\textit{Local Fields and Their Extensions.}
-% With a foreword by I. R. Shafarevich. Second edition. Translations of Mathematical Monographs, 121. American Mathematical Society, Providence, RI, 2002
-%
-%
-%
-%\bibitem{Neukirch}
-% J. Neukirch.
-% \textit{Class field theory.}
-%Springer, Heidelberg, 2013. The
-%Bonn lectures, edited and with a foreword by Alexander Schmidt, Trans-
-%lated from the 1967 German original by F. Lemmermeyer and W. Snyder,
-%Language editor: A. Rosenschon. 
-%
-%\bibitem{Kenkichi}
-%K. Iwasawa.
-%\textit{Lectures on {$p$}-adic {$L$}-functions.}
-%Annals of Mathematics Studies, No. 74. Princeton University Press, Princeton, N.J.; University of Tokyo Press, Tokyo, 1972.
-%
-% \bibitem{Kato}
-%  K. Kato ,  N. Kurokawa,  T. Saito.
-%  \textit{ Number theory. 1. Fermat's dream.}
-%  American Mathematical Society, Providence, RI, 2000.
-%  
-%\bibitem{Sebastian}
-% S. Pauli.
-%\textit{ Constructing class fields over local fields.}
-% 2006. ////////////////////////////////
-% 
-%\bibitem{Satoh}
-% T. Satoh.
-%\textit{ On p-adic point counting algorithms for elliptic curves over finite fields.}
-%Algorithmic number theory Symposium (Sydney, 2002), 43–66, Lecture Notes in Comput. Sci., 2369, Springer, Berlin, 2002. 
-%
-%
-%
-%
-%\bibitem{Magma Handbook}
-%W. Bosma, J. Cannon, C. Fieker and A. Steel, eds.
-%\textit{ Handbook of Magma Functions.}
-%Version 2.23, Sydney, 2017.
-%
-%\end{thebibliography}
-%
-%
-%
-%
-%

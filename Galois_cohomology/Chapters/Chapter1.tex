@@ -1,20 +1,10 @@
-\chapter{Introduction} % Main chapter title
+\chapter{Preleminaries} % Main chapter title
 
 \label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
 \lhead{Chapter 1. \emph{Introduction}} % This is for the header on each page - perhaps a shortened title
 
-%----------------------------------------------------------------------------------------
-%\newtheorem{proposition}{Proposition}[section]
-%\newtheorem{definition}{Definition}[section]
-%\newtheorem{Algorithm}{Algorithm}[section]
-%\newtheorem{lemma}{Lemma}[section]
-%\newtheorem{cor}{Corollary}[section]
-%\theoremstyle{break} 
-%\newtheorem{theorem}{Theorem}[section]
-%\newtheorem{ex}{Example}[section]
-%\newtheorem{addition}{Addition}[section]
-%\newtheorem{remark}{Remark}[section]
+%------------------------------------------------------------------------------------
 
 \def\Log{\mathop{\mathrm{Log}}\nolimits}	
 \def\inva{\mathop{\mathrm{inv}}\nolimits}	
@@ -41,10 +31,177 @@
 \def\Frob{\mathop{\mathrm{Frob}}\nolimits}	
 \def\Trace{\mathop{\mathrm{Trace}}\nolimits}	
 \def\Norm{\mathop{\mathrm{Norm}}\nolimits}	
-\section{Introduction}
-Let $L/K$ be any global field extension  of characteristic $0$ and  $p$ be any prime in $K$ and $\mathfrak{P}$ be the prime in $L$ over $Kp$. Then $L_{\mathfrak{P}}/K_p$ be the corresponding local $p$-adic field extension. We want to compute the  particular element $u_{L_{\mathfrak{P}}/K_p}$ of $H^{2}(\Gal(L_{\mathfrak{P}}/K_p), L_{\mathfrak{P}}^{\times})$ such that $\inv(u_{L_{\mathfrak{P}}/K_p}) = 1/[u_{L_{\mathfrak{P}}:K_p}]$. The element $u_{L_{\mathfrak{P}}/K_p}$ is called the local fundamental class which maps 
-\[u_{L_{\mathfrak{P}}/K_p}: \Gal(L_{\mathfrak{P}}/K_p) \times \Gal(L_{\mathfrak{P}}/K_p) \rightarrow L_{\mathfrak{P}}^{\times}.\]
-Before going to the details of the algorithm we will present the details of the cohomology group and the maps and other necessary definitions and some results.
+\def\Gal{\mathop{\mathrm{Gal}}\nolimits}
+\def\T{\mathop{\mathrm{T}}\nolimits}
+\def\GCD{\mathop{\mathrm{GCD}}\nolimits}
+\def\modulo{\mathop{\mathrm{mod}}\nolimits}
+\def\valuation{\mathop{\mathrm{valuation}}\nolimits}
+\def\v{\mathop{\mathrm{v}}\nolimits}
+\def\Aut{\mathop{\mathrm{Aut}}\nolimits}
+\section{Basic Definitons}
+%In my research I will be working mostly on number fields.
+A field extension $L/K$ is said to be algebraic if every element $\alpha \in L$ is algebraic over $K$, that is, for every $\alpha \in L$  there exists some nonzero polynomial in $ f \in K[x]$ such that $\alpha$ is a zero of $f$. In my work I will always assume the algebraic field extension. The algebraic field extension $L/K$ is called an algebraic number field when $K =\mathbb{Q}$. 
+\begin{definition}
+A Galois field extension is an algebraic field extension $L/K$ which is normal and separable.
+\end{definition}
+In the Galois field extension $L/K$, the Galois group $\Gal(L/K)$ is the set of all automorphisms of $L$, denoted by $\Aut(L/K)$, which fixes the elements of $K$, that is, the base field satifies $K= L^{\Aut(L/K)}$. In fact the fundamental theorem of Galois theory asserts that for any finite Galois field extension $L/K$, there is a one to one correspondence between its intermediate fields and subgroups of its Galois group which we will apply in many places in our computations. For any subgroup $H \subset \Gal(L/K)$, $L^{H}$ denotes the fixed field corresponding to the group $H$.
+An element $\alpha \in L$ is said to be integrable over $\mathbb{Z}$ if there exists some monic polynomial $f \in \mathbb{Z}[x]$ such that $f(\alpha) =0$ 
+\begin{definition}
+The maximal order for an extension $L/\mathbb{Q}$ is denoted by $\mathcal{O}_{L}$ or $\mathbb{Z}_{L}$ is the set of all integrable elements of $L$ over $\mathbb{Z}$.
+\end{definition}
+An order of $R$ of any number field $L$ is a unitary subring $R\subset L$ which is finitely generated as $\mathbb{Z}$-module and field of fractions $Q(R) =L$. One can find the details of computation of maximal order in the lecture note of Fieker. \\
+\begin{definition}
+Let $R$ be a commutative and unitary integral domain and $Q(R)$ its field of fractions. An $R$-submodule $B\leq Q(R)$ is called a fractional ideal if there exists $0 \neq \alpha \in R$ such that $\alpha\cdot B\subset R$. A fractional ideal $A$ is said to be invertible if there is some fractional ideal $B$ such that $AB=R$.
+\end{definition}
+Fractional ideals are not ideals in the usual sense.\\
+\begin{theorem}
+Let $L$ be an algebraic number field with maximal order $\mathcal{O}_{L}$, then the fractional ideals of $\mathcal{O}_{L}$ form an abelian and it is denoted by $I_{L}$. The identity element is $1=\mathcal{O}_{L}$ and the inverse of a fractional ideal $A$ is 
+\[ A^{-1} = \{ x \in \mathcal{O}_{L} \mid xA\subset \mathcal{O}_{L}\}= [O_{L}:A].\] 
+\end{theorem}
+\begin{proof}
+\cite{Neukirch_Alg}, Proposition $3.8$.
+\end{proof}
+The fractional principal ideal $(\alpha) = \alpha \mathcal{O}_{L}, \alpha \in L^{\times}$ , form a subgroup of the group of ideals $I_{L}$, which we denote by $P_{L}$. The quotient group $I_{L}/P_{L}=Cl_{L}$ is finite and called the ideal class group of $L$. The cardinality of this group $Cl_{L}$ is called the class number for $L$ and it is denoted by $h_{L}$. One can see \cite{Fieker_ideal} for details on the computation of ideal class group.
+
+\begin{theorem}
+Let $\mathcal{O}$ be any order of a number filed, then there are unit $\zeta, \epsilon_{1}, \ldots, \epsilon_{r} \in \mathcal{O}^{*}$ such that 
+\begin{enumerate}
+\item torsion unit group $TU(\mathcal{O})= \langle \zeta \rangle$,
+\item $(\epsilon_{i})_{i}$ are free,
+\item $\mathcal{O}^{*} = \langle \zeta, \epsilon_{1}, \ldots, \epsilon_{r} \rangle$.
+\end{enumerate} 
+\end{theorem}
+If $\mathcal{O}$ is the maximal order of number field $L$ then $r= r_1+r_2-1$ is the rank of unit group of $\mathcal{O}$, where $r_1$ is the number of real embeddings and $r_2$ is the number of conjugates pairs of complex embeddings of $L$. For any Galois field extension $L/\mathbb{Q}$ of degree $n$, either $r_1 =0$ or $r_2=0$ and $n= r_1 + 2\cdot r_2$.\\
+\begin{definition}
+ Let $K$ be a field. A discrete valuation on $K$ is a function $\v: K \rightarrow \mathbb{Z} \cup \{\infty \}$, such that for every  $x,y \in K$,
+    \begin{description}[align=left]
+    \item [V1.] $\v(x) = \infty \mbox{ if and only if } x=0$,
+    \item [V2.] $\v(xy)= \v(x)+ \v(y)$ and
+    \item [V3.] $\v(x+y) \geq \min(\v(x),\v(y))$.\\
+Each discrete valuation  on $K$ induces a non-archimedian absolute value via $|x|= c^{\v(x)}$, where c is any constant with $0<c<1$.  
+  \end{description}
+\end{definition}
+An absolute $|\cdot|$ value on $K$ defines a metric via 
+$d(a,b)=|a-b|$ and hence form a topology on $K$. For any element $a \in K$, one can define the open neighbourhood of $a$ as
+\[ U(a, \delta)= \{ x\in K\mid |x-a| < \delta \}, \delta > 0.\]
+%A set $B$ is said to be open if $B=\Cup_{} U(a,\delta)$.
+Let $|\cdot|_1 $ and $|\cdot|_2$ be two absolute values on $K$. From \cite{Neukirch_Alg}, they are equivalent iff $\exists$ $r>0$ such that we have $|x|_1 = |x|_{2}^{r}$ for all $x \in K$.
+Let $K$ be an algebraic number field, then an equivalence class of valuations on $K$ is called a prime or place of $K$. 
+%\begin{proposition}
+%A discrete valuation $\v$ on a field $L$ can be uniquley extensded to a discrete valuation on the completion $\hat{L}$ of $L$ with respect to the valuation topology.
+%\end{proposition}
+%\begin{proof}
+%\cite{Neukirch_Alg}, Proposition $1$.
+%\end{proof}
+\begin{theorem}
+Let $K$ be a number field, then there is exactly one prime of $K$
+\begin{enumerate}
+\item for each prime ideal $\mathfrak{p}$ of $K$,
+\item for each real embedding of $K$,
+\item for each conjugate pair of complex embeddings of $K$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Milne's note
+\end{proof}
+
+\section{Local Field}
+\begin{example}
+On the field of rational $\mathbb{Q}$, for every prime $p$, the $p$-adic valuation $\v_{p}:\mathbb{Q} \rightarrow \mathbb{Z}\cup \{ \infty \}$ can be defined as  
+\[ \v_{p}(p^{a}\cdot \frac{r}{s})= a \] where $p$ does not divide $r$ and $s$.  
+\end{example}
+In fact one can induce a non archimedian $p$-adic absolute value $| \cdot |_{p}$ on $\mathbb{Q}$  as \[   |\alpha|_{p} = p^{-\v_{p}(\alpha)}. \]
+\begin{theorem}
+ The non-trivial absolute values on $\mathbb{Q}$ are equivalent to $|\cdot|_{p}$ or the ordinary absolute value $|\cdot|_{\infty}$.
+\end{theorem}
+\begin{proof}
+\cite{Neukirch_Alg}
+\end{proof}
+A field $L$ together with an absolute value $|\cdot|$ is said to be complete if every Cauch sequnce in $L$ converges in $L$, that is for evry sequence $(a_{n})$ of $L$, and $m, n \rightarrow \infty $ with $|a_n- a_m| \rightarrow 0$, there exists $a \in L$ such that $|a_n-a|\rightarrow 0.$ 
+\begin{theorem}
+Let $(K,|\cdot|_K)$ be a pair of complete field with respect to a discrete absolute value $|\cdot|_{K}$ and suppose $L/K$ be a finite separable extension of degree $n$. Then $|\cdot|_{K} $ can be extneded uniquely to a discrete absolute value $|\cdot|_{L}$ and  $(L, |\cdot|_{L})$ is complete with respect to $|\cdot|_{L}$ and for all $\alpha \in L$,
+\[  |\alpha|_{L}= |N_{L/K}(\alpha)|_{K}^{1/n}. \]
+%Every field $L$ with absolute value $||$ can be embedded in a complete field $\hat{L}$ with an absolute value extending the original absolute value in such a way that $\hat{L}$ is the closure of $L$ with respect to $|\cdot |$. Furthermore $\hat{L}$ is unique(up to isomorphism). 
+\end{theorem}
+\begin{proof}
+Cassels
+\end{proof}
+$\mathbb{Q}_{p}$ is the completion of the $\mathbb{Q}$ with non-archimedian absolute value $|\cdot|_{p}$, that is, every Causchy sequence in $\mathbb{Q}_{p}$ converges with respect to $|\cdot |_{p}$. The $p$-adic absolute value satisfies $|a+b|_{p}\leq \max\{|a|_{p}, |b|_{p} \leq |a|_{p}+|b|_{p}\}$.
+
+In this we are mainly interested in the local fields of characteristic zero which are finite extension of $\mathbb{Q}_{p}$ for any prime number $p$. 
+\begin{proposition}
+Let $L$ together with non archimedian absolute value $|\cdot|$ is a finite extension of $\mathbb{Q}_{p}$, then $\mathcal{O}_{L} = \{ x\in L \mid |x| \leq 1 \}$ is a ring with unit group $\mathcal{O}_{L}^{*}= \{x\in L \mid |x| =1 \}$ and the unique maximal ideal $\mathfrak{p}_{L} = \{x\in L \mid |x| <1  \}$. 
+\end{proposition}
+\begin{proof}
+\cite{Neukirch_Alg}, Proposition $3.8$.
+\end{proof}
+The ring $\mathcal{O}_{L}$ of $L$ is said to be the ring of integers of $L$ and the quotient $\mathcal{O}_{L}/ \mathfrak{p}_{L}$ is called residue class field of $L$. An element  $\pi_{L} \in \mathcal{O}_{L}$ is said to be a uniformizing element or prime element if $\v_{L}(\pi_{L})=1$. Every element $a$ of $L^{*}$ can be uniquely represented as $a= \pi_{L}^{m}\cdot u$ where $m \in \mathbb{Z}$ and $u$ is a unit in $\mathcal{O}_{L}^{*}$. In particular for $p$-adic field $\mathbb{Q}_{p}$ we have the ring of integers is $ \mathbb{Z}_{p}= \mathcal{O}_{\mathbb{Q}_{p}}= \{ a\in \mathbb{Q}_{p} \mid |a|_{p}\leq 1 $ and the unique maximal ideal is $\mathfrak{P} =\{a \in \mathbb{Z}_{p} \mid |a|_p > 1 \}$. The residue class field of $\mathbb{Q}_{p}$ is $\mathbb{Z}_{p}/\mathfrak{P} \cong \mathbb{Z}/p\mathbb{Z}.$ 
+%\begin{proposition}
+%The set
+%\[ \mathbb{Z}_{p}= \mathcal{O}_{\mathbb{Q}_{p}}= \{ a\in \mathbb{Q}_{p} \mid |a|_{p} \leq 1\}\] is a subring of $\mathbb{Q}_{p}$. It is the closure with respect to  $p$-adic absolute value $|\cdot|_p$ of the ring $\mathbb{Z}$ in the field $\mathbb{Q}_p$. 
+%\end{proposition}
+%\begin{proof}
+%\cite{Neukirch_Alg}, Proposition $2.3$.
+%\end{proof}
+%Infact the above ring $\mathbb{Z}_{p}$ is local ring with unique maximal ideal $\mathfrak{P} =\{a \in \mathbb{Z}_{p} \mid |a|_p > 1 \}$ and the the unit group of $\mathbb{Z}_{p}$ is 
+%\[ \mathbb{Z}_{p}^{*} = \{a \in \mathbb{Z}_{p} \mid |a|_p =1 \}.\]
+%The quotient $\mathbb{Z}_{p}/\mathfrak{P} $ is the residue class field of $\mathbb{Q}_{p}$.
+Every element $a$ of $ \mathbb{Q}_{p}^{*}$ can be expressed uniquely as 
+\[ a = p^{m}\cdot u \mbox{ where } m \in \mathbb{Z} \mbox{  and } u \in \mathbb{Z}_{p}^{*} \] 
+%For any $n\geq 0$, we obtain non zero ideals 
+%\[\mathfrak{p}_{L}^{n}= \pi_{L}\mathcal{O}_{L}= \{ x\in L \mid |x| \leq n \}\]
+% of $\mathcal{O}_{L}$
+For $L$ together with non-archimedian absolute value, we obtain the descending chain 
+\[\mathcal{O}_{L} \supseteq \mathfrak{p}_{L} \subseteq \mathfrak{p}_{L}^{2} \subseteq \mathfrak{p}_{L}^{3} \subseteq \cdots \]
+of the ideals of $\mathcal{O}_{L}$ which forms a basis of neighbourhoods of the zero element where $ \pi_{L}^{n} = \{ x\in L \mid |x| < q^{-(n-1)} \}$ where $q=|\mathcal{O}_{L}/\mathfrak{p}_{L}| >1$. Similary a basis of the element $1$ of $ K^{*}$, we have the chain $\mathcal{O}_{L}^{*}= U_{0} \supseteq U_{1}\supseteq U_{2}\supseteq U_{3} \cdots$ of the subgroups of $O_{L}^{*}$ where $U_{n}$ is defined as
+\[ U_{n} = 1+\mathfrak{p}_{L}^{n}= \left\{ x \in L^{*} \mid |x-1| < \frac{1}{q^{n-1}} \right\} \] 
+for $n>0$. The subgroup $U_{n}$ of $\mathcal{O}_{L^{*}}$ is called $n$-th higher unit group and the $U_{1}$ the principal unit group. Let us define the surjective homomorphism
+\[ \mathcal{O}_{L}^{*} \rightarrow (\mathcal{O}_{L}/ \mathfrak{p}_{L}^{n}), \mbox{  } x\mapsto x \modulo \mathfrak{p}_{L}^{n}.\]
+Which has kernel $U_{n}$ thus one obtains $\mathcal{O}_{L}^{*}/U_{n}\cong (\mathcal{O}_{L}/\mathfrak{p}_{L}^{n})^{*}$. Similary if we define the surjective homomorphism $U_{n} \rightarrow \mathcal{O}_{L}/ \mathfrak{p}_{L}$ by $x=1+\pi_{L}a\mapsto a \modulo \mathfrak{p}_{L},$ which has kernel clearly $U_{n+1}$. Therefore, we obtain $U_{n}/U_{n+1}= \mathcal{O}_{L}/\mathfrak{p}_{L}$.\\
+In the thirs chapter we define the exponential function and logarithmic function the finite extension $L/\mathbb{Q}_{p}$ which link between $U_{n}$ and $\mathfrak{p}_{L}$.\\
+\begin{definition}
+Let $L/K$ be a finite extension of local fields over $\mathbb{Q}_{p}$ then $L$ is called unramified over $K$ if the residue class field $\mathcal{O}_{L}/\mathfrak{p}_{L}$ of $L$ is a separable extnension of the residue class field of  $\mathcal{O}_{K}/\mathfrak{p}_{K}$ of $K$ and \[ [L:K]= [ \mathcal{O}_{L}/\mathfrak{p}_{L} : \mathcal{O}_{K}/\mathfrak{p}_{K}]. \]
+\end{definition}
+The field $L$ is called tamely ramified over $K$ if the residue class field $\mathcal{O}_{L}/\mathfrak{p}_{L}$ of $L$ is a separable extnension of the residue class field of  $\mathcal{O}_{K}/\mathfrak{p}_{K}$ of $K$ and $\GCD([L:K], p)=1$ else it is wildly ramified.\\
+
+
+In the capter "Norm Equation" we go through details of local fied extension over $\mathbb{Q}_{p}$.
+%= [ \mathcal{O}_{L}/\mathfrak{p}_{L} : \mathcal{O}_{K}/\mathfrak{p}_{K}]. \]
+
+\cite{Neukirch_Alg, Lorenz}:
+Theorem5.7\\
+\section{Global Field}
+A global field is an algebraic number field or a fuction field in one variable over a finite field. We only work over the case of finite extension of $\mathbb{Q}$. Let $L/K$ be a finite Galois extension of the number fields with Galois grouop $G=\Gal(L/K)$. If $K\neq \mathbb{Q}$ then it $L$ is said to be  a relative field extension and in this case we have $\mathbb{Q}\leq K\leq L$. Let $\v$ be the valuation on $K$. If $\v$ is an archimedian valuation the the localization of $K$ at $v$ denoted by $K_v$ is either $\mathbb{R}$ or $\mathbb{C}$ otherwise $K_v$ is a finite extension $p$-adic field for some prime number $p$. Let $w$ be a valutation of $L$ then for every $\sigma \in G$, $w\circ \sigma$ also extends $v$, so the group $G$ acts on the set of of extensions $w\mid v$.
+\begin{proposition}
+Let $L/K$ be a Galois field extension, then the Galois group $G=\Gal(L/K)$ acts transtively on the set of extensions $w\mid v$.
+\end{proposition}
+\begin{proof}
+\cite{Neukirch_Alg}, Proposition 9.1.
+\end{proof}
+\begin{definition}
+For any finite Galois field extension $L/K$ with valuation $v$ of $K$, the decomposition group of an extension $w$ of $v$ to $L$ is definies as 
+\[ G_w= \{ \sigma \in \Gal(L/K) \mid w\circ \sigma =w  . \} \]
+\end{definition}
+For non-archimedian valuation $v$ let $w$ be an extension to $v$. Let $\mathcal{O}_{K}$ and $\mathfrak{p}_{K}$ are the ring of integers and the maximal ideal respectively with respect to valuation $v$ and similarly $\mathcal{O}_{L}$ and $\mathfrak{p}_{L}$ are the ring of integers and the maximal ideal respectively with respect tor valuation $w$. Then we obtain Inertia group denoted by $I_w$ and the ramification group denoted by $R_w$ which are defined below:
+\[I_w:= \{ \sigma \in \Gal(L/K)\mid\sigma x \equiv x \modulo \mathfrak{p}_{L}  \mbox{ for all } x \in \mathcal{O}_{L}  \}\]
+and
+ \[  R_w= \{ \sigma \in \Gal(L/K)\mid \frac{\sigma x }{x} \equiv 1 \modulo \mathfrak{p}_{L}  \mbox{ for all } x \in L^{*}  \}. \]
+ In fact they satisfy  $G_w\supseteq I_w \supseteq R_{w}$.
+From  Proposition $9.9$ of \cite{Neukirch_Alg},  the residue class field extension $\mathcal{O}_{L}/\mathfrak{p}_{L}/ \mathcal{O}_{K}/\mathfrak{p}_{K}$ is normal and satisfies the following an exact sequence:
+\[1 \rightarrow I_w \rightarrow G_w \rightarrow \Gal(\mathcal{O}_{L}/\mathfrak{p}_{L}/ \mathcal{O}_{K}/\mathfrak{p}_{K} ) \rightarrow 1.  \]
+Suppose $L_w$ be the completion of $L$ with respect to $w$ and $K_v$ be the completion of $K$ with respect to $v$ then one obtains $G_w= \Gal(L_w / K_v)$. 
+%Let $L/K$ be a separable extension of number fields and $w|v$ be extension of valuation $v$ of $K$ to $L$, then from 
+From \cite{Neukirch_Alg}, one also gets 
+\[ [L:K]= \prod_{w|v}^{}  [L_w: K_v]\]
+and $N_{L/K}(a)= \prod\limits_{w|v}^{}N_{L_w/K_v}(a)$ and $\T_{L/K}(a)= \sum\limits_{w|v}^{}\T_{L_w / K_{}v}(a)$ where $N$ and $\T$ are the norm and trace functions respectively. 
+
+
+
+\section{Cohomology Group}
+In this section we define the cohomology group for any finite topology group $G$.
+%Let $L/K$ be any global field extension  of characteristic $0$ and  $p$ be any prime in $K$ and $\mathfrak{P}$ be the prime in $L$ over $Kp$. Then $L_{\mathfrak{P}}/K_p$ be the corresponding local $p$-adic field extension. We want to compute the  particular element $u_{L_{\mathfrak{P}}/K_p}$ of $H^{2}(\Gal(L_{\mathfrak{P}}/K_p), L_{\mathfrak{P}}^{\times})$ such that $\inv(u_{L_{\mathfrak{P}}/K_p}) = 1/[u_{L_{\mathfrak{P}}:K_p}]$. The element $u_{L_{\mathfrak{P}}/K_p}$ is called the local fundamental class which maps 
+%\[u_{L_{\mathfrak{P}}/K_p}: \Gal(L_{\mathfrak{P}}/K_p) \times \Gal(L_{\mathfrak{P}}/K_p) \rightarrow L_{\mathfrak{P}}^{\times}.\]
+%Before going to the details of the algorithm we will present the details of the cohomology group and the maps and other necessary definitions and some results.
 
 
 \begin{definition}
@@ -54,6 +211,25 @@ The operations are defined as\\
 \[\sum_{g \in G} a_{g} g + \sum_{g \in G} b_{g} g = \sum_{g \in G} (a_{g} + b_{g}) g\] and
 \[\left\{ \sum_{g \in G} a_{g} g\right\}  \left\{\sum_{g \in G} b_{g} g\right\}= \sum_{g \in G, k \in G}\left( a_{k}b_{k^{-1}g}\right)g .\]
 \end{definition}
+
+\begin{definition} A $G$-module $M$ is said to be trivial if $ g\cdot a =a $ for all $ g\in G$, $a\in A$.
+\end{definition}
+
+\begin{definition} Let $A$ be a $G$-module, then we have four distinguished submodules defined as
+	\begin{enumerate}
+		\item
+		$A^{G} =\left\{a \in A \mid g\cdot a= a \mbox{ for all } g\in G, a \in A\right\} $, which is the largest submodule of $A$ fixed by $G$.
+		
+		\item $N_{G} A =\left\{N_{G} a= \sum_{\sigma \in G} \sigma a \mid a\in A\right\}$ is known as norm group of $A$.
+		\item $ {}_{N_{G}} {A} = \left\{ a \in A \mid N_{G}a=0 \right\} $.
+		\item $I_{G}A=  \left\{\sum_{\sigma \in G} n_{\sigma}( \sigma a_{\sigma}-a_{\sigma}) \mid a_{\sigma} \in A\right\}$.
+		
+	\end{enumerate}
+\end{definition}
+\begin{definition}
+	A $G$-module $A$ is called a $G$-induced if it can be written as a direct sum \[A=\bigoplus _{\sigma \in G} \sigma D \] with a subgroup $D\subset A$.
+\end{definition}
+
 Let $G$ be a finite group and the complete free resolution of the group $G$
 be \\
 \begin{tikzcd}
@@ -99,8 +275,36 @@ For $q\in \mathbb{Z}$ we also write $q^{th}$ Tate cohomology group as
 	H^{q}\left(G,A\right) \mbox{ if } q\geq 1\\
 	\end{cases}
 	\]
-	where, $H^{q}\left(G,A\right)$ are the usual cohomology groups and $H_{q}\left(G,A\right)$ are the usual homology groups.
-\\
+	where, $H^{q}\left(G,A\right)$ are the usual cohomology groups and $H_{q}\left(G,A\right)$ are the usual homology groups. The details on homology groups can be found in \citep{Reference2},
+\citep{Reference3} Chapter VII, $\S$ 4.
+\begin{remark} We mainly discuss here the cohomology groups $\hat{H}^{q}\left(G,A\right)$ for $q= -1,0,1,2.$
+	
+	\begin{enumerate}
+\item  \textbf{The group $\hat{H}^{-1}\left(G,A\right)$:}
+		Here , we have  $Z^{-1}= \ker\delta_{0}= {}_{N_{G}}{A}$\\
+		$R^{-1}=  \im \delta_{-1}=I_{G}A$\\
+		so, $\hat{H}^{-1}\left(G,A\right)= Z^{-1}/R^{-1}= {}_{N_{G}}{A}/I_{G}A$\\
+\item  \textbf{The group $\hat{H}^{0}\left(G,A\right)$:}
+		$Z^{0}= \ker\delta_{1}=A^{G}$ and $R^{0}=  \im\delta_{0}=N_{G}A$\\
+		Therefore, $\hat{H}^{0}\left(G,A\right)= Z^{0}/R^{0}=A^{G}/N_{G}A$ is the norm residue group.\\
+		
+\item  \textbf{The group $\hat{H}^{1}\left(G,A\right)$:}
+		We have, $H^{1}\left(G,A\right)= Z^{1}/R^{1}=\ker \delta_{2}/\im \delta_{1}$. The $1$-cocycles are the functions $x:G \rightarrow A$ with $\delta_{2}x=0$. That is \\
+		\[\delta x(\sigma,\tau)= \sigma x(\tau)- x(\sigma\tau)+ x(\sigma)=0\]
+		This gives $x(\sigma\tau)=\sigma x(\tau)+x(\sigma).$\\
+		The $1$-coboundaries are the function $x(\sigma)= \sigma a-a$, $\sigma \in G$ with fixed $a\in A=A_{0}$ $(x=\delta_{1}a).$\\
+		Thus if the group $G$ acts trivially on $A$ then clearly $R^{1}=0$ and $Z^{1}= \Hom(G,A)$. In this case we find the first cohomology as the set of homorphisms from $G$ to $A$. That is
+		\[\hat{H}^{1}\left(G,A\right)= \Hom (G,A).\]
+		In particular, if $A=\mathbb{Q} / \mathbb{Z}$ then we obtain the first cohomology group as the character group of $G$:
+		\[\hat{H}^{1}\left(G,\mathbb{Q} / \mathbb{Z}\right)= \Hom(G,\mathbb{Q} / \mathbb{Z})=\chi (G).\]
+\item  \textbf{The group $\hat{H}^{2}\left(G,A\right)$:}
+		As above we have $2$-cocycle function $x: G\times G\longrightarrow A$ such that $\delta_{3}x=0$ thus using the definition we find the property
+		\[x(\sigma\tau,\rho) + x(\sigma,\tau)= \sigma x(\tau,\rho)+ x(\sigma, \tau\rho)\] where, $\sigma, \tau, \rho \in G$. Among these the $2$-coboundaries are functions such that
+		\[ x(\sigma,\tau)=\sigma y (\tau)-y(\sigma\tau)+y(\sigma)\] for an arbitrary cochain $y:G\rightarrow A$.
+	\end{enumerate}
+\end{remark}
+
+
 From now on $H^{q}\left(G,A\right)$ denotes the Tate cohomology groups.
 Our main target is to compute the the local fundamental class in $H^{2}\left(G,A\right)$.
 
@@ -132,6 +336,37 @@ Let $ 0\rightarrow A \xrightarrow{i} B \xrightarrow{j} C \rightarrow  0 $ be an 
 	%\end{tikzcd}
 	is also exact. It is called the \bf{long exact cohomology sequence}.
 \end{theorem}
+\begin{proof}
+Details can be found in \citep{Reference1}, Theorem 3.2.
+\end{proof}
+The above theorem is very important. We use this as in the following case: If an arbitrary term in the exact cohomology sequence
+\[
+	\cdots \rightarrow H^{q}\left(G,A\right)\xrightarrow{\bar{i_{q}}} H^{q}\left(G,B\right) \xrightarrow{\bar{j_{q}}} H^{q}\left(G,C\right)\xrightarrow{\delta_{q}} H^{q+1}\left(G,A\right)\rightarrow \cdots
+ \]
+ vanishes, then the preceeding map is surjective and the subsequent map is injective. We use this to prove important isomorphism results. we state this as the following corollary.
+\begin{corollary}
+	Let \begin{tikzcd} 0\arrow{r}& A \arrow{r}{i} & B\arrow{r}{j} & C \arrow{r} & 0
+	\end{tikzcd} be an exact sequence of $G$-modules. If $H^{q}(G,A)=0$ for all $q$, then $\bar{j_{q}}: H^{q}\left(G,B\right) \rightarrow H^{q}\left(G,C\right)$ is an isomorphism. Similarly, if $H^{q}(G,B)=0$ (respectively $H^{q}(G,C)=0)$ for all $q$, then $\delta_{q}:H^{q}\left(G,C\right) \rightarrow H^{q+1}\left(G,A\right)$ ( respectively $\bar{i_{q}}:H^{q}\left(G,A\right)\rightarrow H^{q}\left(G,B\right)$ ) is an isomorphism.
+\end{corollary}
+\begin{definition}
+	We say that a $G$-module $A$ has trivial cohomology if for \[H^{q}(U,A)=0\] for all $q$ and all subgroups $U\subset G$.
+\end{definition}
+
+\begin{proposition}
+	Every $G$-induced module $A$ has trivial cohomology.
+\end{proposition}
+\begin{proof}
+\citep{Reference6}, page-127.
+\end{proof}
+\begin{definition}
+	Let $G$ and $G'$ be be groups, $A$ and $A'$ be $G$ $\&$ $G'$- modules respectively. We say that a pair $\rho: G'\rightarrow G$ and $\lambda : A\rightarrow A'$ of group homomorphisms is compatible if
+	$\lambda(\rho(g')a)= g'\lambda(a)$ where $g'\in G'$, $a\in A$.
+\end{definition}
+Compatible pairs are used to provide maps among cohomology groups.
+\begin{proposition}
+	Suppose that $\rho: G\rightarrow G'$ and $\lambda : A\rightarrow A'$ form a compatible pair. Then the  maps of $q$-cochains $A_{q}\rightarrow A'_{q}$; $f\mapsto \lambda \circ f\circ (\rho\times \dots \times\rho) $ induces maps on cohomology $H^{q}(G,A)\rightarrow H^{q}(G',A')$ for all $q\geq 0$.
+\end{proposition}
+
 
 \begin{definition}
 	Let $U$ be a subgroup of $G$
@@ -142,6 +377,41 @@ Let $ 0\rightarrow A \xrightarrow{i} B \xrightarrow{j} C \rightarrow  0 $ be an 
 		induced by the pair $(q,i)$ are known as inflation maps.
 	\end{enumerate}
 \end{definition}
+
+\subsection{Cup Products}
+Let us suppose $G$ be as above and $A$ and $B$ are $G$-modules, then $A\otimes B$ is $G$-module. The map $(a,b)\mapsto a\otimes b$ induces a canonical bilinear mapping mapping $A^G\times B^G\rightarrow (A\otimes B)^G$, which also maps $N_{G}(A)\times N_{G}(B) \rightarrow N_{G}(A\otimes B)$. We know $H^{0}(G,A)= A^{G}/N_{G}(A)$. It induces a bilinear mapping 
+\begin{eqnarray}
+ H^0(G,A)\times H^0(G,B)\rightarrow H^0(G,A\otimes B), \hspace{0.5cm}(\overline{a}, \overline{b})\mapsto \overline{a\otimes b}.
+ \end{eqnarray}     
+The element $\overline{a\otimes b} \in H^0(G, A\otimes B)$ is called the cup product of $\overline{a} \in  H^0(G,A)$ and $\overline{b} \in  H^0(G,B)$ and we denote it by $\overline{a}\cup \overline{b}= \bar{a\otimes b}$. Now we define the cup product for any dimension of cohomology groups.
+\begin{definition}
+Let $G$, $A$ and $B$ as above then there exists a uniquely determined family of bilinear map know as cup product
+\[ \cup : H^m(G,A)\times H^n(G,B) \rightarrow H^{m+n}(G,A \otimes B), \hspace{0.3cm}m,n \in  \mathbb{Z},  \]
+with the following properties:
+\begin{enumerate}
+\item For $m=0=n$ the cup product is defied as above $(1.2)$.\\
+\item If the sequence of $G$-modules
+   \[0 \rightarrow A \rightarrow A^{'} \rightarrow A^{''} \rightarrow 0 ,  \]
+   \[ 0 \rightarrow A\otimes B \rightarrow A^{'}\otimes B \rightarrow A^{''}\otimes B \rightarrow 0 ,     \]
+   are exact, then the following diagram\\
+\[\begin{tikzcd}
+H^{m}(G,A^{''})\arrow{d}{\delta} &\hspace{-1.4cm} \times H^{n}(G,B)\arrow{d}{1} \arrow{r}{\cup}& H^{m+n}(G,A^{''}\otimes B)\arrow{d}{\delta}\\
+H^{m+1}(G,A) & \hspace{-1.3cm}\times H^{n}(G,B) \arrow{r}{\cup} &H^{m+n+1}(G,A^{''}\otimes B)
+\end{tikzcd}\]
+commutes so that $\delta(\overline{a}^{''} \cup \overline{b})= \delta\overline{a}^{''} \cup \overline{b} $ where $\overline{a}^{''} \in H^m(G,A^{''}), \overline{b}\in H^n(G,B) $.\\
+\item  If the sequence of $G$-modules
+   \[0 \rightarrow B \rightarrow B^{'} \rightarrow B^{''} \rightarrow 0 ,  \]
+   \[ 0 \rightarrow A\otimes B \rightarrow A\otimes B^{'} \rightarrow A\otimes B^{''} \rightarrow 0 ,     \]
+   are exact, then the following diagram\\
+\[\begin{tikzcd}
+H^{m}(G,A)\arrow{d}{1} &\hspace{-1.4cm} \times H^{n}(G,B^{''})\arrow{d}{\delta} \arrow{r}{\cup}& H^{m+n}(G,A\otimes B^{''})\arrow{d}{(-1)^{m}\delta}\\
+H^{m}(G,A) & \hspace{-1.3cm}\times H^{n+1}(G,B) \arrow{r}{\cup} &H^{m+n+1}(G,A \otimes B)
+\end{tikzcd}\]   
+commutes and we have $\delta(\overline{a} \cup \overline{b}^{''} ) = (-1)^{m}(\overline{a} \cup \delta \overline{b}^{''})$, $ \overline{a} \in H^m(G,A),\overline{b}^{''} \in H^{n}(G,B^{''}).  $
+\end{enumerate}
+
+\end{definition} 
+
 \begin{theorem}
 	Let $G$ be a cyclic group and let $A$ be a $G$-module. Then
 	\[H^{q}(G,A)\cong H^{q+2}(G,A) \mbox{ for all } q\in \mathbb{Z}.\]
@@ -166,7 +436,7 @@ Let $ 0\rightarrow A \xrightarrow{i} B \xrightarrow{j} C \rightarrow  0 $ be an 
 \end{remark}
 
 \begin{definition}
-Let $L/K$ be a normal extension. The uniquely determined element $u_{L/K}\in H^{2}(L/K)$ such that
+Let $L/K$ be a finte Galois field extension with Galois group $G=\Gal(L/K)$ and $A$ be any class module for $G$. Then the uniquely determined element $u_{L/K}\in H^{2}(G,A)$ such that
 \[ \inv_{L/K}(u_{L/K})=\frac{1}{[L:K]}+\mathbb{Z}\] is called the fundamental class of $L/K$.
 \end{definition}
 
@@ -188,6 +458,49 @@ Let $L/K$ be a normal extension. The uniquely determined element $u_{L/K}\in H^{
 	(b) If $N\supset L\supset K$ is a tower of normal extensions with $N/K$ normal, then\[  \inva_{N/L} \circ \rest_{L}= [L:K]\cdot \inva_{N/K}.\]
 \end{definition}
 
+%\begin{definition}
+%Let $L/\mathbb{Q}$ be a number field extension and $\mathfrak{p}$ be the prime ideal of the ring of intgers $\mathcal{O}_{L}$ of $L$. A $\mathfrak{p}$-adic integer is defined as a sequence $\alpha = (\alpha_{i})_{i \geq 0}$ where $\alpha_{i} \in \mathcal{O}_{L}/\mathfrak{p}^{i}$ and $\alpha_{i+1} \equiv \alpha_{i} \modulo \mathfrak{p}^{i}$. The set of all $\mathfrak{p}$-adic integers, denoted by $\mathcal{O}_{L,\mathfrak{p}}$, forms an integral domain and its field of fractions, denoted by $L_{\mathfrak{p}}$, is called $\mathbb{p}$-adic completion of $L$ at $\mathbb{p}$.  
+%\end{definition}
+
+
+\textbf{Note:} If $L/K$ is the local field extnesion of characteristic $0$, then the class module for $\Gal(L/K)$ is the multiplicative group $L^{\times}$ but if the $L/K$ is global field extension of characteristic $0$ then the id\`ele class group $C_{L}$ of $L$ forms a class formation for $\Gal(L/K)$.
 \begin{definition}
-Let $L/\mathbb{Q}$ be a number field extension and $\mathfrak{p}$ be the prime ideal of the ring of intgers $\mathcal{O}_{L}$ of $L$. A $\mathfrak{p}$-adic integer is defined as a sequence $\alpha = (\alpha_{i})_{i \geq 0}$ where $\alpha_{i} \in \mathcal{O}_{L}/\mathfrak{p}^{i}$ and $\alpha_{i+1} \equiv \alpha_{i} \modulo \mathfrak{p}^{i}$. The set of all $\mathfrak{p}$-adic integers, denoted by $\mathcal{O}_{L,\mathfrak{p}}$, forms an integral domain and its field of fractions, denoted by $L_{\mathfrak{p}}$, is called $\mathbb{p}$-adic completion of $L$ at $\mathbb{p}$.  
+Let $L/K$ be a finite Galois field extension with Galois group $G=\Gal(L/K)=\{\sigma_{1}, \dots , \sigma_{n} \}$ (so $n= [L:K]$) and $y\in L$. We say $y$ generates a normal basis of $L/K$ if $(\sigma_{1}(y), \dots , \sigma_{n}(y) )$ is a basis of the $K$-vector space $L$. We simply say, $y$ is a normal basis of $L/K$ if this holds.
 \end{definition}
+
+For more details on normal basis and construction of this one can find in \citep{Reference12}.\\
+The additive group is cohomologically uninteresting because of the following result.
+\begin{theorem}
+$H^{q}(G,L^{+})=0$ for all $q$.
+\end{theorem}
+\begin{proof}
+By above equation $(2.1)$ it is sufficient to show this for finite extension $L/K$. Let $G =G(L/K):=\Gal(L/K)$. We use the existence of a normal basis of $L/K$. In fact, if $x\in L$ is chosen in such a way that $\left\{\sigma x \mid \sigma \in G\right\}$ is a basis of $L/K$, then $L^{+}=\bigoplus_{\sigma \in G} K^{+}\cdot \sigma x= \bigoplus_{\sigma \in G} \sigma (K^{+}\cdot x)$ which means that $L^{+}$ is a $G$-induced module. Therefore, by Proposition 1.3.5, $H^{q}(G,L^{+})=0$ for all $q$.
+\end{proof}
+On the other hand, the situation is very different when we look at $L^{\times}$ (the multiplicative group of $L$) as a $G$-module. Again we see ${L^{\times}}^{U_{i}}=K^{\times}_{i}$ and $L^{\times}= \bigcup K^{\times}_{i}$ so that $L^{\times}$ is a discrete $G$-module. Moreover, $K^{\times}_{i}$ is a $G(K_{i}/K)$-module and $G(K_{i}/K)\cong G/U_{i}$ and
+\begin{equation}
+H^{q}(G,L^{\times})\cong \varinjlim H^{q}(G(K_{i}/K),K_{i}^{\times}).
+\end{equation}
+\begin{theorem}{Hilbert-Noether}
+$ H^{1}(G,L^{\times})=1$.
+\end{theorem}
+\begin{proof}
+By above equation (1.3) we need only to prove the case when $L/K$ is finite.
+Let $f$ be a $1$ cocycle of $G$ in $L^{\times}$. If $c\in L^{\times}$, consider $b= \sum_{\sigma \in G}f(\sigma)\cdot \sigma(c).$
+Since the automorphisms $\sigma$ are linearly independent then there exists $c\in L^{\times}$ such that $b\neq 0.$
+Now for $\tau$ in $G$ we have
+\begin{align*}
+\tau(b) &= \sum_{\sigma\in G}[\tau f(\sigma)][\tau\sigma(c)]\\
+        &= \sum{\sigma\in G}f^{-1}(\tau) f(\tau \sigma)\cdot \tau\sigma(c)\\
+        & \hspace{10mm} (\mbox{since }f(\tau\sigma)=f(\tau)\cdot \tau f(\sigma)) \\
+        &= f^{-1}(\tau) \sum{\gamma\in G} f(\gamma)\cdot\gamma(c)\\
+        &= f^{-1}(\tau)b.\\
+\end{align*}
+Thus $f(\tau)=b\cdot\tau(b)^{-1}$, i.e. $f$ is a $1$-coboundary.
+\end{proof}
+ Now onwards we suppose $L/K$ as a finite Galois extension and the above theorem is a generalization of the well known "Hilbert's Theorem 90".
+\begin{theorem}(Hilbert)\\
+Let $L/K$ be a finite cyclic extension and let $G=G(L/K)=\left\langle \sigma \right\rangle $. If $a\in L^{\times} $ with $N_{L/K}(a)=1$, then exists $b\in L^{\times}$ such that \[a=\frac{\sigma(b)}{b}.\]
+\end{theorem}
+\begin{proof}
+Since $G$ is cyclic, $H^{1}(G,A)\cong H^{-1}(G,A)= {}_{N_{G}}{A}/I_{G}A $. By Remark 1.3.16 we have the principal ideal $I_{G}=\left\langle  \sigma -1\right\rangle$. Here $A=L^{\times}$ and so, in multiplicative notation \[I_{G}L^{\times}= \left\{ \sigma(b)/b\mid b\in L^{\times}\right\}.\] Since $ H^{1}(G,L^{\times})= 1$, the result follows clearly.
+\end{proof}

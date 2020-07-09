@@ -1,51 +1,60 @@
 This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
-White space in argument---line 80 of file main.aux
+White space in argument---line 91 of file main.aux
  : \citation{Magma
  :                 Handbook}
 I'm skipping whatever remains of this command
 The style file: alpha.bst
 Database file #1: Bibliography.bib
-You've used 9 entries,
+Repeated entry---line 102 of file Bibliography.bib
+ : @book {Cohen1
+ :              ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Reference2"
+Warning--I didn't find a database entry for "Reference1"
+Warning--I didn't find a database entry for "Reference6"
+Warning--I didn't find a database entry for "Cassles"
+Warning--I didn't find a database entry for "Cassels"
+You've used 25 entries,
             2543 wiz_defined-function locations,
-            632 strings with 6005 characters,
-and the built_in function-call counts, 3129 in all, are:
-= -- 304
-> -- 83
-< -- 16
-+ -- 24
-- -- 22
-* -- 206
-:= -- 500
-add.period$ -- 35
-call.type$ -- 9
-change.case$ -- 41
-chr.to.int$ -- 8
-cite$ -- 9
-duplicate$ -- 168
-empty$ -- 269
-format.name$ -- 39
-if$ -- 659
+            758 strings with 8514 characters,
+and the built_in function-call counts, 8935 in all, are:
+= -- 892
+> -- 289
+< -- 33
++ -- 88
+- -- 84
+* -- 605
+:= -- 1435
+add.period$ -- 91
+call.type$ -- 25
+change.case$ -- 123
+chr.to.int$ -- 24
+cite$ -- 25
+duplicate$ -- 438
+empty$ -- 732
+format.name$ -- 127
+if$ -- 1862
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 15
-newline$ -- 53
-num.names$ -- 27
-pop$ -- 59
+missing$ -- 38
+newline$ -- 136
+num.names$ -- 75
+pop$ -- 147
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 159
 quote$ -- 0
-skip$ -- 109
+skip$ -- 310
 stack$ -- 0
-substring$ -- 137
-swap$ -- 35
-text.length$ -- 16
-text.prefix$ -- 8
+substring$ -- 453
+swap$ -- 80
+text.length$ -- 33
+text.prefix$ -- 18
 top$ -- 0
-type$ -- 48
+type$ -- 148
 warning$ -- 0
-while$ -- 27
-width$ -- 12
-write$ -- 133
-(There was 1 error message)
+while$ -- 83
+width$ -- 29
+write$ -- 350
+(There were 2 error messages)
