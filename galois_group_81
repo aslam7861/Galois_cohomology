@@ -1,0 +1,71 @@
+> K:=pAdicField(3,40);
+> x:=PolynomialRing(K).1;
+> f:=x^81+3^2*x^25+3^1*x^54+3;
+> time G,I:= TwoSegmentsGaloisGroup_old(f);
+Computation time of lfc
+Time: 24.090
+Computation time of factorisation of f
+Time: 104.470
+Computation time of intersection NormGroup of factorisation's extension
+Time: 435.190
+Time: 567.380
+> #G;
+13122
+> I;
+6
+> Factorisation(#G);
+[ <2, 1>, <3, 8> ]
+> G;
+Finitely presented group G on 8 generators
+Relations
+    G.3^3 = Id(G)
+    G.4^3 = Id(G)
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-2 * G.6^-2 * G.5^-1 * G.3^-2 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.8^-2 * G.7^-1 * G.5^-1 * G.4^-2 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.8^-1 * G.6^-2 * G.5^-2 * G.4^-2 * G.3^-2 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-1 * G.5^-2 * G.3^-2 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.7^-2 * G.5^-1 * G.4^-2 * G.3^-2 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.8^-1 * G.7^-2 * G.6^-2 * G.4^-2 * G.3^-1 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.4^-1 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.8^-2 * G.7^-1 * G.6^-2 * G.5^-2 * G.4^-1 * G.3^-2 =
+    Id(G)
+    G.2^-1 * G.5 * G.2 * G.6^-2 * G.5^-2 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.8^-1 * G.7^-1 * G.6^-2 * G.4^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.6^-1 * G.5^-1 * G.3^-2 = Id(G)
+    (G.2, G.8^-1) = Id(G)
+    G.1^3 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^6 = Id(G)
+
+
+
+
+
+ h:= x^81+3^3*x^10+3^1*x^72+3;
+> h:= x^81+3^3*x^2+3^1*x^72+3;   
+> FlatRamificationPolygon( h)                       
+> ;
+[
+    <2, x^4 + 1>,
+    <1, x^72 + 1>
+]
+> f:=h;
