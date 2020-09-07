@@ -1,0 +1,55 @@
+intrinsic frobenius_equation_Hilbert_ppower(set,phi,B)->.{time consuming bcz of operations of Frobenius automorphisms}
+
+        //B := [];
+        L := Domain(phi);
+        p := Prime(L);
+        pi := UniformizingElement(L);
+        basis := Basis(L) ;
+        gamma := B[1];
+         
+         d := InertiaDegree(L);
+         quot := Floor(d div p);
+         rem := d-p*quot;  
+        c := set[1]^-1;        
+ //        A := [gamma,c*gamma@phi];
+          aa:=[c,c@phi];// c^{1+phi+..+ phi^(p-1)}
+          for j in [3..p] do 
+              Append(~aa,aa[j-1]@phi);
+           end for;
+          cp := &*( aa );
+          A :=[gamma, c*(gamma@phi)];
+            
+          for j in [3..quot] do
+            Append(~A, c*(A[j-1]@phi))  ;
+           end for;
+          term := &+(A);
+          B := [term];
+          CP := [cp@phi^(i*p): i in [0..quot-1]];
+        for j in [2..quot] do
+            Append(~B,&*(CP[1..j-1])*(B[j-1]@( phi^p )) );
+          end for; 
+ 
+            for j in [3..p] do
+            Append(~A,c* A[j-1]@phi);
+            end for;
+         sum := &+(A);
+        for i in [2..quot] do 
+            Append(~A, )
+            
+            // for i in [0..d-1] do
+        //     Append(~B,gamma@(phi^(i))); 
+         //end for; 
+        seq := [];
+        for i in [1..#set] do
+            c := set[i]^-1;
+            A := [1,c];
+            for i in [3..d] do
+            Append(~A,A[i-1]*c@(phi^(i-2))) ;
+            end for;
+            b := &+([A[i]*B[i]: i in [1..d]]);
+           assert Norm(b) ne 0 ;
+           Append(~seq, b);
+           end for;
+return seq;
+end intrinsic;
+           */
