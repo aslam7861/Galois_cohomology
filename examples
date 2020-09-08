@@ -1,3 +1,44 @@
+
+Group(CM);
+Module(CM);
+Exponent($1);
+A;
+[Order(a) : a in Gens(A)];
+[Order(a) : a in Generators(A)];
+Type(A);
+3^22;
+ActionGenerators(CM);
+ListAttributes(CM);
+ListAttributes(Type(CM));
+CM`mats
+;
+Type($1);
+Type($2[1]);
+ListAttributes(Type(CM));
+ListAttributes(invar);
+CM`invar;
+CM`gpc;
+CM`gr
+;
+ListAttributes(invar);
+Group(CM);
+Group(CM):Magma;
+CM`invar;
+CM`mats:Magma;
+CohomologyGroup(CM, 2);
+CM`invar;
+3^#$1;
+#Group(CM);
+$2*$1;
+Log($1)/Log(10);
+I;
+27894275208;
+Factorisation($1);
+
+
+
+
+
 aslam@nenekiki ~ $ ~fieker/Magma/magma
 Magma V2.25-5     Fri Aug 28 2020 16:23:16 on nenekiki [Seed = 1618357777]
 Type ? for help.  Type <Ctrl>-D to quit.
