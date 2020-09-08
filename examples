@@ -406,3 +406,139 @@ Time: 3220.690
 > 
 
 
+
+
+
+
+
+
+> K:= pAdicField(5,50);
+>  x:= PolynomialRing(K).1;
+> f:=x^125+5^3*x^19+5^6*x^112+5;
+> FlatRamificationPolygon(f);
+[
+    <1, 4*x^24 + 1>,
+    <4, x^25 + 4>
+]
+> time G,I := TwoSegmentsGaloisGroup_old(f);
+Computation time of lfc
+Time: 1595.570
+Computation time of factorisation of f
+Time: 15711.420
+Computation time of intersection NormGroup of factorisation's extension
+Time: 17477.170
+Time: 34891.850
+> I;
+2
+> #G;
+0
+>///////// this comes zero only if the group is not finite//////////////////////////
+> G;
+Finitely presented group G on 13 generators
+Relations
+    G.4^5 = Id(G)
+    G.5^5 = Id(G)
+    G.6^5 = Id(G)
+    G.7^5 = Id(G)
+    G.8^5 = Id(G)
+    G.9^5 = Id(G)
+    G.10^5 = Id(G)
+    G.11^5 = Id(G)
+    G.12^5 = Id(G)
+    G.13^5 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.4, G.9) = Id(G)
+    (G.4, G.10) = Id(G)
+    (G.4, G.11) = Id(G)
+    (G.4, G.12) = Id(G)
+    (G.4, G.13) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.5, G.10) = Id(G)
+    (G.5, G.11) = Id(G)
+    (G.5, G.12) = Id(G)
+    (G.5, G.13) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.6, G.11) = Id(G)
+    (G.6, G.12) = Id(G)
+    (G.6, G.13) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.7, G.11) = Id(G)
+    (G.7, G.12) = Id(G)
+    (G.7, G.13) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.8, G.11) = Id(G)
+    (G.8, G.12) = Id(G)
+    (G.8, G.13) = Id(G)
+    (G.9, G.10) = Id(G)
+    (G.9, G.11) = Id(G)
+    (G.9, G.12) = Id(G)
+    (G.9, G.13) = Id(G)
+    (G.10, G.11) = Id(G)
+    (G.10, G.12) = Id(G)
+    (G.10, G.13) = Id(G)
+    (G.11, G.12) = Id(G)
+    (G.11, G.13) = Id(G)
+    (G.12, G.13) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.12^-3 * G.11^-2 * G.10^-1 * G.8^-2 * G.7^-2 * G.6^-2 * G.4^-4 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.11^-4 * G.10^-4 * G.8^-3 * G.7^-4 * G.6^-4 * G.5^-4 * G.4^-2 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.12^-1 * G.11^-1 * G.7^-1 * G.6^-1 = Id(G)
+    (G.1, G.7^-1) = Id(G)
+    G.1^-1 * G.8 * G.1 * G.12^-1 * G.11^-1 * G.10^-2 * G.9^-4 * G.8^-2 * G.7^-1 * G.6^-3 * G.5^-2 * G.4^-
+    = Id(G)
+    G.1^-1 * G.9 * G.1 * G.12^-4 * G.10^-2 * G.9^-2 * G.8^-2 * G.5^-3 = Id(G)
+    G.1^-1 * G.10 * G.1 * G.12^-1 * G.11^-3 * G.10^-3 * G.9^-4 * G.8^-3 * G.7^-1 * G.5^-4 = Id(G)
+    G.1^-1 * G.11 * G.1 * G.12^-2 * G.11^-1 * G.6^-2 = Id(G)
+    G.1^-1 * G.12 * G.1 * G.12^-1 * G.11^-3 * G.6^-2 = Id(G)
+    G.1^-1 * G.13 * G.1 * G.13^-1 * G.11^-3 * G.7^-3 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.11^-3 * G.8^-1 * G.7^-2 * G.6^-1 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-2 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-2 = Id(G)
+    (G.2, G.7^-1) = Id(G)
+    G.2^-1 * G.8 * G.2 * G.11^-3 * G.6^-4 * G.4^-1 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.11^-4 * G.9^-1 * G.7^-3 * G.6^-3 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.10^-3 * G.9^-4 * G.8^-4 * G.7^-2 * G.6^-2 * G.5^-2 * G.4^-4 = Id(G)
+    G.2^-1 * G.11 * G.2 * G.11^-4 * G.7^-1 * G.6^-3 = Id(G)
+    G.2^-1 * G.12 * G.2 * G.12^-3 * G.11^-1 * G.7^-2 = Id(G)
+    G.2^-1 * G.13 * G.2 * G.13^-1 * G.11^-2 * G.7^-4 * G.6^-3 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.13^-2 * G.4^-4 = Id(G)
+    G.3^-1 * G.5 * G.3 * G.6^-1 * G.5^-4 = Id(G)
+    (G.3, G.6^-1) = Id(G)
+    (G.3, G.7^-1) = Id(G)
+    G.3^-1 * G.8 * G.3 * G.13^-2 * G.11^-3 * G.8^-4 * G.7^-4 * G.6^-4 = Id(G)
+    G.3^-1 * G.9 * G.3 * G.13^-1 * G.11^-2 * G.9^-4 * G.7^-4 * G.6^-2 = Id(G)
+    G.3^-1 * G.10 * G.3 * G.12^-4 * G.11^-1 * G.10^-4 * G.7^-4 * G.6^-3 = Id(G)
+    (G.3, G.11^-1) = Id(G)
+    (G.3, G.12^-1) = Id(G)
+    (G.3, G.13^-1) = Id(G)
+    G.1^5 = Id(G)
+    G.2^4 = Id(G)
+    G.3^2 = Id(G)
+    G.1^-1 * G.3 * G.1 * G.3 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.3 = Id(G)
+    G.2^-1 * G.1^-2 * G.2 * G.1^-1 = Id(G)
+> Order(quo<G|sub<G|[G.i: i in [13..13]]>>);
+125000
+check the generators which has infinite order......
+
+
+
+
+
+
+
+
+
+
+
