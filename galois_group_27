@@ -1,0 +1,139 @@
+aslam@nenepapa ~ $ ~fieker/Magma/magma
+Magma V2.25-5     Tue Sep  8 2020 22:24:24 on nenepapa [Seed = 2998535482]
+Type ? for help.  Type <Ctrl>-D to quit.
+> AttachSpec("/users/cip/mint/aslam/Debeerst/magma/spec");
+> AttachSpec("/users/cip/mint/aslam/galois_local_code/spec_galois");
+> Attach("/users/cip/mint/aslam/Debeerst/magma/LFCRamify.m");       
+> K:= pAdicField(3,10);
+> x:= PolynomialRing(K).1;
+> f:=x^27+3^2*x^3+3;
+> SetVerbose("Segment",1);   
+> SetVerbose("group",1);  
+> time G,I,set := TwoSegmentsGaloisGroup_old(f);
+Computation time of lfc
+Time: 7105.700
+Computation time of factorisation of f
+Time: 119.440
+Computation time of intersection NormGroup of factorisation's extension
+Time: 70.970
+Time: 7630.080
+> #G;
+1417176
+> G;
+Finitely presented group G on 14 generators
+Relations
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    G.9^3 = Id(G)
+    G.10^3 = Id(G)
+    G.11^3 = Id(G)
+    G.12^3 = Id(G)
+    G.13^3 = Id(G)
+    G.14^3 = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.6, G.11) = Id(G)
+    (G.6, G.12) = Id(G)
+    (G.6, G.13) = Id(G)
+    (G.6, G.14) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.7, G.11) = Id(G)
+    (G.7, G.12) = Id(G)
+    (G.7, G.13) = Id(G)
+    (G.7, G.14) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.8, G.11) = Id(G)
+    (G.8, G.12) = Id(G)
+    (G.8, G.13) = Id(G)
+    (G.8, G.14) = Id(G)
+    (G.9, G.10) = Id(G)
+    (G.9, G.11) = Id(G)
+    (G.9, G.12) = Id(G)
+    (G.9, G.13) = Id(G)
+    (G.9, G.14) = Id(G)
+    (G.10, G.11) = Id(G)
+    (G.10, G.12) = Id(G)
+    (G.10, G.13) = Id(G)
+    (G.10, G.14) = Id(G)
+    (G.11, G.12) = Id(G)
+    (G.11, G.13) = Id(G)
+    (G.11, G.14) = Id(G)
+    (G.12, G.13) = Id(G)
+    (G.12, G.14) = Id(G)
+    (G.13, G.14) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.14^-2 * G.13^-1 * G.11^-2 * G.9^-2 * G.6^-1 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.14^-1 * G.10^-2 * G.8^-2 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.14^-1 * G.9^-1 * G.7^-2 = Id(G)
+    G.1^-1 * G.9 * G.1 * G.14^-1 * G.10^-2 * G.9^-2 * G.8^-1 * G.7^-1 = Id(G)
+    G.1^-1 * G.10 * G.1 * G.14^-2 * G.10^-2 * G.9^-2 * G.8^-2 * G.7^-2 = Id(G)
+    G.1^-1 * G.11 * G.1 * G.14^-1 * G.13^-1 * G.10^-2 * G.9^-2 * G.8^-2 * G.7^-2
+    G.1^-1 * G.12 * G.1 * G.14^-2 * G.13^-2 * G.12^-1 * G.10^-1 * G.9^-2 * G.8^-
+    Id(G)
+    G.1^-1 * G.13 * G.1 * G.13^-2 * G.8^-2 * G.7^-1 * G.6^-2 = Id(G)
+    (G.1, G.14^-1) = Id(G)
+    G.2^-1 * G.6 * G.2 * G.12^-1 * G.10^-2 * G.8^-1 * G.6^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.14^-2 * G.9^-1 * G.8^-2 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.10^-2 * G.9^-1 * G.8^-2 * G.7^-1 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.10^-2 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.14^-2 * G.10^-2 * G.9^-1 = Id(G)
+    G.2^-1 * G.11 * G.2 * G.14^-2 * G.12^-1 * G.11^-1 * G.10^-1 * G.7^-2 * G.6^-
+    G.2^-1 * G.12 * G.2 * G.14^-2 * G.11^-2 * G.10^-1 * G.7^-2 = Id(G)
+    G.2^-1 * G.13 * G.2 * G.14^-2 * G.13^-1 * G.12^-1 * G.11^-2 * G.9^-2 * G.8^-
+    Id(G)
+    (G.2, G.14^-1) = Id(G)
+    (G.3, G.6^-1) = Id(G)
+    (G.3, G.7^-1) = Id(G)
+    (G.3, G.8^-1) = Id(G)
+    G.3^-1 * G.9 * G.3 * G.9^-2 * G.8^-2 * G.7^-2 = Id(G)
+    G.3^-1 * G.10 * G.3 * G.10^-2 * G.8^-1 * G.7^-1 = Id(G)
+    G.3^-1 * G.11 * G.3 * G.11^-1 * G.10^-1 * G.8^-1 * G.7^-1 = Id(G)
+    G.3^-1 * G.12 * G.3 * G.12^-2 * G.11^-2 * G.10^-1 * G.8^-1 * G.7^-1 * G.6^-2
+    G.3^-1 * G.13 * G.3 * G.13^-2 * G.8^-2 * G.7^-1 * G.6^-2 = Id(G)
+    (G.3, G.14^-1) = Id(G)
+    G.4^-1 * G.6 * G.4 * G.8^-2 * G.7^-1 * G.6^-2 = Id(G)
+    (G.4, G.7^-1) = Id(G)
+    (G.4, G.8^-1) = Id(G)
+    G.4^-1 * G.9 * G.4 * G.10^-2 * G.9^-2 * G.8^-1 * G.7^-1 = Id(G)
+    G.4^-1 * G.10 * G.4 * G.10^-1 * G.9^-2 * G.8^-1 * G.7^-1 = Id(G)
+    G.4^-1 * G.11 * G.4 * G.11^-2 * G.10^-2 * G.9^-2 = Id(G)
+    G.4^-1 * G.12 * G.4 * G.13^-2 * G.12^-1 * G.11^-1 * G.10^-1 * G.9^-1 * G.6^-
+    G.4^-1 * G.13 * G.4 * G.13^-2 * G.12^-2 * G.11^-1 * G.10^-2 * G.9^-1 * G.8^-
+    G.4^-1 * G.14 * G.4 * G.14^-2 = Id(G)
+    G.5^-1 * G.6 * G.5 * G.8^-1 * G.7^-1 * G.6^-1 = Id(G)
+    (G.5, G.7^-1) = Id(G)
+    G.5^-1 * G.8 * G.5 * G.8^-2 * G.7^-1 = Id(G)
+    G.5^-1 * G.9 * G.5 * G.10^-1 * G.9^-2 * G.8^-1 * G.7^-1 = Id(G)
+    G.5^-1 * G.10 * G.5 * G.10^-1 * G.9^-1 * G.8^-1 * G.7^-1 = Id(G)
+    G.5^-1 * G.11 * G.5 * G.11^-2 * G.10^-2 * G.9^-1 * G.8^-2 * G.6^-2 = Id(G)
+    G.5^-1 * G.12 * G.5 * G.13^-2 * G.12^-2 * G.9^-2 * G.8^-1 * G.6^-2 = Id(G)
+    G.5^-1 * G.13 * G.5 * G.13^-1 * G.12^-2 * G.11^-1 * G.10^-1 * G.9^-2 * G.8^-
+    Id(G)
+    (G.5, G.14^-1) = Id(G)
+    G.1^3 = Id(G)
+    G.2^3 = Id(G)
+    G.3^2 = Id(G)
+    G.4^4 = Id(G)
+    G.5^4 = Id(G)
+    (G.1, G.2) = Id(G)
+    (G.1^-1 * G.3)^2 = Id(G)
+    (G.2^-1 * G.3)^2 = Id(G)
+    G.4^-1 * G.3 * G.4^-1 = Id(G)
+    G.5^-1 * G.3 * G.5^-1 = Id(G)
+    G.4^-1 * G.5^-1 * G.4 * G.5^-1 = Id(G)
+    G.4^-1 * G.2^-1 * G.1^-1 * G.4 * G.1^-1 = Id(G)
+    G.5^-1 * G.2^-1 * G.1^-1 * G.5 * G.2 = Id(G)
+> gamma ,CM,mU,mUS := Explode(set);
+> CM`invar;
+[ 3, 3, 3, 3, 3, 3, 3, 3, 3 ]
+> 3^#$1;
+19683
+> #Group(CM);
+72
+> $1*$2;
+1417176
