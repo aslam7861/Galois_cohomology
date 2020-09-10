@@ -1,3 +1,10 @@
+while working of polynomial of high degree we must work with higher degree field extension. if we have to compute the norm equation of 
+torsion element is expensive. For such extension all then fuctions such as log exp trace and norm are time consuming so for sure 
+solving the norm  equation will take more time to solve for a solution. the main factor is to construct the homomorphism map for free abelian group
+to unit group using the generators of step 4 or 5 of algorithm. This is possible to solve using with less precision and using the exp-log function otherwise
+it might take more than a month without giving the solution.
+
+
 > K:=pAdicField(5,40);
 > x:=PolynomialRing(K).1;
 > f:=x^125+5^2*x^2+5*x^25+15;
