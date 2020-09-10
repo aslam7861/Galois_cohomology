@@ -22,3 +22,76 @@ Polynomial of less ramification degree>>>>>>>>
     x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^109 + 11 + O(11^21)
 ]
 > 
+
+aslam@nenepapa ~ $ ~fieker/Magma/magma
+Magma V2.25-5     Thu Sep 10 2020 10:13:35 on nenepapa [Seed = 252293291]
+Type ? for help.  Type <Ctrl>-D to quit.
+> AttachSpec("/users/cip/mint/aslam/Debeerst/magma/spec");
+> AttachSpec("/users/cip/mint/aslam/galois_local_code/spec_galois");
+> Attach("/users/cip/mint/aslam/Debeerst/magma/LFCRamify.m");
+> K:=pAdicField(11,25);
+> x:=PolynomialRing(K).1;
+> f:= x^121+11^2*x^29+11^1*x^110+11;
+> FlatRamificationPolygon(f);
+[   
+    <1, x^10 + 7>,
+    <1, x^110 + 1>
+]
+> pReduction(f);
+Unramified extension defined by the polynomial x^10 + 7*x^5 + 8*x^4 + 10*x^3 +
+    6*x^2 + 6*x + 2
+ over 11-adic field mod 11^25
+> SetVerbose("Frob_Eq",1);
+> SetVerbose("Segment",1);
+> SetVerbose("group",1);
+> > time G,I,set := TwoSegmentsGaloisGroup_old(f);
+
+>> > time G,I,set := TwoSegmentsGaloisGroup_old(f);
+   ^
+User error: bad syntax
+>  time G,I,set := TwoSegmentsGaloisGroup_old(f);
+Computation time of factorisation of f
+Time: 22702.810
+Computation time of lfc
+Solve Frobenius equations... Time: 307.190
+Time: 1195.650
+Computation time of intersection NormGroup of factorisation's extension
+Time: 13117.970
+Time: 37260.260
+> Order(G);
+1610510
+> gamma,CM,mU,mUS := Explode(set);
+> #Group(CM);
+110
+> CM`invar;
+[ 11, 11, 11, 11 ]
+> &*($1)*$2;
+1610510
+> I;
+10
+> G;
+Finitely presented group G on 6 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.5, G.6) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.6^-10 * G.5^-8 * G.4^-1 * G.3^-4 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.6^-5 * G.5^-3 * G.3^-4 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.6^-8 * G.4^-4 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.5^-4 * G.4^-2 * G.3^-9 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-3 * G.5^-2 * G.4^-6 * G.3^-2 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.6^-10 * G.5^-7 * G.4^-4 * G.3^-3 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.6^-7 * G.5^-6 * G.4^-9 * G.3^-6 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-10 * G.5^-10 * G.4^-4 * G.3^-5 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^10 = Id(G)
+    G.1^-11 = Id(G)
+> 
+
