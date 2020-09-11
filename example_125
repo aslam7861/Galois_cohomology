@@ -97,3 +97,116 @@ Totally ramified extension defined by the polynomial x^4 -
     3117105574640376030890116815*$.1 + 1120284248966967845505052110
  over Unramified extension defined by the polynomial x^2 + 4*x + 2
  over 5-adic field mod 5^40
+
+
+
+
+> K:=pAdicField(5,35);
+f:=x^125+5*x^25+5^2*x^11+15;
+> time G, I, set := TwoSegmentsGaloisGroup_old(f);
+Computation time of factorisation of f
+Time: 3806.080
+Computation time of lfc
+Solve Frobenius equations... Time: 5726.830
+Time: 48289.490
+Computation time of intersection NormGroup of factorisation's extension
+Time: 61716.090
+Time: 114202.990
+> I;                                                                                       
+2
+> //f:=x^125+5*x^25+5^2*x^11+15;
+> gamma,CM,mU,mUS:= Explode(set);
+> #Group(CM);
+80
+> CM`invar;  
+[ 5, 5, 5, 5, 5, 5, 5, 5 ]
+> $2*&*($1);
+31250000
+> time Order(G);
+0
+Time: 37.250
+> G;
+Finitely presented group G on 12 generators
+Relations
+    G.5^5 = Id(G)
+    G.6^5 = Id(G)
+    G.7^5 = Id(G)
+    G.8^5 = Id(G)
+    G.9^5 = Id(G)
+    G.10^5 = Id(G)
+    G.11^5 = Id(G)
+    G.12^5 = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.5, G.10) = Id(G)
+    (G.5, G.11) = Id(G)
+    (G.5, G.12) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.6, G.11) = Id(G)
+    (G.6, G.12) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.7, G.11) = Id(G)
+    (G.7, G.12) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.8, G.11) = Id(G)
+    (G.8, G.12) = Id(G)
+    (G.9, G.10) = Id(G)
+    (G.9, G.11) = Id(G)
+    (G.9, G.12) = Id(G)
+    (G.10, G.11) = Id(G)
+    (G.10, G.12) = Id(G)
+    (G.11, G.12) = Id(G)
+    G.1^-1 * G.5 * G.1 * G.12^-3 * G.11^-4 * G.9^-1 * G.8^-2 * G.7^-2 * G.6^-3 * G.5^-1 = 
+    Id(G)
+    G.1^-1 * G.6 * G.1 * G.9^-2 * G.8^-2 * G.7^-2 * G.6^-4 * G.5^-1 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.9^-4 * G.8^-3 * G.7^-3 * G.6^-3 * G.5^-4 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.12^-1 * G.11^-3 * G.9^-1 * G.8^-2 * G.7^-3 * G.6^-2 * G.5^-1 = 
+    Id(G)
+    G.1^-1 * G.9 * G.1 * G.9^-4 * G.8^-4 * G.7^-3 * G.6^-2 * G.5^-2 = Id(G)
+    G.1^-1 * G.10 * G.1 * G.10^-1 * G.9^-2 * G.8^-1 * G.5^-3 = Id(G)
+    G.1^-1 * G.11 * G.1 * G.12^-2 * G.11^-2 * G.10^-3 * G.8^-1 * G.7^-1 * G.6^-4 * G.5^-4 = 
+    Id(G)
+    G.1^-1 * G.12 * G.1 * G.12^-1 * G.11^-1 * G.10^-4 * G.9^-1 * G.8^-4 * G.7^-1 * G.6^-4 * 
+    G.5^-3 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-4 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-4 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-4 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-4 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.9^-4 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.10^-4 = Id(G)
+    G.2^-1 * G.11 * G.2 * G.11^-4 = Id(G)
+    G.2^-1 * G.12 * G.2 * G.12^-4 = Id(G)
+    G.3^-1 * G.5 * G.3 * G.12^-4 * G.7^-4 * G.6^-4 = Id(G)
+    G.3^-1 * G.6 * G.3 * G.11^-4 = Id(G)
+    G.3^-1 * G.7 * G.3 * G.11^-2 * G.8^-3 * G.5^-2 = Id(G)
+    G.3^-1 * G.8 * G.3 * G.12^-4 * G.6^-1 = Id(G)
+    G.3^-1 * G.9 * G.3 * G.12^-2 * G.10^-4 = Id(G)
+    G.3^-1 * G.10 * G.3 * G.11^-3 * G.9^-3 * G.8^-2 * G.5^-4 = Id(G)
+    G.3^-1 * G.11 * G.3 * G.6^-2 = Id(G)
+    G.3^-1 * G.12 * G.3 * G.11^-4 * G.8^-1 * G.5^-2 = Id(G)
+    (G.4, G.5^-1) = Id(G)
+    G.4^-1 * G.6 * G.4 * G.6^-4 = Id(G)
+    G.4^-1 * G.7 * G.4 * G.7^-4 = Id(G)
+    (G.4, G.8^-1) = Id(G)
+    (G.4, G.9^-1) = Id(G)
+    G.4^-1 * G.10 * G.4 * G.10^-4 = Id(G)
+    (G.4, G.11^-1) = Id(G)
+    G.4^-1 * G.12 * G.4 * G.12^-4 = Id(G)
+    G.1^5 = Id(G)
+    G.2^2 = Id(G)
+    G.4^2 = Id(G)
+    G.1^-1 * G.2 * G.1 * G.2 = Id(G)
+    G.2 * G.3^-1 * G.2 * G.3 = Id(G)
+    (G.1^-1 * G.4)^2 = Id(G)
+    (G.2 * G.4)^2 = Id(G)
+    G.3^-1 * G.1^-2 * G.3 * G.1^-1 = Id(G)
+    G.3^-2 * G.2 * G.3^-2 = Id(G)
+    G.4 * G.3^-1 * G.2 * G.4 * G.3 = Id(G)
