@@ -31,7 +31,7 @@ Type ? for help.  Type <Ctrl>-D to quit.
 > Attach("/users/cip/mint/aslam/Debeerst/magma/LFCRamify.m");
 > K:=pAdicField(11,25);
 > x:=PolynomialRing(K).1;
-> f:= x^121+11^2*x^29+11^1*x^110+11;
+> f:= x^121+11^1*x^110+11^2*x^29+11;
 > FlatRamificationPolygon(f);
 [   
     <1, x^10 + 7>,
@@ -94,4 +94,103 @@ Relations
     G.2^10 = Id(G)
     G.1^-11 = Id(G)
 > 
+
+> g:= x^121+11*x^110+11^2*x^19+11;
+> FlatRamificationPolygon(g);
+[   
+    <1, x^10 + 8>,
+    <1, x^110 + 1>
+]
+> pReduction(g);
+Unramified extension defined by the polynomial x^10 + 7*x^5 + 8*x^4 + 10*x^3 + 6*x^2 + 6*x + 2
+ over 11-adic field mod 11^25
+ >  time G,I,set := TwoSegmentsGaloisGroup_old(g);
+Computation time of factorisation of f
+Time: 27789.340
+Computation time of lfc
+Solve Frobenius equations... Time: 146.920
+Time: 724.940
+Computation time of intersection NormGroup of factorisation's extension
+Time: 5679.920
+Time: 34343.980
+> Order(G);
+146410
+> I;
+10
+> #Group(CM);                                      
+110
+> CM`invar;
+[ 11, 11, 11 ]
+> &*($1)*$2;
+146410
+
+> Factorisation($1);                                                           
+[ <2, 1>, <5, 1>, <11, 4> ]
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.5^-2 * G.4^-9 * G.3^-4 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.5^-10 * G.4^-2 * G.3^-4 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.5^-8 * G.4^-9 * G.3^-2 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.5^-8 * G.4^-6 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.5^-7 * G.3^-7 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-3 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^10 = Id(G)
+    G.1^-11 = Id(G)
+> 
+> time SolubleQuotient(G);
+GrpPC of order 146410 = 2 * 5 * 11^4
+PC-Relations:
+    $.1^2 = Id($), 
+    $.2^5 = Id($), 
+    $.3^11 = Id($), 
+    $.4^11 = Id($), 
+    $.5^11 = Id($), 
+    $.6^11 = Id($), 
+    $.3^$.2 = $.3^3, 
+    $.4^$.1 = $.4^10, 
+    $.4^$.3 = $.4 * $.5, 
+    $.5^$.1 = $.5^10 * $.6, 
+    $.5^$.2 = $.5^3, 
+    $.5^$.4 = $.5 * $.6, 
+    $.6^$.2 = $.6^3
+Homomorphism of GrpFP: G into GrpPC induced by
+    G.1 |--> $.4
+    G.2 |--> $.1 * $.2
+    G.3 |--> $.3 * $.5^8
+    G.4 |--> $.3^5 * $.5^7 * $.6
+    G.5 |--> $.3^9 * $.6^5
+[
+    [
+        [ [* 2,
+            GModule of dimension 1 over GF(2)
+        *], [* 5,
+            GModule of dimension 1 over GF(5)
+        *] ]
+    ],
+    [
+        [ [* 11,
+            GModule of dimension 1 over GF(11),
+            GModule of dimension 1 over GF(11)
+        *] ],
+        [ [* 11,
+            GModule of dimension 1 over GF(11)
+        *] ],
+        [ [* 11,
+            GModule of dimension 1 over GF(11)
+        *] ]
+    ]
+]
+Soluble quotient with this specification successfully completed.
+Time: 617.410
+> 
+
+
 
