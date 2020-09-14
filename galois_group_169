@@ -105,7 +105,7 @@ Time: 299.870
 Computation time of intersection NormGroup of factorisation's extension
 Time: 4128.910
 Time: 34103.670
-> time Order(G);
+> time Order(G);// this works with precisoin 20 in unit group// there is no problem 
 0 
 Time: 70.150
 > gamma,CM,mU,mUS := Explode(set);
