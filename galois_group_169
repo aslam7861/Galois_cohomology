@@ -216,6 +216,62 @@ Time: 49777.810
 
 
 
+> K:=pAdicField(13,30);
+> f:=x^169+13^1*x^156+13^2*x^47+13;  
+> time G,I,sets := TwoSegmentsGaloisGroup_old(f);// precision added with 4;
+Computation time of factorisation of f
+Time: 46591.100
+Computation time of lfc
+Solve Frobenius equations... Time: 71.680
+Time: 292.430
+Computation time Unit group
+Time: 11.530
+Computation time of intersection NormGroup of factorisation's extension
+Time: 2890.510
+Time: 49853.070
+> time Order(G);
+19307236
+Time: 1482.340
+> I;
+4
+> G;                                                                                                                 
+Finitely presented group G on 7 generators
+Relations
+    G.3^13 = Id(G)
+    G.4^13 = Id(G)
+    G.5^13 = Id(G)
+    G.6^13 = Id(G)
+    G.7^13 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.6, G.7) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.7^-9 * G.6^-9 * G.5^-7 * G.4^-6 * G.3^-8 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.7^-9 * G.6^-8 * G.5^-10 * G.3^-10 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.7^-2 * G.6^-6 * G.5^-8 * G.4^-5 * G.3^-7 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-8 * G.6^-1 * G.4^-3 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.7^-1 * G.6^-4 * G.5^-12 * G.4^-8 * G.3^-4 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-1 * G.5^-2 * G.3^-5 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.7^-11 * G.6^-1 * G.5^-4 * G.4^-3 * G.3^-1 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.7^-8 * G.6^-8 * G.4^-8 * G.3^-9 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.7^-10 * G.6^-5 * G.5^-3 * G.4^-10 * G.3^-8 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-5 * G.6^-1 * G.5^-2 = Id(G)
+    G.2^4 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.1^-13 = Id(G)
+> 
+
+
+
+
+
+
 
 
 > K:= pAdicField(13,30);
