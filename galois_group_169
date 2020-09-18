@@ -289,8 +289,6 @@ Time: 71.980
 Computation time of intersection NormGroup of factorisation's extension
 Time: 1425.330
 Time: 24230.140
-> Order(G);                                                                                        
-0
 > I;
 2
 > CM:=set[2];
