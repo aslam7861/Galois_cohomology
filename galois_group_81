@@ -441,7 +441,10 @@ Relations
     <1, x^72 + 1>
 ]
 > f:=h;
-
+> h:= x^81+3^3*x^2+3^1*x^72+3;                      
+> time G1,I1,set1 := TwoSegmentsGaloisGroup_fact(h);
+Computation time of factorisation of f
+Time: 1251.840
 
 
 
