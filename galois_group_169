@@ -15,6 +15,94 @@
 ]
 
 
+> K:=pAdicField(13,30);  
+> f:=x^169+13^1*x^156+13^2*x^71+13;
+> pReduction(f);                   
+Unramified extension defined by the polynomial x^12 + x^8 + 5*x^7 + 8*x^6 + 11*x^5 + 3*x^4 + x^3 + x^2 + 4*x + 2
+ over 13-adic field mod 13^30
+ > time H,I1,set1 := TwoSegmentsGaloisGroup_fact(f);
+Univariate Polynomial Ring in z over GF(13^12)
+Univariate Polynomial Ring in z over GF(13^12)
+Univariate Polynomial Ring in z over GF(13^12)
+Computation time of factorisation of f
+Time: 275.780
+Computation time of lfc
+Norm equation... Time: 108.910
+GAction... Univariate Polynomial Ring in z over GF(13^156)
+Time: 196.510
+Solve Frobenius equations... Time: 554.580
+Time: 2910.230
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 1847.720
+Time: 1278.750
+Time: 6806.210
+> #H;
+0 
+> gamma,CM,mU,mUS,E,F:=Explode(set1);
+> #Group(CM);
+156
+> H;
+Finitely presented group H on 9 generators
+Relations
+    H.3^13 = Id(H)
+    H.4^13 = Id(H)
+    H.5^13 = Id(H)
+    H.6^13 = Id(H)
+    H.7^13 = Id(H)
+    H.8^13 = Id(H)
+    H.9^13 = Id(H)
+    (H.3, H.4) = Id(H)
+    (H.3, H.5) = Id(H)
+    (H.3, H.6) = Id(H)
+    (H.3, H.7) = Id(H)
+    (H.3, H.8) = Id(H)
+    (H.3, H.9) = Id(H)
+    (H.4, H.5) = Id(H)
+    (H.4, H.6) = Id(H)
+    (H.4, H.7) = Id(H)
+    (H.4, H.8) = Id(H)
+    (H.4, H.9) = Id(H)
+    (H.5, H.6) = Id(H)
+    (H.5, H.7) = Id(H)
+    (H.5, H.8) = Id(H)
+    (H.5, H.9) = Id(H)
+    (H.6, H.7) = Id(H)
+    (H.6, H.8) = Id(H)
+    (H.6, H.9) = Id(H)
+    (H.7, H.8) = Id(H)
+    (H.7, H.9) = Id(H)
+    (H.8, H.9) = Id(H)
+    H.1^-1 * H.3 * H.1 * H.9^-2 * H.8^-8 * H.7^-9 * H.6^-4 * H.5^-9 * H.4^-10 * H.3^-6 = Id(H)
+    H.1^-1 * H.4 * H.1 * H.9^-10 * H.8^-1 * H.7^-1 * H.6^-10 * H.5^-12 * H.4^-4 * H.3^-10 = Id(H)
+    H.1^-1 * H.5 * H.1 * H.9^-2 * H.8^-8 * H.7^-8 * H.6^-2 * H.5^-4 * H.4^-9 * H.3^-1 = Id(H)
+    H.1^-1 * H.6 * H.1 * H.9^-11 * H.8^-7 * H.7^-5 * H.6^-8 * H.5^-9 * H.4^-8 * H.3^-4 = Id(H)
+    H.1^-1 * H.7 * H.1 * H.8^-9 * H.6^-6 * H.5^-7 * H.4^-2 * H.3^-11 = Id(H)
+    H.1^-1 * H.8 * H.1 * H.9^-11 * H.8^-10 * H.7^-11 * H.6^-2 * H.5^-3 * H.4^-11 * H.3^-5 = Id(H)
+    H.1^-1 * H.9 * H.1 * H.9^-1 * H.8^-11 * H.7^-1 * H.6^-9 * H.5^-7 * H.4^-12 * H.3^-5 = Id(H)
+    H.2^-1 * H.3 * H.2 * H.9^-6 * H.8^-12 * H.7^-4 * H.6^-9 * H.5^-2 = Id(H)
+    H.2^-1 * H.4 * H.2 * H.9^-4 * H.8^-8 * H.7^-7 * H.6^-6 * H.5^-10 * H.4^-7 * H.3^-4 = Id(H)
+    H.2^-1 * H.5 * H.2 * H.9^-6 * H.8^-12 * H.7^-4 * H.6^-9 * H.5^-8 * H.4^-12 * H.3^-12 = Id(H)
+    H.2^-1 * H.6 * H.2 * H.9^-7 * H.8^-5 * H.7^-3 * H.6^-4 * H.5^-11 * H.4^-10 * H.3^-6 = Id(H)
+    H.2^-1 * H.7 * H.2 * H.8^-5 * H.7^-6 * H.6^-1 * H.4^-6 * H.3^-2 = Id(H)
+    H.2^-1 * H.8 * H.2 * H.9^-7 * H.8^-2 * H.7^-5 * H.6^-8 * H.5^-11 * H.4^-11 * H.3^-2 = Id(H)
+    H.2^-1 * H.9 * H.2 * H.9^-6 * H.8^-5 * H.7^-4 * H.6^-9 * H.4^-7 * H.3^-5 = Id(H)
+    H.1^-1 * H.2^-1 * H.1^-1 * H.2 = Id(H)
+    H.2^12 = Id(H)
+    H.1^-13 = Id(H)
+
+
+
+
+
+
+
+
+below all are old factorisation and intersection of norm group which is expensive
+Try all with new
+
+
+
 >  K:=pAdicField(13,20);
 > x:= PolynomialRing(K).1;
 > f:=x^169+13^1*x^78+13^2*x^5+52;
