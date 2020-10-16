@@ -15,12 +15,31 @@
 ]
 
 
-> K:=pAdicField(13,30);  
+> K:=pAdicField(13,15);
 > f:=x^169+13^1*x^156+13^2*x^71+13;
 > pReduction(f);                   
 Unramified extension defined by the polynomial x^12 + x^8 + 5*x^7 + 8*x^6 + 11*x^5 + 3*x^4 + x^3 + x^2 + 4*x + 2
  over 13-adic field mod 13^30
- > time H,I1,set1 := TwoSegmentsGaloisGroup_fact(f);
+ > time H,I1,set1 := TwoSegmentsGaloisGroup_fast(f);
+ Univariate Polynomial Ring in z over GF(13^12)
+Univariate Polynomial Ring in z over GF(13^12)
+Univariate Polynomial Ring in z over GF(13^12)
+Computation time of factorisation of f
+Time: 158.610
+Computation time of lfc
+Norm equation... Time: 36.570
+GAction... Univariate Polynomial Ring in z over GF(13^156)
+Time: 116.680
+Solve Frobenius equations... Time: 548.300
+Time: 2266.950
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 38.510
+Time: 244.490
+Time: 3206.310
+> K:=pAdicField(13,30);
+f:=x^169+13^1*x^156+13^2*x^71+13;
+> time H,I1,set1 := TwoSegmentsGaloisGroup_fact(f);
 Univariate Polynomial Ring in z over GF(13^12)
 Univariate Polynomial Ring in z over GF(13^12)
 Univariate Polynomial Ring in z over GF(13^12)
