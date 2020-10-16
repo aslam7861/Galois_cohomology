@@ -41,23 +41,24 @@ Type ? for help.  Type <Ctrl>-D to quit.
 Unramified extension defined by the polynomial x^10 + 7*x^5 + 8*x^4 + 10*x^3 +
     6*x^2 + 6*x + 2
  over 11-adic field mod 11^25
-> SetVerbose("Frob_Eq",1);
-> SetVerbose("Segment",1);
-> SetVerbose("group",1);
-> > time G,I,set := TwoSegmentsGaloisGroup_old(f);
-
->> > time G,I,set := TwoSegmentsGaloisGroup_old(f);
-   ^
-User error: bad syntax
->  time G,I,set := TwoSegmentsGaloisGroup_old(f);
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(11^10)
+Univariate Polynomial Ring in z over GF(11^10)
+Univariate Polynomial Ring in z over GF(11^10)
 Computation time of factorisation of f
-Time: 22702.810
+Time: 53.690
 Computation time of lfc
-Solve Frobenius equations... Time: 307.190
-Time: 1195.650
-Computation time of intersection NormGroup of factorisation's extension
-Time: 13117.970
-Time: 37260.260
+Norm equation... Time: 17.730
+GAction... Univariate Polynomial Ring in z over GF(11^110)
+Time: 44.660
+Time: 323.160
+Solve Frobenius equations... Time: 109.710
+Time: 542.710
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 13.810
+Time: 59.060
+Time: 778.010
 > Order(G);
 1610510
 > gamma,CM,mU,mUS := Explode(set);
@@ -162,15 +163,24 @@ Time: 7333.200
 > pReduction(g);
 Unramified extension defined by the polynomial x^10 + 7*x^5 + 8*x^4 + 10*x^3 + 6*x^2 + 6*x + 2
  over 11-adic field mod 11^25
- >  time G,I,set := TwoSegmentsGaloisGroup_old(g);
+> time G,I,set := TwoSegmentsGaloisGroup_fast(g);
+Univariate Polynomial Ring in z over GF(11^10)
+Univariate Polynomial Ring in z over GF(11^10)
+Univariate Polynomial Ring in z over GF(11^10)
 Computation time of factorisation of f
-Time: 27789.340
+Time: 51.050
 Computation time of lfc
-Solve Frobenius equations... Time: 146.920
-Time: 724.940
-Computation time of intersection NormGroup of factorisation's extension
-Time: 5679.920
-Time: 34343.980
+Norm equation... Time: 17.720
+GAction... Univariate Polynomial Ring in z over GF(11^110)
+Time: 44.300
+Time: 322.720
+Solve Frobenius equations... Time: 108.350
+Time: 540.680
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 17.580
+Time: 58.580
+Time: 775.720
 > Order(G);
 146410
 > I;
