@@ -461,6 +461,34 @@ Relations
 ]
 > f:=h;
 > h:= x^81+3^3*x^2+3^1*x^72+3;
+> time G,I,set := TwoSegmentsGaloisGroup_old(h);
+Computation time of factorisation of f
+Time: 1225.160
+Computation time of lfc
+Norm equation... Time: 32.970
+GAction... Univariate Polynomial Ring in z over GF(3^72)
+Time: 159.620
+Solve Frobenius equations... Time: 261.010
+Time: 677.220
+Computation time Unit group
+Time: 28.700
+Computation time of intersection NormGroup of factorisation's extension
+Time: 30.350
+Time: 260.310
+Time: 3518.010
+> gamma,CM,mU,mUS,E,F:= Explode(set);                                          
+> #Group(CM);
+72
+> &*CM`invar;
+531441
+> $1*$2;
+38263752
+> #Generators(G);
+16
+> CoefficientRing(h);
+3-adic field mod 3^20
+
+
 > K:= pAdicField(3,12);
 > x:= PolynomialRing(K).1;
 > h:= x^81+3^3*x^2+3^1*x^72+3;
