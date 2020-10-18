@@ -21,6 +21,34 @@ Time: 2561.230
 Computation time of intersection NormGroup of factorisation's extension
 Time: 15303.280
 Time: 19293.810
+
+> K:=pAdicField(5,26);
+> x:=PolynomialRing(K).1;
+> f:=x^125+5^2*x^2+5*x^25+15;
+> time G,I,set:= TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(5^2)
+Univariate Polynomial Ring in z over GF(5^2)
+Univariate Polynomial Ring in z over GF(5^2)
+Computation time of factorisation of f
+Time: 181.050
+Computation time of lfc
+Norm equation... Time: 246.160
+GAction... Univariate Polynomial Ring in z over GF(5^40)
+Time: 289.650
+Time: 52.080
+Solve Frobenius equations... Time: 266.930
+Time: 910.630
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 20.350
+Time: 8.320
+Time: 1243.230
+> time Order(G);
+625000
+Time: 46.740
+> 
+
+
 > I;
 2
 > CM:=set[2];                                                                  
@@ -112,6 +140,15 @@ Time: 48289.490
 Computation time of intersection NormGroup of factorisation's extension
 Time: 61716.090
 Time: 114202.990
+
+> K:=pAdicField(5,26);
+> x:=PolynomialRing(K).1;
+f:=x^125+5*x^25+5^2*x^11+15;
+> time G, I, set := TwoSegmentsGaloisGroup_fast(f);
+
+
+
+
 > I;                                                                                       
 2
 > //f:=x^125+5*x^25+5^2*x^11+15;
