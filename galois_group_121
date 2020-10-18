@@ -162,7 +162,7 @@ Time: 7333.200
 ]
 > pReduction(g);
 Unramified extension defined by the polynomial x^10 + 7*x^5 + 8*x^4 + 10*x^3 + 6*x^2 + 6*x + 2
- over 11-adic field mod 11^25
+ over 11-adic field mod 11^15
 > time G,I,set := TwoSegmentsGaloisGroup_fast(g);
 Univariate Polynomial Ring in z over GF(11^10)
 Univariate Polynomial Ring in z over GF(11^10)
