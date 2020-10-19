@@ -46,9 +46,6 @@ Time: 1243.230
 > time Order(G);
 625000
 Time: 46.740
-> 
-
-
 > I;
 2
 > CM:=set[2];                                                                  
@@ -120,12 +117,9 @@ Relations
     (G.3, G.4) = Id(G)
     G.3^-1 * G.1^-2 * G.3 * G.1 = Id(G)
     G.4^-1 * G.1^-2 * G.4 * G.1^-1 = Id(G)
-> pReduction(f);
-Totally ramified extension defined by the polynomial x^4 - 
-    3117105574640376030890116815*$.1 + 1120284248966967845505052110
- over Unramified extension defined by the polynomial x^2 + 4*x + 2
- over 5-adic field mod 5^40
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -145,12 +139,6 @@ Time: 114202.990
 > x:=PolynomialRing(K).1;
 f:=x^125+5*x^25+5^2*x^11+15;
 > time G, I, set := TwoSegmentsGaloisGroup_fast(f);
-
-
-
-
-> I;                                                                                       
-2
 > //f:=x^125+5*x^25+5^2*x^11+15;
 > gamma,CM,mU,mUS:= Explode(set);
 > #Group(CM);
@@ -159,10 +147,40 @@ f:=x^125+5*x^25+5^2*x^11+15;
 [ 5, 5, 5, 5, 5, 5, 5, 5 ]
 > $2*&*($1);
 31250000
-> time Order(G);
+> Order(G);
 0
-Time: 37.250
-> G;
+////////////////////////////////////////////fast version of above example////////////////////////////////////////////////////
+> f:=x^125+5*x^25+5^2*x^11+15;
+> time G, I, set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(5^2)
+Univariate Polynomial Ring in z over GF(5^2)
+Univariate Polynomial Ring in z over GF(5^2)
+Computation time of factorisation of f
+Time: 150.920
+Computation time of lfc
+Norm equation... Time: 3919.900
+GAction... Univariate Polynomial Ring in z over GF(5^80)
+Time: 4091.930
+Time: 648.160
+Solve Frobenius equations... Time: 6012.500
+Time: 14925.840
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 70.920
+Time: 112.040
+Time: 15657.490
+> I;
+2
+> gamma,CM,mU,mUS,E,F,psi:=Explode(set);
+> #Group(CM);
+80
+> &*CM`invar;
+390625
+> $1*$2;
+31250000
+> I;                                                                                       
+2
+> G;                                                                                            
 Finitely presented group G on 12 generators
 Relations
     G.5^5 = Id(G)
@@ -201,16 +219,13 @@ Relations
     (G.10, G.11) = Id(G)
     (G.10, G.12) = Id(G)
     (G.11, G.12) = Id(G)
-    G.1^-1 * G.5 * G.1 * G.12^-3 * G.11^-4 * G.9^-1 * G.8^-2 * G.7^-2 * G.6^-3 * G.5^-1 = 
-    Id(G)
+    G.1^-1 * G.5 * G.1 * G.12^-3 * G.11^-4 * G.9^-1 * G.8^-2 * G.7^-2 * G.6^-3 * G.5^-1 = Id(G)
     G.1^-1 * G.6 * G.1 * G.9^-2 * G.8^-2 * G.7^-2 * G.6^-4 * G.5^-1 = Id(G)
     G.1^-1 * G.7 * G.1 * G.9^-4 * G.8^-3 * G.7^-3 * G.6^-3 * G.5^-4 = Id(G)
-    G.1^-1 * G.8 * G.1 * G.12^-1 * G.11^-3 * G.9^-1 * G.8^-2 * G.7^-3 * G.6^-2 * G.5^-1 = 
-    Id(G)
+    G.1^-1 * G.8 * G.1 * G.12^-1 * G.11^-3 * G.9^-1 * G.8^-2 * G.7^-3 * G.6^-2 * G.5^-1 = Id(G)
     G.1^-1 * G.9 * G.1 * G.9^-4 * G.8^-4 * G.7^-3 * G.6^-2 * G.5^-2 = Id(G)
     G.1^-1 * G.10 * G.1 * G.10^-1 * G.9^-2 * G.8^-1 * G.5^-3 = Id(G)
-    G.1^-1 * G.11 * G.1 * G.12^-2 * G.11^-2 * G.10^-3 * G.8^-1 * G.7^-1 * G.6^-4 * G.5^-4 = 
-    Id(G)
+    G.1^-1 * G.11 * G.1 * G.12^-2 * G.11^-2 * G.10^-3 * G.8^-1 * G.7^-1 * G.6^-4 * G.5^-4 = Id(G)
     G.1^-1 * G.12 * G.1 * G.12^-1 * G.11^-1 * G.10^-4 * G.9^-1 * G.8^-4 * G.7^-1 * G.6^-4 * 
     G.5^-3 = Id(G)
     G.2^-1 * G.5 * G.2 * G.5^-4 = Id(G)
@@ -247,8 +262,8 @@ Relations
     G.3^-1 * G.1^-2 * G.3 * G.1^-1 = Id(G)
     G.3^-2 * G.2 * G.3^-2 = Id(G)
     G.4 * G.3^-1 * G.2 * G.4 * G.3 = Id(G)
-> time Order(G);
-0 
+> 
+
 Time: 37.250
 > time SolubleQuotient(G);
 GrpPC of order 31250000 = 2^4 * 5^9
