@@ -347,4 +347,107 @@ Relations
     G.1^-4 * G.2 * G.1 * G.2^-1 = Id(G)
 > 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+> //x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^31 + 17 + O(17^21),
+> f:= x^289+17*x^272+17^2*x^31+17;
+> pReduction(f);
+Unramified extension defined by the polynomial x^16 + x^8 + 13*x^7 + 5*x^6 +
+    2*x^5 + 12*x^4 + 13*x^3 + 12*x^2 + x + 3
+ over 17-adic field mod 17^20
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(17^16)
+Univariate Polynomial Ring in z over GF(17^16)
+Univariate Polynomial Ring in z over GF(17^16)
+Computation time of factorisation of f
+Time: 1268.650
+Computation time of lfc
+Norm equation... Time: 393.190
+GAction... Univariate Polynomial Ring in z over GF(17^272)
+Time: 1150.050
+Time: 17181.600
+Solve Frobenius equations... Time: 3915.430
+Time: 23572.800
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 667.510
+Time: 2578.650
+Time: 31542.280
+> I;
+16
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
+> #Group(CM);
+272
+> &*CM`invar;
+4913
+> $1*$2;
+1336336
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.3^17 = Id(G)
+    G.4^17 = Id(G)
+    G.5^17 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.5^-4 * G.4^-16 * G.3^-2 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.5^-2 * G.4^-5 * G.3^-8 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.5^-13 * G.4^-2 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.4^-8 * G.3^-5 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-12 * G.3^-15 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-3 * G.4^-5 * G.3^-14 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^16 = Id(G)
+    G.1^-17 = Id(G)
+> time Order(G);
+1336336
+Time: 34.170
+> 
+///////////////////////////////////////////unramified version of above//////////////////
+> K:= pAdicField(17,20);
+> x:= PolynomialRing(K).1;
+> f:= x^289+17*x^272+17^2*x^31+17;
+> time  G,I,C_I:= TwoSegmentsGaloisGroup(f);
+> time  G,I,set:= TwoSegmentsGaloisGroup(f);
+Univariate Polynomial Ring in z over GF(17^16)
+Univariate Polynomial Ring in z over GF(17^16)
+Univariate Polynomial Ring in z over GF(17^16)
+Computation time of factorisation of f
+Time: 1628.520
+Computation time of lfc
+Norm equation... Time: 411.310
+GAction... Univariate Polynomial Ring in z over GF(17^272)
+Time: 1002.710
+Time: 253.460
+Solve Frobenius equations... Time: 261.350
+Time: 2018.620
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 646.240
+Time: 2511.590
+Time: 9382.200
+> I;                                                                                                                  
+16
+> C_I;
+Permutation group set acting on a set of cardinality 16
+Order = 16 = 2^4
+    (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.2^17 = Id(G)
+    G.3^17 = Id(G)
+    G.4^17 = Id(G)
+    (G.2, G.3) = Id(G)
+    (G.2, G.4) = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.2 * G.1 * G.4^-4 * G.3^-16 * G.2^-2 = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-2 * G.3^-5 * G.2^-8 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.4^-13 * G.3^-2 = Id(G)
+    G.1^-17 = Id(G)
+> Order(G);
+83521
+> $1*16;
+1336336
 
