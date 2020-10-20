@@ -16,12 +16,12 @@ D:=$1;
 > C := [ <1, 272, 2, 7>, <1, 272, 2, 15>, <1, 272, 2, 23>, <1, 272, 2, 31>, <1, 272, 2, 39>, <1, 272, 2, 47> ];
 > [x^289+17^y[1]*x^y[2]+17^y[3]*x^y[4]+17: y in C]; 
 [
-    x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^7 + 17 + O(17^21),
+    x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^7 + 17 + O(17^21),         inertia
     x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^15 + 17 + O(17^21),
     x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^23 + 17 + O(17^21),
-    x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^31 + 17 + O(17^21),
+    x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^31 + 17 + O(17^21),        16
     x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^39 + 17 + O(17^21),
-    x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^47 + 17 + O(17^21)
+    x^289 + (17 + O(17^21))*x^272 + (17^2 + O(17^22))*x^47 + 17 + O(17^21)        4
 ]
 > [AbsoluteDegree(pReduction(x^289+17^y[1]*x^y[2]+17^y[3]*x^y[4]+17)): y in C];           
 [ 16, 8, 16, 16, 16, 4 ]
@@ -107,11 +107,135 @@ Unramified extension defined by the polynomial x^4 + 11*$.1^3 + 7*$.1^2 + 5
  over 17-adic field mod 17^10
 > 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+> f:= x^289+17*x^272+17^2*x^47+17;
+> FlatRamificationPolygon(f);
+[   
+    <1, x^16 + 13>,
+    <1, x^272 + 1>
+]
+> pReduction(f);
+Unramified extension defined by the polynomial x^4 + 7*x^2 + 10*x + 3
+ over 17-adic field mod 17^20
+> 
+> time H,Inertia,sets := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(17^4)
+Univariate Polynomial Ring in z over GF(17^4)
+Univariate Polynomial Ring in z over GF(17^4)
+Computation time of factorisation of f
+Time: 223.120
+Computation time of lfc
+Norm equation... Time: 58.270
+GAction... Univariate Polynomial Ring in z over GF(17^68)
+Time: 136.650
+Time: 129.620
+Solve Frobenius equations... Time: 187.030
+Time: 552.350
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 18.980
+Time: 30.780
+Time: 1027.190
+> Inertia;
+4
+> time Order(H);                                        
+5679428
+Time: 450.410
+> gamma,CM,mU,mUS,E,F,psi := Explode(sets);
+> #Group(CM);
+68
+> &*CM`invar;
+83521
+> $1*$2;
+5679428
+> H;
+Finitely presented group H on 6 generators
+Relations
+    H.3^17 = Id(H)
+    H.4^17 = Id(H)
+    H.5^17 = Id(H)
+    H.6^17 = Id(H)
+    (H.3, H.4) = Id(H)
+    (H.3, H.5) = Id(H)
+    (H.3, H.6) = Id(H)
+    (H.4, H.5) = Id(H)
+    (H.4, H.6) = Id(H)
+    (H.5, H.6) = Id(H)
+    H.1^-1 * H.3 * H.1 * H.6^-11 * H.5^-11 * H.4^-7 * H.3^-5 = Id(H)
+    H.1^-1 * H.4 * H.1 * H.6^-6 * H.5^-12 * H.4^-3 * H.3^-11 = Id(H)
+    H.1^-1 * H.5 * H.1 * H.6^-1 * H.5^-5 * H.4^-9 * H.3^-4 = Id(H)
+    H.1^-1 * H.6 * H.1 * H.6^-8 * H.5^-11 * H.4^-5 * H.3^-11 = Id(H)
+    H.2^-1 * H.3 * H.2 * H.6^-7 * H.4^-1 * H.3^-5 = Id(H)
+    H.2^-1 * H.4 * H.2 * H.6^-13 * H.5^-3 * H.3^-6 = Id(H)
+    H.2^-1 * H.5 * H.2 * H.6^-6 * H.5^-14 * H.4^-4 * H.3^-9 = Id(H)
+    H.2^-1 * H.6 * H.2 * H.6^-15 * H.5^-2 * H.4^-9 * H.3^-10 = Id(H)
+    H.2^4 = Id(H)
+    H.1^-1 * H.2^-1 * H.1^-1 * H.2 = Id(H)
+    H.1^-17 = Id(H)
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+K:= pAdicField(17,20);
+ x:= PolynomialRing(K).1;
+f:= x^289+17*x^272+17^2*x^15+17;
+> FlatRamificationPolygon(f);
+[   
+    <1, x^16 + 15>,
+    <1, x^272 + 1>
+]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(17^8)
+Univariate Polynomial Ring in z over GF(17^8)
+Univariate Polynomial Ring in z over GF(17^8)
+Computation time of factorisation of f
+Time: 712.160
+Computation time of lfc
+Norm equation... Time: 137.300
+GAction... Univariate Polynomial Ring in z over GF(17^136)
+Time: 413.670
+Time: 1438.750
+Solve Frobenius equations... Time: 789.110
+Time: 2929.340
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 129.180
+Time: 234.440
+Time: 4571.900
+> I;
+8
+> time Order(G);                                                               
+39304
+Time: 0.190
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
+> #Group(CM);
+136
+> &*CM`invar;
+289
+> $1*$2;
+39304
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.3^17 = Id(G)
+    G.4^17 = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-10 * G.3^-12 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.4^-7 * G.3^-10 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.3^-15 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-2 * G.3^-1 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^8 = Id(G)
+    G.1^-17 = Id(G)
+> 
 
 
 
 
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 > K:= pAdicField(17,20);
 > x:= PolynomialRing(K).1;
 > f:= x^289+17*x^204+17^2*x^111+51;
@@ -222,4 +346,5 @@ Relations
     G.2^-2 * G.1^-1 * G.2^2 * G.1^-1 = Id(G)
     G.1^-4 * G.2 * G.1 * G.2^-1 = Id(G)
 > 
+
 
