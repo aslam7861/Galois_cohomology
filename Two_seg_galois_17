@@ -481,3 +481,52 @@ Relations
 > $1*16;
 1336336
 
+
+////////////////////////////////////////////////////////////////////////////////////////
+>  f:= x^289+17*x^272+17^2*x^23+17;
+>  FlatRamificationPolygon(f);
+[   
+    <2, x^8 + 6>,
+    <1, x^272 + 1>
+]
+> pReduction(f);                                                                                
+Totally ramified extension defined by the polynomial x^2 + 1565441131317354857558249*$.1^7 + 
+    1069800872437474402557789*$.1^6 + 1642971041865955395396354*$.1^5 - 
+    1821276799231672003901728*$.1^4 - 1985289058107956975143103*$.1^3 + 
+    1502040316049910456697866*$.1^2 - 1484084988591985429915791*$.1 + 1007068483463624730313041
+ over Unramified extension defined by the polynomial x^8 + 11*x^4 + 12*x^3 + 6*x + 3
+ over 17-adic field mod 17^20
+ 
+> time G,I,set := TwoSegmentsGaloisGroup(f);
+Univariate Polynomial Ring in z over GF(17^8)
+Univariate Polynomial Ring in z over GF(17^8)
+Univariate Polynomial Ring in z over GF(17^8)
+Computation time of factorisation of f
+Time: 1859.170
+Computation time of lfc
+Norm equation... Time: 2721.290
+GAction... Univariate Polynomial Ring in z over GF(17^272)
+Time: 13303.970
+Time: 743.310
+Solve Frobenius equations... Time: 5230.370
+Time: 22401.870
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 21763.880
+Time: 27348.720
+Time: 85208.430
+> time Order(G);
+167042
+Time: 12.340
+> set;
+Permutation group set acting on a set of cardinality 8
+Order = 8 = 2^3
+    (1, 2, 3, 4, 5, 6, 7, 8)
+> I;
+8
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
