@@ -528,5 +528,88 @@ Order = 8 = 2^3
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+f:= x^289+17*x^272+17^2*x^71+17; 
+> pReduction(f);
+Totally ramified extension defined by the polynomial x^2 -
+    1647737351464819311157453*$.1^7 + 846942159851754951013979*$.1^6 +
+    912522956608578583458033*$.1^5 - 983201384007534752474951*$.1^4 +
+    1572113947495197290766799*$.1^3 + 278555607693620268705000*$.1^2 -
+    2011031868410038265873829*$.1 + 1518741370493814753626984
+ over Unramified extension defined by the polynomial x^8 + 11*x^4 + 12*x^3 + 6*x
+    + 3
+ over 17-adic field mod 17^20
+> time G,I,C,set := TwoSegmentsGaloisGroup(f);
+Univariate Polynomial Ring in z over GF(17^8)
+Univariate Polynomial Ring in z over GF(17^8)
+Univariate Polynomial Ring in z over GF(17^8)
+Computation time of factorisation of f
+Time: 2398.070
+Computation time of lfc
+Norm equation... Time: 3616.090
+GAction... Univariate Polynomial Ring in z over GF(17^272)
+Time: 16396.970
+Time: 1107.790
+Solve Frobenius equations... Time: 7607.910
+Time: 29307.180
+Time: 336.880
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 24431.050
+Time: 25414.430
+Time: 96723.380
+> I;
+8
+> C;
+Permutation group C acting on a set of cardinality 8
+Order = 8 = 2^3
+    (1, 2, 3, 4, 5, 6, 7, 8)
+> 
 
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
+> #Group(CM);
+34
+> &*CM`invar;
+24137569
+> $1*$2;
+820677346
+>#G = 820677346  over C
+> G;
+Finitely presented group G on 8 generators
+Relations
+    G.3^17 = Id(G)
+    G.4^17 = Id(G)
+    G.5^17 = Id(G)
+    G.6^17 = Id(G)
+    G.7^17 = Id(G)
+    G.8^17 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-6 * G.7^-1 * G.6^-1 * G.5^-2 * G.4^-2 * G.3^-2 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.8^-5 * G.7^-11 * G.6^-13 * G.5^-14 * G.4^-14 * G.3^-3 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.8^-9 * G.7^-14 * G.6^-12 * G.5^-3 * G.4^-5 * G.3^-5 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.8^-13 * G.7^-15 * G.6^-7 * G.5^-16 * G.4^-1 * G.3^-13 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.8^-3 * G.6^-9 * G.5^-14 * G.4^-7 * G.3^-16 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.8^-14 * G.7^-7 * G.6^-2 * G.4^-1 * G.3^-14 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.3^-16 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-16 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-16 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-16 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-16 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-16 = Id(G)
+    G.2^2 = Id(G)
+    G.1^-1 * G.2 * G.1 * G.2 = Id(G)
+    G.1^-17 = Id(G)
 
