@@ -531,20 +531,19 @@ Univariate Polynomial Ring in z over GF(17^8)
 Univariate Polynomial Ring in z over GF(17^8)
 Univariate Polynomial Ring in z over GF(17^8)
 Computation time of factorisation of f
-Time: 2398.070
+Time: 104.290
 Computation time of lfc
-Norm equation... Time: 3616.090
+Norm equation... Time: 104.500
 GAction... Univariate Polynomial Ring in z over GF(17^272)
-Time: 16396.970
-Time: 1107.790
-Solve Frobenius equations... Time: 7607.910
-Time: 29307.180
-Time: 336.880
-Computation time of norm group and its intersection of all NormGroup of
-factorisation's extension
-Time: 24431.050
-Time: 25414.430
-Time: 96723.380
+Time: 9152.030
+Time: 649.720
+Solve Frobenius equations... Time: 4658.980
+Time: 14907.570
+Time: 191.090
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 19646.140
+Time: 27183.840
+Time: 71954.140
 > I;
 8
 > C;
@@ -560,7 +559,7 @@ Order = 8 = 2^3
 24137569
 > $1*$2;
 820677346
->#G = 820677346  over C
+>#G := 820677346  over C
 > G;
 Finitely presented group G on 8 generators
 Relations
