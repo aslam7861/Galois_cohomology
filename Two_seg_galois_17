@@ -378,19 +378,19 @@ Univariate Polynomial Ring in z over GF(17^16)
 Univariate Polynomial Ring in z over GF(17^16)
 Univariate Polynomial Ring in z over GF(17^16)
 Computation time of factorisation of f
-Time: 1268.650
+Time: 31.160
 Computation time of lfc
-Norm equation... Time: 393.190
+Norm equation... Time: 21.380
 GAction... Univariate Polynomial Ring in z over GF(17^272)
-Time: 1150.050
-Time: 17181.600
-Solve Frobenius equations... Time: 3915.430
-Time: 23572.800
-Computation time of norm group and its intersection of all NormGroup of
-factorisation's extension
-Time: 667.510
-Time: 2578.650
-Time: 31542.280
+Time: 693.380
+Time: 15672.450
+Solve Frobenius equations... Time: 4015.760
+Time: 21397.200
+Time: 106.010
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 590.060
+Time: 2430.060
+Time: 27998.250
 > I;
 16
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
