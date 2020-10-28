@@ -129,22 +129,25 @@ Relations
 > x:=PolynomialRing(K).1;
 > f:= x^81+3^3*x^10+3^1*x^72+3;
 > SetVerbose("Frob_Eq",1);
-> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+>  time G,I,set := TwoSegmentsGaloisGroup_fast(f);
 Univariate Polynomial Ring in z over GF(3^4)
 Univariate Polynomial Ring in z over GF(3^4)
 Univariate Polynomial Ring in z over GF(3^4)
 Computation time of factorisation of f
-Time: 24.130
+Time: 1.780
 Computation time of lfc
-Norm equation... Time: 26.910
+Norm equation... Time: 9.840
 GAction... Univariate Polynomial Ring in z over GF(3^72)
-Time: 122.360
-Solve Frobenius equations... Time: 238.090
-Time: 594.190
+Time: 90.920
+Time: 152.080
+Solve Frobenius equations... Time: 265.520
+Time: 584.260
+Time: 5.560
 Computation time of norm group and its intersection of all NormGroup of factorisation's extension
-Time: 2.320
-Time: 14.690
-Time: 704.780
+Time: 2.860
+Time: 16.790
+Time: 684.580
+
 > #G;
 0
 > gamma,CM,mU,mUS,E,F:= Explode(set);
