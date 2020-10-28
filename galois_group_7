@@ -1,0 +1,53 @@
+> K:=pAdicField(7,15);
+> x:= PolynomialRing(K).1;
+> f:= x^49+7^13*x^2+21;   
+> FlatRamificationPolygon(f);
+[
+    <6, 2*x + 4>,
+    <6, x^7 + 2>
+]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(7)
+Univariate Polynomial Ring in z over GF(7)
+Univariate Polynomial Ring in z over GF(7)
+Computation time of factorisation of f
+Time: 0.010
+Computation time of lfc
+Norm equation... Time: 2.870
+GAction... Time: 0.000
+Time: 1.890
+Solve Frobenius equations... Time: 571.640
+Time: 585.180
+Time: 0.020
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 0.280
+Time: 1.490
+Time: 595.850
+> time #G;
+2058
+Time: 0.110
+> I;
+1
+> set[6];
+Totally ramified extension defined by the polynomial x^7 + 2211885654831*$.1
+ over Totally ramified extension defined by the polynomial x^6 - 1284596364359
+ over 7-adic field mod 7^15
+> Degree(set[5,1]);
+7
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.4^7 = Id(G)
+    G.5^7 = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.5^-6 * G.4^-1 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-2 = Id(G)
+    (G.3, G.4^-1) = Id(G)
+    G.3^-1 * G.5 * G.3 * G.5^-3 = Id(G)
+    G.2^3 * G.4^-6 = Id(G)
+    G.3 * G.2^-1 * G.3 = Id(G)
+    G.2 * G.1^-2 * G.2^-1 * G.1 = Id(G)
+    G.3^-1 * G.1^-2 * G.3 * G.1^-1 * G.5^-3 = Id(G)
+> 
