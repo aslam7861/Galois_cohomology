@@ -1,0 +1,80 @@
+> K:=pAdicField(5,10);
+> x:= PolynomialRing(K).1;
+> f := x^50 + 25*x^30 + 380*x^18 + 4000*x^17 +6400*x^12 + 13200*x^6 + 14400*x^3 +54400*x^2 +6350*x - 4255;
+> FlatRamificationPolygon(f);
+[
+    <4, 2*x^6 + 3>,
+    <1, x^25 + 2>
+]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(5^2)
+Computation time of factorisation of f
+Time: 0.140
+Computation time of lfc
+Norm equation... Time: 0.040
+GAction... Univariate Polynomial Ring in z over GF(5^16)
+Time: 0.340
+Time: 0.150
+Solve Frobenius equations... Time: 0.710
+Time: 2.330
+Time: 0.020
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 2.830
+Time: 0.050
+Time: 6.160
+> #G;
+400
+> I;
+2
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.3^5 = Id(G)
+    G.4^5 = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.3^-3 = Id(G)
+    (G.2, G.3^-1) = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-4 = Id(G)
+    G.2^2 = Id(G)
+    G.2 * G.1^3 * G.2 * G.1 = Id(G)
+> 
+> f75 := x^75 + 25*x^30 + 380*x^18 + 4000*x^17 +6400*x^12 + 13200*x^6 + 14400*x^3 +54400*x^2 +6350*x - 4255;
+ 
+> FlatRamificationPolygon(f75);                                                
+[ 
+    <4, 3*x^6 + 3>, 
+    <1, x^50 + 3> 
+] 
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(5^2)
+Computation time of factorisation of f
+Time: 0.420
+Computation time of lfc
+Norm equation... Time: 0.090
+GAction... Univariate Polynomial Ring in z over GF(5^24)
+Time: 2.120
+Time: 0.700
+Solve Frobenius equations... Time: 1.530
+Time: 5.700
+Time: 13.700
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 5.290
+Time: 0.180
+Time: 27.300
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.3^5 = Id(G)
+    G.4^5 = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.3^-2 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.4^-2 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.4^-4 * G.3^-1 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-4 = Id(G)
+    G.2^2 = Id(G)
+    (G.1 * G.2 * G.1)^2 = Id(G)
+    G.1^5 * G.2 * G.1^-1 * G.2 = Id(G)
+> I;
+2
+
