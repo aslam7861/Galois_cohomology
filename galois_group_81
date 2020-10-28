@@ -147,7 +147,8 @@ Computation time of norm group and its intersection of all NormGroup of factoris
 Time: 2.860
 Time: 16.790
 Time: 684.580
-
+> I;
+4
 > #G;
 0
 > gamma,CM,mU,mUS,E,F:= Explode(set);
