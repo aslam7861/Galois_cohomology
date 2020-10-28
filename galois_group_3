@@ -276,4 +276,73 @@ Relations
     G.1^-1 * G.3^-1 * G.2^-1 * G.3 * G.7^-2 * G.8^-2 = Id(G)
     G.2^-1 * G.3^-1 * G.1 * G.3 * G.6^-2 * G.7^-1 * G.8^-1 = Id(G)
 > 
+> K:=pAdicField(3,10);
+> x:= PolynomialRing(K).1;
+> f:=x^54+3^9*x^5+3*x^21+6*x^13+15;     
+> FlatRamificationPolygon(f);
+[
+    <2, 2*x^13 + 2>,
+    <1, x^27 + 2>
+]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(3^6)
+Computation time of factorisation of f
+Time: 0.190
+Computation time of lfc
+Norm equation... Time: 0.030
+GAction... Univariate Polynomial Ring in z over GF(3^24)
+Time: 0.050
+Time: 0.220
+Solve Frobenius equations... Time: 0.090
+Time: 1.370
+Time: 3.350
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 9.060
+Time: 0.190
+Time: 15.570
+> time #G;
+17496
+Time: 0.160
+> I;
+6
+> G;
+Finitely presented group G on 8 generators
+Relations
+    G.3^3 = Id(G)
+    G.4^3 = Id(G)
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-1 * G.6^-2 * G.5^-1 * G.4^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.6^-2 * G.5^-2 * G.4^-2 * G.3^-1 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.8^-2 * G.7^-2 * G.6^-2 * G.5^-2 * G.3^-2 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.8^-2 * G.7^-1 * G.6^-1 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.8^-1 * G.7^-1 * G.6^-1 * G.5^-2 * G.4^-1 * G.3^-2 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.7^-2 * G.5^-2 * G.4^-1 * G.3^-2 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.7^-2 * G.6^-1 * G.4^-2 * G.3^-2 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.8^-1 * G.7^-2 * G.5^-1 * G.4^-1 * G.3^-1 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.8^-2 * G.7^-2 * G.5^-1 * G.4^-2 * G.3^-2 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.8^-2 * G.7^-1 * G.4^-2 * G.3^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.6^-1 * G.4^-1 * G.3^-1 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-2 * G.6^-1 * G.3^-2 = Id(G)
+    G.1^4 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^6 = Id(G)
+> 
 
