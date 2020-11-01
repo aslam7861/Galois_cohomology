@@ -2,3 +2,47 @@ serre's book:
 page-228 cor 2// write
 U^f< NL^{*}/////
 
+\clearpage
+
+\textbf{Ramification group with upper nummbering:}
+For any real number $u \geq -1$, $G_{u}$ is dfined to be the ramification group $G_{ \lceil u \rceil}$. Let us define a function \[\varphi:[0,\infty) \rightarrow [0,\infty), u\mapsto\int_{0}^{u}(G_0:G_v)^{-1} dv.\]
+For $t=-1$, $(G_0:G_{t})$ is supposed to be  $(G_{t}:G_0)^{-1}$ and for $-1<t\leq 0$,  $(G_0:G_{t})=(G_0:G_0)=1$.\\
+Let $m\in \mathbf{N}$ such that $m\leq u \leq m+1$, then
+\[  \varphi(u) = \frac{1}{g_0}(g_1 + \ldots + g_m(u-m  )g_m)  \mbox{  where  }  g_i = \mid G_i \mid.\] 
+In particular, we have 
+\[  \varphi(m) +1= \frac{1}{g_0}  \sum_{i=0}^{m}(g_i) \mbox{ for  } m \in \mathbb{N}.\]
+We present the following proposition from \cite{Reference3}, which charaterise the properties of function $\varphi$.
+\begin{proposition}
+	\begin{enumerate}
+\item  The function $\varphi$ is continuous, piecewise linear, increasing, and concave.
+\item $\varphi(0)=0$.
+\item Let us denote by $\varphi_{r}^{'}$ and $\varphi_{l}^{'}$ the right and left derivatives of  $ \varphi$, then 
+\begin{eqnarray*}
+	\varphi_{l}^{'}(u)= \varphi_{r}^{'}(u) = \frac{1}{(G_0:G_u)} & \mbox{ if  } u\notin \mathbb{Z},\\
+	 	\varphi_{l}^{'}(u)=   \frac{1}{(G_0:G_u)},  \varphi_{l}^{'}(u)=  \frac{1}{(G_0:G_{u+1})} & \mbox{ if  }   u \in \mathbb{Z}
+\end{eqnarray*}
+	\end{enumerate}
+\end{proposition}
+
+Consider another function $\psi: [-1,\infty) \rightarrow [-1,\infty)$, which is the inverse of $\varphi$.
+\begin{proposition}
+	\begin{enumerate}
+	\item The function $\psi$ is continuous, piecewise linear, increasing, and convex.
+	\item $\psi(0)=0$.
+	\item  If $v=\varphi(u)$, then $\psi_{l}^{'}(v) =\frac{1}{ \varphi_{l}^{'}(u)}$ and $\psi_{r}^{'}(v) =\frac{1}{ \varphi_{r}^{'}(u)}$.
+	\item $v \in \mathbb{Z} \Rightarrow u=\psi(v) \in \mathbb{Z}$.		
+	\end{enumerate}
+\end{proposition}
+Lt us define the upper numbering of the ramification group as:
+\[G^{v}= G_{\psi(v)} ,  \mbox{   or  equivalently,   }   G^{\varphi(u)}= G_{u} . \]
+We have $G^{v}=G_{0}$ for $v=0$, $G^{v} =G$ for  $v=-1$ and $G^{v}=\{1\}$ for sufficiently large value of $v$.  Since $G^v$ depends up on the ramification group $G_v$, we can see that
+\[ \psi(v)= \int_{0}^{v}(G^{0}:G^{w})dw. \]
+\begin{proposition}
+Let $L/K$ be Galois totally ramified extension, then for every integer $n\geq 0$, $\N(U^{\psi(n) }) \subset U_{K}^{n}$ and $   \N(U^{\psi(n) }+1) \subset U_{K}^{n+1}$
+\end{proposition}
+\begin{proof}
+	\cite{Reference3},page-91, Proposition $8$.
+\end{proof}
+
+
+
