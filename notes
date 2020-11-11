@@ -46,3 +46,32 @@ Let $L/K$ be Galois totally ramified extension, then for every integer $n\geq 0$
 
 
 
+
+
+
+
+
+page::::228
+cor 2 :Let $c\in \mathbb{N}$ such that $G_c\ne{1}$ and $G_n={1}$ for all $n\geq c$. Then $U_{K}^{f}\leq \N(L^{*})$, where $f=\varphi(c)+1$.
+
+
+
+
+
+Let $c\in \mathbb{N}$ such that $G_c\ne{1}$ and $G_n={1}$ for all $n\geq c$. Then $U_{F}^{f}\leq \N(L^{*})$, where $f=\varphi(c)+1$.\\
+Note that $U_{F}^{n}/ \N(U_{L}^{\psi(n)}) =0$ iff $G^{n}=G_{psi(n)}=\{1\}.$
+This shows $U_{F}^{n}= \N(U_{L}^{\psi(n)})$ when $G^{n}=G_{psi(n)}=\{1\}.$\\
+%From above two corollaries we get 
+Let $m$ be the integer such that $G^n=G_n\{1\}$ for all $n\geq m$. Then 
+choose  $n=m$ as minimum so that we have
+\[  U_{F}^{n}= \N(U_{L}^{\psi(n)})  \mbox{ and }  U_{F}^{n}\leq \N(L^{*}).  \] 
+Thus,
+      $F_{n}^{*}/ \N(L^{*}) \leq F_{n}^{*}/ \N(L^{*}/ U_{\psi(n)+n_0}) \leq  \ldots \leq F_{n}^{*}/ \N(L^{*}/ U_{\psi(n)})= (F^{*}/U_{F}^{n} ) / (\N(L^{*})/ U_{F}^{n} ) = F^{*}/ \N(L^{*}) ,$
+where $n_0 \geq 0$.\\
+Since $L/F$ is abelian we have $|G|=| F_{n}^{*}/ \N(L^{*})  | = | F^{*}/ \N(L^{*})  | $. So, we can choose the smaller norm group $\N( L^{*}/ U_{L}^{\psi(n)}) \leq \N(L^{*})$ to make our computation fast.\\
+Another way : Let $\N : L^{*} \rightarrow F^{*}$ be the norm function. There exist  $f \in \mathbb{N}$ such that $U_{F}^{f}\leq \N(L^{*})$.\\
+In our case we have  $U_{F}^{f}\leq \N(L^{*})  \leq F^{*}$.\\
+$\N(U_{L}^{\psi(f)})\leq \N(L^{*})  \leq F^{*}$.\\
+$1\leq \N(L_{\psi(f)}^{*})  \leq F_{f}^{*}$.\\
+$ F_{f}^{*} /\N(L_{\psi(f)}^{*})  \cong   F^{*}/\N(L^{*}) $.\\
+
