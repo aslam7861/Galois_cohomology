@@ -99,13 +99,41 @@ $ F_{f}^{*} /\N(L_{\psi(f)}^{*})  \cong   F^{*}/\N(L^{*}) $.\\
 
 %Since $m$ is the least integer satisfying the property
 
+
+
 \begin{remark}
 	We work always with finite precision $F_{n}=F/U_{F}^{n}$. We choose $n$ as the minimum satisfying the \thref{unit_precision}  to accelerate the Algorithm \ref{two-segments}. One can compute thenorm group of $L/F$ usingonly those generatorsof unit group of $L$ which are nontrivial in the unit group of $F$.  From the \thref{equivalent}, we know that $U_{F}^{n} \cong \N(U_{L}^{\psi(n)})$. Thus, we will choose only those generators $\{u_1, u_2, \ldots , u_{?}\}$ of unit group of $L$, which are unit up to level $\psi(n)$, that is $\valuation(u_i-1) \leq \psi(n)$. Let $u$  be a generator of $U_{L}$ such that $ \valuation(u-1) \geq \psi(n)$, then $\valuation(\N(u) -1) \geq n $.\footnotetext{footnotes working fine}\footnotetext{footnotes working fine}
 	 Therefore, \[\N(u)   \in  U_{F}^{n}  , \]
 	since $U_{F}^{n}\geq U_{F}^{n+1} \geq \ldots. $
 \end{remark} 
-
-
+ 
+ 
+\begin{lemma}
+  	Let $L/F$ be a cyclic Galois totally ramified extension with Galois group $G=\Gal(L/F)$ of order $l$ and $\mathfrak{p}_{F}^{m_0}$ be the conductor of the extension. Then for every $n\in \mathbb{Z}_{\leq 0}$,  $\Trace(\mathfrak{p}_{L}^{n}) = \mathfrak{p}_{K}^{r}$, where $m = m_0\cdot (l-1)$ and  $r= \lfloor (m+n)/l \rfloor $.
+\end{lemma}
+\begin{proof}
+	\cite[Lemma 4]{Reference3}, page- 83
+\end{proof}
+We will convert this into an algorith to  find the unit group generators.\\
+The functions $\Log: U_{L}^{n} \rightarrow  \mathfrak{p}_{L}^{n}$ and $\Exp : \mathfrak{p}_{L}^{n} \rightarrow  U_{L}^{n} $ are isomorphisms for $n \ge \lfloor e_{L}/(p-1)\rfloor,$ where $p$ is the cahracteristic of the resicdue class field of $L$.  For  $ x \in U_{L}^{n} $ where $n \ge  \lfloor e_{L}/(p-1)\rfloor$, the formula of norm of $x$ is equivalent to
+\[  \N( x) = \Exp(\Trace(\Log(x))).\]  
+This shows taht for fix value of $r$, we can verify the unit element of $U_L$ whose norm is trivial in the field upto finite precision $F_n= F/U_{F}^{r}$. 
+Using above formula it is clear that $\N(U_{L}^{n}) \cong U_{F}^{r}$.\\
+ We present an algorithm below which showsthe unit group generators of certain level is always trivial in the norm group of $\N(L)$:\\
+\begin{algorithm}[H]
+	\caption{Conductor and unit gruop}%\cite[Algorithm 4.5]{Christian}}
+	\label{conductor_unit_group}
+	\begin{algorithmic}[1]
+		\REQUIRE $L/F$ be a cyclic Galois totally ramified extension with Galois group $G=\Gal(L/F)$ of order $l$ and fix $n$ satisfying \thref{unit_precision} such that $F_n^{*}= F^{*}/U_{F}^{n}$.
+		\ENSURE conductor $\mathfrak{p}_{F}^{m_0}$  and $n_0$ so that $\N(U_{L}^{n})$ is trivial in $F_n$ for all $n \geq n_0$.
+	%	\STATE  find minimal $d$ satisfying the \thref{unit_precision}.
+         \STATE compute largest $t\in \mathbb{Z}$ such that $G_t\neq \{1\}$.
+          \STATE Find $m_0 = \varphi(t)+1$.
+          \STATE Find $n_0\in \mathbb{Z}$ so that $\N(U_{L}^{\geq n_0}) \leq U_{F}^{n}$.
+          %\STATE Compute only those generators of unit group which are unit up to level $n_0$
+		\STATE Return  $m_0$ and compute only those generators of unit group which are unit up to level $n_0$ using Algrorithm of Sebastian
+	\end{algorithmic}
+\end{algorithm}
 
 
 
