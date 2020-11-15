@@ -79,6 +79,33 @@ $ F_{f}^{*} /\N(L_{\psi(f)}^{*})  \cong   F^{*}/\N(L^{*}) $.\\
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 AttachSpec("/Users/Aslamali/Desktop/Debeerst/magma/alispec");
 Attach("/Users/Aslamali/Desktop/Debeerst/magma/galois/Factor.m");
 AttachSpec("/Users/Aslamali/Desktop/Debeerst/magma/galois/spec_galois");
