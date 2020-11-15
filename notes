@@ -80,7 +80,30 @@ $ F_{f}^{*} /\N(L_{\psi(f)}^{*})  \cong   F^{*}/\N(L^{*}) $.\\
 
 
 
+ add corollary before 4.4.15\\
+ 
+ \begin{corollary}\thlabel{equivalent}
+ The groups  $U_F^{n}/ U_{L}^{\psi(n)} $ form a decreasing filtration of $F^{*}/\N(L^{*})$. Furthermore, $U_{F}^{n}/ \N(U_{L}^{\psi(n)}) =0 $ if and only if $G^{n} =1$. 
+ \end{corollary}
+\begin{proof}
+	page 228 LF serre
+\end{proof}
 
+
+\begin{corollary}
+	Let $c\in \mathbb{Z}$ be the largest such that $G_c \ne \{ 1\},$ and suppose $m= \varphi(c)+1.$ Then $U_{F}^{m} \leq \N(L^{*})$, and $m$ is the least integer satisfying this property.
+\end{corollary} 
+\begin{definition}
+	Let $m$ be as corollary above then the ideal $\mathfrak{p}_{F}^{m}$ is called the conductor\index{conductor} of the extension $L/F$
+\end{definition}
+
+%Since $m$ is the least integer satisfying the property
+
+\begin{remark}
+	We work always with finite precision $F_{n}=F/U_{F}^{n}$. We choose $n$ as the minimum satisfying the \thref{unit_precision}  to accelerate the Algorithm \ref{two-segments}. One can compute thenorm group of $L/F$ usingonly those generatorsof unit group of $L$ which are nontrivial in the unit group of $F$.  From the \thref{equivalent}, we know that $U_{F}^{n} \cong \N(U_{L}^{\psi(n)})$. Thus, we will choose only those generators $\{u_1, u_2, \ldots , u_{?}\}$ of unit group of $L$, which are unit up to level $\psi(n)$, that is $\valuation(u_i-1) \leq \psi(n)$. Let $u$  be a generator of $U_{L}$ such that $ \valuation(u-1) \geq \psi(n)$, then $\valuation(\N(u) -1) \geq n $.\footnotetext{footnotes working fine}\footnotetext{footnotes working fine}
+	 Therefore, \[\N(u)   \in  U_{F}^{n}  , \]
+	since $U_{F}^{n}\geq U_{F}^{n+1} \geq \ldots. $
+\end{remark} 
 
 
 
