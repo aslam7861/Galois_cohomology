@@ -121,7 +121,7 @@ This shows taht for fix value of $r$, we can verify the unit element of $U_L$ wh
 Using above formula it is clear that $\N(U_{L}^{n}) \cong U_{F}^{r}$.\\
  We present an algorithm below which showsthe unit group generators of certain level is always trivial in the norm group of $\N(L)$:\\
 \begin{algorithm}[H]
-	\caption{Conductor and unit gruop}%\cite[Algorithm 4.5]{Christian}}
+	\caption{Conductor and unit gruop generators required to compute the norm group}%\cite[Algorithm 4.5]{Christian}}
 	\label{conductor_unit_group}
 	\begin{algorithmic}[1]
 		\REQUIRE $L/F$ be a cyclic Galois totally ramified extension with Galois group $G=\Gal(L/F)$ of order $l$ and fix $n$ satisfying \thref{unit_precision} such that $F_n^{*}= F^{*}/U_{F}^{n}$.
@@ -129,12 +129,14 @@ Using above formula it is clear that $\N(U_{L}^{n}) \cong U_{F}^{r}$.\\
 	%	\STATE  find minimal $d$ satisfying the \thref{unit_precision}.
          \STATE compute largest $t\in \mathbb{Z}$ such that $G_t\neq \{1\}$.
           \STATE Find $m_0 = \varphi(t)+1$.
-          \STATE Find $n_0\in \mathbb{Z}$ so that $\N(U_{L}^{\geq n_0}) \leq U_{F}^{n}$.
+          \STATE Compute $n_0\in \mathbb{Z}$ such that $n=\lfloor (m_0(l-1)+n_0)/l\rfloor$ so that $\N(U_{L}^{n_0})= U_{F}^{n}$.
+          \STATE Compute the unit group generators $\{u_i\}_{i}$ of $L$ using algorithm of Sebastian.
+          \STATE Find a finite set  $\text{gens}=\{u_i :  \v(u_i-1) \leq n_0\}$ of generators of $L$.
+   %       \STATE Find $n_0\in \mathbb{Z}$ so that $\N(U_{L}^{\geq n_0}) \leq U_{F}^{n}$.
           %\STATE Compute only those generators of unit group which are unit up to level $n_0$
-		\STATE Return  $m_0$ and compute only those generators of unit group which are unit up to level $n_0$ using Algrorithm of Sebastian
+		\STATE Return  $m_0$ so that $\mathfrak{p}_{F}^{m_0}$ is conductor of $L/F$ and set gens.
 	\end{algorithmic}
 \end{algorithm}
-
 
 
 
