@@ -3,7 +3,11 @@ page-228 cor 2// write
 U^f< NL^{*}/////
 
 \clearpage
+//////
+page 68 >> the factors____of____
 
+
+////////
 \textbf{Ramification group with upper nummbering:}
 For any real number $u \geq -1$, $G_{u}$ is dfined to be the ramification group $G_{ \lceil u \rceil}$. Let us define a function \[\varphi:[0,\infty) \rightarrow [0,\infty), u\mapsto\int_{0}^{u}(G_0:G_v)^{-1} dv.\]
 For $t=-1$, $(G_0:G_{t})$ is supposed to be  $(G_{t}:G_0)^{-1}$ and for $-1<t\leq 0$,  $(G_0:G_{t})=(G_0:G_0)=1$.\\
