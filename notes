@@ -7,7 +7,7 @@ U^f< NL^{*}/////
 page 68 >> the factors____of____\cite alg,   ddotsin step 4,
 page -69 construction of T by constructive theorem it is possible
 page -70 >>a bit more time to much
-
+72.. EXACT SEQ G BY E
 ////////
 \textbf{Ramification group with upper nummbering:}
 For any real number $u \geq -1$, $G_{u}$ is dfined to be the ramification group $G_{ \lceil u \rceil}$. Let us define a function \[\varphi:[0,\infty) \rightarrow [0,\infty), u\mapsto\int_{0}^{u}(G_0:G_v)^{-1} dv.\]
