@@ -182,6 +182,70 @@ Relations
     G.3^-1 * G.1^-3 * G.3 * G.1^-2 = Id(G)
     G.3^-3 * G.2 * G.3^-3 = Id(G)
 
+///////////////////////with precision reduced version////////////////////
+>  K:=pAdicField(13,15);
+> x:= PolynomialRing(K).1;
+> f:=x^169+13^1*x^78+13^2*x^5+52;// above example;
+> time W,inert,sets:= TwoSegmentsGaloisGroup_prec_reduced(f);
+Univariate Polynomial Ring in z over GF(13^6)
+Univariate Polynomial Ring in z over GF(13^6)
+Univariate Polynomial Ring in z over GF(13^6)
+Computation time of factorisation of f
+Time: 17.300
+Computation time of lfc
+Norm equation... Time: 7.130
+GAction... Univariate Polynomial Ring in z over GF(13^156)
+Time: 416.420
+Time: 1544.280
+Solve Frobenius equations... Time: 1183.360
+Time: 3299.250
+Time: 7.270
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 154.230
+Time: 194.020
+Time: 4124.690
+> inert;
+6
+> #W;
+4455516
+> W;
+Finitely presented group W on 7 generators
+Relations
+    W.4^13 = Id(W)
+    W.5^13 = Id(W)
+    W.6^13 = Id(W)
+    W.7^13 = Id(W)
+    (W.4, W.5) = Id(W)
+    (W.4, W.6) = Id(W)
+    (W.4, W.7) = Id(W)
+    (W.5, W.6) = Id(W)
+    (W.5, W.7) = Id(W)
+    (W.6, W.7) = Id(W)
+    W.1^-1 * W.4 * W.1 * W.7^-8 * W.6^-4 * W.5^-7 * W.4^-7 = Id(W)
+    W.1^-1 * W.5 * W.1 * W.7^-8 * W.6^-4 * W.5^-8 * W.4^-6 = Id(W)
+    W.1^-1 * W.6 * W.1 * W.6^-1 * W.5^-8 * W.4^-5 = Id(W)
+    W.1^-1 * W.7 * W.1 * W.7^-1 * W.6^-8 * W.5^-5 * W.4^-8 = Id(W)
+    W.2^-1 * W.4 * W.2 * W.5^-10 * W.4^-2 = Id(W)
+    W.2^-1 * W.5 * W.2 * W.5^-11 * W.4^-1 = Id(W)
+    W.2^-1 * W.6 * W.2 * W.6^-12 * W.5^-4 * W.4^-9 = Id(W)
+    W.2^-1 * W.7 * W.2 * W.7^-1 * W.6^-6 * W.5^-1 * W.4^-12 = Id(W)
+    W.3^-1 * W.4 * W.3 * W.6^-7 * W.5^-2 * W.4^-4 = Id(W)
+    W.3^-1 * W.5 * W.3 * W.6^-7 * W.5^-6 = Id(W)
+    W.3^-1 * W.6 * W.3 * W.6^-7 * W.5^-7 * W.4^-6 = Id(W)
+    W.3^-1 * W.7 * W.3 * W.7^-9 * W.6^-6 * W.5^-6 * W.4^-7 = Id(W)
+    W.2^2 = Id(W)
+    (W.1^-1 * W.2)^2 = Id(W)
+    W.2 * W.3^-1 * W.2 * W.3 = Id(W)
+    W.1^-1 * W.3^-2 * W.1^-1 * W.3^2 = Id(W)
+    W.3^-1 * W.1^-3 * W.3 * W.1^-2 = Id(W)
+    W.3^-3 * W.2 * W.3^-3 = Id(W)
+> 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
 
 > time G,I,set := TwoSegmentsGaloisGroup_old(f);
 Time: 156710.390
