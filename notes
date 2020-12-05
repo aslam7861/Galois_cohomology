@@ -1,3 +1,24 @@
+
+page 156
+\begin(remark)
+1.In class module, there is no compatibility condition for the passage to quotients of group $G$ but in contrast it is compatible for the formation module.
+2. For every open normal subgroup $U\leq G$, the fixed module $A^U$is a class module for factor group $G/U$. So, one can find a generator in $u_{G/U)}\in H^2(G/U,A^U)$ such that $\inv(u_{G/U})= 1/(G:U)+\Z$.
+
+
+For finite group $G$, the formation muodule is 
+
+
+
+
+
+
+
+
+
+
+
+
+
 serre's book:
 page-228 cor 2// write
 U^f< NL^{*}/////
