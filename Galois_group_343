@@ -146,6 +146,8 @@ factorisation's extension
 Time: 222.000
 Time: 12.130
 Time: 24090.480
+> I;
+2
 > gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(set);
 > #Group(CM)*&*(CM`invar);
 100842
