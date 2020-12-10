@@ -120,4 +120,66 @@ amificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and
 > 
 
 
+/////////////////////////////////////////////////////////////////////////////////////
+> g:= x^343 + 7*x^294 + 49*x^31 + 7;
+> pReduction(g);
+Totally ramified extension defined by the polynomial x^3 + 539965031523830346471684472337620673616072*$.1 + 
+    805617704115010418713369289280096307500227
+ over Unramified extension defined by the polynomial x^2 + 6*x + 3
+ over 7-adic field mod 7^50
+> time G,I,set := TwoSegmentsGaloisGroup_fast(g);
+Univariate Polynomial Ring in z over GF(7^2)
+Univariate Polynomial Ring in z over GF(7^2)
+Univariate Polynomial Ring in z over GF(7^2)
+Computation time of factorisation of f
+Time: 94.260
+Computation time of lfc
+Norm equation... Time: 27.750
+GAction... Univariate Polynomial Ring in z over GF(7^42)
+Time: 330.550
+Time: 65.510
+Solve Frobenius equations... Time: 239.360
+Time: 716.430
+Time: 22272.520
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 222.000
+Time: 12.130
+Time: 24090.480
+> gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(set);
+> #Group(CM)*&*(CM`invar);
+100842
+> #G;
+100842
+> G;
+Finitely presented group G on 7 generators
+Relations
+    G.4^7 = Id(G)
+    G.5^7 = Id(G)
+    G.6^7 = Id(G)
+    G.7^7 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.6, G.7) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.7^-1 * G.4^-3 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.7^-4 * G.6^-6 * G.5^-1 * G.4^-1 = Id(G)
+    (G.1, G.6^-1) = Id(G)
+    G.1^-1 * G.7 * G.1 * G.7^-6 * G.4^-3 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-4 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-4 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-4 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-4 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.7^-3 * G.4^-3 = Id(G)
+    G.3^-1 * G.5 * G.3 * G.7^-1 * G.6^-3 * G.5^-3 * G.4^-3 = Id(G)
+    G.3^-1 * G.6 * G.3 * G.7^-4 * G.6^-4 * G.4^-1 = Id(G)
+    G.3^-1 * G.7 * G.3 * G.7^-4 = Id(G)
+    G.2^3 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.3^-1 * G.2^-1 * G.3^-1 = Id(G)
+    G.1^-1 * G.3^-1 * G.1^-1 * G.3 = Id(G)
+    G.1^-7 = Id(G)
+
 
