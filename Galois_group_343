@@ -185,3 +185,85 @@ Relations
     G.1^-7 = Id(G)
 
 
+
+
+
+
+
+
+> f:=x^343 + 7*x^294 + 49*x^23 + 7;
+> pReduction(f);
+Totally ramified extension defined by the polynomial x^2 + 32398390000782204607816050975131213968928*$.1^5 -
+    294056019838432875530499105334144977288431*$.1^4 - 352842501989018300815515567668678410950822*$.1^3 +
+    8973445776515569511751518479061679938687*$.1^2 - 638274884448969674919955887542569786470019*$.1 -
+    821387063609708831466618458063270761542213
+ over Unramified extension defined by the polynomial x^6 + x^4 + 5*x^3 + 4*x^2 + 6*x + 3
+ over 7-adic field mod 7^50
+> FlatRamificationPolygon(f);
+[ 
+    <2, x^24 + 2>,
+    <1, x^294 + 1>
+] 
+> time H,II,sets := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(7^6)
+Univariate Polynomial Ring in z over GF(7^6)
+Univariate Polynomial Ring in z over GF(7^6)
+Computation time of factorisation of f
+Time: 217.700
+Computation time of lfc
+Norm equation... Time: 34.940
+GAction... Univariate Polynomial Ring in z over GF(7^84)
+Time: 110.390
+Time: 397.370
+Solve Frobenius equations... Time: 397.750
+Time: 1093.580
+Time: 55339.910
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 1592.890
+Time: 292.450
+Time: 59724.780
+> II;
+6
+> gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(sets);
+> #Group(CM)*&*(CM`invar);
+201684
+> time #G;
+100842
+Time: 0.000
+> time #H;
+201684
+Time: 2.760
+> H;
+Finitely presented group H on 7 generators
+Relations
+    H.4^7 = Id(H)
+    H.5^7 = Id(H)
+    H.6^7 = Id(H)
+    H.7^7 = Id(H)
+    (H.4, H.5) = Id(H)
+    (H.4, H.6) = Id(H)
+    (H.4, H.7) = Id(H)
+    (H.5, H.6) = Id(H)
+    (H.5, H.7) = Id(H)
+    (H.6, H.7) = Id(H)
+    H.1^-1 * H.4 * H.1 * H.7^-6 * H.6^-5 * H.5^-1 * H.4^-4 = Id(H)
+    H.1^-1 * H.5 * H.1 * H.7^-1 * H.6^-3 * H.5^-6 * H.4^-2 = Id(H)
+    H.1^-1 * H.6 * H.1 * H.7^-6 * H.4^-1 = Id(H)
+    H.1^-1 * H.7 * H.1 * H.7^-1 * H.6^-6 * H.5^-1 * H.4^-2 = Id(H)
+    H.2^-1 * H.4 * H.2 * H.4^-6 = Id(H)
+    H.2^-1 * H.5 * H.2 * H.5^-6 = Id(H)
+    H.2^-1 * H.6 * H.2 * H.6^-6 = Id(H)
+    H.2^-1 * H.7 * H.2 * H.7^-6 = Id(H)
+    H.3^-1 * H.4 * H.3 * H.7^-2 * H.5^-4 * H.4^-4 = Id(H)
+    H.3^-1 * H.5 * H.3 * H.7^-3 * H.6^-1 * H.4^-5 = Id(H)
+    H.3^-1 * H.6 * H.3 * H.7^-6 * H.6^-6 * H.5^-2 * H.4^-2 = Id(H)
+    H.3^-1 * H.7 * H.3 * H.7^-4 * H.6^-5 * H.5^-6 * H.4^-2 = Id(H)
+    H.2^2 = Id(H)
+    H.1^-1 * H.2 * H.1 * H.2 = Id(H)
+    H.1^-1 * H.3^-1 * H.1^-1 * H.3 = Id(H)
+    H.2 * H.3^-1 * H.2 * H.3 = Id(H)
+    H.1^-7 = Id(H)
+    H.3^-3 * H.2 * H.3^-3 = Id(H)
+> 
+
