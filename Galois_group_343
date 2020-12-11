@@ -267,3 +267,74 @@ Relations
     H.3^-3 * H.2 * H.3^-3 = Id(H)
 > 
 
+
+
+
+
+
+
+
+
+
+
+> g:=y^343 + 7*y^294 + 49*y^47 + 7;
+> FlatRamificationPolygon(g);
+[
+    <1, x^48 + 5>,
+    <1, x^294 + 1>
+]
+> //time G,I,set := TwoSegmentsGaloisGroup_fast(g);
+> pReduction(g);
+Unramified extension defined by the polynomial x^6 + x^4 + 5*x^3 + 4*x^2 + 6*x + 3
+ over 7-adic field mod 7^50
+> time G,I,set := TwoSegmentsGaloisGroup_fast(g);  
+Univariate Polynomial Ring in z over GF(7^6)
+Univariate Polynomial Ring in z over GF(7^6)
+Univariate Polynomial Ring in z over GF(7^6)
+Computation time of factorisation of f
+Time: 18.550
+Computation time of lfc
+Norm equation... Time: 4.450
+GAction... Univariate Polynomial Ring in z over GF(7^42)
+Time: 4.340
+Time: 12.940
+Solve Frobenius equations... Time: 20.660
+Time: 58.060
+Time: 28.920
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 56.120
+Time: 5.010
+Time: 806.920
+> I;
+6
+> gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(set); 
+> #Group(CM)*&*(CM`invar);
+100842
+> time #G;
+100842
+> G;                                                         
+Finitely presented group G on 6 generators
+Relations
+    G.3^7 = Id(G)
+    G.4^7 = Id(G)
+    G.5^7 = Id(G)
+    G.6^7 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.5, G.6) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.6^-4 * G.5^-5 * G.4^-1 * G.3^-3 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.6^-3 * G.5^-3 * G.4^-2 * G.3^-2 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.6^-6 * G.5^-3 * G.4^-1 * G.3^-2 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.6^-3 * G.5^-3 * G.4^-5 * G.3^-3 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-1 * G.5^-6 * G.4^-2 * G.3^-2 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.6^-4 * G.5^-3 * G.4^-4 * G.3^-3 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.6^-5 * G.5^-6 * G.4^-2 * G.3^-1 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-2 * G.5^-2 * G.4^-4 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.2^6 = Id(G)
+    G.1^-7 = Id(G)
+> 
+
