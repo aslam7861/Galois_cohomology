@@ -228,9 +228,6 @@ Time: 59724.780
 > gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(sets);
 > #Group(CM)*&*(CM`invar);
 201684
-> time #G;
-100842
-Time: 0.000
 > time #H;
 201684
 Time: 2.760
@@ -335,6 +332,77 @@ Relations
     G.2^-1 * G.6 * G.2 * G.6^-2 * G.5^-2 * G.4^-4 = Id(G)
     G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
     G.2^6 = Id(G)
+    G.1^-7 = Id(G)
+> 
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+> g:=y^343 + 7*y^294 + 49*y^15 + 7;
+> pReduction(g);
+Totally ramified extension defined by the polynomial x^3 - 347836485179356134015601629406246111260022*$.1^3 -
+    871706836436773237558540550802550233209819*$.1^2 + 189020611239709587182806789383915922370143*$.1 -
+    497901010338481670627681238519393492141970
+ over Unramified extension defined by the polynomial x^4 + 5*x^2 + 4*x + 3
+ over 7-adic field mod 7^50
+> time G,I,set := TwoSegmentsGaloisGroup_fast(g);
+Univariate Polynomial Ring in z over GF(7^4)
+Univariate Polynomial Ring in z over GF(7^4)
+Univariate Polynomial Ring in z over GF(7^4)
+Computation time of factorisation of f
+Time: 149.890
+Computation time of lfc
+Norm equation... Time: 57.280
+GAction... Univariate Polynomial Ring in z over GF(7^84)
+Time: 590.170
+Time: 740.620
+Solve Frobenius equations... Time: 1052.020
+Time: 2662.120
+Time: 37216.810
+Computation time of norm group and its intersection of all NormGroup of
+factorisation's extension
+Time: 1455.890
+Time: 138.510
+Time: 42714.810
+> I;                                                                           
+4
+> gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(set);
+> #Group(CM)*&*(CM`invar);
+201684
+> time #G;
+201684
+Time: 2.510
+> G;
+Finitely presented group G on 7 generators
+Relations
+    G.4^7 = Id(G)
+    G.5^7 = Id(G)
+    G.6^7 = Id(G)
+    G.7^7 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.6, G.7) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.7^-4 * G.6^-4 * G.5^-6 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.7^-5 * G.6^-4 * G.4^-6 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-4 * G.6^-3 * G.5^-3 * G.4^-3 = Id(G)
+    (G.1, G.7^-1) = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-2 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-2 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-2 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.7^-3 * G.6^-6 * G.5^-3 * G.4^-5 = Id(G)
+    G.3^-1 * G.5 * G.3 * G.7^-3 * G.6^-5 * G.5^-1 = Id(G)
+    G.3^-1 * G.6 * G.3 * G.6^-2 * G.5^-6 * G.4^-1 = Id(G)
+    G.3^-1 * G.7 * G.3 * G.7^-6 * G.6^-2 * G.5^-3 * G.4^-3 = Id(G)
+    G.2^3 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.1^-1 * G.3^-1 * G.1^-1 * G.3 = Id(G)
+    (G.2, G.3) = Id(G)
+    G.3^-2 * G.2^-1 * G.3^-2 = Id(G)
     G.1^-7 = Id(G)
 > 
 
