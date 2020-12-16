@@ -260,13 +260,6 @@ Time: 22537.950
 > I;
 3
 > gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(set);
-> #Group*&*(CM`invar);
-
->> #Group*&*(CM`invar);
-   ^
-Runtime error in '#': Bad argument types
-Argument types given: Intrinsic
-
 > #Group(CM)*&*(CM`invar);
 101901378246
 > G;                                                                                                                                           
