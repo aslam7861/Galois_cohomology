@@ -3,8 +3,10 @@ polynomial with tame ramification index 2 at most.
     x^361 + 19*x^171 + 361*x^8 + 19,     9
     x^361 + 19*x^171 + 361*x^17 + 19, +19*3     3
     x^361 + 19*x^171 + 361*x^26 + 19,+19*3     3
-    x^361 + 19*x^171 + 361*x^35 + 19,+19*3     3
-    x^361 + 19*x^171 + 361*x^44 + 19 +19*3     9
+    x^361 + 19*x^171 + 361*x^35 + 19,+19*3     3   done
+    x^361 + 19*x^171 + 361*x^44 + 19 +19*3     9   done
+    x^361 + 19*x^171 + 361*x^62 +19*9          1  done 
+     f:=x^361 + 19*x^171 + 361*x^(44+9Ij) +19*9   where j in [1..12] hopefully these all polynomials will be of two segments with e at most 2. 
 ]
 > 
 
