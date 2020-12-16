@@ -48,6 +48,7 @@ A:=[ x^361 + 19*x^342 + 361*x^35 + 19,
 
 
 
+
 polynomial with tame ramification index 2 at most.
 [                                       InertiaDegree(minimum)
     x^361 + 19*x^171 + 361*x^8 + 19,     9
