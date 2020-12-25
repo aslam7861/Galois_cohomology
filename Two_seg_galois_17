@@ -242,6 +242,82 @@ Relations
     G.1^-17 = Id(G)
 > 
 
+
+
+
+
+
+> f:=x^289 + 17*x^272 + 289*x^47 + 17;
+> pReduction(f);
+Unramified extension defined by the polynomial x^4 + 7*x^2 + 10*x + 3
+ over 17-adic field mod 17^20
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+[ <-4, -1> ]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(17^4)
+Univariate Polynomial Ring in z over GF(17^4)
+Univariate Polynomial Ring in z over GF(17^4)
+Computation time of factorisation of f
+Time: 7.690
+Computation time of lfc
+Norm equation... Time: 4.390
+GAction... Univariate Polynomial Ring in z over GF(17^68)
+Time: 117.130
+Time: 194.140
+Solve Frobenius equations... Time: 255.260
+Time: 622.830
+Time: 32.780
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 26.730
+Time: 54.610
+Time: 1034.020
+> I;
+4
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
+> #Group(CM)*&*(CM`invar);
+5679428
+> Factorisation(5679428);
+[ <2, 2>, <17, 5> ]
+> G;
+Finitely presented group G on 6 generators
+Relations
+    G.3^17 = Id(G)
+    G.4^17 = Id(G)
+    G.5^17 = Id(G)
+    G.6^17 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.5, G.6) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.6^-11 * G.5^-11 * G.4^-7 * G.3^-5 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.6^-6 * G.5^-12 * G.4^-3 * G.3^-11 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.6^-1 * G.5^-5 * G.4^-9 * G.3^-4 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.6^-8 * G.5^-11 * G.4^-5 * G.3^-11 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-7 * G.4^-1 * G.3^-5 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.6^-13 * G.5^-3 * G.3^-6 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.6^-6 * G.5^-14 * G.4^-4 * G.3^-9 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-15 * G.5^-2 * G.4^-9 * G.3^-10 = Id(G)
+    G.2^4 = Id(G)
+    G.1^-1 * G.2^-1 * G.1^-1 * G.2 = Id(G)
+    G.1^-17 = Id(G)
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 K:= pAdicField(17,20);
