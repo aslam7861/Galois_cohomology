@@ -73,7 +73,7 @@ amificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and
         <3, x^112 + 5>
     ],
     [
-        <1, 5*x^6 + 2>,  would be fast enough
+        <1, 5*x^6 + 2>,  would not be fast enough becuase Ramification degreeof F will be 147. 
         <3, x^112 + 5>
     ],
     [
@@ -106,16 +106,7 @@ amificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and
     x^343 + (7 + O(7^41))*x^294 + (7^2 + O(7^42))*x^223 + 7 + O(7^41)
 
  
-                                             Inertia degree      
->   x^361 + 19*x^228 + 361*x^11 + 19+19*6,    2               *11 ---1    
-    x^361 + 19*x^228 + 361*x^17 + 19,+19*9     3
-    x^361 + 19*x^228 + 361*x^20 + 19,+ 19*7    1`     *10 --2
-    x^361 + 19*x^228 + 361*x^23 + 19,
-    x^361 + 19*x^228 + 361*x^29 + 19,
-    x^361 + 19*x^228 + 361*x^35 + 19,+19*9     3
-    x^361 + 19*x^228 + 361*x^41 + 19,
-    x^361 + 19*x^228 + 361*x^47 + 19 +19*14  3
-
+                                     
 
 > B :=[<l,i,j,k>: i in [200..320], j in [1..6],k in [6..50],l in [1..6]| #FlatRamificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and FlatRamificationPolygon(x^343+7^l*x^i+7^j*x^k+7)[1,1] lt 4];
 > CC:=[a: a in B|FlatRamificationPolygon(x^343+7^a[1]*x^a[2]+7^a[3]*x^a[4]+7)[\2,1] le 2];
