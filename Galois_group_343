@@ -50,9 +50,9 @@ R<x>:= PolynomialRing(Integers(K));
 
  the folllowing polynomials are with second segments with valuation (7^1).
 A:=[
-    x^343 + 7*x^294 + 49*x^15 + 7,
+    x^343 + 7*x^294 + 49*x^15 + 7,    
     x^343 + 7*x^294 + 49*x^23 + 7,
-    x^343 + 7*x^294 + 49*x^31 + 7,
+    x^343 + 7*x^294 + 49*x^31 + 7, done
     x^343 + 7*x^294 + 49*x^47 + 7,
     x^343 + 7*x^294 + 49*x^71 + 7,
     x^343 + 7*x^294 + 49*x^79 + 7,
@@ -295,7 +295,7 @@ Relations
 
 
 
-> f:=x^343 + 7*x^294 + 49*x^23 + 7;
+> f:=x^343 + 7*x^294 + 49*x^23 + 7;  "try with small precision";
 > pReduction(f);
 Totally ramified extension defined by the polynomial x^2 + 32398390000782204607816050975131213968928*$.1^5 -
     294056019838432875530499105334144977288431*$.1^4 - 352842501989018300815515567668678410950822*$.1^3 +
@@ -378,7 +378,7 @@ Relations
 
 
 
-> g:=y^343 + 7*y^294 + 49*y^47 + 7;
+> g:=y^343 + 7*y^294 + 49*y^47 + 7;  "try with small precision";
 > FlatRamificationPolygon(g);
 [
     <1, x^48 + 5>,
