@@ -772,6 +772,48 @@ Relations
 > 
 
 
+> K:= pAdicField(7,55);
+> x^3-2 div x-2;
+$.1^3 - 2 + O(7^50)
+> x:= PolynomialRing(K).1;
+> f:=x^343 + 7*x^294 + 49*x^263 + 7;
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(7^6)
+Univariate Polynomial Ring in z over GF(7^6)
+Univariate Polynomial Ring in z over GF(7^6)
+Computation time of factorisation of f
+Time: 129.760
+Computation time of lfc
+Norm equation... Time: 30.630
+GAction... Univariate Polynomial Ring in z over GF(7^84)
+Time: 92.200
+Time: 370.900
+Solve Frobenius equations... Time: 313.350
+Time: 919.570
+Time: 39264.070
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 1147.630
+Time: 312.540
+Time: 42890.490
+> I;                                                                                                                                                                                                    
+6
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
