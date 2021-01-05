@@ -725,20 +725,19 @@ Univariate Polynomial Ring in z over GF(7^6)
 Univariate Polynomial Ring in z over GF(7^6)
 Univariate Polynomial Ring in z over GF(7^6)
 Computation time of factorisation of f
-Time: 253.150
+Time: 196.860
 Computation time of lfc
-Norm equation... Time: 71.080
+Norm equation... Time: 38.380
 GAction... Univariate Polynomial Ring in z over GF(7^84)
-Time: 192.560
-Time: 462.000
-Solve Frobenius equations... Time: 416.350
-Time: 1302.000
-Time: 24122.310
-Computation time of norm group and its intersection of all NormGroup of
-factorisation's extension
-Time: 1444.790
-Time: 359.620
-Time: 29073.340
+Time: 113.480
+Time: 416.450
+Solve Frobenius equations... Time: 386.840
+Time: 1101.910
+Time: 159.570
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 1283.150
+Time: 274.800
+Time: 4465.530
 > I;                                                                                                                                
 6
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
@@ -839,6 +838,7 @@ Relations
     G.2 * G.3^-1 * G.2 * G.3 = Id(G)
     G.1^-7 = Id(G)
 > 
+
 
 
 > K:= pAdicField(7,55);
