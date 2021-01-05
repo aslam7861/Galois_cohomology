@@ -1125,21 +1125,21 @@ Univariate Polynomial Ring in z over GF(17^2)
 Univariate Polynomial Ring in z over GF(17^2)
 Univariate Polynomial Ring in z over GF(17^2)
 Computation time of factorisation of f
-Time: 23.980
+Time: 14.130
 Computation time of lfc
-Norm equation... Time: 32.140
+Norm equation... Time: 20.920
 GAction... Univariate Polynomial Ring in z over GF(17^68)
-Time: 3154.130
-Time: 334.880
-Solve Frobenius equations... Time: 1153.820
-Time: 4788.650
-Time: 42.110
+Time: 1881.420
+Time: 345.140
+Solve Frobenius equations... Time: 1272.210
+Time: 3634.760
+Time: 24.240
 Computation time of norm group and its intersection of all NormGroup of factorisation's
 extension
-Time: 13.920
-Time: 37.830
-Time: 5267.600
-> I;                                                                                                                                                                                                    
+Time: 14.400
+Time: 40.380
+Time: 3999.720
+> I;                                                                                                                                                        
 2
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
 > #Group(CM)*&*(CM`invar);  
@@ -2063,7 +2063,7 @@ Totally ramified extension defined by the polynomial x^4 - 116524013986793082666
     1162073438625991634419061*$.1^2 - 850514734574795169361022*$.1 - 1672583065083677690009878
  over Unramified extension defined by the polynomial x^4 + 7*x^2 + 10*x + 3
  over 17-adic field mod 17^20
-> time G,I,C,set := TwoSegmentsGaloisGroup(f);
+> time G,I,C,set := TwoSegmentsGaloisGroup(f);   // Compuate again to record the time
 > #Group(CM);
 68
 > &*CM`invar;
