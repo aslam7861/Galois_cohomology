@@ -223,6 +223,70 @@ amificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and
     y^343 + 7*y^168 + 49*y^47 + 7,
     y^343 + 7*y^168 + 49*y^50 + 7
 
+/////////////////////////////////////////
+
+
+
+
+
+> K:= pAdicField(7,50);
+> x:=PolynomialRing(K).1;
+> f:=x^343 + 7*x^294 + 49*x^15 + 7;
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(7^4)
+Univariate Polynomial Ring in z over GF(7^4)
+Univariate Polynomial Ring in z over GF(7^4)
+Computation time of factorisation of f
+Time: 142.310
+Computation time of lfc
+Norm equation... Time: 55.860
+GAction... Univariate Polynomial Ring in z over GF(7^84)
+Time: 629.490
+Time: 830.440
+Solve Frobenius equations... Time: 1106.460
+Time: 2851.900
+Time: 62.100
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 1375.110
+Time: 104.570
+Time: 5553.510
+> I;
+4
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
+> #Group(CM)*&*(CM`invar);
+201684
+> G;                                                                                                                                
+Finitely presented group G on 7 generators
+Relations
+    G.4^7 = Id(G)
+    G.5^7 = Id(G)
+    G.6^7 = Id(G)
+    G.7^7 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.6, G.7) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.7^-4 * G.6^-4 * G.5^-6 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.7^-5 * G.6^-4 * G.4^-6 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-4 * G.6^-3 * G.5^-3 * G.4^-3 = Id(G)
+    (G.1, G.7^-1) = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-2 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-2 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-2 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.7^-3 * G.6^-6 * G.5^-3 * G.4^-5 = Id(G)
+    G.3^-1 * G.5 * G.3 * G.7^-3 * G.6^-5 * G.5^-1 = Id(G)
+    G.3^-1 * G.6 * G.3 * G.6^-2 * G.5^-6 * G.4^-1 = Id(G)
+    G.3^-1 * G.7 * G.3 * G.7^-6 * G.6^-2 * G.5^-3 * G.4^-3 = Id(G)
+    G.2^3 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.1^-1 * G.3^-1 * G.1^-1 * G.3 = Id(G)
+    (G.2, G.3) = Id(G)
+    G.3^-2 * G.2^-1 * G.3^-2 = Id(G)
+    G.1^-7 = Id(G)
+> 
 
 /////////////////////////////////////////////////////////////////////////////////////
 > g:= x^343 + 7*x^294 + 49*x^31 + 7;
@@ -236,26 +300,25 @@ Univariate Polynomial Ring in z over GF(7^2)
 Univariate Polynomial Ring in z over GF(7^2)
 Univariate Polynomial Ring in z over GF(7^2)
 Computation time of factorisation of f
-Time: 94.260
+Time: 90.670
 Computation time of lfc
-Norm equation... Time: 27.750
+Norm equation... Time: 26.840
 GAction... Univariate Polynomial Ring in z over GF(7^42)
-Time: 330.550
-Time: 65.510
-Solve Frobenius equations... Time: 239.360
-Time: 716.430
-Time: 22272.520
-Computation time of norm group and its intersection of all NormGroup of
-factorisation's extension
-Time: 222.000
-Time: 12.130
-Time: 24090.480
+Time: 323.020
+Time: 64.440
+Solve Frobenius equations... Time: 227.850
+Time: 691.620
+Time: 43.830
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 211.090
+Time: 9.240
+Time: 1754.870
 > I;
 2
-> gamma, CM, mU, mUS, pols, F, psi, norm_grp := Explode(set);
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);
 > #Group(CM)*&*(CM`invar);
 100842
-> #G;
+> #G;                                                                                                                                                 
 100842
 > G;
 Finitely presented group G on 7 generators
@@ -287,6 +350,7 @@ Relations
     G.3^-1 * G.2^-1 * G.3^-1 = Id(G)
     G.1^-1 * G.3^-1 * G.1^-1 * G.3 = Id(G)
     G.1^-7 = Id(G)
+> 
 
 
 
@@ -303,24 +367,24 @@ Relations
 > pReduction(f);
 Unramified extension defined by the polynomial x^4 + 5*x^2 + 4*x + 3
  over 7-adic field mod 7^55
-> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+> time G,I,set :=TwoSegmentsGaloisGroup_fast(f);
 Univariate Polynomial Ring in z over GF(7^4)
 Univariate Polynomial Ring in z over GF(7^4)
 Univariate Polynomial Ring in z over GF(7^4)
 Computation time of factorisation of f
-Time: 30.680
+Time: 18.200
 Computation time of lfc
-Norm equation... Time: 2.780
+Norm equation... Time: 2.660
 GAction... Univariate Polynomial Ring in z over GF(7^28)
-Time: 2.110
-Time: 3.380
-Solve Frobenius equations... Time: 7.500
-Time: 21.870
-Time: 26.620
+Time: 1.920
+Time: 3.250
+Solve Frobenius equations... Time: 7.220
+Time: 20.940
+Time: 13.260
 Computation time of norm group and its intersection of all NormGroup of factorisation's extension
-Time: 25.890
-Time: 1.940
-Time: 955.240
+Time: 14.730
+Time: 1.850
+Time: 733.360
 > I;                   
 4
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
