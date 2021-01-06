@@ -1,3 +1,5 @@
+[<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+
 B :=[<l,i,j,k>: i in [293..3420], j in [1..6],k in [6..50],l in [1..6]| 
 #FlatRamificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and  
 FlatRamificationPolygon(x^343+7^l*x^i+7^j*x^k+7)[1,1] lt 4]; 
