@@ -968,39 +968,33 @@ Relations
 
 
 
+
 > f:= x^289 + 17*x^272 + 289*x^151 + 68;
-> FlatRamificationPolygon(f);
-[ 
-    <2, 13*x^8 + 2>,
-    <1, x^272 + 13>
-] 
 > pReduction(f);
-Totally ramified extension defined by the polynomial x^2 - 1688176898553576289167603*$.1^3 - 515985812651796015225325*$.1^2 + 8720633
-47802049746815308*$.1 + 561598133696111750465502
+Totally ramified extension defined by the polynomial x^2 - 1688176898553576289167603*$.1^3 - 515985812651796015225325*$.1^2
+    + 872063347802049746815308*$.1 + 561598133696111750465502
  over Unramified extension defined by the polynomial x^4 + 7*x^2 + 10*x + 3
  over 17-adic field mod 17^20
-> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
-[ <-21/2, -1> ]
 > time G,I,set :=TwoSegmentsGaloisGroup_fast(f);
 Univariate Polynomial Ring in z over GF(17^4)
 Univariate Polynomial Ring in z over GF(17^4)
 Univariate Polynomial Ring in z over GF(17^4)
 Computation time of factorisation of f
-Time: 58.890
+Time: 40.350
 Computation time of lfc
-Norm equation... Time: 65.640
+Norm equation... Time: 46.770
 GAction... Univariate Polynomial Ring in z over GF(17^136)
-Time: 4658.350
-Time: 5574.230
-Solve Frobenius equations... Time: 8661.860
-Time: 19711.470
-Time: 7272.020
+Time: 3857.800
+Time: 4513.000
+Solve Frobenius equations... Time: 5860.710
+Time: 14863.290
+Time: 343.880
 Computation time of norm group and its intersection of all NormGroup of factorisation's extension
-Time: 1339.160
-Time: 2347.510
-Time: 32738.440
-> I;
-4 
+Time: 1178.020
+Time: 1795.650
+Time: 19734.280
+> I;                                                                                                                                                                       
+4
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
 > #Group(CM)*&*(CM`invar);
 274175170461064
@@ -1098,6 +1092,8 @@ Relations
     G.3^-2 * G.2 * G.3^-2 = Id(G)
     G.1^-1 * G.3^-2 * G.1^-1 * G.3^2 = Id(G)
     G.1^-4 * G.3 * G.1^-1 * G.3^-1 = Id(G)
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+[ <-21/2, -1> ]
 > 
 
 
