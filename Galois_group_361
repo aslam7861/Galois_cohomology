@@ -547,7 +547,20 @@ Totally ramified extension defined by the polynomial x^3 + 228
 Univariate Polynomial Ring in z over GF(19)
 Univariate Polynomial Ring in z over GF(19)
 Univariate Polynomial Ring in z over GF(19)
-Time: 2577.360
+Computation time of factorisation of f
+Time: 15.510
+Computation time of lfc
+Norm equation... Time: 42.450
+GAction... Time: 0.060
+Time: 25.740
+Solve Frobenius equations... Time: 1717.890
+Time: 1827.300
+Time: 61.210
+Computation time of norm group and its intersection of all NormGroup of factorisation's
+extension
+Time: 11.290
+Time: 33.560
+Time: 2566.120
 > I;
 19
 >  gamma, CM, mU, mUS, pols, F, psi, norm_grp:= Explode(set);
