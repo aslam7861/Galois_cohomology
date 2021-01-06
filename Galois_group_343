@@ -231,31 +231,37 @@ amificationPolygon(x^343+7^l*x^i+7^j*x^k+7) eq 2 and
 
 > K:= pAdicField(7,50);
 > x:=PolynomialRing(K).1;
-> f:=x^343 + 7*x^294 + 49*x^15 + 7;
-> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+> g:=x^343 + 7*x^294 + 49*x^15 + 7;
+> pReduction(g);
+Totally ramified extension defined by the polynomial x^3 - 347836485179356134015601629406246111260022*$.1^3 -
+    871706836436773237558540550802550233209819*$.1^2 + 189020611239709587182806789383915922370143*$.1 -
+    497901010338481670627681238519393492141970
+ over Unramified extension defined by the polynomial x^4 + 5*x^2 + 4*x + 3
+ over 7-adic field mod 7^50
+> time G,I,set := TwoSegmentsGaloisGroup_fast(g);
 Univariate Polynomial Ring in z over GF(7^4)
 Univariate Polynomial Ring in z over GF(7^4)
 Univariate Polynomial Ring in z over GF(7^4)
 Computation time of factorisation of f
-Time: 142.310
+Time: 145.440
 Computation time of lfc
-Norm equation... Time: 55.860
+Norm equation... Time: 54.930
 GAction... Univariate Polynomial Ring in z over GF(7^84)
-Time: 629.490
-Time: 830.440
-Solve Frobenius equations... Time: 1106.460
-Time: 2851.900
-Time: 62.100
+Time: 576.670
+Time: 735.510
+Solve Frobenius equations... Time: 1019.020
+Time: 2596.890
+Time: 61.870
 Computation time of norm group and its intersection of all NormGroup of factorisation's extension
-Time: 1375.110
-Time: 104.570
-Time: 5553.510
-> I;
+Time: 1360.560
+Time: 104.630
+Time: 5302.130
+> I;                                                                                                           
 4
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
 > #Group(CM)*&*(CM`invar);
 201684
-> G;                                                                                                                                
+> G;
 Finitely presented group G on 7 generators
 Relations
     G.4^7 = Id(G)
@@ -287,6 +293,7 @@ Relations
     G.3^-2 * G.2^-1 * G.3^-2 = Id(G)
     G.1^-7 = Id(G)
 > 
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 > g:= x^343 + 7*x^294 + 49*x^31 + 7;
