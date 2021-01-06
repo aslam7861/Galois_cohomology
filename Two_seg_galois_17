@@ -1,4 +1,5 @@
 
+[<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
 Polynomial with slopes <h_1/e_1,h_2/e_2> where e_i le 2.
 [
     x^289 + 17*x^272 + 289*x^7 + 17,    2
