@@ -2228,10 +2228,9 @@ Relations
 
 
 
-
+> K:= pAdicField(17,20);
+> x:= PolynomialRing(K).1;
 > f:= x^289 + 17*x^272 + 289*x^55 + 272;
-> ;
-> ;
 > pReduction(f);
 Totally ramified extension defined by the polynomial x^2 + 487252887639498581954403*$.1 + 1303184332729208789209688
  over Unramified extension defined by the polynomial x^2 + 16*x + 3
@@ -2241,23 +2240,23 @@ Univariate Polynomial Ring in z over GF(17^2)
 Univariate Polynomial Ring in z over GF(17^2)
 Univariate Polynomial Ring in z over GF(17^2)
 Computation time of factorisation of f
-Time: 31.800
+Time: 18.570
 Computation time of lfc
-Norm equation... Time: 39.050
+Norm equation... Time: 19.220
 GAction... Univariate Polynomial Ring in z over GF(17^68)
-Time: 2463.400
-Time: 424.550
-Solve Frobenius equations... Time: 1930.410
-Time: 5032.860
-Time: 417192.610              ////////////////////////////////////////////////////////////////////////////////////////////
+Time: 1856.900
+Time: 349.120
+Solve Frobenius equations... Time: 1229.870
+Time: 3577.750
+Time: 43.940
 Computation time of norm group and its intersection of all NormGroup of factorisation's extension
-Time: 105.650
-Time: 331.300
-Time: 423166.170
-> I;                                                                                                                                                                 
+Time: 82.280
+Time: 97.590
+Time: 4132.400
+> I;                                                                                                                      
 2
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
-> #Group(CM)*&*(CM`invar);
+> #Group(CM)*&*(CM`invar);  
 96550276
 > G;
 Finitely presented group G on 8 generators
@@ -2299,4 +2298,3 @@ Relations
     (G.1, G.3) = Id(G)
     G.1^-17 = Id(G)
 > 
-
