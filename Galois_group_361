@@ -1,3 +1,13 @@
+AttachSpec("/users/cip/mint/aslam/Debeerst/magma/spec");
+ AttachSpec("/users/cip/mint/aslam/galois_local_code/spec_galois");
+ Attach("/users/cip/mint/aslam/Debeerst/magma/LFCRamify.m");
+ Attach("/users/cip/mint/aslam/galois_local_code/OMSplittingField.m");
+ Attach("/users/cip/mint/aslam/Debeerst/magma/LFCRamify.m");
+ Attach("/users/cip/mint/aslam/galois_local_code/Factor.m");
+ SetVerbose("Segment",1);
+
+
+
 
 polynomials with tame ramification index 1 
 f:=x^361 + 19*x^342 + 361*x^17+19;
