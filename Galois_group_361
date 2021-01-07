@@ -1096,28 +1096,27 @@ Totally ramified extension defined by the polynomial x^3 - 526589936556602093261
     18649070569201292550816220374909
  over Unramified extension defined by the polynomial x^2 + 18*x + 2
  over 19-adic field mod 19^25
- > time G,I,set := TwoSegmentsGaloisGroup_fast(f);
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);
 Univariate Polynomial Ring in z over GF(19^2)
 Univariate Polynomial Ring in z over GF(19^2)
 Univariate Polynomial Ring in z over GF(19^2)
 Computation time of factorisation of f
-Time: 77.020
+Time: 75.400
 Computation time of lfc
-Norm equation... Time: 222.790
+Norm equation... Time: 216.970
 GAction... Univariate Polynomial Ring in z over GF(19^114)
-Time: 32250.580
-Time: 5103.820
-Solve Frobenius equations... Time: 24221.980
-Time: 62825.210
-Time: 24856.320
-Computation time of norm group and its intersection of all NormGroup of
-factorisation's extension
-Time: 376.770
-Time: 704.570
-Time: 93380.680
-> I;    
-2
+Time: 31949.550
+Time: 5058.850
+Solve Frobenius equations... Time: 23791.900
+Time: 62028.080
+Time: 6578.710
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 370.830
+Time: 661.420
+Time: 73888.800
 > gamma,CM,mU,mUS,E,F,psi := Explode(set);
+> #E;
+19
 > #Group(CM)*&*CM`invar;
 252317900773542354
 > G;                                                                                                                                                                  
