@@ -1,3 +1,8 @@
+[<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+
+
+
+
 AttachSpec("/users/cip/mint/aslam/Debeerst/magma/spec");
  AttachSpec("/users/cip/mint/aslam/galois_local_code/spec_galois");
  Attach("/users/cip/mint/aslam/Debeerst/magma/LFCRamify.m");
