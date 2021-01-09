@@ -972,6 +972,51 @@ Relations
     G.2 * G.1^5 * G.2^-2 * G.1^-1 * G.2 = Id(G)
     G.2^-9 = Id(G)
 
+> f:=x^361 + 19*x^342 + 361*x^35 + 19*2;
+> pReduction(f);
+Unramified extension defined by the polynomial x^9 + 11*x^3 + 14*x^2 + 16*x + 17
+ over 19-adic field mod 19^25
+> time G,I,C,set :=TwoSegmentsGaloisGroup(f);  /////////////////////////////////////////////////////
+Univariate Polynomial Ring in z over GF(19^9)
+Univariate Polynomial Ring in z over GF(19^9)
+Univariate Polynomial Ring in z over GF(19^9)
+Computation time of factorisation of f
+Time: 37.890
+Computation time of lfc
+Norm equation... Time: 27.310
+GAction... Univariate Polynomial Ring in z over GF(19^171)
+Time: 702.970
+Time: 88.080
+Solve Frobenius equations... Time: 225.850
+Time: 1088.080
+Time: 67.230
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 255.730
+Time: 597.870
+Time: 3161.960
+> C;
+Permutation group C acting on a set of cardinality 9
+Order = 9 = 3^2
+    (1, 2, 3, 4, 5, 6, 7, 8, 9)
+> gamma,CM,mU,mUS,E,F,psi := Explode(set);                                                                                        
+> #Group(CM)*&*(CM`invar);
+130321
+> $1*9;
+1172889
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.2^19 = Id(G)
+    G.3^19 = Id(G)
+    G.4^19 = Id(G)
+    (G.2, G.3) = Id(G)
+    (G.2, G.4) = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.2 * G.1 * G.4^-12 * G.3^-18 * G.2^-4 = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-9 * G.3^-4 * G.2^-18 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.4^-14 * G.2^-4 = Id(G)
+    G.1^-19 = Id(G)
+> 
 
 
 
