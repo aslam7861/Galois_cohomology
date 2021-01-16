@@ -1,0 +1,11 @@
+> N:= NumberField(CyclotomicPolynomial(7));      
+> O:= MaximalOrder(N);
+> r,mr := RayClassGroup(13*O);
+> KP,mp := Completion(N,Factorisation(7*O)[1,1]);
+> kp := ChangePrecision(KP,30);
+> M,m := MultiplicativeGroup(kp);     
+
+r,mr := RayClassGroup(13*O);
+M,m := MultiplicativeGroup(kp);
+
+h :=  hom<M->r| x:-> (x@m@@mp)@@mr>;
