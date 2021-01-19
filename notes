@@ -11,6 +11,17 @@ H2 is cyclic by Cassels Proposition 4, page-136.
 
 
 
+//////////////////gfcUndecomposedcl///////
+Append(~lst, [* indML, psiIndML, diagL,  c2, projML *] );
+.....
+  u := TwoCocycle(CohL,gfcId);
+   for i in [1..#comp`primes] do
+       h:=hom<CartesianProduct(G,G)->L| x:->x@u@@f1CL@@comp`qCL@projJL[i]@lst[i,6,1]@@lst[i,5]@@lst[i,7]>;
+       Append(~maps,h);
+    end for;
+ Req:=[* maps,lst,inclJL, projJL,gammaC *];
+
+///////////////////////////
 
 
 
