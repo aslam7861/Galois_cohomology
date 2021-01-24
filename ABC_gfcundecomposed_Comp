@@ -1,0 +1,276 @@
+
+intrinsic gfcUndecomposedComp_check(L::FldNum, p0::RngIntElt : psiL := 0) -> ModCoho, Map, ModTupRngElt, Rec
+{ Computes the global fundamental class for a number field L
+  in which the prime p0 is undecomposed.
+  Optionally one can pass the Galois action on L as map G->Aut(L/Q).
+}
+
+   require #Decomposition(L,p0) eq 1 :
+            "Prime must be undecomposed in L!";
+
+    t := Cputime();
+
+    if psiL cmpeq 0 then
+        G,_, psiL := AutomorphismGroup(L);
+        psiL := map< Domain(psiL) -> Codomain(psiL) | x:-> psiL(x^(-1)) >;
+    else
+        G := Domain(psiL);
+    end if;
+
+    vprint GFC, 1: "compute primes";
+    IndentPush();
+    primes := {p0} join {x[1] : x in Factorization(Discriminant(RingOfIntegers(L)))};
+    subL := Subfields(L);
+    for sub in subL do
+        F := sub[1];
+        CG, m := ClassGroup(F: Bound := BachBound(F));
+        S := &cat([  [Ideal(x[1]) : x in Decomposition(F,p)]  : p in primes]);
+
+        CGmod, qCG := quo<CG | [s @@ m : s in S]>;
+        while #CGmod gt 1 do
+            q := Generator(CGmod.1 @@ qCG @m meet Integers());
+            S cat:= [Ideal(x[1]) : x in Decomposition(F,q)];
+            CGmod, qCG := quo<CG | [s @@ m : s in S]>;
+        end while;
+        primes := Setseq({Generator(s meet Integers()) : s in S});
+    end for;
+
+   //primes := Setseq({Generator(s meet Integers()) : s in S});
+   // take extra one prime
+  if #primes eq 1 then
+      Append(~primes, NextPrime(primes[#primes]));
+   end if;
+   S := &cat([  [Ideal(x[1]) : x in Decomposition(L,p)]  : p in primes]);
+    vprint GFC, 1: primes;
+    IndentPop();
+
+    OL := RingOfIntegers(L);
+    // lat := latticeGlob(L : psi := psiL);
+
+
+    vprint GFC, 1: "compute S-units and its G-action";
+    IndentPush();
+    // compute S-Units and G-action
+    vtime GFC, 2: US, mUS := SUnitGroup(S);
+
+    sigUS := SUnitAction(mUS, [psiL(sig) : sig in G],S);
+    GG := [sig : sig in G];
+     psiUS := map< G -> Aut(US) | sig :-> sigUS[Index(GG,sig)] >;
+   GammaSeq :=[x: x in G];
+
+    vprint GFC, 1: "Time for set S:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "construct JL";
+    IndentPush();
+    lst := [];
+    thetaAll := [];
+    // construct JL
+
+  for p in primes do
+        vprint GFC, 1: "prime:", p;
+        IndentPush();
+
+        PL := Factorization(p*OL)[1,1];
+        piL := UniformizingElement(PL);
+
+          vprint GFC, 2: "compute lattice";
+        t := Cputime();
+        if RamificationIndex(PL) eq 1 then
+            theta := OL!1;
+            m := 0;
+        else
+            theta, m := lattice(PL, piL, psiL);
+        end if;
+        Append(~thetaAll, OL!theta);
+        vprint GFC, 2: "Time:", Cputime(t);
+
+        vprint GFC, 2: "compute completion";
+        if m lt 100 then
+           LP, iotaL := Completion(L, PL : Precision :=100);
+        else
+           LP, iotaL := Completion(L, PL : Precision :=100);
+        end if;
+        GP := [g : g in G | &and([  psiL(g)(x) in PL   : x in Generators(PL)]) ];
+        GP := sub< G | GP>;
+        psiLP := map< GP -> Aut(LP) | g :-> iotaL^(-1) * psiL(g) * iotaL >;
+        vprint GFC, 2: "compute module";
+
+
+         LIST := [* LP, iotaL,psiLP *];
+        ML, psiML, qML := compute_LPmul_modX1(L, PL, psiL, LIST , theta, m);
+        //ML, psiML, qML := compute_LPmul_modX(L, PL, UniformizingElement(PL), psiL, iotaL, LP, psiLP, lat, m);
+        // induce module
+        vprint GFC, 2: "compute induced module";
+        indML, psiIndML, RL, kappaML, projML := inducedModule(ML, psiML, G);
+        diagL := map< US -> indML | x :->
+           &+([ x @ mUS @ psiL(RL[i]^(-1)) @ iotaL @ qML @ kappaML[i] : i in [1..#kappaML] ]) >;
+       vprint GFC, 2: "compute cocycle";
+       if p ne p0 then
+            // trivial cocycle for this
+            c2 := map< car<G, G> -> indML | x :-> Zero(indML) >;
+        else
+
+            // cocycle for p
+            // using our version of lfc
+            vtime GFC, 2: brGrp := AliLocalBrauerGroup(L, p : autMap := psiL, lfc);
+
+            c := TwoCocycle(brGrp`C, brGrp`lfc);
+            C := Group(brGrp`C);
+            // c := map< car<C,C> -> brGrp`M | x :-> c(x) @@ brGrp`f1 >;
+            // c2 := map< Domain(c) -> Codomain(c) | x :-> c(x[2]^(-1), x[1]^(-1)) >;
+            //testCocycle(c2, brGrp`actM );
+
+            c2 := map< car<C,C> -> indML | x :-> c(x) @@ brGrp`f1 @@ brGrp`qM @ iotaL @ qML @ kappaML[1] >;
+            // pre-compute images
+            ll := [x : x in Domain(c2)];
+            vtime GFC, 2: llImg := [c2(x) : x in ll];
+            c2 := map< Domain(c2) -> Codomain(c2) | x :-> llImg[Index(ll, x)] >;
+
+        end if;
+        Append(~lst, [* indML, psiIndML, diagL, c2 *]);
+        IndentPop();
+    end for;
+
+       vprint GFC, 1: "modules for infinite places";
+    //assert &and([ IsReal(inf) : inf in InfinitePlaces(L) ]);
+     Gv:=DecompositionGroup(InfinitePlaces(L)[1]);
+
+//s :=psiL(Gv.1);
+  sigma_act := psiUS(Gv.1);
+  U0,mU0,b,U0_gen,v_act := remark_sunit(L,S,mUS,sigma_act);
+    V:=[US.1];
+     for i in [1..Ngens(U0)] do
+          Append(~V,U0_gen[i]@@mU0);
+         end for;
+//     for i in [1..2*b] do
+  //       Append(~V,U0_gen[i]@@mU0);
+    //     end for;
+
+//eta;
+   W := free_abelian_group_check(US,b);
+     ww := [W.1 ,-W.1+W.2];
+      a:=Ngens(US)-1-2*b;
+     for i in [1..a-1] do
+         // Append(~ww, W.(2*i+1)+ W.(2*i+2));
+         Append(~ww, W.(2*i+1)+ W.(2*i+2));
+     end for;
+      c := 2+2*(a-1);
+     for i in [1..b] do
+           Append(~ww, W.(2*i+c-1));
+           Append(~ww, W.(2*i+c));
+          // Append(~ww, W.(2*i+c-1));
+       end for;
+   inc_W :=hom<US->W|ww>;
+ v := psi_isomorphism(S,mUS,V,sigma_act,b);
+//To make positivity of Z^(a-1) just multiply by -1 in the gens
+//But it is not mapped with mUS otherwise it changes the value
+ vv:=v[1..2];
+ a:=Ngens(US)-1-2*b;
+ for x in v[3..a+1] do
+ //if sentence down not needed
+   if Position(v,x) in [3..a+1] then
+     Append(~vv, make_positve(x,mUS));
+    else Append(~vv,x);
+   end if;
+ end for;
+ for x in v[a+2..Ngens(US)]  do
+  Append(~vv,x);
+  end for;
+assert #quo<US|v> eq 1;
+ HH :=hom<US->W|ww>;
+// act :=action_matrix(W,[HH(vv[1]), HH(vv[2])],a,b);
+ act :=action_matrix(W,[W.1, W.1+W.2],a,b);
+ psiww := map<W-> W| x:-> W!Eltseq(Matrix([Eltseq(x)])*act)>;
+psiM := map< sub<G | Id(G)> -> Aut(W) | sig :-> hom< W-> W |[W.i : i in[1..#Generators(W)]]> >;
+//psiM := map< sub<G | Gv> -> Aut(W) | sig :-> hom< W-> W |[W.i : i in[1..#Generators(W)]]> >;
+ACT :=[psiww*psiww, psiww];
+indML, psiIndML, RL, kappaML, projML := inducedModule(W, psiM, G);
+//diagL := map< US -> indML | x :-> &+([ (US!(x @ action_inf_place)) @HH @ACT[j]   @ kappaML[i] :j in [1..#ACT], i in [1..#kappaML] ]) >;
+diagL := map< US -> indML | x :-> &+([ x   @ psiUS(RL[i]^(-1)) @ inc_W @ ACT[j]    @ kappaML[i] :j in [1..#ACT], i in [1..#kappaML] ]) >;
+//diagL := map< US -> indML | x :-> &+([ x  @ psiUS(RL[i]^(-1)) @HH @ psiww @ kappaML[i] : i in [1..#kappaML] ]) >;
+diagL1 := map< W -> indML | x :-> &+([ x @ ACT[j]    @ kappaML[i] :j in [1..#ACT], i in [1..#kappaML] ]) >;
+// "psiwwleaving";
+// "for all g in G, g:=RL[i]*b_Gv so g(indML.i)= b_Gv(Rl[i](gamma))  and RL[i](gamma) is going to interchange the coordinates";
+ c2 := map< car<G, G> -> indML | x :-> Zero(indML) >;
+    Append(~lst, [* indML, psiIndML, diagL,  c2 *] );
+    IndentPop();
+    vprint GFC, 1: "Time:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "compute idele group of L";
+    IndentPush();
+    JL, inclJL, projJL := DirectSum([o[1] : o in lst]);
+    // precompute projections
+    vtime GFC, 2: projJL2 := [ hom< Domain(p) -> Codomain(p) | [ p(JL.i) : i in [1..#Generators(JL)]] >  : p in projJL ];
+
+    vtime GFC, 2: actJL := [ hom< JL -> JL |
+        [&+( [ JL.j @ projJL[k] @ lst[k,2](sig) @ inclJL[k] : k in [1..#lst]]) : j in [1..#Generators(JL)]]
+        > :  sig in GG];
+    psiJL := map< G -> Aut(JL) | sig :-> actJL[ Index(GG, sig) ] >;
+
+
+     gamma := map< car<G, G> -> JL | x :-> &+([ x @ lst[i,4] @ inclJL[i]  : i in [1..#lst] ]) >;
+
+
+         IndentPop();
+    vprint GFC, 1: "Time:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "compute idele class group of L";
+    IndentPush();
+    // diagonal embedding of S-units
+    embJL := map< US -> JL | x :-> &+([ x @ lst[i,3] @ inclJL[i] : i in [1..#lst]] )  >;
+    // factor out S-Units diagonally
+    vtime GFC, 2: B := [g @ embJL : g in v];// alternative of "v";
+    Gen :=[W.i: i in [1..Ngens(W)]];
+
+  for x in Gen[Ngens(US)+1..#Gen] do
+    //for x in vv do
+        Append(~B,  x@ diagL1@inclJL[#lst]);
+   end for;
+    //vtime GFC, 2: B := [g @ embJL : g in Generators(US)];
+    CL, qCL := quo<JL | B>;
+    // time homBasis := [ [CL.i @@ qCL @ psiJL(sig) @ qCL : i in [1..#Generators(CL)]] : sig in GG];
+    // psiCL := map< G -> Aut(CL) | sig :->
+    //     hom< CL -> CL | homBasis[Index(GG, sig)] >
+    // >;
+    psiCL := map< G -> Aut(CL) | sig :-> Inverse(qCL)*psiJL(sig)*qCL >;
+    IndentPop();
+
+    vprint GFC, 1: "Time:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "compute cohomology of L";
+    IndentPush();
+
+         psiCLr := map< G -> Aut(CL) | g :-> psiCL(g^(-1)) >;
+    vtime GFC, 2: CohL := CohomologyModule(G, CL, psiCLr);
+    // second cohom. group
+    vtime GFC, 2: H2L := CohomologyGroup(CohL,2);
+    f1CL := map< CL -> RSpace(Integers(),Dimension(CohL)) |
+        x:-> Eltseq(x),
+        y:-> CL!Eltseq(y)
+    >;
+    IndentPop();
+    vprint GFC, 1: "Time:", Cputime(t);
+    t := Cputime();
+    vprint GFC, 1: "Identify fundamental class:", Cputime(t);
+    gammaC := map< car<G, G> -> CL | x :-> x @ gamma @ qCL >;
+    gfcId := IdentifyTwoCocycle(CohL, func< x | gammaC(x[1],x[2]) @ f1CL >);
+
+    inclUSJL := map< US -> JL | x :-> x @ diagL @ inclJL[#inclJL] >;
+    list :=[*v, sigma_act, W, inc_W  *];
+    comp := rec<GFCcomp |
+        CohL := CohL, f1CL := f1CL, gfcId := gfcId,
+        CL := CL, psiCL := psiCL, qCL := qCL,
+        primes := primes, US := US, mUS := mUS,
+        kappaInf := kappaML, RepInf := RL, inclJL := inclJL,
+        inclUSJL := inclUSJL,
+        theta := thetaAll >;
+
+    return CohL, f1CL, gfcId,list;
+end intrinsic;
+
+
+    vprint GFC, 1: "Time for set S:", Cputime(t);
