@@ -180,7 +180,7 @@ intrinsic gfcUndecomposedComp_check(L::FldNum, p0::RngIntElt : psiL := 0) -> Mod
 assert #quo<US|v> eq 1;
  HH :=hom<US->W|ww>;
 // act :=action_matrix(W,[HH(vv[1]), HH(vv[2])],a,b);
- act :=action_matrix(W,[W.1, W.1+W.2],a,b);
+ act :=action_matrix(W,[W.1, W.1-W.2],a,b);
  psiww := map<W-> W| x:-> W!Eltseq(Matrix([Eltseq(x)])*act)>;
 psiM := map< sub<G | Id(G)> -> Aut(W) | sig :-> hom< W-> W |[W.i : i in[1..#Generators(W)]]> >;
 //psiM := map< sub<G | Gv> -> Aut(W) | sig :-> hom< W-> W |[W.i : i in[1..#Generators(W)]]> >;
