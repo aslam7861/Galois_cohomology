@@ -273,3 +273,399 @@ diagL1 := map< W -> indML | x :-> &+([ x @ ACT[j]    @ kappaML[i] :j in [1..#ACT
     return CohL, f1CL, gfcId,list;
 end intrinsic;
 
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////
+//////////////////////////////////////
+
+intrinsic gfcCompositumComp(L::FldNum, L1::FldNum) -> ModCoho, Map, ModTupRngElt, Rec
+{ Given an arbitrary Galois extension L/Q and a cyclic extension L1/Q
+  of the same degree, this method computes then global fundamental
+  class of L/Q.
+}
+
+   // require IsCyclic(L1) and Degree(L) eq Degree(L1) :
+     //       "Second number field must be cyclic and of the same degree!";
+require IsCyclic(L1):"Second number field must be cyclic";
+    t := Cputime();
+
+    vprint GFC, 1: "compute composite field";
+    IndentPush();
+    vtime GFC, 1: N := OptimizedRepresentation(Compositum(L,L1));
+   // assert IsTotallyReal(N);
+    ON := RingOfIntegers(N);
+
+    Gamma, _ ,psiN := AutomorphismGroup(N);
+    psiN := map< Domain(psiN) -> Codomain(psiN) | x :-> psiN(x^(-1)) >;
+    IndentPop();
+
+    OL := RingOfIntegers(L);
+
+   vprint GFC, 1: "compute primes";
+    IndentPush();
+
+    primes:=[];
+primes := [f[1] : f in Factorization(Discriminant(ON))];
+/*  seq := [p :   p in primes | #Decomposition(L1, p) eq 1];
+    if #seq eq 0 then
+    p0:=findUndecomposedPrime(L1);
+    primes:= Sort([p0] cat primes);
+    else p0:=Sort(seq)[1];
+    end if;*/
+   //  prime:=trivialSclassless(L,L1,N);
+   prime:=trivialSClassNumberPrimes(N);
+   primes:=&cat[prime,primes];
+    set:={x: x in primes};
+    primes:=[x: x in set];
+     seq := [p :   p in primes | #Decomposition(L1, p) eq 1];
+if #seq eq 0 then
+    p0:=findUndecomposedPrime(L1);
+    primes:= Sort([p0] cat primes);
+    else p0:=Sort(seq)[1];
+    end if;
+S := &cat([  [Ideal(x[1]) : x in Decomposition(N,p)]  : p in primes]);
+    vprint GFC, 1: primes;
+    IndentPop();
+
+    vprint GFC, 1: "compute S-units and its G-action";
+    IndentPush();
+    // compute S-Units and G-action
+    vtime GFC, 1: US, mUS := SUnitGroup(S);
+    GammaSeq := [sig : sig in Gamma];
+    vtime GFC, 1: sigUS := SUnitAction(mUS, [psiN(sig) : sig in GammaSeq],S);
+    psiUS := map< Gamma -> Aut(US) | sig :-> sigUS[Index(GammaSeq,sig)] >;
+    // S-units for L
+    H := FixedGroup(N,L);
+    K := [ Kernel(Transpose(HorizontalJoin(
+        Transpose(Matrix([  Eltseq(US.i @ psiUS(h) - US.i)  :  i in [1..#Generators(US)]])), D)))
+        : h in H ]
+        where D := DiagonalMatrix([Order(US.i) :  i in [1..#Generators(US)] ]);
+    USL := &meet([sub<US| [US!Eltseq(b)[1..#Generators(US)] :  b in Basis(k)]> : k in K]);
+
+ assert &and([ g @ mUS in L : g in Generators(USL)]);
+    IndentPop();
+
+    vprint GFC, 1: "Time for set S:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "construct JN";
+    IndentPush();
+    lst := [];
+    thetaAll := [];
+
+    for p in primes do
+        vprint GFC, 1: "prime:", p;
+        IndentPush();
+        PN := Factorization(p*ON)[1,1];
+        piN := UniformizingElement(PN);
+
+        vprint GFC, 2: "compute lattice";
+        t := Cputime();
+        if RamificationIndex(PN) eq 1 then
+            theta := ON!1;
+            m := 0;
+        else
+            theta, m := lattice(PN, piN, psiN);
+            for i in [1..2] do
+                theta1, m1 := lattice(PN, piN, psiN);
+                if m1 lt m then
+                    theta := theta1;
+                    m := m1;
+                end if;
+            end for;
+        end if;
+        Append(~thetaAll, ON!theta);
+        vprint GFC, 2: "Time:", Cputime(t);
+ vprint GFC, 2: "compute completion, prec =", m+10;
+    
+     //vtime GFC, 2: NP, iotaN, psiNP := completion_with_precision(N,PN,psiN, m+10);
+      
+     NP, iotaN := Completion(N, PN : Precision := Max(100,m*2));
+        GammaP := [g : g in Gamma | &and([  psiN(g)(x) in PN   : x in Generators(PN)]) ];
+        GammaP := sub< Gamma | GammaP>;
+        psiNP := map< GammaP -> Aut(NP) | g :-> iotaN^(-1) * psiN(g) * iotaN >;
+
+        LIST:=[*NP,iotaN,psiNP*];
+       // GammaP := Domain(psiNP);
+        vprint GFC, 2: "compute module";
+        vtime GFC, 2: MN, psiMN, qMN := compute_LPmul_modX1(N, PN, psiN,LIST, theta, m);
+        // induce module
+        vprint GFC, 2: "compute induced module";
+        H := FixedGroup(N,L);
+        //R := [Gamma!x : x in r] where r := leftCosetRepresentatives(H, H meet GammaP);
+        indMN, psiIndMN, RN, kappaMN, projMN := inducedModule(MN, psiMN, Gamma);// : RepSys := R);
+        diagN := map< N -> indMN | x :->
+            &+([ x @ psiN(RN[i]^(-1)) @ iotaN @ qMN @ kappaMN[i] : i in [1..#kappaMN] ]) >;
+
+ H := FixedGroup(N,L);
+        K := [ Kernel(Transpose(HorizontalJoin(
+            Transpose(Matrix([  Eltseq(indMN.i @ psiIndMN(h) - indMN.i)  :  i in [1..#Generators(indMN)]])), D)))
+        : h in H ]
+        where D := DiagonalMatrix([Order(indMN.i) :  i in [1..#Generators(indMN)] ]);
+        indML := &meet([sub<indMN | [indMN!Eltseq(b)[1..#Generators(indMN)] :  b in Basis(k)]> : k in K]);
+
+        assert (N!L.1) @ diagN in indML;
+ if p ne p0 then
+            // trivial cocycle for this
+            c2 := map< car<Gamma, Gamma> -> indMN | x :-> Zero(indMN) >;
+        else
+            vprint GFC, 2: "compute cocycle, prec =", m;
+ H := FixedGroup(N,L1);
+            C, qC := quo< Gamma | H>;
+ psiL1 := map< C -> Aut(L1) | g :->
+                hom< L1 -> L1 | L1.1 @ Coercion(L1,N) @ psiN(g @@ qC) @ Coercion(N,L1) > >;
+
+// compute ML1
+K := [ Kernel(Transpose(HorizontalJoin(
+                Transpose(Matrix([  Eltseq(indMN.i @ psiIndMN(h) - indMN.i)  :  i in [1..#Generators(indMN)]])), D)))
+                : h in H ]
+                where D := DiagonalMatrix([Order(indMN.i) :  i in [1..#Generators(indMN)] ]);
+
+ indML1 := &meet([sub<indMN | [indMN!Eltseq(b)[1..#Generators(indMN)] :  b in Basis(k)]> : k in K]);
+            psiIndML1 := map< C -> Aut(indML1) |
+                sig :-> Coercion(indML1, indMN)*psiIndMN(sig @@ qC)*Coercion(indMN,indML1) >;
+ // compute completion of L1
+            PL1 := Factorization(p*RingOfIntegers(L1))[1,1];
+            //print "completion with sufficient precicion for computations up to precision ", m+10;
+            vprint GFC, 2: "compute completion, prec =", m+10;
+           
+	  // L1P, iotaL1, psiL1P := completion_with_precision(L1,PL1,psiL1, m+10);
+     L1P, iotaL1 := Completion(L1, PL1 : Precision := 200);
+     psiL1P := map< C -> Aut(L1P) | g :-> iotaL1^(-1) * psiL1(g) * iotaL1 >;
+
+
+c := CLocalFundamentalClassSerre(L1P, pAdicField(L1P), m+5 : psi := psiL1P);
+          c2 := map< car<Gamma,Gamma> -> indMN | x :-> c(x[1]@qC, x[2]@qC) @@ iotaL1 @ Coercion(L1,N) @ diagN>;
+            vprint GFC, 2: "test cocycle";
+            vtime GFC, 2: assert testCocycleGenerators(c2, psiIndMN );
+            c2 := map< Domain(c2) -> Codomain(c2) | x:-> c2(x[2]^(-1), x[1]^(-1)) >;
+ end if;
+ diagN := mUS*diagN;
+        Append(~lst, [* indML, indMN, psiIndMN, diagN, c2 *]);
+        IndentPop();
+    end for;
+
+
+ // infinite places
+    vprint GFC, 1: "modules for infinite places";
+     Gv:=DecompositionGroup(InfinitePlaces(N)[1]);
+    // s :=psiN(Gv.1);
+     sigma_act := psiUS(Gv.1);
+      sig_g :=hom<US->US| [sigma_act(US.i)-US.i: i in [1..Ngens(US)]]>;
+  
+
+    U0,mU0,b,U0_gen,v_act := remark_sunit(N,S,mUS,sigma_act);
+     //New generators for US
+      V:=[US.1];
+     for i in [1..Ngens(US)-1] do
+          Append(~V,U0_gen[i]@@mU0);
+     end for;
+
+    vv:= psi_isomorphism(S,mUS,V,sigma_act,b); 
+    // for i in [1..2*b] do
+      //   Append(~V,U0_gen[i]@@mU0);
+    // end for;
+
+   // eta := (US.1- (sigma_act(V[2])-V[2]))@@sig_g;
+
+
+     W := free_abelian_group_check(US,b);
+     ww := [-W.1 ,W.1+W.2];
+      a:=Ngens(US)-1-2*b;
+ for i in [1..a-1] do
+          Append(~ww, W.(2*i+2)+ W.(2*i+1));
+    //      Append(~ww, W.(2*i+1));
+      end for;
+  c := 2+2*(a-1);
+
+       for i in [1..b] do
+           Append(~ww, W.(2*i+c-1));
+           Append(~ww, W.(2*i+c));
+          // Append(~ww, W.(2*i+c-1));
+       end for;
+
+/*
+
+     for i in [1..a-1] do 
+       Append(~ww, W.(i+2)+W.(i+3));
+      end for;
+      for j in [1..b] do
+      Append(~ww, W.(2*(j-1)+2+2*(a-1)));
+      Append(~ww, W.(2*(j-1)+3+2*(a-1)));
+      end for;*/
+  
+     HH :=hom<US->W|ww>;
+ /*    V:=[US.1];
+     for i in [1..Ngens(US)-2*b-1] do
+          Append(~V,U0_gen[2*b+i]@@mU0);
+     end for;
+     for i in [1..2*b] do 
+         Append(~V,U0_gen[i]@@mU0);
+     end for;	 */
+     // sig_g :=hom<US->US| [sigma_act(US.i)-US.i: i in [1..Ngens(US)]]>;
+    // eta := (US.1- (sigma_act(V[2])-V[2]))@@sig_g;
+  //   sig_g :=hom<US->US| [sigma_act(US.i)-US.i: i in [1..Ngens(US)]]>;
+     //check here the map HH needed or not
+    // act :=action_matrix(W,[HH(V[1]@sigma_act),( eta+V[2])@HH],a,b);
+//  act :=action_matrix(W,[-W.1,W.1+W.2],a,b);
+  act :=action_matrix(W,[W.1,W.1+W.2],a,b);
+
+   // act :=action_matrix(W,[US.1@HH,US.1@sigma_act@HH+W.2],a,b);
+     psiww := map<W-> W| x:-> W!Eltseq(Matrix([Eltseq(x)])*act)>;
+    ACT := [psiww*psiww,psiww];
+    pisM := map< sub<Gamma | Gv.1> -> Aut(W) | sig :-> ACT[Order(sig)]>;
+
+    // psiM := map< sub<Gamma | Id(Gamma)> -> Aut(W) | sig :-> hom< W-> W |[W.i : i in[1..#Generators(W)]]> >;
+     
+     indMN, psiIndMN, RN, kappaMN, projMN := inducedModule(W, psiM, Gamma);
+//diagN := map< US -> indMN | x :-> &+([ x @HH @psiww  @ kappaMN[i] : i in [1..#kappaMN] ]) >;
+  diagN := map< US -> indMN | x :-> &+([ x @ psiUS(RN[i]^(-1)) @HH @psiww  @ kappaMN[i] : i in [1..#kappaMN] ]) >;
+  
+//diagN := map< US_Tor -> indMN | x :->&+([ x @ proj @  psiUS(RN[i]^(-1)) @i1 @ kappaMN[i] : i in [1..#kappaMN] ]) >;
+  c2 := map< car<Gamma, Gamma> -> indMN | x :-> Zero(indMN) >;
+
+// Fix-module by H
+    H := FixedGroup(N,L);
+    K := [ Kernel(Transpose(HorizontalJoin(
+        Transpose(Matrix([  Eltseq(indMN.i @ psiIndMN(h) - indMN.i)  :  i in [1..#Generators(indMN)]])), D)))
+        : h in H ]
+        where D := DiagonalMatrix([Order(indMN.i) :  i in [1..#Generators(indMN)] ]);
+    indML := &meet([sub<indMN | [indMN!Eltseq(b)[1..#Generators(indMN)] :  b in Basis(k)]> : k in K]);
+    assert &and([ x @ diagN in indML : x in Generators(USL)]);
+
+    Append(~lst, [* indML, indMN, psiIndMN, diagN, c2 *] );
+    IndentPop();
+
+vprint GFC, 1: "Time:", Cputime(t);
+    t := Cputime();
+
+    // Finitely generated idele group
+    vprint GFC, 1: "compute idele group of N";
+    IndentPush();
+    JN, inclJN, projJN := DirectSum([o[2] : o in lst]);
+    // recompute projections
+    vtime GFC, 1: projJN := [ hom< Domain(p) -> Codomain(p) | [ p(JN.i) : i in [1..#Generators(JN)]] >  : p in projJN ];
+    //projJN := [ hom< JN -> lst[k,2] |
+       // [ Index(seq,i) eq 0 select lst[k,2]!0 else lst[k,2].(Index(seq,i))  : i in [1..#Generators(JN)]]
+      //  >
+    //    where seq := [Index(Eltseq(inclJN[k](lst[k,2].i)),1) : i in [1..#Generators(lst[k,2])]]
+  //      : k in [1..#lst]];
+
+    vtime GFC, 1: actJN := [ hom< JN -> JN |
+        [&+( [ JN.j @ projJN[k] @ lst[k,3](sig) @ inclJN[k] : k in [1..#lst]]) : j in [1..#Generators(JN)]]
+        > :  sig in GammaSeq];
+    psiJN := map< Gamma -> Aut(JN) | sig :-> actJN[ Index(GammaSeq, sig) ] >;
+
+    gamma := map< car<Gamma, Gamma> -> JN | x :-> &+([ x @ lst[i,5] @ inclJN[i]  : i in [1..#lst] ]) >;
+    //gammaL := map< Domain(gamma) -> Codomain(gamma) | x :-> gamma(x[2]^(-1), x[1]^(-1)) >;
+    //time testCocycleGenerators(gammaL, psiJN);
+    IndentPop();
+
+vprint GFC, 1: "Time:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "compute idele class group of N";
+    IndentPush();
+     pos := Position(primes,p0);
+     prime_pos:= [i: i in [1..#primes+1]| i ne pos];
+
+    // embJN1 := map< US -> JN | x :-> &+([ x @ lst[i,4] @ inclJN[i] : i in [1..#lst-1]] ) >;
+    embJN1 := map< US -> JN | x :-> &+([ x @ lst[i,4] @ inclJN[i] : i in prime_pos] ) >;
+    embJN3 := map< US -> JN | x :->  x @ lst[#lst,4] @ inclJN[#lst] >;
+    embJN := map< US -> JN | x :-> &+([ x @ lst[i,4] @ inclJN[i] : i in [1..#lst]] ) >;
+/*   vtime GFC, 1: B := [g @ embJN1 : g in Generators(US)];
+       for x in [U0_gen[j]@@mU0 : j in [1..#U0_gen]] do
+       Append(~B,x@embJN3);
+       end for;
+*/
+    // vtime GFC, 1: B := [g @ embJN : g in vv];
+     vtime GFC, 1: B := [g @ embJN1 : g in vv];
+    CN, qCN := quo<JN | B>;
+    psiCN := map< Gamma -> Aut(CN) | sig :-> Inverse(qCN)*psiJN(sig)*qCN >;
+    //gammaL := map< Domain(gamma) -> CN | x :-> gamma(x[2]^(-1), x[1]^(-1)) @ qCN >;
+    //time testCocycleGenerators(gammaL, psiCN);
+    IndentPop();
+//"till here works well in 260 seconds around for S3":
+
+ vprint GFC, 1: "compute cohomology of N";
+    IndentPush();
+    // compute cohomology
+    // make right actions
+    psiCNr := map< Gamma -> Aut(CN) | g :-> psiCN(g^(-1)) >;
+    vtime GFC, 1: CohN := CohomologyModule(Gamma, CN, psiCNr);
+    f1CN := map< CN -> RSpace(Integers(),Dimension(CohN)) | x:-> Eltseq(x), y:-> CN!Eltseq(y) >;
+    // second cohom. group
+    //time H2N := CohomologyGroup(CohN,2);
+    vtime GFC, 1: H1N := CohomologyGroup(CohN,1);
+
+    gammaC := map< car<Gamma, Gamma> -> CN | x :-> x @ gamma @ qCN >;
+    //gfcId := IdentifyTwoCocycle(CohN, func< x | gammaC(x[1],x[2]) @ f1CN >);
+    IndentPop();
+
+vprint GFC, 1: "Time for cohomology of N:", Cputime(t);
+    t := Cputime();
+
+    vprint GFC, 1: "compute idele group of L";
+    // Cohomology of L
+    JL, inclJL, projJL := DirectSum([o[1] : o in lst]);
+
+    embLN := map< JL -> JN |
+        x :-> &+([ x @ projJL[i] @ Coercion(lst[i,1], lst[i,2]) @ inclJN[i] : i in [1..#lst]]),
+        y :-> &+([ y @ projJN[i] @ Coercion(lst[i,2], lst[i,1]) @ inclJL[i] : i in [1..#lst]])
+    >;
+    G, qG := quo< Gamma | FixedGroup(N,L) >;
+    psiJL := map< G -> Aut(JL) | sig :-> embLN * (sig @@ qG @ psiJN) * Inverse(embLN) >;
+
+     vprint GFC, 1: "compute idele class group of L";
+    IndentPush();
+    // changed here too
+    //vtime GFC, 1: B := [g @ embJN @@ embLN : g in Generators(USL)];
+    vtime GFC, 1: B := [g @ embJN1 @@ embLN : g in Generators(USL)];
+    CL, qCL := quo<JL | B>;
+
+ psiCL := map< G -> Aut(CL) | sig :-> Inverse(qCL)*psiJL(sig)*qCL >;
+    IndentPop();
+
+    vprint GFC, 1: "compute cohomology of L";
+    IndentPush();
+    // compute cohomology
+    // make right actions
+    psiCLr := map< G -> Aut(CL) | g :-> psiCL(g^(-1)) >;
+    vtime GFC, 1: CohL := CohomologyModule(G, CL, psiCLr);
+    // second cohom. group
+    vtime GFC, 1: H2L := CohomologyGroup(CohL,2);
+    f1CL := map< CL -> RSpace(Integers(),Dimension(CohL)) | x:-> Eltseq(x), y:-> CL!Eltseq(y) >;
+    IndentPop();
+
+ vprint GFC, 1: "Time for all the computation for L:", Cputime(t);
+    t := Cputime();
+
+    mUSL := map< USL -> L | x :-> L!(x @ mUS) >;
+    inclUSJL := map< USL -> JL | x :-> (US!x) @ diagN @ inclJL[#inclJL] >;
+
+    comp := rec<GFCcomp |
+        CohL := CohL, f1CL := f1CL, //gfcId := gfcId,
+        CL := CL, psiCL := psiCL, qCL := qCL,
+        primes := primes, US:= USL, mUS := mUSL,
+        //kappaInf := kappaML, RepInf := RL, inclJL := inclJL,
+        inclUSJL := inclUSJL,
+        theta := thetaAll >;
+
+     Req:=[* qG,Gamma,gammaC,CN,qCN,embLN,CohN,H2L,f1CN *];
+     list := [* vv, sigma_act, W,HH*];
+
+vprint GFC, 1: "find global fundamental class of L";
+  
+  IndentPush();
+
+return CohN,f1CN,CohL,comp, list, Req;  
+end intrinsic;
+
