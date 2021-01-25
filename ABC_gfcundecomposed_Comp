@@ -216,16 +216,16 @@ diagL1 := map< W -> indML | x :-> &+([ x @ ACT[j]    @ kappaML[i] :j in [1..#ACT
          IndentPop();
     vprint GFC, 1: "Time:", Cputime(t);
     t := Cputime();
-
-    vprint GFC, 1: "compute idele class group of L";
+   vprint GFC, 1: "compute idele class group of L";
     IndentPush();
     // diagonal embedding of S-units
-    embJL := map< US -> JL | x :-> &+([ x @ lst[i,3] @ inclJL[i] : i in [1..#lst]] )  >;
+  embJL1 := map< US -> JL | x :-> &+([ x @ lst[i,3] @ inclJL[i] : i in [2..#lst-1]] )  >;
+//embJL := map< US -> JL | x :-> &+([ x @ lst[i,3] @ inclJL[i] : i in [1..#lst]] )  >;
     // factor out S-Units diagonally
-    vtime GFC, 2: B := [g @ embJL : g in v];// alternative of "v";
+    vtime GFC, 2: B := [g @ embJL1 : g in v];// alternative of "v";
     Gen :=[W.i: i in [1..Ngens(W)]];
 
-  for x in Gen[Ngens(US)+1..#Gen] do
+  for x in Gen[1..#Gen] do
     //for x in vv do
         Append(~B,  x@ diagL1@inclJL[#lst]);
    end for;
@@ -255,6 +255,7 @@ diagL1 := map< W -> indML | x :-> &+([ x @ ACT[j]    @ kappaML[i] :j in [1..#ACT
     IndentPop();
     vprint GFC, 1: "Time:", Cputime(t);
     t := Cputime();
+
     vprint GFC, 1: "Identify fundamental class:", Cputime(t);
     gammaC := map< car<G, G> -> CL | x :-> x @ gamma @ qCL >;
     gfcId := IdentifyTwoCocycle(CohL, func< x | gammaC(x[1],x[2]) @ f1CL >);
@@ -272,5 +273,3 @@ diagL1 := map< W -> indML | x :-> &+([ x @ ACT[j]    @ kappaML[i] :j in [1..#ACT
     return CohL, f1CL, gfcId,list;
 end intrinsic;
 
-
-    vprint GFC, 1: "Time for set S:", Cputime(t);
