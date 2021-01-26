@@ -1,9 +1,10 @@
+AttachSpec("/Users/Aslamali/Desktop/Debeerst/magma/alispec");
+L:= NumberField(PolynomialWithGaloisGroup(6,1));
 time CohL,f1CL,gfc,comp,req:= gfcUndecomposedcl(L,7);
 cl:=req[2];
 r,mr:=RayClassGroup(13*MaximalOrder(L));
 CL:=comp`CL;
 h:=hom<CL->r|x :-> &+([x@cl[i]: i in [1..#cl]])@@mr>;
-#quo<CL|Kernel(h)>;
 maps:=req[1];
 qCL:= comp`qCL;
 psiCL:=comp`psiCL;
@@ -22,8 +23,22 @@ IdentifyTwoCocycle(cm,func< x| gammaC(x[1],x[2])@@phi3>);
 #Extension(cm,$1);
 
 
-
-
+AttachSpec("/Users/Aslamali/Desktop/Debeerst/magma/alispec");
+L:= NumberField(PolynomialWithGaloisGroup(6,1));
+time CohL,f1CL,gfc,comp,req:= gfcUndecomposedcl(L,7);
+cl:=req[2];
+r,mr:=RayClassGroup(13*MaximalOrder(L));
+CL:=comp`CL;
+h:=hom<CL->r|x :-> &+([x@cl[i]: i in [1..#cl-1]])@@mr>;
+qCL:= comp`qCL;
+psiCL:=comp`psiCL;
+A:= AbelianExtension(mr);
+G:=Group(CohL);
+cm,phi1,phi2,phi3:= CohomologyModule(A);
+CohomologyGroup(cm,2);
+u:= TwoCocycle(CohL, gfc);
+gammaC := map< car<G, G> -> r | x :-> x @ u @@f1CL@ h >;
+IdentifyTwoCocycle(cm,func< x| gammaC(x[1],x[2])@@phi3>);
 
 
 
