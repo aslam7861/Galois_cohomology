@@ -1,0 +1,23 @@
+h:=hom<CL->r|x :-> &+([x@cl[i]: i in [1..#cl]])@@mr>;
+quo<CL|Kernel(h)>;
+q,mq:=quo<CL|Kernel(h)>;
+ psiCLr := map< G -> Aut(q) | g :-> Inverse(mq)*(comp`psiCL(g^(-1)))*mq >;
+psiCLr(G.1);
+cm:=CohomologyModule(G,q,psiCLr);
+h2:=CohomologyGroup(cm,2);
+f1cl:= map<q->RSpace(Integers(), Dimension(cm))|  x:-> Eltseq(x),  y:-> 
+cm!Eltseq(y)>;
+lst:=req[#req];
+JL:=Domain(comp`qCL);
+G:=Group(CohL);
+gamma := map< car<G, G> -> JL | x :-> &+([ x @ lst[i,4] @ comp`inclJL[i]  : i 
+in [1..#lst] ]) >;
+gammaC := map< car<G, G> -> q | x :-> x @ gamma @ comp`qCL@mq >;
+gammaC(gg[12]);
+uu:= IdentifyTwoCocycle(cm, func< x| gammaC( x[1],x[2]))@f1cl>);
+IdentifyTwoCocycle(cm, func< x | gammaC(x[1],x[2]) @ f1cl >);
+f1cl:= map<q->RSpace(Integers(), Dimension(cm))|  x:-> Eltseq(x),  y:-> 
+cm!Eltseq(y)>;
+IdentifyTwoCocycle(cm, func< x | gammaC(x[1],x[2]) @ f1cl >);
+#Extension(cm,$1);
+> 
