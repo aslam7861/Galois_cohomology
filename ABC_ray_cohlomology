@@ -1,3 +1,40 @@
+time CohL,f1CL,gfc,comp,req:= gfcUndecomposedcl(L,7);
+cl:=req[2];
+r,mr:=RayClassGroup(13*MaximalOrder(L));
+CL:=comp`CL;
+h:=hom<CL->r|x :-> &+([x@cl[i]: i in [1..#cl]])@@mr>;
+#quo<CL|Kernel(h)>;
+maps:=req[1];
+qCL:= comp`qCL;
+psiCL:=comp`psiCL;
+A:= AbelianExtension(mr);
+G:=Group(CohL);
+H:=hom<Domain(maps[1])->r|x :-> &*([x@maps[i]: i in [1..#cl]])@@mr>;
+gg:=[x: x in Domain(maps[1])];
+{gg[i]@H: i in [1..36]};
+cm,phi1,phi2,phi3:= CohomologyModule(A);
+CohomologyGroup(cm,2);
+u:= TwoCocycle(CohL, gfc);
+u(gg[12]);
+mc:=map<car<G,G>->r| x:->x@u@@f1CL@h>;
+gammaC := map< car<G, G> -> r | x :-> x @ u @@f1CL@ h >;
+IdentifyTwoCocycle(cm,func< x| gammaC(x[1],x[2])@@phi3>);
+#Extension(cm,$1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 h:=hom<CL->r|x :-> &+([x@cl[i]: i in [1..#cl]])@@mr>;
 quo<CL|Kernel(h)>;
 q,mq:=quo<CL|Kernel(h)>;
