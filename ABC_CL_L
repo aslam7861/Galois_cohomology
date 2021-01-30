@@ -114,7 +114,7 @@ F:= FreeAbelianGroup(Degree(L));
     mF:=hom<F-> ML| [ x@iotaN@qMN@Coercion(MN,ML): x in Basis(L)]>;
     //projML_L := map< indML-> L | x:-> L!Eltseq(&+([x @Coercion(indML,indMN) @ projMN[i]@Coercion(MN,ML)@@mF: i in [1..#projMN]]))> ;  
 // projML_L := map< indML-> L | x:-> &*([(indMN!x) @ projMN[i]@@qMN @@iotaN @ Coercion(N,L): i in [1..#projMN]])> ;
-         kappaL_ML := map<L->indML | x:->&+([x@Coercion(L,N)@iotaN@qMN@kappaMN[i]@Coercion(indMN,indML) :i in [1..kappaMN]])  >;
+         kappaL_ML := map<L->indML | x:->&+([x@Coercion(L,N)@iotaN@qMN@kappaMN[i]@Coercion(indMN,indML) :i in [1..#kappaMN]])  >;
 
   GL, qGL := quo<Gamma| H>;
 
