@@ -68,8 +68,8 @@ if #seq eq 0 then
    
    H := FixedGroup(N,L);
   GL, qGL := quo<Gamma| H>;
-  GL:= sub<Gamma|[x@@qGL: x in GL]>;
-  psiL:= map< GL -> Aut(L) | g :-> hom< L -> L | L.1 @ Coercion(L,N) @ psiN(g) @ Coercion(N,L) > >;
+  //GL:= sub<Gamma|[x@@qGL: x in GL]>;// this does not hold;
+  psiL:= map< GL -> Aut(L) | g :-> hom< L -> L | L.1 @ Coercion(L,N) @ psiN(g@@qG) @ Coercion(N,L) > >;
   K := [ Kernel(Transpose(HorizontalJoin(
         Transpose(Matrix([  Eltseq(US.i @ psiUS(h) - US.i)  :  i in [1..#Generators(US)]])), D)))
         : h in H ]
