@@ -241,7 +241,7 @@ proj_ML_ml:= hom<indML-> indml| x:-> indml!Eltseq(x@@mf)>;
     assert &and([ IsReal(inf) : inf in InfinitePlaces(N) ]);
     psiM := map< sub<Gamma | Id(Gamma)> -> Aut(US) | sig :-> hom< US -> US | [US.i : i in [1..#Generators(US)]]> >;
     psim := map< sub<GL | Id(GL)> -> Aut(USL) | sig :-> hom< USL -> USL | [USL.i : i in [1..#Generators(USL)]]> >;
-        indml, psiindml, rl, kappaml, projml := inducedModule(USL, psim, GL);
+        indml, psiIndml, rl, kappaml, projml := inducedModule(USL, psim, GL);
    diagL := map< USL -> indml | x :->
             &+([ x @ psiUS(rl[i]^(-1)) @ kappaml[i] : i in [1..#kappaml] ]) >;
     indMN, psiIndMN, RN, kappaMN, projMN := inducedModule(US, psiM, Gamma);
