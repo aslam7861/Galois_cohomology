@@ -243,7 +243,7 @@ proj_ML_ml:= hom<indML-> indml| x:-> indml!Eltseq(x@@mf)>;
     psim := map< sub<GL | Id(GL)> -> Aut(USL) | sig :-> hom< USL -> USL | [USL.i : i in [1..#Generators(USL)]]> >;
         indml, psiIndml, rl, kappaml, projml := inducedModule(USL, psim, GL);
    diagL := map< USL -> indml | x :->
-            &+([ x @ psiUS(rl[i]^(-1)) @ kappaml[i] : i in [1..#kappaml] ]) >;
+            &+([ x @ psiUS((rl[i]^(-1))@@qGL) @ kappaml[i] : i in [1..#kappaml] ]) >;
     indMN, psiIndMN, RN, kappaMN, projMN := inducedModule(US, psiM, Gamma);
     diagN := map< US -> indMN | x :->
             &+([ x @ psiUS(RN[i]^(-1)) @ kappaMN[i] : i in [1..#kappaMN] ]) >;
