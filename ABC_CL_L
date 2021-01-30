@@ -125,7 +125,7 @@ theta, m := lattice(PL, UniformizingElement(PL), psiL);
  LIST:=[*LP,iotaL,psiLP*];
  GammaPL := Domain(psiLP);
 ml, psiml, qml := compute_LPmul_modX1(L, PL, psiL,LIST, theta,m);
- indml, psiIndml, rl, kappaml, projml := inducedModule(ml, psiL,GL);
+ indml, psiIndml, rl, kappaml, projml := inducedModule(ml, psiml,GL);
 //assert Ngens(indML) eq Ngens(indml);
 //inc:=hom<indml->indML| [indML.i: i in [1..Ngens(indML)]]>;
 //E,mE := MultiplicativeGroup(L);
