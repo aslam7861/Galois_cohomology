@@ -132,7 +132,7 @@ ml, psiml, qml := compute_LPmul_modX1(L, PL, psiL,LIST, theta,m);
 //F:= FreeAbelianGroup(Ngens(E));
 //mf:= hom<F->indML|  [&+([(L!Eltseq(E.j@mE))@iotaL@qml@kappaml[i]@inc: i in [1..#kappaml]]): j in [1..Ngens(E)] ]>;
 projML_L:= hom<indml ->L| x:-> (&+([x @projml[i]@@qml:  i in [1..#projml]]))@@iotaL>;
-diagL:= map<L-> indml| x :-> &+ ( [ x@psiL(rl[i]^(-1)) @iotaL @ kappaml[i] : i in [1..#kappaml]] )>;
+diagL:= map<L-> indml| x :-> &+ ( [ x@psiL(rl[i]^(-1)) @iotaL @qml @ kappaml[i] : i in [1..#kappaml]] )>;
 
        assert (N!L.1) @ diagN in indML;
 
