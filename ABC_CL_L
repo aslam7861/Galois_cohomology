@@ -172,7 +172,7 @@ F:= FreeAbelianGroup(Ngens(indml));
 mf:=hom<F-> indML| [&+([indml.i @projML_L@iotaN@qMN@kappaMN[i]@Coercion(indMN,indML):i in [1..#kappaMN]]): j in [1..Ngens(indml)]]>;    
 //mf:=hom<F-> indML| [indml.i @projML_L@kappaML_L: i in [1..Ngens(indml)]]>;
 proj_ML_ml:= hom<indML-> indml| x:-> indml!Eltseq(x@@mf)>;  
-
+proj_ml_ML:= hom<indml-> indML| x:->  (F!Eltseq(x))@mf>;  
 
      assert (N!L.1) @ diagN in indML;   
         /*
@@ -230,7 +230,7 @@ proj_ML_ml:= hom<indML-> indml| x:-> indml!Eltseq(x@@mf)>;
 
         diagN := mUS*diagN;
 	diagN := mUSL*diagL;
-       Append(~LST,[* indml, psiIndml,diagL *]);
+       Append(~LST,[* indml, psiIndml,diagL , proj_ml_ML, proj_ML_ml*]);
 //Append(~lst, [* indML, psiIndML, diagL, c2, projML, qML, iotaL,kappaML  *]);
        Append(~lst, [* indML, indMN, psiIndMN, diagN, c2, projML_L,kappaL_ML, qMN, iotaN,kappaMN,proj_ML_ml *]);
       //Append(~lst, [* indML, indMN, psiIndMN, diagN, c2 *]);
