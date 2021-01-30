@@ -68,6 +68,8 @@ if #seq eq 0 then
    
    H := FixedGroup(N,L);
   GL, qGL := quo<Gamma| H>;
+  GL:= sub<Gamma|[x@@qGL: x in GL]>;
+  psiL:= map< GL -> Aut(L) | g :-> hom< L -> L | L.1 @ Coercion(L,N) @ psiN(g) @ Coercion(N,L) > >;
   K := [ Kernel(Transpose(HorizontalJoin(
         Transpose(Matrix([  Eltseq(US.i @ psiUS(h) - US.i)  :  i in [1..#Generators(US)]])), D)))
         : h in H ]
@@ -152,7 +154,7 @@ F:= FreeAbelianGroup(Degree(L));
          kappaL_ML := map<L->indML | x:->&+([x@Coercion(L,N)@iotaN@qMN@kappaMN[i]@Coercion(indMN,indML) :i in [1..#kappaMN]])  >;
 
 //  GL, qGL := quo<Gamma| H>;
-psiL:= map< GL -> Aut(L) | g :-> hom< L -> L | L.1 @ Coercion(L,N) @ psiN(g@@ qGL) @ Coercion(N,L) > >;
+
 PL := Factorization(p*RingOfIntegers(L))[1,1]; 
 theta, m := lattice(PL, UniformizingElement(PL), psiL); 
  LP, iotaL, psiLP := completion_with_prec(L,PL,psiL, m+10);
