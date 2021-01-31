@@ -212,3 +212,164 @@ SeqEnum, inclJL: SeqEnum, inclUSJL: Map, lat: Any, theta: SeqEnum> |
         [0, 0, 1, 8, 1, 0, 0, 0, 0, 0, 0, 0]
     ]>
 > 
+
+
+
+
+
+
+
+> f := x^8 - 34*x^7 + 405*x^6 - 1972*x^5 + 2683*x^4 + 6732*x^3 - 17908*x^2 + 5440*x + 
+    1424
+> g :=x^8 - 17*x^7 + 119*x^6 - 442*x^5 + 935*x^4 - 1122*x^3 + 714*x^2 - 204*x + 17
+> L:=NumberField(f);
+> L1:=NumberField(g);
+> IsNormal(L);
+true
+> IsCyclic(L1);      
+true
+> IsCyclic(L); 
+false
+> time CohL, f1CL, gfc, comp,primes:= gfcCompositumali(L,L1);
+Time: 89.300
+> gfc;
+(5)
+> CohomologyGroup(CohL,2);
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 8 ]
+> comp;
+rec<recformat<CohL: ModCoho, f1CL: Map, gfcId: ModTupRngElt, CL: GrpAb, psiCL: 
+Map, qCL: Map, primes: SeqEnum, US: GrpAb, mUS: Map, kappaInf: SeqEnum, RepInf: 
+SeqEnum, inclJL: SeqEnum, inclUSJL: Map, lat: Any, theta: SeqEnum> | 
+    CohL := Cohomology Module,
+    f1CL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/10 + Z/1200 + Z/7956000 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        10*$.7 = 0
+        1200*$.8 = 0
+        7956000*$.9 = 0 to Full RSpace of degree 138 over Integer Ring given by 
+        a rule,
+    gfcId := (5),
+    CL := Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/10 +
+        Z/1200 + Z/7956000 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        10*$.7 = 0
+        1200*$.8 = 0
+        7956000*$.9 = 0,
+    psiCL := Mapping from: GrpPerm: $, Degree 8, Order 2^3 to Set of all 
+        automorphisms of Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/10 + Z/1200 + Z/7956000 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        10*$.7 = 0
+        1200*$.8 = 0
+        7956000*$.9 = 0 given by a rule [no inverse],
+    qCL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/2 + Z/10 + Z/1200 + Z/7956000 + Z (138 copies)
+    Defined on 148 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        10*$.8 = 0
+        1200*$.9 = 0
+        7956000*$.10 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/10 + Z/1200 + Z/7956000 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        10*$.7 = 0
+        1200*$.8 = 0
+        7956000*$.9 = 0,
+    primes := [ 5, 17 ],
+    US := Abelian Group isomorphic to Z/2 + Z (9 copies)
+    Defined on 10 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3 + $.7 + $.11 - 2*$.13 + $.14 + $.15 + $.16
+        $.4 = $.4 - $.9 - $.11 - $.15
+        $.5 = $.5 + $.7 - $.11 + 2*$.13 - $.14 - $.15 - $.16 + 2*$.18
+        $.6 = $.6 + $.7 - $.9 - $.11 - $.15
+        $.7 = 2*$.7 + 2*$.18
+        $.8 = $.8 + 2*$.13 - $.14 - $.16
+        $.9 = $.10 - $.12
+        $.10 = $.17
+    Relations:
+        2*$.1 = 0,
+    mUS := Mapping from: Abelian Group isomorphic to Z/2 + Z (9 copies)
+    Defined on 10 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3 + $.7 + $.11 - 2*$.13 + $.14 + $.15 + $.16
+        $.4 = $.4 - $.9 - $.11 - $.15
+        $.5 = $.5 + $.7 - $.11 + 2*$.13 - $.14 - $.15 - $.16 + 2*$.18
+        $.6 = $.6 + $.7 - $.9 - $.11 - $.15
+        $.7 = 2*$.7 + 2*$.18
+        $.8 = $.8 + 2*$.13 - $.14 - $.16
+        $.9 = $.10 - $.12
+        $.10 = $.17
+    Relations:
+        2*$.1 = 0 to FldNum: LL given by a rule [no inverse],
+    inclUSJL := Mapping from: Abelian Group isomorphic to Z/2 + Z (9 copies)
+    Defined on 10 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3 + $.7 + $.11 - 2*$.13 + $.14 + $.15 + $.16
+        $.4 = $.4 - $.9 - $.11 - $.15
+        $.5 = $.5 + $.7 - $.11 + 2*$.13 - $.14 - $.15 - $.16 + 2*$.18
+        $.6 = $.6 + $.7 - $.9 - $.11 - $.15
+        $.7 = 2*$.7 + 2*$.18
+        $.8 = $.8 + 2*$.13 - $.14 - $.16
+        $.9 = $.10 - $.12
+        $.10 = $.17
+    Relations:
+        2*$.1 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/10 + Z/1200 + Z/7956000 + Z (138 copies)
+    Defined on 148 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        10*$.8 = 0
+        1200*$.9 = 0
+        7956000*$.10 = 0 given by a rule [no inverse],
+    theta := [
+        [-1, 0, 0, -1, 1, 4, -1, 3, 0, 3, 1, 0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 1, 14, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]>
+> 
+ 
