@@ -1,0 +1,177 @@
+f:=x^6 - 13*x^5 + 65*x^4 - 156*x^3 + 182*x^2 - 91*x + 13;
+g:= x^6 - 26*x^5 + 215*x^4 - 598*x^3 + 350*x^2 + 416*x - 47;
+> L:=NumberField(f);
+> L1:=NumberField(g);
+> Signature(L);
+6 0
+> Signature(L1);
+6 0
+> IsCyclic(L1);
+true
+> N := OptimizedRepresentation(Compositum(L,L1));  
+> Degree(N);
+12
+> time CohL, f1CL, gfc, comp,primes:= gfcCompositumali(L,L1);
+Time: 17.250
+> gfc;
+(5)
+> CohomologyGroup(CohL,2);
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 6 ]
+> comp;
+rec<recformat<CohL: ModCoho, f1CL: Map, gfcId: ModTupRngElt, CL: GrpAb, psiCL: 
+Map, qCL: Map, primes: SeqEnum, US: GrpAb, mUS: Map, kappaInf: SeqEnum, RepInf: 
+SeqEnum, inclJL: SeqEnum, inclUSJL: Map, lat: Any, theta: SeqEnum> | 
+    CohL := Cohomology Module,
+    f1CL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/12 + Z/8064 + Z (73 copies)
+    Defined on 86 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        4*$.7 = 0
+        4*$.8 = 0
+        4*$.9 = 0
+        4*$.10 = 0
+        4*$.11 = 0
+        12*$.12 = 0
+        8064*$.13 = 0 to Full RSpace of degree 86 over Integer Ring given by a 
+        rule,
+    gfcId := (5),
+    CL := Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/4 + 
+        Z/4 + Z/4 + Z/4 + Z/4 + Z/12 + Z/8064 + Z (73 copies)
+    Defined on 86 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        4*$.7 = 0
+        4*$.8 = 0
+        4*$.9 = 0
+        4*$.10 = 0
+        4*$.11 = 0
+        12*$.12 = 0
+        8064*$.13 = 0,
+    psiCL := Mapping from: GrpPerm: $, Degree 6, Order 2 * 3 to Set of all 
+        automorphisms of Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/12 + Z/8064 + Z (73 copies)
+    Defined on 86 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        4*$.7 = 0
+        4*$.8 = 0
+        4*$.9 = 0
+        4*$.10 = 0
+        4*$.11 = 0
+        12*$.12 = 0
+        8064*$.13 = 0 given by a rule [no inverse],
+    qCL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/12 + Z/8064 + Z (80 
+        copies)
+    Defined on 94 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        4*$.8 = 0
+        4*$.9 = 0
+        4*$.10 = 0
+        4*$.11 = 0
+        4*$.12 = 0
+        12*$.13 = 0
+        8064*$.14 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/12 + Z/8064 + Z (73 copies)
+    Defined on 86 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        4*$.7 = 0
+        4*$.8 = 0
+        4*$.9 = 0
+        4*$.10 = 0
+        4*$.11 = 0
+        12*$.12 = 0
+        8064*$.13 = 0,
+    primes := [ 2, 13 ],
+    US := Abelian Group isomorphic to Z/2 + Z (7 copies)
+    Defined on 8 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3
+        $.4 = $.4
+        $.5 = $.5
+        $.6 = $.6
+        $.7 = 2*$.13
+        $.8 = $.14
+    Relations:
+        2*$.1 = 0,
+    mUS := Mapping from: Abelian Group isomorphic to Z/2 + Z (7 copies)
+    Defined on 8 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3
+        $.4 = $.4
+        $.5 = $.5
+        $.6 = $.6
+        $.7 = 2*$.13
+        $.8 = $.14
+    Relations:
+        2*$.1 = 0 to FldNum: L given by a rule [no inverse],
+    inclUSJL := Mapping from: Abelian Group isomorphic to Z/2 + Z (7 copies)
+    Defined on 8 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3
+        $.4 = $.4
+        $.5 = $.5
+        $.6 = $.6
+        $.7 = 2*$.13
+        $.8 = $.14
+    Relations:
+        2*$.1 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/12 + Z/8064 + Z (80 copies)
+    Defined on 94 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        4*$.8 = 0
+        4*$.9 = 0
+        4*$.10 = 0
+        4*$.11 = 0
+        4*$.12 = 0
+        12*$.13 = 0
+        8064*$.14 = 0 given by a rule [no inverse],
+    theta := [
+        [-123080649858464, -29901404585688, -74407486103810, -134158931190898, 
+            -113264930315418, -14985042994584, -134476385587258, 
+            -26892093575868, -147173671291154, -121203690018692, -9107938664668,
+            150175117316500],
+        [0, 0, 1, 8, 1, 0, 0, 0, 0, 0, 0, 0]
+    ]>
+> 
