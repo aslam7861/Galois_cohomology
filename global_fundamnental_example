@@ -1,3 +1,40 @@
+l:=NumberField(CyclotomicPolynomial(13));
+Signature(Subfields(l,6)[1,1]);
+ll:=Subfields(l,6)[1,1];
+ N := OptimizedRepresentation(Compositum(ll,L1));
+N;
+L:=NumberField(PolynomialWithGaloisGroup(6,2));
+l:=Subfield(ll,3)[1,1];
+l:=Subfields(ll,3)[1,1];
+l;
+Signature(l);
+o:=RayClassGroup(l);
+o:=MaximalO(l);
+o:=MaximalOrder(l);
+RayClassGroup(2*o);
+RayClassGroup(4*o);
+RayClassGroup(8*o);
+r,mr:=RayClassGroup(8*o);
+AbelianExtension(mr);
+AbsoluteField(NumberField($1));
+IsCyclic($1);
+L1:=$2;
+L2;
+L1;
+l;
+ll;
+ N := OptimizedRepresentation(Compositum(ll,L1));
+N;
+Signature(L1);
+Signature(ll);
+
+
+
+
+
+
+
+
 f:=x^6 - 13*x^5 + 65*x^4 - 156*x^3 + 182*x^2 - 91*x + 13;
 g:= x^6 - 26*x^5 + 215*x^4 - 598*x^3 + 350*x^2 + 416*x - 47;
 > L:=NumberField(f);
