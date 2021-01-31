@@ -372,4 +372,45 @@ SeqEnum, inclJL: SeqEnum, inclUSJL: Map, lat: Any, theta: SeqEnum> |
         [0, 0, 0, 0, 1, 14, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]>
 > 
- 
+
+
+
+
+
+
+
+> l:=NumberField(CyclotomicPolynomial(41));
+> L:=Subfields(l,10)[1,1];
+> #Subfields(l,10);
+1
+> Signature(L);
+10 0
+> l:= Subfields(L,5)[1,1];
+> o:=MaximalOrder(l);
+> r,mr:=RayClassGroup(8*o);
+> A:=AbelianExtension(mr);
+> IsCyclic(AbsoluteField(NumberField(A))); 
+true
+> L1:=AbsoluteField(NumberField(A));
+> f:=R!DefiningPolynomial(OptimisedRepresentation(L)); 
+> g:=R!DefiningPolynomial(OptimisedRepresentation(L1));
+> f;
+x^10 - x^9 - 18*x^8 + 13*x^7 + 91*x^6 - 47*x^5 - 143*x^4 + 7*x^3 + 72*x^2 + 23*x
+    + 1
+> g;
+x^10 - 2*x^9 - 41*x^8 + 38*x^7 + 468*x^6 - 124*x^5 - 1857*x^4 - 298*x^3 + 
+    1763*x^2 + 46*x - 73
+
+> L:=NumberField(f);
+> L1:=NumberField(g);
+> IsCyclic(L1);
+true
+> Signature(L);
+10 0
+> IsNormal(L);
+true
+> time CohL, f1CL, gfc, comp,primes:= gfcCompositumali(L,L1);
+
+
+
+
