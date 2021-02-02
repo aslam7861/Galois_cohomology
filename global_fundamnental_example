@@ -410,6 +410,292 @@ true
 > IsNormal(L);
 true
 > time CohL, f1CL, gfc, comp,primes:= gfcCompositumali(L,L1);
+Time: 1527.650
+compute composite field
+    Time: 0.550
+compute primes
+    3 subfields ...     done.Time: 3.560
+    [ 2, 41 ]
+compute S-units and its G-action
+    Time: 12.710
+    Time: 4.490
+Time for set S: 21.880
+construct JN
+    prime: 2
+        compute lattice
+        Time: 0.560
+        compute completion, prec = 48
+        compute module
+        Time: 15.200
+        compute induced module
+        compute cocycle, prec = 38
+        compute completion, prec = 48
+        test cocycle
+        Time: 14.260
+    prime: 41
+        compute lattice
+        Time: 0.030
+        compute completion, prec = 12
+        compute module
+        Time: 0.400
+        compute induced module
+    modules for infinite places
+Time: 18.510
+compute idele group of N
+    Time: 4.380
+    Time: 52.710
+Time: 60.810
+compute idele class group of N
+    Time: 6.610
+compute cohomology of N
+    Time: 17.670
+    Time: 9.150
+Time for cohomology of N: 33.990
+compute idele group of L
+compute idele class group of L
+    Time: 3.690
+compute cohomology of L
+    Time: 2.420
+    Time: 1.350
+Time for all the computation for L: 8.140
+find global fundamental class of L
+    .    .     found.
+Time: 1527.650
+> gfc;
+(3)
+> CohomologyGroup(CohL,2);                                                                         
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 10 ]
+> comp;
+rec<recformat<CohL: ModCoho, f1CL: Map, gfcId: ModTupRngElt, CL: GrpAb, psiCL: Map, qCL: Map, 
+primes: SeqEnum, US: GrpAb, mUS: Map, kappaInf: SeqEnum, RepInf: SeqEnum, inclJL: SeqEnum, inclUSJL:
+Map, lat: Any, theta: SeqEnum> | 
+    CohL := Cohomology Module,
+    f1CL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 
+        + Z/2 + Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/124 + Z/1240 + Z
+        (221 copies)
+    Defined on 243 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        2*$.9 = 0
+        2*$.10 = 0
+        2*$.11 = 0
+        4*$.12 = 0
+        4*$.13 = 0
+        4*$.14 = 0
+        4*$.15 = 0
+        4*$.16 = 0
+        4*$.17 = 0
+        4*$.18 = 0
+        4*$.19 = 0
+        4*$.20 = 0
+        124*$.21 = 0
+        1240*$.22 = 0 to Full RSpace of degree 243 over Integer Ring given by a rule,
+    gfcId := (3),
+    CL := Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/124 + Z/1240 + Z (221 copies)
+    Defined on 243 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        2*$.9 = 0
+        2*$.10 = 0
+        2*$.11 = 0
+        4*$.12 = 0
+        4*$.13 = 0
+        4*$.14 = 0
+        4*$.15 = 0
+        4*$.16 = 0
+        4*$.17 = 0
+        4*$.18 = 0
+        4*$.19 = 0
+        4*$.20 = 0
+        124*$.21 = 0
+        1240*$.22 = 0,
+    psiCL := Mapping from: GrpPerm: $, Degree 10, Order 2 * 5 to Set of all automorphisms of Abelian
+        Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/4 + 
+        Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/124 + Z/1240 + Z (221 copies)
+    Defined on 243 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        2*$.9 = 0
+        2*$.10 = 0
+        2*$.11 = 0
+        4*$.12 = 0
+        4*$.13 = 0
+        4*$.14 = 0
+        4*$.15 = 0
+        4*$.16 = 0
+        4*$.17 = 0
+        4*$.18 = 0
+        4*$.19 = 0
+        4*$.20 = 0
+        124*$.21 = 0
+        1240*$.22 = 0 given by a rule [no inverse],
+    qCL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 +
+        Z/2 + Z/2 + Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/124 + Z/1240
+        + Z (233 copies)
+    Defined on 256 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        2*$.9 = 0
+        2*$.10 = 0
+        2*$.11 = 0
+        2*$.12 = 0
+        4*$.13 = 0
+        4*$.14 = 0
+        4*$.15 = 0
+        4*$.16 = 0
+        4*$.17 = 0
+        4*$.18 = 0
+        4*$.19 = 0
+        4*$.20 = 0
+        4*$.21 = 0
+        124*$.22 = 0
+        1240*$.23 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 +
+        Z/2 + Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/124 + Z/1240 + Z 
+        (221 copies)
+    Defined on 243 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        2*$.9 = 0
+        2*$.10 = 0
+        2*$.11 = 0
+        4*$.12 = 0
+        4*$.13 = 0
+        4*$.14 = 0
+        4*$.15 = 0
+        4*$.16 = 0
+        4*$.17 = 0
+        4*$.18 = 0
+        4*$.19 = 0
+        4*$.20 = 0
+        124*$.21 = 0
+        1240*$.22 = 0,
+    primes := [ 2, 41 ],
+    US := Abelian Group isomorphic to Z/2 + Z (12 copies)
+    Defined on 13 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3
+        $.4 = $.4
+        $.5 = $.5
+        $.6 = $.6
+        $.7 = $.7
+        $.8 = $.8
+        $.9 = $.9
+        $.10 = $.10
+        $.11 = 2*$.12 - 2*$.21 + 2*$.22
+        $.12 = $.14 - 2*$.21 + $.24
+        $.13 = $.23
+    Relations:
+        2*$.1 = 0,
+    mUS := Mapping from: Abelian Group isomorphic to Z/2 + Z (12 copies)
+    Defined on 13 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3
+        $.4 = $.4
+        $.5 = $.5
+        $.6 = $.6
+        $.7 = $.7
+        $.8 = $.8
+        $.9 = $.9
+        $.10 = $.10
+        $.11 = 2*$.12 - 2*$.21 + 2*$.22
+        $.12 = $.14 - 2*$.21 + $.24
+        $.13 = $.23
+    Relations:
+        2*$.1 = 0 to FldNum: L given by a rule [no inverse],
+    inclUSJL := Mapping from: Abelian Group isomorphic to Z/2 + Z (12 copies)
+    Defined on 13 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2
+        $.3 = $.3
+        $.4 = $.4
+        $.5 = $.5
+        $.6 = $.6
+        $.7 = $.7
+        $.8 = $.8
+        $.9 = $.9
+        $.10 = $.10
+        $.11 = 2*$.12 - 2*$.21 + 2*$.22
+        $.12 = $.14 - 2*$.21 + $.24
+        $.13 = $.23
+    Relations:
+        2*$.1 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/2 + Z/2 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/4 + Z/124 + Z/1240 + Z
+        (233 copies)
+    Defined on 256 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        2*$.9 = 0
+        2*$.10 = 0
+        2*$.11 = 0
+        2*$.12 = 0
+        4*$.13 = 0
+        4*$.14 = 0
+        4*$.15 = 0
+        4*$.16 = 0
+        4*$.17 = 0
+        4*$.18 = 0
+        4*$.19 = 0
+        4*$.20 = 0
+        4*$.21 = 0
+        124*$.22 = 0
+        1240*$.23 = 0 given by a rule [no inverse],
+    theta := [
+        [0, -47, -23, -38, -6, 4, -15, -12, -5, 39, 21, 18, 6, 0, 3, 27, 0, 9, 0, 0],
+        [0, 0, 21, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]>
+> 
+                                                                                                 
+
+
+
+
 
 
 
