@@ -695,7 +695,7 @@ Map, lat: Any, theta: SeqEnum> |
 
 
 
-
+//////////////////////////////////////////Degree 12/////////////////////////////////////
 
 
 
@@ -703,6 +703,34 @@ f:=x^12 - 2*x^11 - 25*x^10 + 38*x^9 + 193*x^8 - 238*x^7 - 588*x^6 + 526*x^5 + 75
 g:= x^12 - 7*x^11 - 106*x^10 + 854*x^9 + 2283*x^8 - 23541*x^7 - 25285*x^6 + 274071*x^5 + 248186*x^4 - 1429932*x^3 - 1603379*x^2 + 
     2381505*x + 3084481;
     
+
+
+
+
+
+//////////////////////////////////
+> L1:=NumberField(PolynomialWithGaloisGroup(12,1));
+> l:= Subfields(L1,6)[1,1];
+> IsCyclic(l);
+true
+> o:= MaximalOrder(l);
+> RayClassGroup(2*o);
+Abelian Group of order 1
+Mapping from: Abelian Group of order 1 to Set of ideals of o
+> RayClassGroup(4*o);
+Abelian Group of order 1
+Mapping from: Abelian Group of order 1 to Set of ideals of o
+> RayClassGroup(8*o);
+Abelian Group isomorphic to Z/2
+Defined on 1 generator
+Relations:
+    2*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/2
+Defined on 1 generator
+Relations:
+    2*$.1 = 0 to Set of ideals of o
+> r,mr:=RayClassGroup(8*o);
+> A:= AbelianExtension(mr);
 
 
 
