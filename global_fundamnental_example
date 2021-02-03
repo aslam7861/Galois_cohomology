@@ -706,6 +706,196 @@ true
 > IsNormal(L1);
 true
 > time CohL, f1CL, gfc , comp,Req:= gfcCompositumcl(L,L1);     
+compute composite field
+    Time: 0.670
+compute primes
+    3 subfields .    .    .     done.Time: 5.730
+    [ 17, 29 ]
+compute S-units and its G-action
+    Time: 5.300
+    Time: 4.090
+Time for set S: 16.970
+construct JN
+    prime: 17
+        compute lattice
+        Time: 0.240
+        compute completion, prec = 18
+        compute module
+        Time: 1.420
+        compute induced module
+        compute cocycle, prec = 8
+        compute completion, prec = 18
+        test cocycle
+        Time: 1.690
+    prime: 29
+        compute lattice
+        Time: 0.120
+        compute completion, prec = 12
+        compute module
+        Time: 0.920
+        compute induced module
+    modules for infinite places
+Time: 19.400
+compute idele group of N
+    Time: 3.350
+    Time: 39.680
+Time: 45.180
+compute idele class group of N
+    Time: 1.000
+compute cohomology of N
+    Time: 5.080
+    Time: 4.850
+Time for cohomology of N: 12.160
+compute idele group of L
+compute idele class group of L
+    Time: 0.810
+compute cohomology of L
+    Time: 1.110
+    Time: 13.160
+Time for all the computation for L: 15.280
+find global fundamental class of L
+    . found.
+Time: 140.970
+> gfc;
+(1)
+> CohomologyGroup(CohL,2);
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 8 ]
+> comp;       
+rec<recformat<CohL: ModCoho, f1CL: Map, gfcId: ModTupRngElt, CL: GrpAb, psiCL: 
+Map, qCL: Map, primes: SeqEnum, US: GrpAb, mUS: Map, kappaInf: SeqEnum, RepInf: 
+SeqEnum, inclJL: SeqEnum, inclUSJL: Map, lat: Any, theta: SeqEnum> | 
+    CohL := Cohomology Module,
+    f1CL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/2 + Z/48 + Z/4243680 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        48*$.8 = 0
+        4243680*$.9 = 0 to Full RSpace of degree 138 over Integer Ring given by 
+        a rule,
+    gfcId := (1),
+    CL := Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/48 + Z/4243680 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        48*$.8 = 0
+        4243680*$.9 = 0,
+    psiCL := Mapping from: GrpPerm: $, Degree 8, Order 2^3 to Set of all 
+        automorphisms of Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/2 + Z/48 + Z/4243680 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        48*$.8 = 0
+        4243680*$.9 = 0 given by a rule [no inverse],
+    qCL := Mapping from: Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2
+        + Z/2 + Z/2 + Z/2 + Z/48 + Z/4243680 + Z (138 copies)
+    Defined on 148 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        48*$.9 = 0
+        4243680*$.10 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/2 + Z/48 + Z/4243680 + Z (129 copies)
+    Defined on 138 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        48*$.8 = 0
+        4243680*$.9 = 0,
+    primes := [ 17, 29 ],
+    US := Abelian Group isomorphic to Z/2 + Z (9 copies)
+    Defined on 10 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2 + 4*$.9 + 2*$.11 - $.12 + $.14 - 6*$.15 - 2*$.16
+        $.3 = $.3 - 3*$.9 - $.11 + $.12 - $.14 + 4*$.15 + 2*$.16
+        $.4 = $.4 + $.9 + $.11 - 2*$.15
+        $.5 = $.5 + $.8 - 2*$.9 - $.10 - $.11 + 2*$.15
+        $.6 = $.6 + $.8 - 2*$.9 - 2*$.10 - 2*$.17
+        $.7 = $.7 + $.8 - 2*$.9 - $.10 - $.11 + 2*$.15
+        $.8 = 2*$.8 - 2*$.9 - 2*$.10 - 2*$.17
+        $.9 = $.13
+        $.10 = $.18
+    Relations:
+        2*$.1 = 0,
+    mUS := Mapping from: Abelian Group isomorphic to Z/2 + Z (9 copies)
+    Defined on 10 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2 + 4*$.9 + 2*$.11 - $.12 + $.14 - 6*$.15 - 2*$.16
+        $.3 = $.3 - 3*$.9 - $.11 + $.12 - $.14 + 4*$.15 + 2*$.16
+        $.4 = $.4 + $.9 + $.11 - 2*$.15
+        $.5 = $.5 + $.8 - 2*$.9 - $.10 - $.11 + 2*$.15
+        $.6 = $.6 + $.8 - 2*$.9 - 2*$.10 - 2*$.17
+        $.7 = $.7 + $.8 - 2*$.9 - $.10 - $.11 + 2*$.15
+        $.8 = 2*$.8 - 2*$.9 - 2*$.10 - 2*$.17
+        $.9 = $.13
+        $.10 = $.18
+    Relations:
+        2*$.1 = 0 to FldNum: L given by a rule [no inverse],
+    inclUSJL := Mapping from: Abelian Group isomorphic to Z/2 + Z (9 copies)
+    Defined on 10 generators in supergroup:
+        $.1 = $.1
+        $.2 = $.2 + 4*$.9 + 2*$.11 - $.12 + $.14 - 6*$.15 - 2*$.16
+        $.3 = $.3 - 3*$.9 - $.11 + $.12 - $.14 + 4*$.15 + 2*$.16
+        $.4 = $.4 + $.9 + $.11 - 2*$.15
+        $.5 = $.5 + $.8 - 2*$.9 - $.10 - $.11 + 2*$.15
+        $.6 = $.6 + $.8 - 2*$.9 - 2*$.10 - 2*$.17
+        $.7 = $.7 + $.8 - 2*$.9 - $.10 - $.11 + 2*$.15
+        $.8 = 2*$.8 - 2*$.9 - 2*$.10 - 2*$.17
+        $.9 = $.13
+        $.10 = $.18
+    Relations:
+        2*$.1 = 0 to Abelian Group isomorphic to Z/2 + Z/2 + Z/2 + Z/2 + Z/2 + 
+        Z/2 + Z/2 + Z/2 + Z/48 + Z/4243680 + Z (138 copies)
+    Defined on 148 generators
+    Relations:
+        2*$.1 = 0
+        2*$.2 = 0
+        2*$.3 = 0
+        2*$.4 = 0
+        2*$.5 = 0
+        2*$.6 = 0
+        2*$.7 = 0
+        2*$.8 = 0
+        48*$.9 = 0
+        4243680*$.10 = 0 given by a rule [no inverse],
+    theta := [
+        [0, -1, 0, -1, 5, 9, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, -58, -59, -66, -17, -38, 48, 20, 32, 52, 4, 12, 4, 0, 0, 0]
+    ]>
+> 
 
 
 
