@@ -1,3 +1,53 @@
+
+
+LP,iotaL:=Completion(OL,PL:Precision:= 100);
+LP`DefaultPrecision;
+Factorisation(p*OL)[1,1];
+    piL := UniformizingElement(PL);
+ GammaP := [g : g in GL| &and([  psiL(g)(x) in PL   : x in Generators(PL)]) ];
+        Gammap := sub< GL | GammaP>;
+        psiLP := map< Gammap -> Aut(LP) | g :-> iotaL^(-1) * psiL(g) * iotaL >;
+        LIST:=[*LP,iotaL,psiLP*];
+psiL(GL.1)(piL);
+    theta, m := lattice(PL, UniformizingElement(PL), psiL);
+ML, psiML, qML := compute_LPmul_modX1(L, PL, psiL,LIST, theta, m);
+m:=18
+ML, psiML, qML := compute_LPmul_modX1(L, PL, psiL,LIST, theta, m);
+m:=18;
+ML, psiML, qML := compute_LPmul_modX1(L, PL, psiL,LIST, theta, m);
+ML;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 intrinsic gfcCompositumcl(L::FldNum, L1::FldNum) -> ModCoho, Map, ModTupRngElt, Rec
 { Given an arbitrary Galois extension L/Q and a cyclic extension L1/Q
   of the same degree, this method computes then global fundamental
