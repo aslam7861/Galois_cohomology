@@ -21,6 +21,32 @@ ML;
 
 
 
+>  NP, iotaN := Completion(ON, PN : Precision := Max(100,m*2));
+> GammaP := [g : g in Gamma | &and([  psiN(g)(x) in PN   : x in Generators(PN)]) ];
+>         GammaP := sub< Gamma | GammaP>;
+>         psiNP := map< GammaP -> Aut(NP) | g :-> iotaN^(-1) * psiN(g) * iotaN >;
+>  MN,qMN := UnitGroup(NP:Prec:=m);
+>  psiMN:= hom<GammaP->Aut(MN)| x:-> hom<MN->MN|[MN.i@qMN@psiNP(x)@@qMN: i in [1..Ngens(MN)]]> >;
+>  indMN, psiIndMN, RN, kappaMN, projMN := inducedModule(MN, psiMN, Gamma);
+> H := FixedGroup(N,L);
+>         K := [ Kernel(Transpose(HorizontalJoin(
+>             Transpose(Matrix([  Eltseq(indMN.i @ psiIndMN(h) - indMN.i)  :  i in [1..#Generators(indMN)]])), D)))
+>         : h in H ]
+>         where D := DiagonalMatrix([Order(indMN.i) :  i in [1..#Generators(indMN)] ]);
+>         indML := &meet([sub<indMN | [indMN!Eltseq(b)[1..#Generators(indMN)] :  b in Basis(k)]> : k in K]);
+>    assert (ON!OL.1) @ diagN in indML;
+
+>>    assert (ON!OL.1) @ diagN in indML;
+                       ^
+Runtime error in map application: Element is not in the domain of the map
+
+> diagN := map< N -> indMN | x :->
+>             &+([ x @ psiN(RN[i]^(-1)) @ iotaN @@ qMN @ kappaMN[i] : i in [1..#kappaMN] ]) >;
+>    assert (ON!OL.1) @ diagN in indML;
+> c2 := map< car<Gamma, Gamma> -> indMN | x :-> Zero(indMN) >;
+> Append(~thetaAll, ON!theta); 
+
+
 
 
 
