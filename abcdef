@@ -1,13 +1,4 @@
 
-function reconstruction(PN,z,m, OL )
-ON:=Order(PN);
-q:=LLLBasisMatrix(PN^m);
-_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,Degree(ON),Eltseq\
-(z)));
-r:= [Round(x): x in Eltseq(s)];
-c:=Matrix(Rationals(), 1, Degree(ON), r)*q;
-return OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..Degree(ON)]]);
-end function;
 
 
 
