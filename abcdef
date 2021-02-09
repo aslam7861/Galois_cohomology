@@ -1,0 +1,90 @@
+
+function reconstruction(PN,z,m, OL )
+ON:=Order(PN);
+q:=LLLBasisMatrix(PN^m);
+_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,Degree(ON),Eltseq\
+(z)));
+r:= [Round(x): x in Eltseq(s)];
+c:=Matrix(Rationals(), 1, Degree(ON), r)*q;
+return OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..Degree(ON)]]);
+end function;
+
+
+
+
+
+
+
+x:=PolynomialRing(Integers()).1;
+f:=x^6 - 13*x^5 + 65*x^4 - 156*x^3 + 182*x^2 - 91*x + 13;
+ g:= x^6 - 26*x^5 + 215*x^4 - 598*x^3 + 350*x^2 + 416*x - 47;
+L:= NumberField(f);
+L1:= NumberField(g);
+N:=  OptimizedRepresentation(Compositum(L,L1));
+    assert IsTotallyReal(N);
+    ON := RingOfIntegers(N);
+    OL := MaximalOrder(L);
+    Gamma, _ ,psiN := AutomorphismGroup(N);
+    psiN := map< Domain(psiN) -> Codomain(psiN) | x :-> psiN(x^(-1)) >;
+    p:=13;
+    m:=12;
+    
+PN := Factorization(p*ON)[1,1];
+        piN := UniformizingElement(PN);
+np, iotan := Completion(ON, PN : Precision := Max(100,m*2));
+NP, iotaN := Completion(N, PN : Precision := Max(100,m*2));
+u,mu := UnitGroup(np:Prec:=m);
+(1+L.1)@iotan@@mu;
+au:=$1;
+z:=au@mu@@iotan;
+q:=LLLBasisMatrix(PN^24);
+_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,12,Eltseq(z)));
+r:= [Round(x): x in Eltseq(s)];
+c:=Matrix(Rationals(), 1, 12, r)*q;
+OL;
+OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..12]]);
+q:=LLLBasisMatrix(PN^12);
+_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,12,Eltseq(z)));
+r:= [Round(x): x in Eltseq(s)];
+c:=Matrix(Rationals(), 1, 12, r)*q;
+OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..12]]);
+L!$1;
+
+
+
+
+
+x:=PolynomialRing(Integers()).1;
+f:=x^6 - 13*x^5 + 65*x^4 - 156*x^3 + 182*x^2 - 91*x + 13;
+ g:= x^6 - 26*x^5 + 215*x^4 - 598*x^3 + 350*x^2 + 416*x - 47;
+L:= NumberField(f);
+L1:= NumberField(g);
+N:=  OptimizedRepresentation(Compositum(L,L1));
+    assert IsTotallyReal(N);
+    ON := RingOfIntegers(N);
+    OL := MaximalOrder(L);
+    Gamma, _ ,psiN := AutomorphismGroup(N);
+    psiN := map< Domain(psiN) -> Codomain(psiN) | x :-> psiN(x^(-1)) >;
+    p:=13;
+    m:=12;
+PN := Factorization(p*ON)[1,1];
+        piN := UniformizingElement(PN);
+np, iotan := Completion(ON, PN : Precision := Max(100,m*2));
+NP, iotaN := Completion(N, PN : Precision := Max(100,m*2));
+u,mu := UnitGroup(np:Prec:=m);
+(1+L.1)@iotan@@mu;
+au:=$1;
+z:=au@mu@@iotan;
+z;
+q:=LLLBasisMatrix(PN^24);
+_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,12,Eltseq(z)));
+r:= [Round(x): x in Eltseq(s)];
+c:=Matrix(Rationals(), 1, 12, r)*q;
+OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..12]]);
+q:=LLLBasisMatrix(PN^12);
+_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,12,Eltseq(z)));
+r:= [Round(x): x in Eltseq(s)];
+c:=Matrix(Rationals(), 1, 12, r)*q;
+OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..12]]);
+L!$1;
+> 
