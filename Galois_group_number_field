@@ -1,3 +1,151 @@
+> x:= PolynomialRing(Integers()).1;
+> f:=x^6 - 13*x^5 + 65*x^4 - 156*x^3 + 182*x^2 - 91*x + 13;
+>  g:= x^6 - 26*x^5 + 215*x^4 - 598*x^3 + 350*x^2 + 416*x - 47;
+> 
+> AttachSpec("spec");     
+> L:=NumberField(f);
+> L1:=NumberField(g);
+> time CohL, f1CL, gfc, comp,req:= gfcCompositumcl(L,L1);
+Time: 74.080
+> G:=Group(CohL);
+>  CL:=comp`CL;
+> qCL:=comp`qCL;
+>  LST:=req[1];
+> lst:=req[2];
+>  u:= TwoCocycle(CohL,gfc);
+> projJL:= req[3];
+> 
+> mUSL:= comp`mUS;
+> projMN:= LST[#lst,5]; 
+> 
+> Hom :=[* *];
+> for i in [1..#LST-1] do
+for>   P := LST[i,1];
+for>   m := LST[i,2];
+for>   map :=  LST[i,4]*LST[i,5];
+for>   Append(~Hom, solve_reconstruction(P,m,L,map));
+for> end for;  
+> set := [hom<car<G,G>->L |  x:-> (&+ [x@u@@f1CL@@qCL@projJL[i]@ Coercion( lst\
+[i,1], lst[i,2] )@ lst[i,3](LST[i,3][k])@ LST[i,7][k]: k in [1..#LST[i,7]]]) @\
+Hom[i] >: i in [1..#lst-1]];
+> h_inf:= hom<car<G,G>->L |  x:-> (&+[(x@u@@f1CL@@qCL@projJL[i]@Coercion(lst[i\
+,1],lst[i,2]))@projMN[j]: j in [1..#projMN]]) @mUSL> where i :=#lst;
+> 
+> B:=[* set[1], set[2], h_inf *];
+> OL:= MaximalOrder(L);
+> comp`primes;
+[ 2, 13 ]
+> r,mr := RayClassGroup(5^2*OL);
+> r;
+Abelian Group isomorphic to Z/10
+Defined on 2 generators
+Relations:
+    2*r.1 = 0
+    5*r.2 = 0
+> A:=AbelianExtension(mr);
+> ca,w1,w2,w3 := CohomologyModule(A);
+> CohomologyGroup(ca,2);
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 2 ]
+> H := Group(ca);
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+
+>> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+                                          ^
+User error: Identifier 'phi' has not been declared or assigned
+> _,phi:= IsIsomorphic(H,G);
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+
+IdentifyTwoCocycle(
+    CM: Cohomology Module,
+    TC: function(x) ... end function
+)
+IdentifyTwoCocycleSGA(
+    CM: Cohomology Module,
+    TC: function(x) ... end function
+)
+[<main>:39](
+    x: <(1, 2, 4, 6, 5, 3), (1, 6)(2, 5)(3, 4)>
+)
+>> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+                                                            ^
+Runtime error in '@@': Element is not in the codomain of the map
+
+> 
+> r,mr := RayClassGroup(17^2*OL);
+> r;
+Abelian Group isomorphic to Z/272
+Defined on 2 generators
+Relations:
+    16*r.1 = 0
+    17*r.2 = 0
+> A:=AbelianExtension(mr);
+> ca,w1,w2,w3 := CohomologyModule(A);
+> CohomologyGroup(ca,2);
+Full Quotient RSpace of degree 0 over Integer Ring
+Column moduli:
+[ ]
+> H := Group(ca);
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> _,phi:= IsIsomorphic(H,G);                                          
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+Matrix with 1 row and 0 columns
+> r,mr := RayClassGroup(23^2*OL);
+> r;
+Abelian Group isomorphic to Z/253
+Defined on 2 generators
+Relations:
+    11*r.1 = 0
+    23*r.2 = 0
+> A:=AbelianExtension(mr);
+> ca,w1,w2,w3 := CohomologyModule(A);
+> CohomologyGroup(ca,2);
+Full Quotient RSpace of degree 0 over Integer Ring
+Column moduli:
+[ ]
+> H := Group(ca);
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> _,phi:= IsIsomorphic(H,G);
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+Matrix with 1 row and 0 columns
+> r,mr := RayClassGroup(19^2*OL);
+> r;
+Abelian Group isomorphic to Z/171
+Defined on 2 generators
+Relations:
+    9*r.1 = 0
+    19*r.2 = 0
+> A:=AbelianExtension(mr);
+> ca,w1,w2,w3 := CohomologyModule(A);
+> CohomologyGroup(ca,2);
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 3 ]
+> H := Group(ca);
+>  mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+> _,phi:= IsIsomorphic(H,G);
+> IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+(1)
+> GroupName(Extension(ca,$1));
+C1026
+> C2:=CohomologyGroup(ca,2);
+> GroupName(Extension(ca,2*C2.1));
+C1026
+> GroupName(Extension(ca,3*C2.1));
+C3*C342
+> 
+
+
+
+
+
+
+
 > L:=NumberField(PolynomialWithGaloisGroup(8,1));
 > time CohL,f1CL,gfc, comp,req:=gfcUndecomposedcl(L,17);
 Time: 2.890
@@ -36,7 +184,7 @@ Column moduli:
 > mm:= hom<car<G,G>->L| x:-> x@u@@f1CL@CL_L>;
 > IdentifyTwoCocycle(CM,func<x | mm(x[1],x[2])@@mr@@w3>);
 (1)
->> r,mr:=RayClassGroup(23*13^6*MaximalOrder(L));          
+> r,mr:=RayClassGroup(23*13^6*MaximalOrder(L));          
 > A:= AbelianExtension(mr);
 >   CM,w1,w2,w3 := CohomologyModule(A);
 >   CohomologyGroup(CM, 2);
@@ -64,3 +212,24 @@ Defined on 2 generators
 Relations:
     12*$.1 = 0
     49010676*$.2 = 0 to GrpFP
+> time c,a,b := group_extension(L,17,23*13^1);
+Time: 2.250
+> b;
+(0)
+> CohomologyGroup(a,2);
+Full Quotient RSpace of degree 1 over Integer Ring
+Column moduli:
+[ 4 ]
+> //time GroupName(c);
+> #c;
+12672
+> time GroupName(c);  
+C132.(C4*C24)
+Time: 1.640
+> C2:=CohomologyGroup(a,2);
+> GroupName(Extension(a,1*C2.1)); 
+C132.(C4*C24)
+> GroupName(Extension(a,3*C2.1));
+C132.(C4*C24)
+> GroupName(Extension(a,2*C2.1));
+C132.(C4*C24)
