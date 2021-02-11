@@ -1,6 +1,36 @@
 
 
 
+/*
+ //
+ *"Construct>>>>>>psiindML>>>> with each prime";
+G:=Group(CohL);
+ CL:=comp`CL;
+qCL:=comp`qCL;
+ LST:=req[1];
+lst:=req[2];
+ u:= TwoCocycle(CohL,gfc);
+projJL:= req[3];
+
+mUSL:= comp`mUS;
+projMN:= LST[#lst,5]; 
+h2:=hom<car<G,G>->L |  x:->reconstruction(LST[i,1],  &+[x@u@@f1CL@@qCL@projJL[i]@ Coercion( lst[i,1], lst[i,2] )@ lst[i,3](LST[i,3][k])@ LST[i,7][k]: k in [1..#LST[i,7]]]@@LST[i,5]@@LST[i,4], LST[i,2],L)> where i :=2;
+
+
+set := [hom<car<G,G>->L |  x:->reconstruction(LST[i,1],  &+[x@u@@f1CL@@qCL@projJL[i]@ Coercion( lst[i,1], lst[i,2] )@ lst[i,3](LST[i,3][k])@ LST[i,7][k]: k in [1..#LST[i,7]]]@@LST[i,5]@@LST[i,4], LST[i,2],L)>: i in [1..#lst-1]];
+
+
+
+h_inf:= hom<car<G,G>->L |  x:-> (&+[(x@u@@f1CL@@qCL@projJL[i]@Coercion(lst[i,1],lst[i,2]))@projMN[j]: j in [1..#projMN]]) @mUSL> where i :=#lst;
+
+B:=[* set[1], set[2], h_inf *];
+
+H := Group(ca);
+_,phi:= IsIsomorphic(H,G);
+ mm:= hom<car<G,G>-> L | x:->&*[x@h:h in B ]>;
+IdentifyTwoCocycle(ca, func<x | (<x[1]@phi, x[2]@phi>)@mm@@mr@@w3>);
+
+*/
 
 
 
@@ -9,37 +39,7 @@
 x:=PolynomialRing(Integers()).1;
 f:=x^6 - 13*x^5 + 65*x^4 - 156*x^3 + 182*x^2 - 91*x + 13;
  g:= x^6 - 26*x^5 + 215*x^4 - 598*x^3 + 350*x^2 + 416*x - 47;
-L:= NumberField(f);
-L1:= NumberField(g);
-N:=  OptimizedRepresentation(Compositum(L,L1));
-    assert IsTotallyReal(N);
-    ON := RingOfIntegers(N);
-    OL := MaximalOrder(L);
-    Gamma, _ ,psiN := AutomorphismGroup(N);
-    psiN := map< Domain(psiN) -> Codomain(psiN) | x :-> psiN(x^(-1)) >;
-    p:=13;
-    m:=12;
-    
-PN := Factorization(p*ON)[1,1];
-        piN := UniformizingElement(PN);
-np, iotan := Completion(ON, PN : Precision := Max(100,m*2));
-NP, iotaN := Completion(N, PN : Precision := Max(100,m*2));
-u,mu := UnitGroup(np:Prec:=m);
-(1+L.1)@iotan@@mu;
-au:=$1;
-z:=au@mu@@iotan;
-q:=LLLBasisMatrix(PN^24);
-_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,12,Eltseq(z)));
-r:= [Round(x): x in Eltseq(s)];
-c:=Matrix(Rationals(), 1, 12, r)*q;
-OL;
-OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..12]]);
-q:=LLLBasisMatrix(PN^12);
-_,s:= IsConsistent(Matrix(Rationals(),q),Matrix(Rationals(),1,12,Eltseq(z)));
-r:= [Round(x): x in Eltseq(s)];
-c:=Matrix(Rationals(), 1, 12, r)*q;
-OL!ON!(z - &+ [c[1][i] * ON.i : i in [1..12]]);
-L!$1;
+
 
 
 
