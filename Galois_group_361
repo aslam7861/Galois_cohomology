@@ -158,6 +158,43 @@ Time: 546.730
 
 
 
+
+> f:= x^361 + 19*x^342 + 6137*x^18 + 3249*x^17 + 342;                          
+> pReduction(f);
+19-adic field mod 19^21
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where \
+a:= RamificationPolygon(f);
+[ <-2, -1> ]
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(19)
+Univariate Polynomial Ring in z over GF(19)
+Univariate Polynomial Ring in z over GF(19)
+Time: 304.530
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+130321
+> Factorisation($1);
+[ <19, 4> ]
+> I;
+19
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.2^19 = Id(G)
+    G.3^19 = Id(G)
+    G.4^19 = Id(G)
+    (G.2, G.3) = Id(G)
+    (G.2, G.4) = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.2 * G.1 * G.4^-1 * G.2^-1 = Id(G)
+    G.1^-1 * G.3 * G.1 * G.3^-1 * G.2^-1 = Id(G)
+    (G.1, G.4^-1) = Id(G)
+    G.1^-19 = Id(G)
+> 
+
+
+
+
 > f:= x^361 + 19*x^342 + 5776*x^37 + 3971*x^36 + 2166*x^35 + 342;
 > pReduction(f);
 19-adic field mod 19^22
