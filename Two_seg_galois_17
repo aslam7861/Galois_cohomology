@@ -445,6 +445,131 @@ Relations
 
 
 
+> f:= x^289 + 17*x^272 + 289*x^25 + 289*x^24 + 867*x^23 + 272;
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+[ <-5/2, -1> ]
+> pReduction(f);
+Totally ramified extension defined by the polynomial x^2 + 272
+ over 17-adic field mod 17^19
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(17)
+Univariate Polynomial Ring in z over GF(17)
+Univariate Polynomial Ring in z over GF(17)
+Computation time of factorisation of f
+Time: 8.540
+Computation time of lfc
+Norm equation... Time: 6.600
+GAction... Time: 0.000
+Time: 8.520
+Solve Frobenius equations... Time: 117.260
+Time: 141.050
+Time: 6.580
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 40.600
+Time: 7.810
+Time: 374.700
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+167042
+> Factorisation($1);
+[ <2, 1>, <17, 4> ]
+> I;
+1
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.3^17 = Id(G)
+    G.4^17 = Id(G)
+    G.5^17 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.5^-1 * G.4^-12 * G.3^-1 = Id(G)
+    (G.1, G.4^-1) = Id(G)
+    G.1^-1 * G.5 * G.1 * G.5^-1 * G.4^-3 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.3^-16 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-16 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-16 = Id(G)
+    G.2^2 = Id(G)
+    G.1^-1 * G.2 * G.1 * G.2 = Id(G)
+    G.1^-17 = Id(G)
+> 
+
+
+
+
+
+
+
+
+> f:= x^289 + 17*x^272 + 289*x^25 + 867*x^23 + 17;                                                                                
+> pReduction(f);
+Totally ramified extension defined by the polynomial x^2 - 18074512959313945848239
+ over Unramified extension defined by the polynomial x^2 + 16*x + 3
+ over 17-adic field mod 17^19
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+[ <-5/2, -1> ]
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(17^2)
+Univariate Polynomial Ring in z over GF(17^2)
+Univariate Polynomial Ring in z over GF(17^2)
+Computation time of factorisation of f
+Time: 12.480
+Computation time of lfc
+Univariate Polynomial Ring in z over GF(17^68)
+Time: 3143.530
+Time: 14.570
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 171.170
+Time: 48.810
+Time: 3646.740
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+334084
+> Factorisation($1);
+[ <2, 2>, <17, 4> ]
+> I;
+2
+> G;
+Finitely presented group G on 6 generators
+Relations
+    G.4^17 = Id(G)
+    G.5^17 = Id(G)
+    G.6^17 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.5, G.6) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.6^-14 * G.5^-6 * G.4^-1 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.6^-1 * G.5^-7 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-16 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-16 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-16 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.6^-5 * G.4^-1 = Id(G)
+    (G.3, G.5^-1) = Id(G)
+    G.3^-1 * G.6 * G.3 * G.6^-16 = Id(G)
+    G.2^2 = Id(G)
+    G.3^2 = Id(G)
+    G.1^-1 * G.2 * G.1 * G.2 = Id(G)
+    (G.1^-1 * G.3)^2 = Id(G)
+    (G.2 * G.3)^2 = Id(G)
+    G.1^-17 = Id(G)
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
