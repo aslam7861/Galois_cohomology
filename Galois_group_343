@@ -427,6 +427,69 @@ f);
 
 
 
+> f:= x^343 + 7*x^294 + 147*x^49 + 196*x^47 + 98*x^42 + 7;
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where \
+a:= RamificationPolygon(f);
+[ <-2, -1> ]
+> pReduction(f);
+Unramified extension defined by the polynomial x^2 + 6*x + 3
+ over 7-adic field mod 7^50
+>  time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(7^2)
+Univariate Polynomial Ring in z over GF(7^2)
+Univariate Polynomial Ring in z over GF(7^2)
+Computation time of factorisation of f
+Time: 12.680
+Computation time of lfc
+Norm equation... Time: 1.000
+GAction... Univariate Polynomial Ring in z over GF(7^14)
+Time: 1.030
+Time: 0.370
+Solve Frobenius equations... Time: 1.520
+Time: 5.220
+Time: 5.520
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 24.610
+Time: 0.310
+Time: 558.410
+> CM :=set[2];
+> #Group(CM)*&*(CM`invar);
+235298
+> I;
+14
+> G;
+Finitely presented group G on 7 generators
+Relations
+    G.3^7 = Id(G)
+    G.4^7 = Id(G)
+    G.5^7 = Id(G)
+    G.6^7 = Id(G)
+    G.7^7 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.6, G.7) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.7^-1 * G.6^-1 * G.3^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.7^-6 * G.6^-2 * G.4^-1 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.7^-6 * G.6^-6 * G.5^-1 * G.4^-6 * G.3^-2 = Id(G)
+    (G.1, G.6^-1) = Id(G)
+    (G.1, G.7^-1) = Id(G)
+    G.2^-1 * G.3 * G.2 * G.7^-3 * G.4^-1 * G.3^-6 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    (G.2, G.5^-1) = Id(G)
+    G.2^-1 * G.6 * G.2 * G.7^-1 * G.6^-6 = Id(G)
+    (G.2, G.7^-1) = Id(G)
+    G.2^2 = Id(G)
+    (G.1^-1 * G.2)^2 = Id(G)
+    G.1^-7 = Id(G)
+> 
 
 
 
