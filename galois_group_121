@@ -1,27 +1,740 @@
-Polynomial of less ramification degree>>>>>>>>
-[
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^4 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^9 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^14 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^19 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^24 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^29 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^34 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^39 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^49 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^54 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^59 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^64 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^69 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^74 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^79 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^84 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^89 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^94 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^104 + 11 + O(11^21),
-    x^121 + (11 + O(11^21))*x^110 + (11^2 + O(11^22))*x^109 + 11 + O(11^21)
-]
+
+
+
+
+> K:= pAdicField(11,13);
+> y:= PolynomialRing(K).1;
+> f:= y^121 + 484*y^120 + 11*y^110 + 1210*y^109 + 11;
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where\
+ a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> pReduction(f);
+Unramified extension defined by the polynomial x^2 + 7*x + 2
+ over 11-adic field mod 11^13
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Computation time of factorisation of f
+Time: 0.400
+Computation time of lfc
+Norm equation... Time: 0.280
+GAction... Univariate Polynomial Ring in z over GF(11^22)
+Time: 4.380
+Time: 1.270
+Solve Frobenius equations... Time: 2.400
+Time: 10.050
+Time: 0.260
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.320
+Time: 0.940
+Time: 20.200
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+2662
+> Factorisation($1);
+[ <2, 1>, <11, 3> ]
+> I;
+22
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-7 * G.3^-1 = Id(G)
+    (G.1, G.4^-1) = Id(G)
+    (G.2, G.3^-1) = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-10 = Id(G)
+    G.2^2 = Id(G)
+    (G.1^-1 * G.2)^2 = Id(G)
+    G.1^-11 * G.4^-6 = Id(G)
 > 
+
+
+> f:= y^121 + 484*y^120 + 11*y^110 + 1210*y^109 + 22;
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where\
+ a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> pReduction(f);
+Unramified extension defined by the polynomial x^5 + 10*x^2 + 9
+ over 11-adic field mod 11^13
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Computation time of factorisation of f
+Time: 0.530
+Computation time of lfc
+Norm equation... Time: 0.740
+GAction... Univariate Polynomial Ring in z over GF(11^55)
+Time: 11.400
+Time: 25.560
+Solve Frobenius equations... Time: 20.080
+Time: 65.760
+Time: 0.380
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 1.270
+Time: 7.660
+Time: 93.990
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+6655
+> Factorisation($1);
+[ <5, 1>, <11, 3> ]
+> I;
+5
+> G;
+Finitely presented group G on 4 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-6 * G.3^-1 = Id(G)
+    (G.1, G.4^-1) = Id(G)
+    (G.2, G.3^-1) = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-5 = Id(G)
+    G.2^5 * G.3^-3 = Id(G)
+    G.2^-1 * G.1^-2 * G.2 * G.1^-1 = Id(G)
+    G.1^5 * G.2^-1 * G.1^-1 * G.2 * G.4^-8 = Id(G)
+> 
+
+
+
+
+
+> f:= y^121 + 121*y^120 + 121*y^119 + 1210*y^118 + 11*y^110 + 1210*y^109 + 11; 
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where \
+a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> pReduction(f);
+Unramified extension defined by the polynomial x^2 + 7*x + 2
+ over 11-adic field mod 11^13
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^22)
+Time: 18.430
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+322102
+> Factorisation($1);
+[ <2, 1>, <11, 5> ]
+> I;
+22
+> G;
+Finitely presented group G on 6 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.5, G.6) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.6^-10 * G.5^-4 * G.3^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.6^-8 * G.4^-1 * G.3^-10 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.6^-1 * G.5^-10 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-4 * G.3^-10 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-10 = Id(G)
+    (G.2, G.6^-1) = Id(G)
+    G.2^2 = Id(G)
+    (G.1^-1 * G.2)^2 = Id(G)
+    G.1^-11 * G.5^-5 = Id(G)
+> 
+> f:= y^121 + 121*y^120 + 121*y^119 + 1210*y^118 + 11*y^110 + 1210*y^109 + 66; 
+> pReduction(f);
+Unramified extension defined by the polynomial x^5 + 10*x^2 + 9
+ over 11-adic field mod 11^13
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where \
+a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^55)
+Time: 88.400
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+73205
+> Factorisation($1);
+[ <5, 1>, <11, 4> ]
+> I;
+5
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.5^-6 * G.4^-8 * G.3^-2 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.5^-2 * G.3^-4 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.5^-1 * G.4^-10 * G.3^-4 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.3^-5 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4^-9 * G.3^-6 = Id(G)
+    (G.2, G.5^-1) = Id(G)
+    G.2^5 = Id(G)
+    G.2 * G.1^-2 * G.2^-1 * G.1^-1 * G.5^-9 = Id(G)
+    G.1^5 * G.2 * G.1^-1 * G.2^-1 * G.3^-4 * G.4^-10 * G.5^-10 = Id(G)
+> 
+
+
+
+
+
+> f:= y^121 + 242*y^120 + 121*y^119 + 605*y^118 + 121*y^116 + 11*y^110 + 1210*\
+y^109 + 11;
+> pReduction(f);
+Unramified extension defined by the polynomial x^2 + 7*x + 2
+ over 11-adic field mod 11^13
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where\
+ a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Computation time of factorisation of f
+Time: 0.560
+Computation time of lfc
+Norm equation... Time: 0.300
+GAction... Univariate Polynomial Ring in z over GF(11^22)
+Time: 4.750
+Time: 1.350
+Solve Frobenius equations... Time: 2.360
+Time: 10.540
+Time: 0.580
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.490
+Time: 1.150
+Time: 22.160
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+38974342
+> Factorisation($1);
+[ <2, 1>, <11, 7> ]
+> I;
+22
+> G;
+Finitely presented group G on 8 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    G.8^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-1 * G.7^-10 * G.6^-2 * G.5^-2 * G.3^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.8^-7 * G.7^-3 * G.6^-10 * G.5^-9 * G.4^-1 * G.3^-10 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.8^-8 * G.7^-2 * G.6^-10 * G.5^-6 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-4 * G.6^-7 * G.5^-8 = Id(G)
+    (G.1, G.7^-1) = Id(G)
+    G.1^-1 * G.8 * G.1 * G.8^-1 * G.7^-2 * G.6^-7 * G.5^-2 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.8^-4 * G.7^-4 * G.6^-7 * G.3^-10 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.8^-8 * G.7^-8 * G.6^-2 * G.5^-10 = Id(G)
+    (G.2, G.6^-1) = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-10 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-1 * G.7^-2 = Id(G)
+    G.2^2 = Id(G)
+    (G.1^-1 * G.2)^2 = Id(G)
+    G.1^-11 * G.7^-5 = Id(G)
+> 
+
+
+> f:= y^121 + 242*y^120 + 121*y^119 + 605*y^118 + 121*y^116 + 11*y^110 + 1210*\
+y^109 + 77;
+> pReduction(f);
+Unramified extension defined by the polynomial x^5 + 10*x^2 + 9
+ over 11-adic field mod 11^13
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where\
+ a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Computation time of factorisation of f
+Time: 0.820
+Computation time of lfc
+Norm equation... Time: 0.830
+GAction... Univariate Polynomial Ring in z over GF(11^55)
+Time: 12.320
+Time: 26.480
+Solve Frobenius equations... Time: 19.910
+Time: 68.000
+Time: 0.930
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 2.010
+Time: 9.390
+Time: 100.910
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+8857805
+> Factorisation($1);
+[ <5, 1>, <11, 6> ]
+> I;
+5
+> G;
+Finitely presented group G on 7 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.6, G.7) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.7^-4 * G.6^-6 * G.5^-10 * G.4^-9 * G.3^-6 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.5^-5 * G.4^-9 * G.3^-8 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.7^-9 * G.6^-8 * G.5^-10 * G.4^-8 * G.3^-10 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-3 * G.6^-7 * G.5^-1 * G.4^-2 * G.3^-6 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.7^-6 * G.6^-10 * G.5^-3 * G.4^-1 * G.3^-7 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.7^-5 * G.6^-7 * G.5^-4 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.7^-3 * G.6^-2 * G.5^-1 * G.4^-1 * G.3^-7 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.7^-10 * G.6^-3 * G.4^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.7^-6 * G.6^-2 * G.5^-1 * G.3^-6 = Id(G)
+    G.2^5 = Id(G)
+    G.2 * G.1^3 * G.2^-1 * G.1^-1 = Id(G)
+    G.1^-4 * G.2 * G.1 * G.2^-1 * G.3^-7 * G.4^-7 * G.5^-3 = Id(G)
+> 
+
+
+
+
+
+
+
+> f:= y^121 + 363*y^120 + 605*y^119 + 242*y^118 + 726*y^117 + 1210*y^116 + 242\
+*y^115 + 11*y^110 + 1210*y^109 + 11
+> ;
+> pReduction(f);
+Unramified extension defined by the polynomial x^2 + 7*x + 2
+ over 11-adic field mod 11^13
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where\
+ a:= RamificationPolygon(f);
+[ <-12, -1> ]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Computation time of factorisation of f
+Time: 0.560
+Computation time of lfc
+Norm equation... Time: 0.320
+GAction... Univariate Polynomial Ring in z over GF(11^22)
+Time: 4.610
+Time: 1.350
+Solve Frobenius equations... Time: 2.370
+Time: 10.450
+Time: 0.630
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.540
+Time: 1.130
+Time: 22.410
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+38974342
+> Factorisation($1);
+[ <2, 1>, <11, 7> ]
+> I;
+2
+> G;
+Finitely presented group G on 8 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    G.8^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-5 * G.6^-1 * G.4^-4 * G.3^-2 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.8^-10 * G.7^-9 * G.6^-1 * G.5^-9 * G.4^-8 * G.3^-8 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.8^-10 * G.7^-6 * G.6^-9 * G.4^-8 * G.3^-6 = Id(G)
+    (G.1, G.6^-1) = Id(G)
+    G.1^-1 * G.7 * G.1 * G.8^-2 * G.7^-9 * G.6^-7 * G.5^-2 * G.3^-5 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.8^-8 * G.7^-8 * G.5^-7 * G.4^-6 * G.3^-6 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-2 * G.3^-1 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.8^-7 * G.7^-10 * G.5^-7 * G.4^-10 = Id(G)
+    (G.2, G.5^-1) = Id(G)
+    G.2^-1 * G.6 * G.2 * G.6^-10 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.8^-2 * G.7^-5 * G.6^-6 * G.5^-10 * G.3^-6 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-6 * G.7^-10 * G.6^-4 * G.5^-3 * G.3^-4 = Id(G)
+    G.2^2 = Id(G)
+    (G.1^-1 * G.2)^2 = Id(G)
+    G.1^-11 * G.6^-5 = Id(G)
+> 
+
+> f:= y^121 + 363*y^120 + 605*y^119 + 242*y^118 + 726*y^117 + 1210*y^116 + 242\
+*y^115 + 11*y^110 + 1210*y^109 + 33;
+> pReduction(f);
+Unramified extension defined by the polynomial x^10 + 7*x^5 + 8*x^4 + 10*x^3 + 
+    6*x^2 + 6*x + 2
+ over 11-adic field mod 11^13
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(11^10)
+Univariate Polynomial Ring in z over GF(11^10)
+Univariate Polynomial Ring in z over GF(11^10)
+Computation time of factorisation of f
+Time: 1.350
+Computation time of lfc
+Norm equation... Time: 2.060
+GAction... Univariate Polynomial Ring in z over GF(11^110)
+Time: 29.600
+Time: 273.290
+Solve Frobenius equations... Time: 99.050
+Time: 446.940
+Time: 1.480
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 8.810
+Time: 63.520
+Time: 620.960
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+194871710
+> Factorisation($1);
+[ <2, 1>, <5, 1>, <11, 7> ]
+> I;
+10
+> G;                                                                                                                                         
+Finitely presented group G on 8 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    G.8^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-3 * G.7^-9 * G.6^-10 * G.5^-4 * G.4^-5 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.8^-8 * G.7^-6 * G.6^-4 * G.4^-10 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.8^-8 * G.7^-8 * G.6^-9 * G.5^-6 * G.4^-4 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.8^-5 * G.7^-9 * G.6^-5 * G.5^-1 * G.4^-8 * G.3^-6 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.8^-10 * G.7^-10 * G.6^-1 * G.5^-2 * G.4^-5 * G.3^-10 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.8^-8 * G.7^-2 * G.6^-6 * G.5^-3 * G.4^-1 * G.3^-8 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.8^-7 * G.7^-2 * G.6^-9 * G.5^-3 * G.4^-5 * G.3^-10 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.8^-7 * G.7^-6 * G.6^-10 * G.4^-5 * G.3^-7 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.8^-6 * G.7^-10 * G.6^-4 * G.5^-7 * G.4^-7 * G.3^-4 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.8^-2 * G.7^-6 * G.6^-4 * G.5^-4 * G.4^-1 * G.3^-5 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.8^-7 * G.7^-8 * G.6^-3 * G.5^-6 * G.4^-5 * G.3^-9 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-1 * G.7^-6 * G.6^-10 * G.5^-6 * G.4^-8 * G.3^-7 = Id(G)
+    G.2^-1 * G.1^3 * G.2 * G.1 * G.3^-3 = Id(G)
+    G.1^-4 * G.2^-1 * G.1^-1 * G.2 * G.4^-6 * G.5^-7 * G.6^-2 * G.7^-8 * G.8^-5 = Id(G)
+    G.2^10 * G.5^-4 * G.7^-6 * G.8^-1 = Id(G)
+> 
+
+
+> f:= y^121 + 363*y^120 + 484*y^119 + 1089*y^118 + 726*y^117 + 1210*y^116 + 24\
+2*y^115 + 11*y^110 + 1210*y^109 + 22;
+> pReduction(f);
+Unramified extension defined by the polynomial x^5 + 10*x^2 + 9
+ over 11-adic field mod 11^13
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Computation time of factorisation of f
+Time: 0.700
+Computation time of lfc
+Univariate Polynomial Ring in z over GF(11^55)
+Time: 59.680
+Time: 0.820
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 1.760
+Time: 7.390
+Time: 87.400
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+1071794405
+> Factorisation($1);
+[ <5, 1>, <11, 8> ]
+ > I;
+55
+> G;                                                                                                                              
+Finitely presented group G on 9 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    G.8^11 = Id(G)
+    G.9^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.3, G.9) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.4, G.9) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.8, G.9) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.9^-6 * G.8^-9 * G.6^-10 * G.5^-4 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.9^-6 * G.8^-3 * G.7^-9 * G.6^-4 * G.5^-7 * G.4^-1 * G.3^-6 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.6^-1 * G.5^-9 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.9^-9 * G.8^-8 * G.7^-1 * G.6^-10 * G.5^-7 * G.3^-4 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.9^-1 * G.8^-5 * G.7^-9 * G.6^-7 * G.5^-1 * G.3^-10 = Id(G)
+    G.1^-1 * G.9 * G.1 * G.9^-9 * G.8^-7 * G.7^-5 * G.5^-9 * G.3^-8 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.8^-9 * G.7^-7 * G.6^-7 * G.5^-4 * G.3^-6 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-5 = Id(G)
+    (G.2, G.6^-1) = Id(G)
+    G.2^-1 * G.7 * G.2 * G.8^-8 * G.7^-3 * G.5^-1 * G.3^-1 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.9^-1 * G.8^-10 * G.7^-6 * G.6^-10 * G.5^-1 * G.3^-6 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.9^-2 * G.8^-3 * G.7^-7 * G.6^-9 * G.5^-5 * G.3^-6 = Id(G)
+    G.2^5 = Id(G)
+    G.2^-1 * G.1^-2 * G.2 * G.1^-1 * G.8^-6 * G.9^-5 = Id(G)
+    G.1^5 * G.2^-1 * G.1^-1 * G.2 * G.3^-4 * G.5^-5 * G.6^-10 * G.7^-2 * G.8^-10 * G.9^-6 = Id(G)
+                                      
+
+> f:= y^121 + 1210*y^120 + 1210*y^119 + 242*y^118 + 847*y^117 + 1210*y^116 + 242*y^115 + 11*y^110 + 1210*y^109 + 11
+> ;
+> pReduction(f);
+Unramified extension defined by the polynomial x^2 + 7*x + 2
+ over 11-adic field mod 11^13
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Univariate Polynomial Ring in z over GF(11^2)
+Computation time of factorisation of f
+Time: 0.450
+Computation time of lfc
+Univariate Polynomial Ring in z over GF(11^22)
+Time: 8.990
+Time: 0.520
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 0.470
+Time: 0.940
+Time: 18.860
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+38974342
+> Factorisation($1);
+[ <2, 1>, <11, 7> ]
+> I;
+2
+> G;                                                                                                               
+Finitely presented group G on 8 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    G.8^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.7, G.8) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.8^-10 * G.7^-8 * G.6^-4 * G.5^-2 * G.4^-2 * G.3^-8 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.8^-2 * G.7^-6 * G.6^-10 * G.5^-7 * G.4^-10 * G.3^-8 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.8^-6 * G.7^-7 * G.6^-9 * G.5^-9 * G.4^-5 * G.3^-2 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.8^-6 * G.7^-8 * G.6^-6 * G.5^-6 * G.4^-2 * G.3^-10 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.8^-3 * G.7^-6 * G.6^-6 * G.5^-9 * G.4^-2 * G.3^-6 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.6^-2 * G.4^-9 * G.3^-10 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-10 = Id(G)
+    (G.2, G.6^-1) = Id(G)
+    G.2^-1 * G.7 * G.2 * G.8^-5 * G.7^-5 * G.6^-2 * G.5^-6 * G.4^-5 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-6 * G.7^-4 * G.6^-2 * G.5^-4 * G.4^-5 = Id(G)
+    G.2^2 = Id(G)
+    (G.1^-1 * G.2)^2 = Id(G)
+    G.1^-11 * G.5^-5 = Id(G)
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+[ <-12, -1> ]
+
+
+
+
+> f:= y^121 + 1210*y^120 + 1210*y^119 + 242*y^118 + 847*y^117 + 1210*y^116 + 242*y^115 + 11*y^110 + 1210*y^109 + 22;
+> pReduction(f);
+Unramified extension defined by the polynomial x^5 + 10*x^2 + 9
+ over 11-adic field mod 11^13
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Univariate Polynomial Ring in z over GF(11^5)
+Computation time of factorisation of f
+Time: 0.700
+Computation time of lfc
+Univariate Polynomial Ring in z over GF(11^55)
+Time: 59.630
+Time: 0.820
+Computation time of norm group and its intersection of all NormGroup of factorisation's extension
+Time: 1.820
+Time: 7.520
+Time: 87.370
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+1071794405
+> Factorisation($1);
+[ <5, 1>, <11, 8> ]
+> I;
+55
+> G;
+Finitely presented group G on 9 generators
+Relations
+    G.3^11 = Id(G)
+    G.4^11 = Id(G)
+    G.5^11 = Id(G)
+    G.6^11 = Id(G)
+    G.7^11 = Id(G)
+    G.8^11 = Id(G)
+    G.9^11 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.3, G.6) = Id(G)
+    (G.3, G.7) = Id(G)
+    (G.3, G.8) = Id(G)
+    (G.3, G.9) = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.4, G.9) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.8, G.9) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.9^-7 * G.8^-1 * G.7^-1 * G.6^-3 * G.5^-1 * G.3^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.9^-3 * G.8^-5 * G.7^-6 * G.6^-1 * G.5^-10 * G.4^-1 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.9^-1 * G.8^-5 * G.7^-10 * G.6^-2 * G.5^-7 * G.3^-9 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.7^-1 * G.5^-10 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.9^-8 * G.8^-3 * G.6^-8 * G.5^-1 * G.3^-3 = Id(G)
+    G.1^-1 * G.9 * G.1 * G.9^-9 * G.8^-6 * G.7^-5 * G.6^-1 * G.5^-3 * G.3^-4 = Id(G)
+    G.2^-1 * G.3 * G.2 * G.9^-2 * G.8^-3 * G.7^-10 * G.5^-4 * G.3^-3 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-5 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.9^-4 * G.8^-6 * G.7^-9 * G.6^-4 * G.5^-9 * G.3^-9 = Id(G)
+    (G.2, G.7^-1) = Id(G)
+    G.2^-1 * G.8 * G.2 * G.8^-6 * G.7^-1 * G.6^-10 * G.5^-3 * G.3^-7 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.9^-8 * G.8^-5 * G.5^-7 * G.3^-5 = Id(G)
+    G.2^5 = Id(G)
+    G.2^-1 * G.1^-2 * G.2 * G.1^-1 * G.8^-9 * G.9^-4 = Id(G)
+    G.1^5 * G.2^-1 * G.1^-1 * G.2 * G.5^-8 * G.6^-4 * G.7^-10 * G.8^-8 * G.9^-7 = Id(G)
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 aslam@nenepapa ~ $ ~fieker/Magma/magma
 Magma V2.25-5     Thu Sep 10 2020 10:13:35 on nenepapa [Seed = 252293291]
