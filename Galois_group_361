@@ -158,6 +158,54 @@ Time: 546.730
 
 
 
+> f:= x^361 + 19*x^342 + 5776*x^37 + 3971*x^36 + 2166*x^35 + 342;
+> pReduction(f);
+19-adic field mod 19^22
+>  [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where a:= RamificationPolygon(f);
+[ <-3, -1> ]
+> time G,I,set := TwoSegmentsGaloisGroup_fast(f);      
+Univariate Polynomial Ring in z over GF(19)
+Univariate Polynomial Ring in z over GF(19)
+Univariate Polynomial Ring in z over GF(19)
+Computation time of factorisation of f
+Time: 2.920
+Computation time of lfc
+Norm equation... Time: 0.480
+GAction... Time: 0.000
+Time: 0.330
+Solve Frobenius equations... Time: 3.670
+Time: 5.560
+Time: 2.920
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 3.690
+Time: 1.130
+Time: 373.580
+> CM := set[2];
+> #Group(CM)*&*(CM`invar);
+2476099
+> Factorisation($1);
+[ <19, 5> ]
+> I;
+19
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.2^19 = Id(G)
+    G.3^19 = Id(G)
+    G.4^19 = Id(G)
+    G.5^19 = Id(G)
+    (G.2, G.3) = Id(G)
+    (G.2, G.4) = Id(G)
+    (G.2, G.5) = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.2 * G.1 * G.5^-1 * G.4^-18 * G.2^-1 = Id(G)
+    G.1^-1 * G.3 * G.1 * G.4^-9 * G.3^-1 * G.2^-1 = Id(G)
+    (G.1, G.4^-1) = Id(G)
+    G.1^-1 * G.5 * G.1 * G.5^-1 * G.4^-2 = Id(G)
+    G.1^-19 = Id(G)
 
 
 > f:= x^361 + 19*x^342 + 6137*x^18 + 3249*x^17 + 19;
@@ -324,6 +372,49 @@ Relations
 
 
 
+> f:= x^361 + 19*x^342 + 1805*x^37 + 1083*x^36 + 2166*x^35 + 228;   
+> pReduction(f);
+Unramified extension defined by the polynomial x^3 + 4*x + 17
+ over 19-adic field mod 19^21
+> time G, I ,set := TwoSegmentsGaloisGroup_
+TwoSegmentsGaloisGroup_fast            TwoSegmentsGaloisGroup_prec_reduced
+TwoSegmentsGaloisGroup_old
+> time G, I ,set := TwoSegmentsGaloisGroup_fast(f);                            
+Univariate Polynomial Ring in z over GF(19^3)
+Univariate Polynomial Ring in z over GF(19^3)
+Univariate Polynomial Ring in z over GF(19^3)
+Univariate Polynomial Ring in z over GF(19^57)
+Time: 794.010
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+390963
+> Factorisation($1);
+[ <3, 1>, <19, 4> ]
+> I;
+3
+> G;
+Finitely presented group G on 5 generators
+Relations
+    G.3^19 = Id(G)
+    G.4^19 = Id(G)
+    G.5^19 = Id(G)
+    (G.3, G.4) = Id(G)
+    (G.3, G.5) = Id(G)
+    (G.4, G.5) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.5^-16 * G.4^-1 * G.3^-1 = Id(G)
+    G.1^-1 * G.4 * G.1 * G.5^-17 * G.4^-1 = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.2^-1 * G.3 * G.2 * G.5^-17 * G.4^-8 * G.3^-7 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.5^-15 * G.4^-1 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.5^-11 = Id(G)
+    G.2^3 = Id(G)
+    (G.2^-1 * G.1^-1)^3 = Id(G)
+    (G.2^-1 * G.1)^3 = Id(G)
+    G.2 * G.1^-3 * G.2^-1 * G.1^2 = Id(G)
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1])>] where \
+a:= RamificationPolygon(f);
+[ <-3, -1> ]
+> 
 
 
 
