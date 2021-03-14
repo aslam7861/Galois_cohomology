@@ -1,3 +1,48 @@
+> f:= x^8 + 16*x^7 + 4*x^6 + 16*x^5 + 16*x^3 + 40*x^2 + 10;
+> time G,I,ss := ThreeSegmentsGaloisGroup(f);
+AbsoluteDegree eq 
+8
+Computation time of lfc
+Norm equation... Time: 0.410
+GAction... Time: 0.010
+Time: 0.020
+Solve Frobenius equations... Time: 0.380
+Time: 1.920
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.020
+Time: 0.090
+Time: 2.690
+> G;
+Finitely presented group G on 6 generators
+Relations
+    G.4^2 = Id(G)
+    G.5^2 = Id(G)
+    G.6^2 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.1, G.4^-1) = Id(G)
+    G.1^-1 * G.5 * G.1 * G.6^-1 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.5^-1 = Id(G)
+    (G.2, G.4^-1) = Id(G)
+    G.2^-1 * G.5 * G.2 * G.6^-1 * G.4^-1 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.5^-1 * G.4^-1 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.6^-1 * G.5^-1 * G.4^-1 = Id(G)
+    (G.3, G.5^-1) = Id(G)
+    (G.3, G.6^-1) = Id(G)
+    G.1^2 = Id(G)
+    G.2^2 = Id(G)
+    G.3^2 * G.6^-1 = Id(G)
+    (G.1 * G.2)^2 = Id(G)
+    G.1 * G.3 * G.1 * G.3 * G.4^-1 * G.6^-1 = Id(G)
+    G.3 * G.2 * G.1 * G.3 * G.2 * G.4^-1 * G.6^-1 = Id(G)
+> 
+
+
+
+
+
 > K:= pAdicField(3,20);
 > x:=PolynomialRing(K).1;
 
