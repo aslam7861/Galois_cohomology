@@ -1,3 +1,268 @@
+> f:=x^27 + 3*x^21 + 3*x^18 + 3*x^9 + 3;
+> time G,I,set:= ThreeSegmentsGaloisGroup(f);           
+AbsoluteDegree eq 
+36
+Computation time of lfc
+Norm equation... Time: 128.320
+GAction... Univariate Polynomial Ring in z over GF(3^36)
+Time: 55.760
+Time: 16.770
+Solve Frobenius equations... Time: 54.040
+Time: 283.040
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.610
+Time: 8.060
+Time: 332.030
+> #G;
+708588
+> I;                                                                                                                                                  
+2
+> G;
+Finitely presented group G on 13 generators
+Relations
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    G.9^3 = Id(G)
+    G.10^3 = Id(G)
+    G.11^3 = Id(G)
+    G.12^3 = Id(G)
+    G.13^3 = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.5, G.10) = Id(G)
+    (G.5, G.11) = Id(G)
+    (G.5, G.12) = Id(G)
+    (G.5, G.13) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.6, G.11) = Id(G)
+    (G.6, G.12) = Id(G)
+    (G.6, G.13) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.7, G.11) = Id(G)
+    (G.7, G.12) = Id(G)
+    (G.7, G.13) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.8, G.11) = Id(G)
+    (G.8, G.12) = Id(G)
+    (G.8, G.13) = Id(G)
+    (G.9, G.10) = Id(G)
+    (G.9, G.11) = Id(G)
+    (G.9, G.12) = Id(G)
+    (G.9, G.13) = Id(G)
+    (G.10, G.11) = Id(G)
+    (G.10, G.12) = Id(G)
+    (G.10, G.13) = Id(G)
+    (G.11, G.12) = Id(G)
+    (G.11, G.13) = Id(G)
+    (G.12, G.13) = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-1 * G.6^-2 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.6^-2 * G.5^-1 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.12^-1 * G.11^-2 * G.10^-1 * G.8^-2 * G.7^-1 * G.5^-1 = Id(G)
+    G.1^-1 * G.9 * G.1 * G.9^-1 * G.7^-2 * G.6^-2 = Id(G)
+    G.1^-1 * G.10 * G.1 * G.12^-2 * G.11^-2 * G.10^-2 * G.9^-2 * G.7^-1 = Id(G)
+    G.1^-1 * G.11 * G.1 * G.12^-2 * G.10^-1 * G.7^-2 * G.6^-2 * G.5^-1 = Id(G)
+    G.1^-1 * G.12 * G.1 * G.11^-1 * G.10^-2 * G.9^-1 * G.8^-2 * G.7^-1 * G.5^-2 = Id(G)
+    G.1^-1 * G.13 * G.1 * G.13^-1 * G.12^-2 * G.9^-2 * G.7^-2 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.12^-1 * G.11^-2 * G.10^-1 * G.9^-1 * G.8^-1 * G.7^-1 * G.6^-1 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.12^-1 * G.11^-2 * G.10^-2 * G.8^-1 * G.7^-1 * G.6^-2 * G.5^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.12^-1 * G.10^-2 * G.9^-2 * G.8^-2 * G.7^-2 * G.5^-1 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.11^-1 * G.10^-2 * G.8^-2 * G.7^-2 * G.6^-1 * G.5^-2 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.10^-2 * G.9^-2 * G.5^-1 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.9^-1 * G.5^-1 = Id(G)
+    G.2^-1 * G.11 * G.2 * G.12^-2 * G.11^-1 * G.9^-2 * G.8^-1 * G.6^-1 = Id(G)
+    G.2^-1 * G.12 * G.2 * G.12^-2 * G.11^-2 * G.9^-2 * G.8^-1 * G.5^-1 = Id(G)
+    G.2^-1 * G.13 * G.2 * G.13^-1 * G.12^-1 * G.11^-2 * G.9^-2 * G.8^-1 * G.7^-1 * G.6^-2 * G.5^-1 = Id(G)
+    (G.3, G.5^-1) = Id(G)
+    (G.3, G.6^-1) = Id(G)
+    (G.3, G.7^-1) = Id(G)
+    G.3^-1 * G.8 * G.3 * G.8^-2 * G.5^-2 = Id(G)
+    G.3^-1 * G.9 * G.3 * G.9^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.3^-1 * G.10 * G.3 * G.10^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.3^-1 * G.11 * G.3 * G.11^-2 * G.5^-1 = Id(G)
+    G.3^-1 * G.12 * G.3 * G.12^-2 * G.7^-1 * G.6^-2 * G.5^-2 = Id(G)
+    G.3^-1 * G.13 * G.3 * G.13^-2 * G.5^-2 = Id(G)
+    (G.4, G.5^-1) = Id(G)
+    (G.4, G.6^-1) = Id(G)
+    G.4^-1 * G.7 * G.4 * G.7^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.4^-1 * G.8 * G.4 * G.9^-2 * G.8^-2 * G.6^-2 * G.5^-1 = Id(G)
+    (G.4, G.9^-1) = Id(G)
+    (G.4, G.10^-1) = Id(G)
+    G.4^-1 * G.11 * G.4 * G.11^-2 * G.10^-2 * G.9^-1 * G.5^-1 = Id(G)
+    G.4^-1 * G.12 * G.4 * G.12^-1 * G.11^-1 * G.10^-2 * G.9^-2 * G.8^-2 * G.7^-2 * G.5^-2 = Id(G)
+    (G.4, G.13^-1) = Id(G)
+    G.1^3 = Id(G)
+    G.2^3 = Id(G)
+    G.3^2 = Id(G)
+    G.4^2 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.3 = Id(G)
+    (G.2^-1 * G.3)^2 = Id(G)
+    (G.1^-1 * G.4)^2 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4 = Id(G)
+    (G.3 * G.4)^2 = Id(G)
+> 
+> #Group(CM)*&*(CM`invar);
+708588
+> Factorisation($1);
+[ <2, 2>, <3, 11> ]
+> pReduction(f);
+Totally ramified extension defined by the polynomial x^2 + 3
+ over Unramified extension de
+
+
+
+
+
+ g:=x^27 + 18*x^26 + 3*x^21 + 3*x^18 + 3*x^9 + 3
+ > pReduction(g);                                  
+Totally ramified extension defined by the polynomial x^2 + 3
+ over Unramified extension defined by the polynomial x^2 + 2*x + 2
+ over 3-adic field mod 3^15
+
+ > time G,I,ss:= ThreeSegmentsGaloisGroup(g);     
+AbsoluteDegree eq 
+36
+Computation time of lfc
+Norm equation... Time: 124.700
+GAction... Univariate Polynomial Ring in z over GF(3^36)
+Time: 54.380
+Time: 16.580
+Solve Frobenius equations... Time: 52.650
+Time: 273.940
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.640
+Time: 8.890
+Time: 337.890
+> I;
+2
+> CM:= ss[2];
+> #Group(CM)*&*(CM`invar);
+708588
+> G;
+Finitely presented group G on 13 generators
+Relations
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    G.9^3 = Id(G)
+    G.10^3 = Id(G)
+    G.11^3 = Id(G)
+    G.12^3 = Id(G)
+    G.13^3 = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.5, G.10) = Id(G)
+    (G.5, G.11) = Id(G)
+    (G.5, G.12) = Id(G)
+    (G.5, G.13) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.6, G.11) = Id(G)
+    (G.6, G.12) = Id(G)
+    (G.6, G.13) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.7, G.11) = Id(G)
+    (G.7, G.12) = Id(G)
+    (G.7, G.13) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.8, G.11) = Id(G)
+    (G.8, G.12) = Id(G)
+    (G.8, G.13) = Id(G)
+    (G.9, G.10) = Id(G)
+    (G.9, G.11) = Id(G)
+    (G.9, G.12) = Id(G)
+    (G.9, G.13) = Id(G)
+    (G.10, G.11) = Id(G)
+    (G.10, G.12) = Id(G)
+    (G.10, G.13) = Id(G)
+    (G.11, G.12) = Id(G)
+    (G.11, G.13) = Id(G)
+    (G.12, G.13) = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.7^-2 * G.5^-1 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.7^-2 * G.6^-1 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.13^-1 * G.12^-1 * G.11^-2 * G.10^-2 * G.6^-2 * G.5^-2
+    = Id(G)
+    G.1^-1 * G.9 * G.1 * G.13^-2 * G.12^-1 * G.9^-1 * G.8^-2 * G.7^-2 * G.6^-2 *
+    G.5^-1 = Id(G)
+    G.1^-1 * G.10 * G.1 * G.12^-1 * G.11^-1 * G.10^-2 * G.8^-2 * G.6^-1 * G.5^-1
+    = Id(G)
+    G.1^-1 * G.11 * G.1 * G.13^-1 * G.12^-2 * G.11^-1 * G.8^-1 = Id(G)
+    G.1^-1 * G.12 * G.1 * G.12^-2 * G.9^-1 * G.8^-1 * G.7^-1 * G.6^-1 * G.5^-2 =
+    Id(G)
+    G.1^-1 * G.13 * G.1 * G.11^-1 * G.8^-1 * G.7^-1 * G.5^-2 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.11^-2 * G.10^-2 * G.9^-1 * G.8^-2 * G.6^-2 * G.5^-1 =
+    Id(G)
+    G.2^-1 * G.6 * G.2 * G.13^-1 * G.12^-1 * G.8^-1 * G.6^-1 * G.5^-2 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.13^-2 * G.11^-2 * G.7^-2 * G.6^-2 * G.5^-1 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.12^-2 * G.11^-2 * G.10^-1 * G.9^-2 * G.8^-1 * G.7^-2 
+    * G.6^-1 * G.5^-2 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.12^-1 * G.10^-1 * G.8^-2 * G.5^-2 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.13^-1 * G.12^-1 * G.11^-1 * G.10^-2 * G.9^-2 * 
+    G.8^-2 * G.7^-1 * G.6^-2 = Id(G)
+    G.2^-1 * G.11 * G.2 * G.13^-1 * G.11^-1 * G.10^-2 * G.9^-1 * G.8^-2 * G.5^-1
+    = Id(G)
+    G.2^-1 * G.12 * G.2 * G.11^-2 * G.10^-1 * G.9^-2 = Id(G)
+    G.2^-1 * G.13 * G.2 * G.13^-1 * G.12^-2 * G.11^-1 * G.8^-2 * G.7^-1 * G.6^-1
+    * G.5^-1 = Id(G)
+    (G.3, G.5^-1) = Id(G)
+    (G.3, G.6^-1) = Id(G)
+    (G.3, G.7^-1) = Id(G)
+    G.3^-1 * G.8 * G.3 * G.8^-2 * G.7^-1 * G.6^-2 * G.5^-2 = Id(G)
+    G.3^-1 * G.9 * G.3 * G.9^-2 * G.6^-2 * G.5^-2 = Id(G)
+    G.3^-1 * G.10 * G.3 * G.10^-2 * G.7^-2 * G.6^-1 = Id(G)
+    G.3^-1 * G.11 * G.3 * G.11^-2 = Id(G)
+    G.3^-1 * G.12 * G.3 * G.12^-2 * G.5^-1 = Id(G)
+    G.3^-1 * G.13 * G.3 * G.13^-2 * G.7^-2 * G.6^-1 * G.5^-2 = Id(G)
+    (G.4, G.5^-1) = Id(G)
+    (G.4, G.6^-1) = Id(G)
+    G.4^-1 * G.7 * G.4 * G.7^-2 * G.6^-1 = Id(G)
+    G.4^-1 * G.8 * G.4 * G.12^-1 * G.11^-2 * G.8^-2 * G.6^-1 = Id(G)
+    G.4^-1 * G.9 * G.4 * G.13^-2 * G.12^-1 * G.9^-1 * G.8^-2 = Id(G)
+    G.4^-1 * G.10 * G.4 * G.13^-1 * G.12^-1 * G.11^-1 * G.10^-1 * G.6^-2 = Id(G)
+    G.4^-1 * G.11 * G.4 * G.13^-1 * G.12^-2 * G.11^-1 * G.8^-1 = Id(G)
+    G.4^-1 * G.12 * G.4 * G.13^-1 * G.8^-1 = Id(G)
+    G.4^-1 * G.13 * G.4 * G.11^-1 * G.8^-1 * G.6^-2 = Id(G)
+    G.1^3 = Id(G)
+    G.2^3 = Id(G)
+    G.3^2 = Id(G)
+    G.4^2 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.1^-1 * G.3 * G.1 * G.3 = Id(G)
+    (G.2^-1 * G.3)^2 = Id(G)
+    (G.1^-1 * G.4)^2 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.4 = Id(G)
+    (G.3 * G.4)^2 = Id(G)
+
+
+
+
+
+
+
+
+
 > f:= x^8 + 16*x^7 + 4*x^6 + 16*x^5 + 16*x^3 + 40*x^2 + 10;
 > time G,I,ss := ThreeSegmentsGaloisGroup(f);
 AbsoluteDegree eq 
