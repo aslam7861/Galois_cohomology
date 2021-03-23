@@ -1,24 +1,30 @@
+> K:= pAdicField(3,20);// work with 16 precision
+> x:= PolynomialRing(K).1;
+> f:= x^27 + 3*x^18 + 18*x^15 + 54*x^4 + 3;
+> SetVerbose("Segment",1);
+> SetVerbose("group",1);
+> SetVerbose("Frob_Eq",1);
 > g:=x^27 + 162*x^13 + 54*x^12 + 3;
- over 3-adic field mod 3^16
-> RamificationPolygon(g);
-[ <0, 81>, <2, 54>, <8, 27>, <26, 0> ]
-> pReduction(g);
-Totally ramified extension defined by the polynomial x^2 + 3
- over 3-adic field mod 3^16
-> time G,I,ss:= ThreeSegmentsGaloisGroup(g);
+> time G,I,set := ThreeSegmentsGaloisGroup(g);
 AbsoluteDegree eq 
 54
 Computation time of lfc
-Norm equation... Time: 241.710
-GAction... Time: 0.010
-Time: 70.420
-Solve Frobenius equations... Time: 2626.650
-Time: 3140.380
+Norm equation... Time: 211.740
+GAction... Time: 0.030
+Time: 60.230
+Solve Frobenius equations... Time: 1069.690
+Time: 1472.900
 Computation time of norm group and its intersection of all NormGroup of 
 factorisation's extension
-Time: 18.990
-Time: 179.440
-Time: 3872.940
+Time: 19.300
+Time: 171.590
+Time: 2074.560
+> CM:= set[2];
+> I;
+1
+> #Group(CM)*&*(CM`invar);
+118098
+
 > CM:= ss[2];
 > #Group(CM)*&*(CM`invar);
 118098
