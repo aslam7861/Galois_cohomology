@@ -70,6 +70,179 @@ Relations
 > 
 
 
+> f:=x^27 + 3*x^18 + 18*x^15 + 27*x^11 + 27*x^8 + 54*x^7 + 27*x^5 + 27*x^4 + 3;
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1]),(a[4,2]-\
+a[3,2])/(a[4,1]-a[3,1]) >] where a:= RamificationPolygon(f);
+[ <-8, -4, -1> ]
+> time G,I,set := ThreeSegmentsGaloisGroup(f);
+AbsoluteDegree eq 
+18 9
+Computation time of lfc
+Norm equation... Time: 2.650
+GAction... Univariate Polynomial Ring in z over GF(3^18)
+Time: 2.380
+Time: 0.500
+Solve Frobenius equations... Time: 2.880
+Time: 11.560
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.120
+Time: 1.640
+Time: 25.970
+> I;
+6
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+39366
+> G;
+Finitely presented group G on 10 generators
+Relations
+    G.4^3 = Id(G)
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    G.9^3 = Id(G)
+    G.10^3 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.4, G.9) = Id(G)
+    (G.4, G.10) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.5, G.10) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.9, G.10) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.10^-1 * G.5^-2 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.10^-2 * G.9^-2 * G.8^-2 * G.5^-2 * G.4^-1 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.10^-2 * G.9^-2 * G.8^-1 * G.6^-1 * G.5^-1 * G.4^-1 = 
+    Id(G)
+    G.1^-1 * G.7 * G.1 * G.10^-2 * G.9^-1 * G.8^-1 * G.7^-1 * G.5^-2 * G.4^-2 = 
+    Id(G)
+    (G.1, G.8^-1) = Id(G)
+    (G.1, G.9^-1) = Id(G)
+    G.1^-1 * G.10 * G.1 * G.10^-1 * G.9^-2 * G.8^-2 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.10^-1 * G.4^-1 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.10^-1 * G.8^-1 * G.5^-2 * G.4^-1 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.8^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.10^-1 * G.7^-1 * G.6^-2 * G.5^-2 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.10^-1 * G.9^-2 * G.5^-2 * G.4^-2 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.10^-2 * G.9^-2 * G.8^-1 * G.5^-1 * G.4^-1 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.9^-2 * G.5^-1 * G.4^-1 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.9^-1 * G.8^-1 * G.5^-1 * G.4^-2 = Id(G)
+    (G.3, G.5^-1) = Id(G)
+    G.3^-1 * G.6 * G.3 * G.9^-1 * G.8^-2 * G.6^-2 * G.5^-2 = Id(G)
+    (G.3, G.7^-1) = Id(G)
+    (G.3, G.8^-1) = Id(G)
+    (G.3, G.9^-1) = Id(G)
+    G.3^-1 * G.10 * G.3 * G.10^-2 * G.9^-2 * G.8^-2 = Id(G)
+    G.1^3 = Id(G)
+    G.3^2 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.2^-2 * G.1 * G.2^-1 = Id(G)
+    (G.1^-1 * G.3)^2 = Id(G)
+    (G.2^-1 * G.3)^2 = Id(G)
+> 
+> f:= x^27 + 3*x^18 + 18*x^15 + 54*x^10 + 27*x^8 + 54*x^7 + 27*x^5 + 27*x^4 + \
+3;
+[ <-8, -4, -1> ]
+
+> time G,I,set := ThreeSegmentsGaloisGroup(f);
+AbsoluteDegree eq 
+18 9
+Computation time of lfc
+Norm equation... Time: 2.660
+GAction... Univariate Polynomial Ring in z over GF(3^18)
+Time: 2.380
+Time: 0.500
+Solve Frobenius equations... Time: 2.880
+Time: 11.550
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 0.130
+Time: 1.720
+Time: 25.940
+> I;
+6
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+39366
+> G;
+Finitely presented group G on 10 generators
+Relations
+    G.4^3 = Id(G)
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    G.9^3 = Id(G)
+    G.10^3 = Id(G)
+    (G.4, G.5) = Id(G)
+    (G.4, G.6) = Id(G)
+    (G.4, G.7) = Id(G)
+    (G.4, G.8) = Id(G)
+    (G.4, G.9) = Id(G)
+    (G.4, G.10) = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.5, G.10) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.6, G.10) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.7, G.10) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.8, G.10) = Id(G)
+    (G.9, G.10) = Id(G)
+    G.1^-1 * G.4 * G.1 * G.10^-1 * G.5^-2 = Id(G)
+    G.1^-1 * G.5 * G.1 * G.10^-2 * G.9^-1 * G.8^-1 * G.5^-2 * G.4^-1 = Id(G)
+    G.1^-1 * G.6 * G.1 * G.10^-2 * G.9^-1 * G.6^-1 * G.5^-1 * G.4^-1 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.10^-2 * G.9^-2 * G.8^-2 * G.7^-1 * G.5^-2 * G.4^-2 = 
+    Id(G)
+    (G.1, G.8^-1) = Id(G)
+    (G.1, G.9^-1) = Id(G)
+    G.1^-1 * G.10 * G.1 * G.10^-1 * G.9^-1 * G.8^-1 = Id(G)
+    G.2^-1 * G.4 * G.2 * G.10^-1 * G.4^-1 = Id(G)
+    G.2^-1 * G.5 * G.2 * G.10^-1 * G.8^-1 * G.5^-2 * G.4^-1 = Id(G)
+    G.2^-1 * G.6 * G.2 * G.8^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.10^-1 * G.9^-1 * G.8^-1 * G.7^-1 * G.6^-2 * G.5^-2 = 
+    Id(G)
+    G.2^-1 * G.8 * G.2 * G.10^-1 * G.9^-1 * G.8^-2 * G.5^-2 * G.4^-2 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.10^-2 * G.8^-2 * G.5^-1 * G.4^-1 = Id(G)
+    G.2^-1 * G.10 * G.2 * G.9^-1 * G.8^-2 * G.5^-1 * G.4^-1 = Id(G)
+    G.3^-1 * G.4 * G.3 * G.9^-2 * G.8^-2 * G.5^-1 * G.4^-2 = Id(G)
+    (G.3, G.5^-1) = Id(G)
+    G.3^-1 * G.6 * G.3 * G.9^-1 * G.8^-2 * G.6^-2 * G.5^-2 = Id(G)
+    (G.3, G.7^-1) = Id(G)
+    (G.3, G.8^-1) = Id(G)
+    (G.3, G.9^-1) = Id(G)
+    G.3^-1 * G.10 * G.3 * G.10^-2 * G.9^-1 * G.8^-1 = Id(G)
+    G.1^3 = Id(G)
+    G.3^2 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.2^-2 * G.1 * G.2^-1 = Id(G)
+    (G.1^-1 * G.3)^2 = Id(G)
+    (G.2^-1 * G.3)^2 = Id(G)
+> 
+
+
+
 
 > f:=x^27 + 3*x^21 + 3*x^18 + 3*x^9 + 3;
 > time G,I,set:= ThreeSegmentsGaloisGroup(f);           
@@ -329,6 +502,95 @@ Relations
     (G.3 * G.4)^2 = Id(G)
 
 
+f:= $.1^27 + 9*$.1^21 + 3*$.1^18 + 18*$.1^15 + 54*$.1^10 + 27*$.1^8 + 27*$.1^7 + 27*$.1^5 + 54*$.1^4 + 3
+>  time G,I,set := ThreeSegmentsGaloisGroup(f);
+AbsoluteDegree eq 
+54 27
+Computation time of lfc
+Norm equation... Time: 46.700
+GAction... Univariate Polynomial Ring in z over GF(3^54)
+Time: 450.180
+Time: 111.600
+Solve Frobenius equations... Time: 195.160
+Time: 900.190
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 16.910
+Time: 160.170
+Time: 1350.060
+> I:
+> ;
+
+>> ;
+   ^
+User error: bad syntax
+> I;
+2
+> CM:= set[2];
+> #Group(CM)*&*(CM`invar);
+13122
+> G;                                                                                                               
+Finitely presented group G on 9 generators
+Relations
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    G.7^3 = Id(G)
+    G.8^3 = Id(G)
+    G.9^3 = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.5, G.7) = Id(G)
+    (G.5, G.8) = Id(G)
+    (G.5, G.9) = Id(G)
+    (G.6, G.7) = Id(G)
+    (G.6, G.8) = Id(G)
+    (G.6, G.9) = Id(G)
+    (G.7, G.8) = Id(G)
+    (G.7, G.9) = Id(G)
+    (G.8, G.9) = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    G.1^-1 * G.6 * G.1 * G.9^-1 * G.7^-2 = Id(G)
+    G.1^-1 * G.7 * G.1 * G.9^-2 * G.8^-2 * G.6^-2 * G.5^-1 = Id(G)
+    G.1^-1 * G.8 * G.1 * G.7^-1 * G.6^-1 * G.5^-1 = Id(G)
+    G.1^-1 * G.9 * G.1 * G.9^-1 * G.8^-2 * G.7^-1 * G.6^-1 * G.5^-1 = Id(G)
+    (G.2, G.5^-1) = Id(G)
+    G.2^-1 * G.6 * G.2 * G.9^-1 * G.7^-2 * G.5^-1 = Id(G)
+    G.2^-1 * G.7 * G.2 * G.9^-1 * G.8^-1 * G.7^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.2^-1 * G.8 * G.2 * G.9^-2 * G.8^-2 * G.5^-2 = Id(G)
+    G.2^-1 * G.9 * G.2 * G.8^-1 * G.5^-2 = Id(G)
+    G.3^-1 * G.5 * G.3 * G.9^-1 * G.7^-2 * G.6^-2 * G.5^-1 = Id(G)
+    G.3^-1 * G.6 * G.3 * G.9^-2 * G.8^-2 * G.6^-1 * G.5^-1 = Id(G)
+    G.3^-1 * G.7 * G.3 * G.9^-1 * G.8^-2 * G.6^-2 = Id(G)
+    G.3^-1 * G.8 * G.3 * G.9^-1 * G.8^-2 * G.7^-1 * G.6^-1 * G.5^-1 = Id(G)
+    G.3^-1 * G.9 * G.3 * G.9^-1 * G.5^-2 = Id(G)
+    G.4^-1 * G.5 * G.4 * G.9^-2 * G.7^-1 * G.6^-1 * G.5^-2 = Id(G)
+    G.4^-1 * G.6 * G.4 * G.9^-2 * G.7^-1 = Id(G)
+    G.4^-1 * G.7 * G.4 * G.9^-1 * G.8^-1 * G.7^-2 * G.5^-2 = Id(G)
+    G.4^-1 * G.8 * G.4 * G.9^-2 * G.7^-2 * G.6^-2 * G.5^-2 = Id(G)
+    G.4^-1 * G.9 * G.4 * G.9^-1 * G.8^-1 * G.7^-2 * G.6^-2 * G.5^-2 = Id(G)
+    G.1^3 = Id(G)
+    G.2^3 = Id(G)
+    G.4^2 = Id(G)
+    (G.1, G.2) = Id(G)
+    G.1^-1 * G.3^-1 * G.1 * G.3 * G.9^-1 = Id(G)
+    G.3^-2 * G.1^-1 * G.3^-1 * G.6^-2 * G.8^-2 * G.9^-2 = Id(G)
+    G.1^-1 * G.4 * G.1^-1 * G.4 * G.9^-1 = Id(G)
+    G.3^-1 * G.2^-1 * G.1^-1 * G.3 * G.2 * G.7^-2 * G.8^-1 * G.9^-1 = Id(G)
+    G.4 * G.2 * G.1^-1 * G.4 * G.2^-1 * G.6^-2 * G.9^-2 = Id(G)
+    G.4 * G.3 * G.2^-1 * G.1 * G.4 * G.3 * G.6^-1 * G.8^-2 = Id(G)
+> pReduction(f);     
+Unramified extension defined by the polynomial x^2 + 2*x + 2
+ over 3-adic field mod 3^20
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1]),(a[4,2]-a[3,2])/(a[4,1]-a[3,1]) >] where a:=\
+ RamificationPolygon(f);
+[ <-8, -4, -1> ]
+
+
+
+
+
+
+
+
 
 
 > f:=x^27 + 18*x^24 + 9*x^21 + 3*x^18 + 18*x^15 + 54*x^10 + 54*x^8 + 54*x^4 +3\
@@ -472,123 +734,57 @@ Relations
 > 
 
 
-
-
-
-> K:= pAdicField(3,20);
-> x:=PolynomialRing(K).1;
-
-> f:=x^27+3;
-> g:=f;
-> T:=pReduction(g);
-> s:=RamPolySubfields(g);
-> _,_,E:= Factorisation(Polynomial(T,Expand(s[3])): Extensions:= true);
-> F:= E[1]`Extension;
-> time L := SplittingField(Polynomial(F,Expand(s[2])));
-Time: 4.610
-> AbsoluteDegree(L);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..
+> K:= pAdicField(3,16);
+> x:= PolynomialRing(K).1;
+> f:= x^27 + 3;  
+> [<(a[2,2]-a[1,2])/ (a[2,1]-a[1,1]), (a[3,2]-a[2,2])/(a[3,1]-a[2,1]),(a[4,2]-\
+a[3,2])/(a[4,1]-a[3,1]) >] where a:= RamificationPolygon(g);
+[ <-27/2, -9/2, -3/2> ]
+> 
+> time G,I,set := ThreeSegmentsGaloisGroup(f);
+AbsoluteDegree eq 
 54
-> ff:=Factorisation(Polynomial(F,f));
-> #ff;
-3
-
-> _,_,E:= Factorisation(Polynomial(L,ff[1,1]): Extensions:= true);
-> #E;
-3
-> [Degree(a[1]): a in ff]; 
-[ 9, 9, 9 ]
-> UnitPrecision(Integers(L));                                          
-82
-> time U,mU := UnitGroup(L:Prec:= 82);
-Time: 66.000
->  m:=#Generators(U);
-> N:=E[1]`Extension;
-> AbsoluteDegree(N);
-162
-> time G,psi1,psi:= AutomorphismGroup(N,L);
-Time: 17.630
-> IsAbelian(G);
-true
-> time #quo<U|NormGroup_fast(N,mU,300)>;
-3
-Time: 22.470
-> Ext_1 := N;                     
-> norm_grp,map := NormGroup_fast(Ext_1,mU, prec_norm);
-> FF:=F;                              
-> F:=L;
-> assert #quo<U|norm_grp> eq Degree(Ext_1,F);
-> prec:=82;
-> time  gamma,psi:= LFC_Using_Hilbert(F,PrimeField(F),prec+1);
-Time: 2144.650
-> prec:= 82;
-> prec_norm := (prec+2)*Degree(Ext_1);
->  G:=Domain(gamma)[1];
-> #G;
-54
-> gamma:=map<Domain(gamma) -> Codomain(gamma) | x :-> gamma(x[2]^(-1),x[1]^(-1))>; 
-> m;
-56
-> time norm_grp,map := NormGroup_fast(Ext_1,mU, prec_norm);
-assert #quo<U|norm_grp> eq Degree(Ext_1,F);
-Time: 21.110
-> assert #quo<U|norm_grp> eq Degree(Ext_1,F);
-> time S:=&meet[ sub<U| [x@ map @mU@psi(g)@@mU: x in Generators(norm_grp)]>: g in G];  // can save time here
-Time: 605.320
-> US,mUS:=quo<U|S>;
->   d:=#Generators(US);
-> US;
-Abelian Group isomorphic to Z/3 + Z/3
-Defined on 2 generators
-Relations:
-    3*US.1 = 0
-    3*US.2 = 0
-> p:=3;
->  S subset sub<U|[U.i : i in [1..m-1]], 3*U.m> ;
-false
->  Mats:=[ Matrix([ Eltseq(mUS(Inverse(mU)(field_map(F,psi(G.j^-1))(mU(Inverse\
-(mUS)(US.i)))))) : i in [1..d]])
->         : j in [1..#Generators(G)+1] ];
-> CM:=CohomologyModule(G, AbelianInvariants(US), Mats);
-> H2:=CohomologyGroup(CM,2);
-> H2;
-Full Quotient RSpace of degree 1 over Integer Ring
-Column moduli:
-[ 3 ]
-> function Gamma(tup)
-function>     return Eltseq(mUS(Inverse(mU)(gamma(<tup[1],tup[2]>))));
-function>   end function;
-> time H := Extension(CM,IdentifyTwoCocycle(CM,Gamma));
-Time: 106.140
-> #H;
+Computation time of lfc
+Norm equation... Time: 126.540
+GAction... Time: 0.020
+Time: 44.110
+Solve Frobenius equations... Time: 1035.220
+Time: 1307.400
+Computation time of norm group and its intersection of all NormGroup of 
+factorisation's extension
+Time: 13.390
+Time: 120.070
+Time: 1692.330
+> CM:= set[2];
+> I;
+1
+> #Group(CM)*&*(CM`invar);
 486
-> GroupName(H);
-C9.(C9*S3)
-> H;
-Finitely presented group H on 6 generators
+> G;
+Finitely presented group G on 6 generators
 Relations
-    H.5^3 = Id(H)
-    H.6^3 = Id(H)
-    (H.5, H.6) = Id(H)
-    (H.1, H.5^-1) = Id(H)
-    (H.1, H.6^-1) = Id(H)
-    (H.2, H.5^-1) = Id(H)
-    (H.2, H.6^-1) = Id(H)
-    H.3^-1 * H.5 * H.3 * H.6^-1 * H.5^-1 = Id(H)
-    (H.3, H.6^-1) = Id(H)
-    (H.4, H.5^-1) = Id(H)
-    H.4^-1 * H.6 * H.4 * H.6^-2 = Id(H)
-    H.1^3 * H.6^-1 = Id(H)
-    H.2^3 * H.5^-1 * H.6^-1 = Id(H)
-    H.4^2 = Id(H)
-    H.1^-1 * H.2^-1 * H.1 * H.2 * H.6^-1 = Id(H)
-    (H.1, H.3) = Id(H)
-    H.3^-2 * H.1^-1 * H.3^-1 = Id(H)
-    (H.1^-1 * H.4)^2 = Id(H)
-    (H.3^-1 * H.4)^2 = Id(H)
-    H.3 * H.2^-1 * H.1^-1 * H.3^-1 * H.2 = Id(H)
-    H.4 * H.2^-1 * H.1^-1 * H.4 * H.2 = Id(H)
-> time imm:= IdentifyTwoCocycle(CM,Gamma);
-Time: 106.070
-> imm;
-(1)
+    G.5^3 = Id(G)
+    G.6^3 = Id(G)
+    (G.5, G.6) = Id(G)
+    (G.1, G.5^-1) = Id(G)
+    (G.1, G.6^-1) = Id(G)
+    (G.2, G.5^-1) = Id(G)
+    (G.2, G.6^-1) = Id(G)
+    G.3^-1 * G.5 * G.3 * G.6^-1 * G.5^-1 = Id(G)
+    (G.3, G.6^-1) = Id(G)
+    (G.4, G.5^-1) = Id(G)
+    G.4^-1 * G.6 * G.4 * G.6^-2 = Id(G)
+    G.1^3 * G.6^-1 = Id(G)
+    G.2^3 * G.5^-1 * G.6^-1 = Id(G)
+    G.4^2 = Id(G)
+    G.1^-1 * G.2^-1 * G.1 * G.2 * G.6^-1 = Id(G)
+    (G.1, G.3) = Id(G)
+    G.3^-2 * G.1^-1 * G.3^-1 = Id(G)
+    (G.1^-1 * G.4)^2 = Id(G)
+    (G.3^-1 * G.4)^2 = Id(G)
+    G.3 * G.2^-1 * G.1^-1 * G.3^-1 * G.2 = Id(G)
+    G.4 * G.2^-1 * G.1^-1 * G.4 * G.2 = Id(G)
+> 
+
 
